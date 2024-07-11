@@ -1,0 +1,85 @@
+@import "actiontext.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Button */
+  /* ======================================================================== */
+
+  .btn,
+  .btn-sm {
+    @apply inline-block text-center font-semibold rounded shadow transition-all duration-200 cursor-pointer;
+  }
+
+  .btn:hover,
+  .btn-sm:hover {
+    @apply bg-opacity-75;
+  }
+
+  .btn {
+    @apply px-4 py-2;
+  }
+
+  .btn-sm {
+    @apply px-2 py-1 text-sm;
+  }
+
+  /* Link */
+  /* ======================================================================== */
+
+  .link {
+    @apply underline hover:no-underline cursor-pointer;
+  }
+
+  /* Form */
+  /* ======================================================================== */
+
+  .label {
+    @apply font-semibold block mb-0.5;
+  }
+
+  .hint {
+    @apply text-sm mb-0.5 text-gray-600;
+  }
+
+  .input_wrapper {
+    @apply mb-4;
+  }
+
+  .input.string,
+  .input.password,
+  .input.select,
+  .input.numeric,
+  .input.date,
+  .input.datetime,
+  .input.text,
+  .trix-editor,
+  .field input {
+    @apply block shadow rounded border-2 border-gray-400 outline-none px-3 py-2 w-full;
+  }
+
+  .field_with_errors .error {
+    @apply text-sm text-red-600;
+  }
+  .field_with_errors .error:first-letter {
+    text-transform: capitalize;
+  }
+
+  .field_with_errors .input,
+  .field_with_errors .trix-editor {
+    @apply border-red-600;
+  }
+
+  /* Typography */
+  /* ======================================================================== */
+
+  h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+
+  h2 {
+    @apply text-xl font-bold mb-3;
+  }
+}
