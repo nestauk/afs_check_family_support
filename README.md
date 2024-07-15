@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a template for creating a new Rails application including some of our defaults
 
-Things you may want to cover:
+e.g. Postgres, Tailwind, Docker, FactoryBot
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
+When setting up a new project, you can copy this to get started a bit quicker.
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails db:create
