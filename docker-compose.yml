@@ -1,0 +1,47 @@
+services:
+  app.local:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/var/source"
+      - "./storage/bundle:/usr/local/bundle"
+    environment:
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+      DATABASE_URL: "postgres://pgsql:password@pgsql:5432"
+      SMTP_HOST: mailhog
+      SELENIUM_REMOTE_DRIVER: true
+      HEADLESS: true
+    depends_on:
+      - pgsql
+
+  pgsql:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - 5433:5432
+    volumes:
+      - ./storage/postgres:/var/lib/postgresql/data
+      - ./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql
+    environment:
+      POSTGRES_USER: pgsql
+      POSTGRES_PASSWORD: password
+
+  tailwind:
+    build: .
+    entrypoint: /var/source/bin/rails tailwindcss:watch[always]
+    restart: unless-stopped
+    volumes:
+      - ".:/var/source"
+      - "./storage/bundle:/usr/local/bundle"
+    depends_on:
+      - app.local
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+
+  selenium:
+    image: selenium/standalone-firefox
