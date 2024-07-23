@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  a[target="_blank"]::after {
+    content: "⧉";
+    @apply text-[0.6em] font-normal absolute -mt-[0.75em] ml-px scale-x-[-1];
+  }
+}
+
 @layer components {
-    .focusable {
-        @apply focus:outline-none;
-    }
-    .focusable:not(:active) {
-        @apply focus:bg-focus focus:text-black focus:border-black;
-        @apply focus:hover:bg-focus focus:hover:text-black focus:hover:border-black focus:hover:outline-none;
-    }
+  .focusable {
+    @apply focus:outline-none;
+  }
+  .focusable:not(:active) {
+    @apply focus:bg-focus focus:text-black focus:border-black;
+    @apply focus:hover:bg-focus focus:hover:text-black focus:hover:border-black focus:hover:outline-none;
+  }
 }

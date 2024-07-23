@@ -1,0 +1,29 @@
+@props({
+  level: _required,
+  xs: false,
+  sm: false,
+  md: false,
+  lg: false,
+  xl: false
+})
+@ruby
+case true
+when xs
+  sizeClasses = '-:text-base sm:-:text-lg -:font-medium'
+when sm
+  sizeClasses = '-:text-lg sm:-:text-xl -:font-bold'
+when md
+  sizeClasses = '-:text-xl sm:-:text-2xl -:font-bold'
+when lg
+  sizeClasses = '-:text-2xl sm:-:text-3xl -:font-bold'
+when xl
+  sizeClasses = '-:text-3xl sm:-:text-4xl -:font-extrabold'
+else
+  sizeClasses = ''
+end
+@endruby
+<h{{level}} {{ attributes.merge({
+  class: "-:max-w-prose -:-mb-2 -:text-blue-900 #{sizeClasses}"
+}) }}>
+  {{ slot }}
+</h{{level}}>
