@@ -1,15 +1,24 @@
+@props({size: "base"})
+@ruby
+case attributes.to_h[:size]
+when "base"
+    sizeClasses = "--:px-6 --:pt-2 --:pb-1.5 --:text-base"
+when "small"
+    sizeClasses = "--:px-3 --:pt-1.5 --:pb-1 --:text-sm"
+end
+@endruby
 <button {{ attributes.merge({
     "class": "
-        px-4 pt-2 pb-1.5 rounded border-b-2
-        bg-clip-padding
-        active:translate-y-0.5 active:border-transparent
-        select-none
-        font-semibold
+        #{sizeClasses} --:rounded --:border-b-2
+        --:bg-clip-padding
+        active:--:translate-y-0.5 active:--:border-transparent
+        --:select-none
+        --:font-semibold
         focusable
     ",
     {{-- Prevent the button being focused on a click --}}
     "onmouseup": "this.blur()",
-    "type": "button"
+    "type": "button",
 }) }}>
     {{ slot }}
 </button>

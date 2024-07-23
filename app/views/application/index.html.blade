@@ -1,11 +1,41 @@
 <x-layout::simple title="Home">
-  <div class="flex gap-2">
-    <x-buttons.primary type=submit>
-      This is a button
+  <div class="flex gap-4">
+    <x-buttons.primary>
+      This is a primary button
     </x-buttons.primary>
 
-    <x-buttons.primary-light type=submit>
-      This is a light button
+    <x-buttons.primary-light>
+      This is a light primary button
     </x-buttons.primary-light>
+  </div>
+
+  <div class="flex gap-4">
+    <x-buttons.primary size="small">
+      This is a small primary button
+    </x-buttons.primary>
+
+    <x-buttons.primary-light size="small">
+      This is a small light primary button
+    </x-buttons.primary-light>
+  </div>
+
+  <div class="flex gap-4">
+    <x-buttons.secondary>
+      This is a secondary button
+    </x-buttons.secondary>
+
+    <x-buttons.secondary-light>
+      This is a light secondary button
+    </x-buttons.secondary-light>
+  </div>
+
+  <div class="flex gap-4">
+    <x-buttons.secondary size="small">
+      This is a small secondary button
+    </x-buttons.secondary>
+
+    <x-buttons.secondary-light size="small">
+      This is a small light secondary button
+    </x-buttons.secondary-light>
   </div>
 </x-layout::simple>
