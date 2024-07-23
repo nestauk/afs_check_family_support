@@ -1,20 +1,17 @@
-@props({size: "base"})
+@props({small: false})
 @ruby
-case attributes.to_h[:size]
-when "base"
-    sizeClasses = "--:px-6 --:pt-2 --:pb-1.5 --:text-base"
-when "small"
-    sizeClasses = "--:px-3 --:pt-1.5 --:pb-1 --:text-sm"
-end
+sizeClasses = small ? "--:px-3 --:pt-1.5 --:pb-1 --:text-sm --:font-medium"
+    : "--:px-6 --:pt-2 --:pb-1.5 --:text-base --:font-semibold"
 @endruby
 <button {{ attributes.merge({
     "class": "
         #{sizeClasses} --:rounded --:border-b-2
-        --:bg-clip-padding
-        active:--:translate-y-0.5 active:--:border-transparent
-        --:select-none
-        --:font-semibold
+        --:bg-clip-padding --:select-none
+        active:--:translate-y-0.5 active:-:border-transparent
         focusable
+        disabled:--:bg-gray-100 disabled:--:text-gray-400 disabled:border-gray-100 disabled:cursor-not-allowed
+        disabled:hover:--:bg-gray-100 disabled:hover:--:text-gray-400 disabled:hover:border-gray-100
+        disabled:active:--:transform-none active:--:border-border-gray-100
     ",
     {{-- Prevent the button being focused on a click --}}
     "onmouseup": "this.blur()",
