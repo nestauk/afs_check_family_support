@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsTemplate</title>
+    <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,9 +11,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="font-sans">
     <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+      {{ slot }}
     </main>
   </body>
 </html>

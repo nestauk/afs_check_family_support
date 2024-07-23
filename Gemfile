@@ -66,3 +66,5 @@ group :test do
 end
 
 gem "tailwindcss-rails"
+
+gem "rblade", "~> 0.1"
