@@ -1,0 +1,19 @@
+@props({blue: false})
+@ruby
+colourClasses = case(true)
+when blue
+  '-:bg-blue-50 -:text-blue-800'
+else
+  ''
+end
+@endruby
+<div {{ attributes.merge({
+  class: "
+    -:flex -:gap-2 -:items-center
+    -:font-medium
+    -:px-2 -:py-0.5 -:rounded-md
+    #{colourClasses}
+  "
+}) }}>
+  {{ slot }}
+</div>
