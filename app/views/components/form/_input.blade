@@ -1,6 +1,6 @@
-@props({label: false, horizontal: false})
+@props({label: false, horizontal: false, horizontalSize: nil})
 @if(label)
-  <x-form.label :label :horizontal>
+  <x-form.label :label :horizontal :horizontalSize>
 @endif
   <input {{ attributes.merge({
     class: "

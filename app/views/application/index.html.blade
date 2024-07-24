@@ -114,14 +114,20 @@
   <x-content.col>
     <x-form.text label="Email" name="email" placeholder="email@example.com"/>
     <x-form.password label="Password" name="password"/>
+    <x-form.select label="Pick a number" name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
   </x-content.col>
 
   <form action="" method="post">
     <x-content.box class="w-max">
       <x-text.h3 md class="mb-0">Login</x-text.h3>
-      <x-form.text horizontal label="Email" name="email" placeholder="email@example.com"/>
-      <x-form.password horizontal label="Password" name="password"/>
-      <x-form.checkbox horizontal label="Accept" name="accept"/>
+      <x-form.text horizontalSize="w-32" label="Email" name="email" placeholder="email@example.com"/>
+      <x-form.password horizontalSize="w-32" label="Password" name="password"/>
+      <x-form.select horizontalSize="w-32" label="Empty select" name="empty_select" required/>
+      <x-form.checkbox
+        horizontalSize="w-32"
+        label="Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you."
+        name="accept"
+      />
       <x-button.primary type="Submit" class="mx-auto">Submit</x-button.primary>
     </x-content.box>
   </form>

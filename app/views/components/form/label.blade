@@ -1,8 +1,10 @@
-@props({label: _required, horizontal: false})
+@props({label: _required, horizontal: false, horizontalSize: nil})
 @ruby
-layoutClasses = horizontal ? "sm:-:flex-row sm:[&>span]:-:w-24 sm:-:items-center sm:-:gap-4" : ""
+horizontal ||= !horizontalSize.nil?
+horizontalSize ||= horizontal ? "w-24" : ""
+layoutClasses = horizontal ? "sm:-:flex-row sm:-:items-center sm:-:gap-4" : ""
 @endruby
 <label {{ attributes.merge({class: "-:flex -:font-semibold -:flex-col -:gap-[3px] #{layoutClasses}"}) }}>
-  <span class="block ml-px shrink-0">{{ label }}</span>
+  <span class="block ml-px shrink-0 {{horizontalSize}}">{{ label }}</span>
   {{ slot }}
 </label>

@@ -1,0 +1,27 @@
+@props({label: false, horizontal: false, horizontalSize: nil, options: [], value: nil})
+@if(label)
+  <x-form.label :label :horizontal :horizontalSize>
+@endif
+  <select {{ attributes.merge({
+    class: "
+      --:w-96
+      --:max-w-full
+      --:border --:border-gray-400
+      hover:--:border-black hover:--:ring-1 hover:--:ring-black
+      focus:--:border-black focus:--:outline-none
+      focus:--:ring-2 focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
+      --:font-normal
+    "
+  }) }}>
+    @forelse(i in 1..1)
+    @end
+    @eachelse(optionLabel in options)
+      @ruby(optionValue = optionValue.nil? ? optionLabel : optionValue)
+      <option value="{{ optionValue }}" @selected(optionValue == value) >{{ optionLabel }}</option>
+    @empty
+      <option disabled>n/a</option>
+    @endeach
+  </select>
+@if(label)
+  </x-form.label>
+@endif
