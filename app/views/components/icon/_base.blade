@@ -1,0 +1,26 @@
+@props({
+  alt: _required,
+  size: "22"
+})
+@ruby
+case size
+when "16"
+  sizeClasses = "-:text-[16px]"
+when "18"
+  sizeClasses = "-:text-[18px]"
+when "20"
+  sizeClasses = "-:text-[20px]"
+when "22"
+  sizeClasses = "-:text-[22px]"
+when "24"
+  sizeClasses = "-:text-[24px]"
+else
+  sizeClasses = "-:text-[length:inherit]"
+end
+@endruby
+<span {{ attributes.merge({
+  class: "
+    material-symbols-rounded
+    -:leading-[1] w-[1em] h-[1em] #{sizeClasses}
+  "
+}) }}>{{slot}}</span>
