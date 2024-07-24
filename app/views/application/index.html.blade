@@ -1,38 +1,37 @@
 <x-layout::simple title="Home">
+  <x-text.h1 xl>Component library</x-text.h1>
 
-  <x-h1 xl>Component library</x-h1>
+  <x-text.h2 lg>Headings</x-text.h2>
 
-  <x-h2 lg>Headings</x-h2>
-
-  <x-p>
-    The &lt;x-h1&gt; through &lt;x-h6&gt; tags are used to create headings. Note that the number in the
+  <x-text.p>
+    The &lt;x-text.h1&gt; through &lt;x-text.h6&gt; tags are used to create headings. Note that the number in the
     tag refers to the semantic level of the heading, and not the size. To adjust the size, add
     custom classes, or use the xs, sm, md, lg, xl binary attributes.
-  </x-p>
+  </x-text.p>
 
-  <x-container.row>
-    <x-h3 xs>xs heading</x-h3>
-    <x-h3 sm>sm heading</x-h3>
-    <x-h3 md>md heading</x-h3>
-    <x-h3 lg>lg heading</x-h3>
-    <x-h3 xl>xl heading</x-h3>
-  </x-container.row>
+  <x-content.row>
+    <x-text.h3 xs>xs heading</x-text.h3>
+    <x-text.h3 sm>sm heading</x-text.h3>
+    <x-text.h3 md>md heading</x-text.h3>
+    <x-text.h3 lg>lg heading</x-text.h3>
+    <x-text.h3 xl>xl heading</x-text.h3>
+  </x-content.row>
 
-  <x-h2 lg class="mt-2">Typography</x-h2>
+  <x-text.h2 lg class="mt-2">Typography</x-text.h2>
 
-  <x-p>
+  <x-text.p>
     This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus eos
     exercitationem repellendus. Aperiam aspernatur cupiditate delectus error est, et eveniet
     inventore molestiae, mollitia nesciunt nihil officia quae sapiente soluta, temporibus?
-  </x-p>
+  </x-text.p>
 
-  <x-p>
-    Paragraphs can sometimes contain <x-a href="#">links</x-a>.
-  </x-p>
+  <x-text.p>
+    Paragraphs can sometimes contain <x-text.a href="#">links</x-text.a>.
+  </x-text.p>
 
-  <x-h2 lg class="mt-2">Buttons</x-h2>
+  <x-text.h2 lg class="mt-2">Buttons</x-text.h2>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.primary>
       This is a primary button
     </x-button.primary>
@@ -40,9 +39,9 @@
     <x-button.primary-light>
       This is a light primary button
     </x-button.primary-light>
-  </x-container.row>
+  </x-content.row>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.primary small>
       This is a small primary button
     </x-button.primary>
@@ -50,9 +49,9 @@
     <x-button.primary-light small>
       This is a small light primary button
     </x-button.primary-light>
-  </x-container.row>
+  </x-content.row>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.secondary>
       This is a secondary button
     </x-button.secondary>
@@ -60,9 +59,9 @@
     <x-button.secondary-light>
       This is a light secondary button
     </x-button.secondary-light>
-  </x-container.row>
+  </x-content.row>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.secondary small>
       This is a small secondary button
     </x-button.secondary>
@@ -70,9 +69,9 @@
     <x-button.secondary-light small>
       This is a small light secondary button
     </x-button.secondary-light>
-  </x-container.row>
+  </x-content.row>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.primary disabled>
       This is a disabled button
     </x-button.primary>
@@ -80,50 +79,50 @@
     <x-button.secondary-light disabled small>
       This is a small disabled button
     </x-button.secondary-light>
-  </x-container.row>
+  </x-content.row>
 
-  <x-p class="mt-2">Buttons can also be made as links:</x-p>
+  <x-text.p class="mt-2">Buttons can also be made as links:</x-text.p>
 
-  <x-container.row>
+  <x-content.row>
     <x-button.primary as="a" href="/home">Home</x-button.primary>
     <x-button.primary as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button.primary>
-  </x-container.row>
+  </x-content.row>
 
-  <x-h2 lg class="mt-2">Containers</x-h2>
+  <x-text.h2 lg class="mt-2">Containers</x-text.h2>
 
-  <x-container.box>
-    <x-h3 sm>Box</x-h3>
-    <x-p>This is a box container</x-p>
+  <x-content.box>
+    <x-text.h3 sm>Box</x-text.h3>
+    <x-text.p>This is a box content</x-text.p>
 
-    <x-container.row class="justify-end">
+    <x-content.row class="justify-end">
       <x-button.primary class="w-fit" type="submit">
         Confirm
       </x-button.primary>
       <x-button.primary-light class="w-fit">
         Cancel
       </x-button.primary-light>
-    </x-container.row>
-  </x-container.box>
+    </x-content.row>
+  </x-content.box>
 
-  <x-container.box class="border-green-600 bg-green-50">
-    <x-h3 sm class="text-green-900">Success</x-h3>
-    <x-p>You succeeded in doing something!</x-p>
-  </x-container.box>
+  <x-content.box class="border-green-600 bg-green-50">
+    <x-text.h3 sm class="text-green-900">Success</x-text.h3>
+    <x-text.p>You succeeded in doing something!</x-text.p>
+  </x-content.box>
 
-  <x-h2 lg class="mt-2">Forms</x-h2>
+  <x-text.h2 lg class="mt-2">Forms</x-text.h2>
 
-  <x-container.col>
+  <x-content.col>
     <x-form.text label="Email" name="email" placeholder="email@example.com"/>
     <x-form.password label="Password" name="password"/>
-  </x-container.col>
+  </x-content.col>
 
   <form action="" method="post">
-    <x-container.box class="w-max">
-      <x-h3 md class="mb-0">Login</x-h3>
+    <x-content.box class="w-max">
+      <x-text.h3 md class="mb-0">Login</x-text.h3>
       <x-form.text horizontal label="Email" name="email" placeholder="email@example.com"/>
       <x-form.password horizontal label="Password" name="password"/>
       <x-form.checkbox horizontal label="Accept" name="accept"/>
       <x-button.primary type="Submit" class="mx-auto">Submit</x-button.primary>
-    </x-container.box>
+    </x-content.box>
   </form>
 </x-layout::simple>
