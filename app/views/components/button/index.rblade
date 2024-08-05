@@ -1,0 +1,67 @@
+@props({
+  as: 'button',
+  sm: false,
+  md: true,
+  primary: true,
+  secondary: false,
+  light: false,
+})
+@ruby
+classList = case true
+  when sm
+    "--:px-4 --:py-1 --:text-sm --:sm:text-base --:font-medium"
+  when md
+    "--:px-6 --:py-2 --:text-base --:sm:text-lg --:font-semibold"
+  else ''
+end
+
+classList << case true
+  when light && secondary
+    "
+      --:bg-fuchsia-50 --:text-fuchsia-950 --:shadow-fuchsia-200
+      hover:--:bg-fuchsia-100 hover:--:shadow-fuchsia-300
+      active:--:bg-fuchsia-200 active:--:text-black
+    "
+  when secondary
+    "
+      --:bg-fuchsia-600 --:text-white --:shadow-fuchsia-900
+      hover:--:bg-fuchsia-700 hover:--:shadow-fuchsia-950
+      active:--:bg-fuchsia-800
+    "
+  when primary && light
+    "
+      --:bg-blue-50/50 --:text-blue-950 --:shadow-blue-100
+      hover:--:bg-blue-50 hover:--:shadow-blue-200
+      active:--:bg-blue-100 active:--:text-black
+    "
+  when primary
+    "
+      --:bg-blue-600 --:text-white --:shadow-blue-900
+      hover:--:bg-blue-700 hover:--:shadow-blue-950
+      active:--:bg-blue-800
+    "
+  else ''
+end
+
+@endruby
+<{{as}} {{ attributes.merge({
+  "class": "
+    --:flex --:items-center --:justify-center --:gap-2
+    --:rounded
+    -:mb-0.5 --:shadow --:shadow-2
+    --:block --:w-full sm:--:w-fit
+    --:bg-clip-padding --:select-none
+    --:translate-y-0
+    active:--:translate-y-0.5 active:--:shadow-0
+    focusable
+    disabled:--:bg-gray-100 disabled:--:text-gray-400 disabled:shadow-gray-100 disabled:cursor-not-allowed
+    disabled:hover:--:bg-gray-100 disabled:hover:--:text-gray-400 disabled:hover:shadow-gray-100
+    disabled:--:shadow-0 disabled:active:--:translate-y-0
+    #{classList}
+  ",
+  {{-- Prevent the button being focused on a click --}}
+  "onmouseup": "this.blur()",
+  "type": "button",
+}) }}>
+  {{ slot }}
+</{{as}}>

@@ -1,0 +1,17 @@
+@props({tooltip: _required})
+{{-- TODO consider the a11y implications of this component --}}
+<div {{ attributes.merge({class: "group -:relative -:w-fit -:leading-[0]"}) }}>
+  {{ slot }}
+  <div class="
+    absolute top-full mt-2 left-1/2 -translate-x-1/3 w-max max-w-96
+    pointer-events-none transition-opacity opacity-0 group-hover:opacity-100
+    px-4 py-3
+    bg-sky-950 text-white rounded-md border border-black
+    text-base font-normal
+    z-10
+    whitespace-normal
+  ">
+    <div class="absolute bottom-full left-1/3 -translate-x-1/2 w-0 h-0 border-x-[6px] border-y-8 border-transparent border-b-sky-950"></div>
+    {{ tooltip }}
+  </div>
+</div>

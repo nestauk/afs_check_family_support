@@ -1,4 +1,3 @@
-@props({href: _required})
 <a {{ attributes.merge({
   class: "text-blue-600 hover:underline focusable active:text-white active:bg-blue-600",
   {{-- Prevent the button being focused on a click --}}

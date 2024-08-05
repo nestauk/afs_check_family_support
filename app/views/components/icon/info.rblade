@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge({
+  alt: "info",
+  style: "font-variation-settings:'FILL' 0,'wght' 700,'GRAD' 0,'opsz' 24"
+}) }}>info</x-icon>

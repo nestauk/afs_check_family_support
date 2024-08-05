@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge({
+  alt: "left",
+}) }}>chevron_left</x-icon>

@@ -14,13 +14,20 @@ when "22"
   sizeClasses = "-:text-[22px]"
 when "24"
   sizeClasses = "-:text-[24px]"
+when "26"
+  sizeClasses = "-:text-[26px]"
+when "28"
+  sizeClasses = "-:text-[28px]"
 else
   sizeClasses = "-:text-[length:inherit]"
 end
 @endruby
 <span {{ attributes.merge({
   class: "
-    material-symbols-rounded
+    material-symbols-sharp
     -:leading-[1] w-[1em] h-[1em] #{sizeClasses}
-  "
+    select-none
+  ",
+  style: "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24",
+  "aria-label": alt
 }) }}>{{slot}}</span>

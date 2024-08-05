@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge({
+  alt: "send"
+}) }}>send</x-icon>

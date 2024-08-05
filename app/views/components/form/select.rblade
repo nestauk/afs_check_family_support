@@ -1,6 +1,6 @@
-@props({label: false, horizontal: false, horizontalSize: nil, options: [], value: nil})
+@props({label: false, horizontal: false, labelClass: nil, options: [], value: nil})
 @if(label)
-  <x-form.label :label :horizontal :horizontalSize>
+  <x-form.label :label :horizontal :labelClass>
 @endif
   <select {{ attributes.merge({
     class: "

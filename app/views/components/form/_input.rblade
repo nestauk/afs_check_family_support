@@ -1,12 +1,12 @@
-@props({label: false, horizontal: false, horizontalSize: nil})
+@props({label: false, horizontal: false, labelClass: nil})
 @if(label)
-  <x-form.label :label :horizontal :horizontalSize>
+  <x-form.label :label :horizontal :labelClass>
 @endif
   <input {{ attributes.merge({
     class: "
       --:w-96
       --:max-w-full
-      --:border --:border-gray-400
+      --:border --:border-gray-400 --:rounded
       hover:--:border-black hover:--:ring-1 hover:--:ring-black
       focus:--:border-black focus:--:outline-none
       focus:--:ring-2 focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black

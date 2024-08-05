@@ -1,0 +1,38 @@
+@props({
+  level: _required,
+  xs: false,
+  sm: false,
+  md: false,
+  lg: false,
+  xl: false,
+  center: false
+})
+@ruby
+classList = ''
+case true
+when xs
+  classList << '-:text-base sm:-:text-lg -:font-semibold'
+when sm
+  classList << '-:text-lg sm:-:text-xl -:font-bold'
+when md
+  classList << '-:text-xl sm:-:text-2xl -:font-bold'
+when lg
+  classList << '-:text-2xl sm:-:text-3xl -:font-bold'
+when xl
+  classList << '-:text-3xl sm:-:text-4xl -:font-extrabold'
+end
+
+if center
+  classList << ' text-center'
+end
+@endruby
+<h{{level}} {{ attributes.merge({
+  class: "
+    -:max-w-prose -:text-sky-900
+    #{classList}
+    {{-- Reduce the bottom margin when followed by a paragraph --}}
+    [&+p]:-:-mt-2
+  "
+}) }}>
+  {{ slot }}
+</h{{level}}>

@@ -1,0 +1,35 @@
+@props({
+  xs: false,
+  sm: false,
+  md: false,
+  lg: false,
+  xl: false,
+  center: false
+})
+@ruby
+classList = ''
+
+case true
+when xs
+  classList << '-:text-xs sm:-:text-sm'
+when sm
+  classList << '-:text-sm sm:-:text-base'
+when md
+  classList << '-:text-base sm:-:text-lg'
+when lg
+  classList << '-:text-lg sm:-:text-xl'
+when xl
+  classList << '-:text-xl sm:-:text-2xl'
+else
+  classList << '-:text-base sm:-:text-lg'
+end
+
+if center
+  classList << ' text-center'
+end
+@endruby
+<p {{ attributes.merge({
+  class: "-:text-black/90 -:font-normal -:max-w-prose #{classList}"
+}) }}>
+  {{ slot }}
+</p>

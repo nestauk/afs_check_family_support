@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge({
+  alt: "location"
+}) }}>location_on</x-icon>
