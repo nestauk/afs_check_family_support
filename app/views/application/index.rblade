@@ -32,60 +32,41 @@
   <x-text.h2 lg class="mt-2">Buttons</x-text.h2>
 
   <x-content.row>
-    <x-button.primary>
-      This is a primary button
-    </x-button.primary>
-
-    <x-button.primary-light>
-      This is a light primary button
-    </x-button.primary-light>
+    <x-button>primary</x-button>
+    <x-button light>primary light</x-button>
+    <x-button sm>primary sm</x-button>
+    <x-button sm light>primary sm light</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button.primary small>
-      This is a small primary button
-    </x-button.primary>
-
-    <x-button.primary-light small>
-      This is a small light primary button
-    </x-button.primary-light>
+    <x-button secondary>secondary</x-button>
+    <x-button secondary light>secondary light</x-button>
+    <x-button secondary sm>secondary sm</x-button>
+    <x-button secondary sm light>secondary sm light</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button.secondary>
-      This is a secondary button
-    </x-button.secondary>
-
-    <x-button.secondary-light>
-      This is a light secondary button
-    </x-button.secondary-light>
+    <x-button disabled>disabled</x-button>
+    <x-button disabled sm>disabled sm</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button.secondary small>
-      This is a small secondary button
-    </x-button.secondary>
-
-    <x-button.secondary-light small>
-      This is a small light secondary button
-    </x-button.secondary-light>
+    <x-button.outline>outline</x-button.outline>
+    <x-button.outline secondary>outline secondary</x-button.outline>
+    <x-button.outline sm>outline sm</x-button.outline>
+    <x-button.outline sm secondary>outline sm secondary</x-button.outline>
   </x-content.row>
 
   <x-content.row>
-    <x-button.primary disabled>
-      This is a disabled button
-    </x-button.primary>
-
-    <x-button.secondary-light disabled small>
-      This is a small disabled button
-    </x-button.secondary-light>
+    <x-button.back>back</x-button.back>
+    <x-button.back sm>back sm</x-button.back>
   </x-content.row>
 
   <x-text.p class="mt-2">Buttons can also be made as links:</x-text.p>
 
   <x-content.row>
-    <x-button.primary as="a" href="/home">Home</x-button.primary>
-    <x-button.primary as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button.primary>
+    <x-button as="a" href="/home">Home</x-button>
+    <x-button as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button>
   </x-content.row>
 
   <x-text.h2 lg class="mt-2">Containers</x-text.h2>
@@ -95,12 +76,12 @@
     <x-text.p>This is a box content</x-text.p>
 
     <x-content.row class="justify-end">
-      <x-button.primary class="w-fit" type="submit">
+      <x-button class="w-fit" type="submit">
         Confirm
-      </x-button.primary>
-      <x-button.primary-light class="w-fit">
+      </x-button>
+      <x-button light class="w-fit">
         Cancel
-      </x-button.primary-light>
+      </x-button>
     </x-content.row>
   </x-content.box>
 
@@ -128,7 +109,7 @@
         label="Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you."
         name="accept"
       />
-      <x-button.primary type="Submit" class="mx-auto">Submit</x-button.primary>
+      <x-button type="Submit" class="mx-auto">Submit</x-button>
     </x-content.box>
   </form>
 </x-layout::simple>
