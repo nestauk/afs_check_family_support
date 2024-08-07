@@ -2,8 +2,10 @@
 @if(label)
 <label class="flex items-start gap-4 ml-4">
 @endif
+  <input type="hidden" {{ attributes.only('name') }} value="0">
   <input {{ attributes.merge({
     type: "checkbox",
+    value: "1",
     class: "
       --:w-5 --:h-5
       --:border --:border-gray-400
