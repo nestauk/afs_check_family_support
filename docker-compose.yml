@@ -13,6 +13,7 @@ services:
       SMTP_HOST: mailhog
       SELENIUM_REMOTE_DRIVER: true
       HEADLESS: true
+      VITE_RUBY_HOST: "vite"
     depends_on:
       - pgsql
 
@@ -38,7 +39,7 @@ services:
       - ".:/var/source"
       - "./storage/bundle:/usr/local/bundle"
     environment:
-      VITE_RUBY_HOST: "0.0.0.0"
+      VITE_RUBY_HOST: 0.0.0.0
     depends_on:
       - app.local
 
