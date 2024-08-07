@@ -67,4 +67,4 @@ end
 
 gem "tailwindcss-rails"
 
-gem "rblade", "~> 0.1"
+gem "rblade", "~> 1.0"
