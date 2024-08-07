@@ -1,0 +1,6 @@
+<form {{ attributes.merge({
+  class: "-:flex -:flex-col -:gap-inherit",
+  method: "POST",
+}) }}>
+  {{ slot }}
+</form>

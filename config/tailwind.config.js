@@ -22,6 +22,11 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        "inherit": "inherit",
+        "0.75": "3px",
+        "1.25": "5px",
+      },
     },
   },
   plugins: [

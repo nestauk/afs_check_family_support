@@ -98,8 +98,8 @@
     <x-form.select label="Pick a number" name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
   </x-content.col>
 
-  <form action="" method="post">
-    <x-content.box class="w-max">
+  <x-content.box class="w-max">
+    <x-form>
       <x-text.h3 md class="mb-0">Login</x-text.h3>
       <x-form.text horizontalSize="w-32" label="Email" name="email" placeholder="email@example.com"/>
       <x-form.password horizontalSize="w-32" label="Password" name="password"/>
@@ -110,6 +110,6 @@
         name="accept"
       />
       <x-button type="Submit" class="mx-auto">Submit</x-button>
-    </x-content.box>
-  </form>
+    </x-form>
+  </x-content.box>
 </x-layout::simple>
