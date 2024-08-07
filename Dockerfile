@@ -11,7 +11,11 @@ WORKDIR /var/source
 RUN gem install rails bundler
 
 # Install the Heroku CLI
-RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | bash
+
+# Install node 22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash
+RUN apt-get install -y nodejs
 
 COPY docker/rails_entrypoint.sh /entrypoint.sh
 

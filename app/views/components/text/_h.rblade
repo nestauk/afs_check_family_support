@@ -23,11 +23,12 @@ when xl
 end
 
 if center
-  classList << ' text-center'
+  classList << ' -:text-center'
 end
 @endruby
 <h{{level}} {{ attributes.merge({
   class: "
+    -:font-title
     -:max-w-prose -:text-sky-900
     #{classList}
     {{-- Reduce the bottom margin when followed by a paragraph --}}

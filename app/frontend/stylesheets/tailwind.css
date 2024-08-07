@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .focusable {
+    @apply focus:outline-none;
+  }
+  .focusable:not(:active) {
+    @apply focus:bg-focus focus:text-black focus:border-black focus:shadow-black
+           focus:hover:bg-focus focus:hover:text-black focus:hover:border-black focus:shadow-black
+           focus:hover:outline-none;
+  }
+}

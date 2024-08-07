@@ -7,7 +7,6 @@ services:
     volumes:
       - ".:/var/source"
       - "./storage/bundle:/usr/local/bundle"
-      - "/Users/simon.jarrett/Source/experiments/rblade/:/usr/local/bundle/gems/rblade-0.2.5/:ro"
     environment:
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
       DATABASE_URL: "postgres://pgsql:password@pgsql:5432"
@@ -29,13 +28,17 @@ services:
       POSTGRES_USER: pgsql
       POSTGRES_PASSWORD: password
 
-  tailwind:
+  vite:
     build: .
-    entrypoint: /var/source/bin/rails tailwindcss:watch[always]
+    entrypoint: /var/source/bin/vite dev
     restart: unless-stopped
+    ports:
+      - 3036:3036
     volumes:
       - ".:/var/source"
       - "./storage/bundle:/usr/local/bundle"
+    environment:
+      VITE_RUBY_HOST: "0.0.0.0"
     depends_on:
       - app.local
 

@@ -8,10 +8,9 @@
     {!! csp_meta_tag !!}
     {{-- TODO use proper JS compilation --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    {!! stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" !!}
 
-    {!! stylesheet_link_tag "application", "data-turbo-track": "reload" !!}
-    {!! javascript_importmap_tags !!}
+    {!! vite_client_tag !!}
+    {!! vite_javascript_tag 'application' !!}
   </head>
 
   <body {{ attributes }}>

@@ -20,7 +20,8 @@ module.exports = {
         "focus": "#9aff3c"
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Averta', ...defaultTheme.fontFamily.sans],
+        title: ['Zosia', ...defaultTheme.fontFamily.sans],
       },
       spacing: {
         "inherit": "inherit",
@@ -30,9 +31,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-    require('../vendor/javascript/tailwindcss-unimportant')
+    require('tailwindcss-unimportant')
   ]
 }
