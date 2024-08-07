@@ -127,10 +127,6 @@ GEM
       railties (>= 6.0.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.0.1)
-      actionpack (>= 6.0.0)
-      activesupport (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)
@@ -262,13 +258,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sprockets (4.2.1)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     standard (1.39.2)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -281,18 +270,10 @@ GEM
     standard-performance (1.4.0)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.21.0)
-    stimulus-rails (1.3.3)
-      railties (>= 6.0.0)
     stringio (3.1.1)
     strscan (3.1.0)
-    tailwindcss-rails (2.7.0-aarch64-linux)
-      railties (>= 7.0.0)
     thor (1.3.1)
     timeout (0.4.1)
-    turbo-rails (2.0.6)
-      actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
-      railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
@@ -329,7 +310,6 @@ DEPENDENCIES
   factory_bot_rails
   faker
   hotwire-livereload (~> 1.2)
-  importmap-rails
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
@@ -337,12 +317,7 @@ DEPENDENCIES
   rblade (~> 1.0)
   redis (>= 4.0.1)
   selenium-webdriver
-  sprockets-rails
   standard
-  stimulus-rails
-  tailwindcss-rails
-  turbo-rails
-  tzinfo-data
   vite_rails (~> 3.0)
   web-console
 
