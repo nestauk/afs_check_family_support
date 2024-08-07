@@ -1,10 +1,10 @@
-require_relative "test_case"
+require "system/test_case"
 
 class ApplicationTest < System::TestCase
   test "application loads" do
     visit "/"
 
-    assert_text "Hello world"
+    assert_text "Component library"
     snapshot "homepage"
   end
 end

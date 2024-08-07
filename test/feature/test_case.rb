@@ -1,7 +1,5 @@
-require_relative "../../config/environment"
+require "test_helper"
 require "rails/test_help"
-require "database_cleaner/core"
-require_relative "../test_case"
 
 DatabaseCleaner.clean_with :truncation
 DatabaseCleaner.strategy = :transaction

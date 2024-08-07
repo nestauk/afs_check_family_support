@@ -1,4 +1,4 @@
-require_relative "test_case"
+require "feature/test_case"
 
 class ApplicationTest < Feature::TestCase
   test "application loads" do

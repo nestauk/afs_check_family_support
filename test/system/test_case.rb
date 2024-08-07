@@ -1,4 +1,4 @@
-require_relative "../../config/environment"
+require "test_helper"
 require "rails/test_help"
 require "database_cleaner/core"
 

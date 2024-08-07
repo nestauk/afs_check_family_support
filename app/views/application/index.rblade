@@ -1,7 +1,7 @@
 <x-layout::simple title="Home">
   <x-text.h1 xl>Component library</x-text.h1>
 
-  <x-text.h2 lg>Headings</x-text.h2>
+  <x-text.h2 lg id="Headings">Headings</x-text.h2>
 
   <x-text.p>
     The &lt;x-text.h1&gt; through &lt;x-text.h6&gt; tags are used to create headings. Note that the number in the
@@ -17,7 +17,7 @@
     <x-text.h3 xl>xl heading</x-text.h3>
   </x-content.row>
 
-  <x-text.h2 lg class="mt-2">Typography</x-text.h2>
+  <x-text.h2 lg class="mt-2" id="Typography">Typography</x-text.h2>
 
   <x-text.p>
     This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus eos
@@ -29,7 +29,7 @@
     Paragraphs can sometimes contain <x-text.a href="#">links</x-text.a>.
   </x-text.p>
 
-  <x-text.h2 lg class="mt-2">Buttons</x-text.h2>
+  <x-text.h2 lg class="mt-2" id="buttons">Buttons</x-text.h2>
 
   <x-content.row>
     <x-button>primary</x-button>
@@ -69,7 +69,7 @@
     <x-button as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button>
   </x-content.row>
 
-  <x-text.h2 lg class="mt-2">Containers</x-text.h2>
+  <x-text.h2 lg class="mt-2" id="Containers">Containers</x-text.h2>
 
   <x-content.box>
     <x-text.h3 sm>Box</x-text.h3>
