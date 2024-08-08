@@ -1,29 +1,23 @@
-@props({label: false, horizontal: false, labelClass: nil, options: [], value: nil})
-@if(label)
-  <x-form.label :label :horizontal :labelClass>
-@endif
-  <select {{ attributes.merge({
-    class: "
-      --:w-96
-      --:px-2.5 --:py-2.5
-      --:max-w-full
-      --:bg-white
-      --:border --:border-gray-400 --:rounded
-      hover:--:border-black hover:--:ring-1 hover:--:ring-black
-      focus:--:border-black focus:--:outline-none
-      focus:--:ring-2 focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
-      --:font-normal --:font-sans --:text-base sm:--:text-lg --:leading-none  sm:--:leading-none
-    "
-  }) }}>
-    @forelse(i in 1..1)
-    @end
-    @eachelse(optionLabel in options)
-      @ruby(optionValue = optionValue.nil? ? optionLabel : optionValue)
-      <option value="{{ optionValue }}" @selected(optionValue == value) >asd{{ optionLabel }}</option>
-    @empty
-      <option disabled>n/a</option>
-    @endeach
-  </select>
-@if(label)
-  </x-form.label>
-@endif
+@props({options: [], value: nil})
+<select {{ attributes.merge({
+  class: "
+    --:w-96
+    --:px-2.5 --:py-2.5
+    --:max-w-full
+    --:bg-white
+    --:border --:border-gray-400 --:rounded
+    hover:--:border-black hover:--:ring-1 hover:--:ring-black
+    focus:--:border-black focus:--:outline-none
+    focus:--:ring-2 focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
+    --:font-normal --:font-sans --:text-base sm:--:text-lg --:leading-none  sm:--:leading-none
+  "
+}) }}>
+  @forelse(i in 1..1)
+  @end
+  @eachelse(optionLabel in options)
+    @ruby(optionValue = optionValue.nil? ? optionLabel : optionValue)
+    <option value="{{ optionValue }}" @selected(optionValue == value) >{{ optionLabel }}</option>
+  @empty
+    <option disabled>n/a</option>
+  @endeach
+</select>

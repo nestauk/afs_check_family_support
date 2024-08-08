@@ -90,22 +90,39 @@
     <x-text.p>You succeeded in doing something!</x-text.p>
   </x-content.box>
 
-  <x-text.h2 lg class="mt-2">Forms</x-text.h2>
+  <x-text.h2 lg class="mt-2" id="forms">Forms</x-text.h2>
 
   <x-content.col>
-    <x-form.text label="Email" name="email" placeholder="email@example.com"/>
-    <x-form.password label="Password" name="password"/>
-    <x-form.select label="Pick a number" name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
+    <x-form.label label="Email">
+      <x-form.text name="email" placeholder="email@example.com"/>
+    </x-form.label>
+
+    <x-form.label label="Password">
+      <x-form.password name="password"/>
+    </x-form.label>
+
+    <x-form.label label="Pick a number">
+      <x-form.select name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
+    </x-form.label>
   </x-content.col>
 
   <x-content.box class="w-max">
     <x-form>
       <x-text.h3 md class="mb-0">Login</x-text.h3>
-      <x-form.text horizontalSize="w-32" label="Email" name="email" placeholder="email@example.com"/>
-      <x-form.password horizontalSize="w-32" label="Password" name="password"/>
-      <x-form.select horizontalSize="w-32" label="Empty select" name="empty_select" required/>
+
+      <x-form.label horizontal width="w-32" label="Email">
+        <x-form.text name="email" placeholder="email@example.com"/>
+      </x-form.label>
+
+      <x-form.label horizontal width="w-32" label="Password">
+        <x-form.password name="password"/>
+      </x-form.label>
+
+      <x-form.label horizontal width="w-32" label="Empty select">
+        <x-form.select name="empty_select" required/>
+      </x-form.label>
+
       <x-form.checkbox
-        horizontalSize="w-32"
         label="Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you."
         name="accept"
       />
