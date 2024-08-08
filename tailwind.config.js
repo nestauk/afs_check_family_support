@@ -35,17 +35,17 @@ module.exports = {
 
       "blue": {
         DEFAULT: "#0000FF",
-        50: "#F0F0FF",
-        100: "#E5E5FF",
-        200: "#C2C2FF",
-        300: "#9999FF", // Nesta Blue/40                      Black AAA
-        400: "#6B6BFF", //                    White AA (L)    Black AA
-        500: "#4C4CFF", // Nesta Blue/70      White AA        Black AA (L)
-        600: "#2424FF", //                    White AAA
-        700: "#0000FF", // Nesta Blue/100
-        800: "#0000DB",
-        900: "#00008F",
-        950: "#000066",
+        50: "#F5F5FF",
+        100: "#EBEBFF",
+        200: "#D6D6FF",
+        300: "#B8B8FF",
+        400: "#9999FF", // Nesta Blue/40                      Black AAA
+        500: "#8080FF", //                    White AA (L)    Black AA
+        600: "#4C4CFF", // Nesta Blue/70      White AA        Black AA (L)
+        700: "#0000FF", // Nesta Blue/100     White AAA
+        800: "#0B0BB7",
+        900: "#0C0C79",
+        950: "#0D0D59"
       },
 
       "green": {

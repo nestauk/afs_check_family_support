@@ -18,8 +18,8 @@ end
 classList << case true
   when light && secondary
     "
-      ---:bg-green-50 ---:text-green-950 ---:shadow-green-200
-      hover:---:bg-green-100 hover:---:shadow-green-300 hover:---:text-black
+      ---:bg-green-50 ---:text-green-950 ---:shadow-green-100
+      hover:---:bg-green-100 hover:---:shadow-green-200 hover:---:text-black
       active:---:bg-green-100 active:---:text-black
     "
   when secondary
@@ -30,14 +30,14 @@ classList << case true
     "
   when primary && light
     "
-      ---:bg-blue-50 ---:text-blue-950 ---:shadow-blue-200
-      hover:---:bg-blue-100 hover:---:shadow-blue-300 hover:---:text-black
+      ---:bg-blue-50 ---:text-blue-950 ---:shadow-blue-100
+      hover:---:bg-blue-100 hover:---:shadow-blue-200 hover:---:text-black
       active:---:bg-blue-100 active:---:text-black
     "
   when primary
     "
-      ---:bg-blue-700 ---:text-white ---:shadow-black
-      hover:---:bg-blue-800
+      ---:bg-blue-700 ---:text-white ---:shadow-blue-950
+      hover:---:bg-blue-800 hover:---:shadow-black
       active:---:bg-blue-800
     "
   else ''
