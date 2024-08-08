@@ -1,5 +1,6 @@
+@props({wrap: false})
 <div {{ attributes.merge({
-  class: "-:flex -:gap-2 sm:-:gap-4 sm:-:items-center"
+  class: "-:flex -:gap-2 sm:-:gap-4 -:items-center #{wrap ? "flex-wrap" : ""}"
 }) }}>
   {{ slot }}
 </div>

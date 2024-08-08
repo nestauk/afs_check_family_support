@@ -32,38 +32,38 @@
   <x-text.h2 lg class="mt-2" id="buttons">Buttons</x-text.h2>
 
   <x-content.row>
-    <x-button>primary</x-button>
-    <x-button light>primary light</x-button>
-    <x-button sm>primary sm</x-button>
-    <x-button sm light>primary sm light</x-button>
+    <x-button>Primary</x-button>
+    <x-button light>Primary light</x-button>
+    <x-button sm>Primary sm</x-button>
+    <x-button sm light>Primary sm light</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button secondary>secondary</x-button>
-    <x-button secondary light>secondary light</x-button>
-    <x-button secondary sm>secondary sm</x-button>
-    <x-button secondary sm light>secondary sm light</x-button>
+    <x-button secondary>Secondary</x-button>
+    <x-button secondary light>Secondary light</x-button>
+    <x-button secondary sm>Secondary sm</x-button>
+    <x-button secondary sm light>Secondary sm light</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button disabled>disabled</x-button>
-    <x-button disabled sm>disabled sm</x-button>
+    <x-button disabled>Disabled</x-button>
+    <x-button disabled sm>Disabled sm</x-button>
   </x-content.row>
 
   <x-content.row>
-    <x-button.outline>outline</x-button.outline>
-    <x-button.outline secondary>outline secondary</x-button.outline>
-    <x-button.outline sm>outline sm</x-button.outline>
-    <x-button.outline sm secondary>outline sm secondary</x-button.outline>
+    <x-button.outline>Outline</x-button.outline>
+    <x-button.outline secondary>Outline secondary</x-button.outline>
+    <x-button.outline sm>Outline sm</x-button.outline>
+    <x-button.outline sm secondary>Outline sm secondary</x-button.outline>
   </x-content.row>
 
   <x-content.row>
-    <x-button.flat>flat</x-button.flat>
-    <x-button.flat sm>flat sm</x-button.flat>
-    <x-button.flat secondary>secondary flat</x-button.flat>
-    <x-button.flat sm secondary>secondary flat sm</x-button.flat>
-    <x-button.flat link>link flat</x-button.flat>
-    <x-button.flat sm link>link flat sm</x-button.flat>
+    <x-button.flat>Flat</x-button.flat>
+    <x-button.flat sm>Flat sm</x-button.flat>
+    <x-button.flat secondary>Flat secondary </x-button.flat>
+    <x-button.flat sm secondary>Flat secondary sm</x-button.flat>
+    <x-button.flat link>Flat link</x-button.flat>
+    <x-button.flat sm link>Flat link sm</x-button.flat>
   </x-content.row>
 
   <x-content.row>
