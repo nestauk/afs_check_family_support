@@ -1,5 +1,11 @@
 <a {{ attributes.merge({
-  class: "text-blue-600 hover:underline focusable active:text-white active:bg-blue-600",
+  class: "
+    text-link underline
+    hover:text-link-hover hover:no-underline
+    active:text-link-active
+    visited:test-link-visited
+    focusable
+",
   {{-- Prevent the button being focused on a click --}}
   "onmouseup": "this.blur()",
 }) }}>{{ slot }}</a>

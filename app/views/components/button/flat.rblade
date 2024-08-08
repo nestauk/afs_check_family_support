@@ -1,24 +1,49 @@
-@props({sm: false, md:true})
+@props({
+  sm: false,
+  md:true,
+  primary: true,
+  secondary: false,
+  link: false,
+})
 @ruby
 classList = case true
+  when link
+    "
+     --:text-link --:underline --:font-medium
+      hover:--:text-link-hover hover:no-underline
+      active:--:text-link-active
+    "
+  when secondary
+    "
+      --:text-green-800
+      hover:--:bg-green-800 hover:--:text-white
+      active:--:bg-green-900 active:--:text-white
+    "
+  when primary
+    "
+      --:text-blue-700
+      hover:--:bg-blue-700 hover:--:text-white
+      active:--:bg-blue-900 active:--:text-white
+    "
+  else ''
+end
+
+classList << case true
   when sm
-    "-:pl-1.5 -:gap-0.5"
+    " --:px-2.5 --:gap-0.5"
   when md
-    "-:pl-2.5 -:gap-1"
+    " --:px-4 --:gap-1"
   else ''
 end
 @endruby
 <x-button {{ attributes.merge({
   class: "
-    -:shadow-0 -:mb-0 -:transform-none active:-:transform-none
-    -:bg-transparent -:text-blue-600
-    hover:-:bg-blue-50 hover:-:text-blue-700
-    active:-:bg-blue-600 active:-:text-white
+    --:shadow-0 --:mb-0 --:transform-none active:--:transform-none
+    --:bg-transparent
     #{classList}
   ",
   sm:,
   primary: false
 }) }}>
-  <x-icon.left class="mt-px text-[1.5em]"/>
-  <span class="group-hover:underline group-active:no-underline">{{ slot }}</span>
+  {{ slot }}
 </x-button>

@@ -25,6 +25,14 @@ module.exports = {
       "error": "#EB0F0F", //                  White AA        Black AA
       "success": "#1B8848", //                White AA        Black AA
 
+      // See also https://stackoverflow.com/questions/4774022/whats-default-html-css-link-color
+      "link": {
+        DEFAULT: "#0000EE",
+        hover: "#358afd",
+        visited: "#551A8B",
+        active: "#FF0000",
+      },
+
       "blue": {
         DEFAULT: "#0000FF",
         50: "#F0F0FF",

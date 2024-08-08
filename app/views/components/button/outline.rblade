@@ -10,7 +10,7 @@ classList = case true
   when primary
     "
       -:bg-transparent -:shadow-blue-700 -:border-blue-700 -:text-blue-700
-      hover:-:bg-blue-700 hover:-:shadow-blue-900 hover:-:text-white
+      hover:-:bg-blue-700 hover:-:shadow-black hover:-:text-white
       active:-:bg-blue-700 active:-:text-white active:-:border-blue-700
     "
   else ''

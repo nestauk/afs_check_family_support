@@ -58,8 +58,17 @@
   </x-content.row>
 
   <x-content.row>
-    <x-button.back>back</x-button.back>
-    <x-button.back sm>back sm</x-button.back>
+    <x-button.flat>flat</x-button.flat>
+    <x-button.flat sm>flat sm</x-button.flat>
+    <x-button.flat secondary>secondary flat</x-button.flat>
+    <x-button.flat sm secondary>secondary flat sm</x-button.flat>
+    <x-button.flat link>link flat</x-button.flat>
+    <x-button.flat sm link>link flat sm</x-button.flat>
+  </x-content.row>
+
+  <x-content.row>
+    <x-button.back>Back</x-button.back>
+    <x-button.back sm>Back sm</x-button.back>
   </x-content.row>
 
   <x-text.p class="mt-2">Buttons can also be made as links:</x-text.p>
