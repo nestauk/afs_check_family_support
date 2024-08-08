@@ -1,0 +1,24 @@
+@props({sm: false, md:true})
+@ruby
+classList = case true
+  when sm
+    "-:pl-1.5 -:gap-0.5"
+  when md
+    "-:pl-2.5 -:gap-1"
+  else ''
+end
+@endruby
+<x-button {{ attributes.merge({
+  class: "
+    -:shadow-0 -:mb-0 -:transform-none active:-:transform-none
+    -:bg-transparent -:text-blue-600
+    hover:-:bg-blue-50 hover:-:text-blue-700
+    active:-:bg-blue-600 active:-:text-white
+    #{classList}
+  ",
+  sm:,
+  primary: false
+}) }}>
+  <x-icon.left class="mt-px text-[1.5em]"/>
+  <span class="group-hover:underline group-active:no-underline">{{ slot }}</span>
+</x-button>

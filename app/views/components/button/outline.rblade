@@ -3,14 +3,14 @@
 classList = case true
   when secondary
     "
-      -:bg-transparent -:shadow-fuchsia-600 -:border-fuchsia-600 -:text-fuchsia-600
-      hover:-:bg-fuchsia-600 hover:-:shadow-fuchsia-900 hover:-:text-white
-      active:-:bg-fuchsia-700 active:-:text-white active:-:border-fuchsia-700
+      -:bg-transparent -:shadow-green-800 -:border-green-800 -:text-green-800
+      hover:-:bg-green-800 hover:-:shadow-green-900 hover:-:text-white
+      active:-:bg-green-800 active:-:text-white active:-:border-fuchsia-700
     "
   when primary
     "
-      -:bg-transparent -:shadow-blue-600 -:border-blue-600 -:text-blue-600
-      hover:-:bg-blue-600 hover:-:shadow-blue-900 hover:-:text-white
+      -:bg-transparent -:shadow-blue-700 -:border-blue-700 -:text-blue-700
+      hover:-:bg-blue-700 hover:-:shadow-blue-900 hover:-:text-white
       active:-:bg-blue-700 active:-:text-white active:-:border-blue-700
     "
   else ''
