@@ -128,7 +128,7 @@
         <x-form.text name="email" placeholder="email@example.com"/>
       </x-form.label>
 
-      <x-form.label horizontal width="w-32" label="Password">
+      <x-form.label horizontal width="w-32" label="Password" errors="Please enter a valid password">
         <x-form.password name="password"/>
       </x-form.label>
 
