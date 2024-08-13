@@ -1,4 +1,4 @@
-@props({tooltip: _required})
+@props({tooltip: required})
 {{-- TODO consider the a11y implications of this component --}}
 <div {{ attributes.merge({class: "group -:relative -:w-fit -:leading-[0]"}) }}>
   {{ slot }}

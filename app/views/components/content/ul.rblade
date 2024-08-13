@@ -1,0 +1,7 @@
+<ul {{ attributes.merge({
+  class: "
+    -:list-disc -:list-inside -:leading-relaxed
+  "
+}) }}>
+  {{ slot }}
+</ul>

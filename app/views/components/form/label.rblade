@@ -1,8 +1,23 @@
-@props({label: _required, horizontal: false, width: "-:w-24"})
+@props({label: required, horizontal: false, width: "-:w-24", errors: nil})
 @ruby
 layoutClasses = horizontal ? "sm:-:flex-row sm:-:items-center sm:-:gap-4" : ""
 @endruby
-<label {{ attributes.merge({class: "-:flex -:flex-col -:font-semibold -:gap-[3px] #{layoutClasses}"}) }}>
-  <span class="-:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }}">{{ label }}</span>
+<label {{ attributes.merge({
+ class: "
+    -:flex -:flex-col -:gap-0.75
+    -:font-semibold
+    #{layoutClasses}
+    #{errors.present? ? "error border-l-4 text-error border-error pb-1 pl-4" : ""}"
+}) }}>
+  <span class="-:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }}">
+    {{ label }}
+  </span>
   {{ slot }}
+  <div class="flex flex-col gap-0.5 mt-0.5">
+      @each(error in Array.wrap(errors))
+    <x-text.p sm class="text-error font-medium">
+      {{ error }}
+    </x-text.p>
+      @end
+  </div>
 </label>

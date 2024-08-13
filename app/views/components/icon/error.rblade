@@ -1,0 +1,6 @@
+<x-icon {{ attributes.merge({
+  alt: "error",
+  fill: 0,
+  weight: 100,
+  grade: 200
+}) }}>cancel</x-icon>

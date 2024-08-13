@@ -102,15 +102,20 @@
   <x-text.h2 lg class="mt-2" id="forms">Forms</x-text.h2>
 
   <x-content.col>
+    <x-form.error :errors="[
+      'Ab commodi distinctio dolores dolorum eaque enim explicabo facere.',
+      'Mollitia neque nobis non, omnis quaerat quo quos saepe ut.',
+    ]"/>
+
     <x-form.label label="Email">
       <x-form.text name="email" placeholder="email@example.com"/>
     </x-form.label>
 
-    <x-form.label label="Password">
+    <x-form.label label="Password" errors="Your password was incorrect">
       <x-form.password name="password"/>
     </x-form.label>
 
-    <x-form.label label="Pick a number">
+    <x-form.label label="Pick a number" :errors="['Please pick a number', 'Your number was too big']">
       <x-form.select name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
     </x-form.label>
   </x-content.col>

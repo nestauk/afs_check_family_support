@@ -1,6 +1,10 @@
 @props({
-  alt: _required,
-  size: "22"
+  alt: required,
+  size: "22",
+  fill: 1,
+  weight: 400,
+  grade: 0,
+  opticalSize: 24
 })
 @ruby
 case size
@@ -25,9 +29,9 @@ end
 <span {{ attributes.merge({
   class: "
     material-symbols-sharp
-    -:leading-[1] w-[1em] h-[1em] #{sizeClasses}
-    select-none
+    -:box-content -:leading-[1] w-[1em] h-[1em] #{sizeClasses}
+    -:select-none
   ",
-  style: "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24",
+  style: "font-variation-settings:'FILL' #{fill},'wght' #{weight},'GRAD' #{grade},'opsz' #{opticalSize}",
   "aria-label": alt
 }) }}>{{slot}}</span>

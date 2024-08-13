@@ -198,6 +198,9 @@ module.exports = {
       },
     },
     extend: {
+      borderWidth: {
+        3: "3px",
+      },
       fontFamily: {
         sans: ['Averta', ...defaultTheme.fontFamily.sans],
         title: ['Zosia', ...defaultTheme.fontFamily.sans],
