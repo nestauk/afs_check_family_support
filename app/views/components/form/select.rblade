@@ -1,7 +1,7 @@
-@props({options: [], value: nil})
+@props(options: {}, value: nil)
 <select {{ attributes.merge({
   class: "
-    --:w-96
+    --:w-prose
     --:px-2.5 --:py-2.5
     --:max-w-full
     --:bg-white
@@ -14,11 +14,9 @@
     [.error>&]:-:border-error [.error>&]:--:ring-offset-error
   "
 }) }}>
-  @forelse(i in 1..1)
-  @end
-  @eachelse(optionLabel in options)
+  @eachelse(optionLabel, optionValue in options)
     @ruby(optionValue = optionValue.nil? ? optionLabel : optionValue)
-    <option value="{{ optionValue }}" @selected(optionValue == value) >{{ optionLabel }}</option>
+    <option value="{{ optionValue }}" @selected(optionValue.to_s == value.to_s)>{{ optionLabel }}</option>
   @empty
     <option disabled>n/a</option>
   @endeach

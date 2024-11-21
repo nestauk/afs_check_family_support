@@ -1,0 +1,5 @@
+{{ @user.salutation }}
+
+The email on your account has successfully been changed to {{ @new_email }}.
+
+If you did not request this change, please get in touch.

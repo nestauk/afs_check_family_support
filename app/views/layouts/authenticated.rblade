@@ -1,0 +1,33 @@
+@props(title: required, wrapperClass: "")
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }} | APPLICATION_NAME</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {!! csrf_meta_tags !!}
+    {!! csp_meta_tag !!}
+
+    {!! vite_client_tag !!}
+    {!! vite_typescript_tag 'application' !!}
+    @stack('scripts')
+  </head>
+
+  <body {{ attributes }}>
+    <div class="
+      flex flex-col
+      lg:grid lg:p-0 grid-cols-[minmax(0,300px),minmax(0,1fr)] grid-rows-[1fr,auto]
+      gap-0 lg:gap-x-8
+      min-h-screen
+    ">
+      <x-navigation class="mx-auto lg:mx-0 px-6 lg:p-0 w-full max-w-4xl"/>
+      <main class="grow mx-auto lg:mx-0 px-6 w-full max-w-4xl lg:px-5 lg:mt-8 flex flex-col gap-4 sm:gap-6 -:pb-36 items-start {{ wrapperClass }}">
+        <div class="w-full flex flex-wrap lg:flex-row justify-end items-center gap-2 lg:gap-4 lg:min-h-16 mb-4">
+          @stack('header')
+        </div>
+        <x-alerts/>
+        {{ slot }}
+      </main>
+      <div class="h-6 bg-navy col-span-2"></div>
+    </div>
+  </body>
+</html>

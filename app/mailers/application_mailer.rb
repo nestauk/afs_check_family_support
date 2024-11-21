@@ -1,4 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
   layout "mailer"
+
+  def verifier
+    ActiveSupport::MessageVerifier.new(Rails.configuration.secret_key_base)
+  end
 end

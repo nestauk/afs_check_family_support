@@ -1,0 +1,24 @@
+@props(controller: nil)
+@ruby
+classList = case true
+  when controller.present? && controller_path.start_with?(controller)
+    "-:border-aqua-700"
+  else ""
+end
+@endruby
+<x-button {{ attributes.merge(
+  class: "
+    --:shadow-0 --:mb-0 --:transform-none active:--:transform-none
+    --:flex --:justify-start --:gap-3 --:sm:w-full --:sm:py-2.5 --sm:px-4
+    --:border-l-4 --:border-transparent --:rounded-none --:border-l-4
+    --:bg-transparent
+    --:text-lg sm:--:text-xl --:text-blue-950 --:font-medium
+    --:hover:bg-aqua-50/50
+    --:active:bg-aqua-50
+    #{classList}
+  ",
+  primary: false,
+  as: "a"
+) }}>
+  {{ slot }}
+</x-button>

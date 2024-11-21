@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge(
+  alt: "subitem"
+) }}>subdirectory_arrow_right</x-icon>

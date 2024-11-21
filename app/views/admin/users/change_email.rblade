@@ -1,0 +1,25 @@
+<x-layout::authenticated title="User admin">
+  @push('header')
+    <x-button.back :href="admin_user_path @user">{{ @user.name }}</x-button.back>
+  @endpush
+  <x-text.h2 xl>Change email</x-text.h2>
+  <x-text.p>
+    You are changing the email address for <span class="font-medium">{{ @user.name }}</span>.
+    Their current email address is <span class="font-medium">{{ @user.email }}</span>.
+  </x-text.p>
+
+  <x-text.p>
+    Please enter a new email address for their account. They will be sent a
+    confirmation email at the new address.
+  </x-text.p>
+
+  <x-form method="POST">
+    <x-form.errors :except="[:email]"/>
+
+    <x-form.label label="Email" for="email">
+      <x-form.text type="email" name="email" :value="params[:email]" required autofocus="true"/>
+    </x-form.label>
+
+    <x-button type="submit">Change email</x-button>
+  </x-form>
+</x-layout::authenticated>

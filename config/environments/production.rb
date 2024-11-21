@@ -23,21 +23,12 @@ Rails.application.configure do
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
 
-  # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
-
-  # Do not fall back to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.asset_host = "http://assets.example.com"
-
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # Store uploaded files in cloudinary (see config/storage.yml for options).
+  config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -65,13 +56,13 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :solid_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "rails_template_production"
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -94,4 +85,17 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.action_mailer.default_url_options = {host: ENV["HTTP_HOST"]}
+
+  config.action_mailer.smtp_settings = {
+    user_name: "apikey",
+    password: ENV["SENDGRID_API_KEY"],
+    domain: ENV["HTTP_HOST"],
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  ActionMailer::Base.default from: ENV.fetch("MAIL_FROM", "info@#{ENV["HTTP_HOST"]}")
 end

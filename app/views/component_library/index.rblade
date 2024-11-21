@@ -1,0 +1,494 @@
+<x-layout::simple title="Home">
+  <x-text.h1 xl>Component library</x-text.h1>
+
+  <x-text.h2 lg class="mt-2" id="Typography">Typography</x-text.h2>
+
+  <x-text.p>
+    By default, text is limited to "prose" width, or 640 pixels. This
+    corresponds to approximately 75 characters, which is considered optimal
+    for reading.
+  </x-text.p>
+
+  <x-.code>
+    @verbatim
+      <x-text.a href="#">links</x-text.a>
+    @endverbatim
+  </x-.code>
+
+  <x-text.p>
+    Additionally, the default font size is large (18px) and <x-text.a href="#">links</x-text.a>
+    are styled clearly and familiarly. Font sizes are automatically adjusted
+    down one step on mobile screens.
+  </x-text.p>
+
+  <x-.code>
+    @verbatim
+    <x-text.p xs center>
+      xs paragraph (14px)
+    </x-text.p>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-text.p xs center>xs paragraph (14px)</x-text.p>
+    <x-text.p sm center>sm paragraph (16px)</x-text.p>
+    <x-text.p md center>md paragraph (18px)</x-text.p>
+    <x-text.p lg center>lg paragraph (20px)</x-text.p>
+    <x-text.p xl center>xl paragraph (24px)</x-text.p>
+  </x-content.row>
+
+  <x-text.h2 lg id="Headings">Headings</x-text.h2>
+
+  <x-text.p>
+    The &lt;x-text.h1&gt; through &lt;x-text.h6&gt; tags are used to create headings. Note that the number in the
+    tag refers to the semantic level of the heading, and not the size. To adjust the size, add
+    custom classes, or use the xs, sm, md, lg, xl binary attributes.
+  </x-text.p>
+
+  <x-.code>
+    @verbatim
+    <x-text.h1 xl>...</x-text.h1>
+    <x-text.h2 lg>...</x-text.h2>
+    <x-text.h3 md>...</x-text.h3>
+    <x-text.h4 sm>...</x-text.h4>
+    <x-text.h5 xs>...</x-text.h5>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-text.h3 xs center>xs heading (18px)</x-text.h3>
+    <x-text.h3 sm center>sm heading (20px)</x-text.h3>
+    <x-text.h3 md center>md heading (24px)</x-text.h3>
+    <x-text.h3 lg center>lg heading (30px)</x-text.h3>
+    <x-text.h3 xl center>xl heading (36px)</x-text.h3>
+  </x-content.row>
+
+  <x-text.h2 lg class="mt-2" id="buttons">Colours</x-text.h2>
+
+  <x-text.p>
+    The below table shows the 11 colours of the Nesta palette and their shades.
+    The highlighted numbers match the number in the Nesta palette, e.g.
+    "blue-700" is "Nesta Blue/100". The text in black and white represent when
+    the contrast meets the contrast requirement (AA and AAA) for black and white
+    correspondingly.
+  </x-text.p>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="w-20 text-left">Colour</th>
+        <th>50</th><th>100</th><th>200</th><th>300</th><th>400</th><th>500</th><th>600</th><th>700</th><th>800</th><th>900</th><th>950</th>
+      </tr>
+    </thead>
+    <tbody>
+    @ruby
+      colourData = {
+        Blue: [{value: "bg-blue-50"}, {value: "bg-blue-100"}, {value: "bg-blue-200"}, {value: "bg-blue-300"}, {value: "bg-blue-400", nesta: 40, black_aaa: true}, {value: "bg-blue-500", black_aa: true}, {value: "bg-blue-600", nesta: 70, white_aa: true}, {value: "bg-blue-700", nesta: 100, white_aaa: true}, {value: "bg-blue-800"}, {value: "bg-blue-900"}, {value: "bg-blue-950"}],
+        Green: [{value: "bg-green-50"}, {value: "bg-green-100"}, {value: "bg-green-200"}, {value: "bg-green-300", nesta: 40}, {value: "bg-green-400"}, {value: "bg-green-500", nesta: 70}, {value: "bg-green-600", black_aaa: true}, {value: "bg-green-700", nesta: 100}, {value: "bg-green-800", black_aa: true, white_aa: true}, {value: "bg-green-900", white_aaa: true}, {value: "bg-green-950"}],
+        Aqua: [{value: "bg-aqua-50"}, {value: "bg-aqua-100"}, {value: "bg-aqua-200", nesta: 40}, {value: "bg-aqua-300"}, {value: "bg-aqua-400", nesta: 70}, {value: "bg-aqua-500"}, {value: "bg-aqua-600", nesta: 100}, {value: "bg-aqua-700", black_aaa: true}, {value: "bg-aqua-800", black_aa: true}, {value: "bg-aqua-900", white_aaa: true}, {value: "bg-aqua-950"}],
+        Red: [{value: "bg-red-50"}, {value: "bg-red-100"}, {value: "bg-red-200"}, {value: "bg-red-300", nesta: 40}, {value: "bg-red-400", black_aaa: true}, {value: "bg-red-500", nesta: 70}, {value: "bg-red-600"}, {value: "bg-red-700", nesta: 100, black_aa: true}, {value: "bg-red-800", white_aa: true}, {value: "bg-red-900", white_aaa: true}, {value: "bg-red-950"}],
+        Orange: [{value: "bg-orange-50"}, {value: "bg-orange-100"}, {value: "bg-orange-200"}, {value: "bg-orange-300", nesta: 40}, {value: "bg-orange-400"}, {value: "bg-orange-500", nesta: 70}, {value: "bg-orange-600"}, {value: "bg-orange-700", nesta: 100, black_aaa: true}, {value: "bg-orange-800", black_aa: true}, {value: "bg-orange-900", white_aa: true}, {value: "bg-orange-950", white_aaa: true}],
+        Grey: [{value: "bg-grey-50"}, {value: "bg-grey-100"}, {value: "bg-grey-200"}, {value: "bg-grey-300", nesta: 40}, {value: "bg-grey-400", black_aaa: true}, {value: "bg-grey-500", nesta: 70}, {value: "bg-grey-600", black_aa: true, white_aa: true}, {value: "bg-grey-700", nesta: 100}, {value: "bg-grey-800", white_aaa: true}, {value: "bg-grey-900"}, {value: "bg-grey-950"}],
+        Navy: [{value: "bg-navy-50"}, {value: "bg-navy-100"}, {value: "bg-navy-200"}, {value: "bg-navy-300", nesta: 20}, {value: "bg-navy-400"}, {value: "bg-navy-500", nesta: 40, black_aaa: true}, {value: "bg-navy-600", black_aa: true}, {value: "bg-navy-700", nesta: 70, white_aa: true}, {value: "bg-navy-800", white_aaa: true}, {value: "bg-navy-900", nesta: 100}, {value: "bg-navy-950"}],
+        Yellow: [{value: "bg-yellow-50"}, {value: "bg-yellow-100"}, {value: "bg-yellow-200"}, {value: "bg-yellow-300", nesta: 40}, {value: "bg-yellow-400"}, {value: "bg-yellow-500", nesta: 70}, {value: "bg-yellow-600"}, {value: "bg-yellow-700", nesta: 100}, {value: "bg-yellow-800", black_aaa: true}, {value: "bg-yellow-900", white_aa: true}, {value: "bg-yellow-950", white_aaa: true}],
+        Violet: [{value: "bg-violet-50"}, {value: "bg-violet-100"}, {value: "bg-violet-200"}, {value: "bg-violet-300"}, {value: "bg-violet-400", nesta: 40}, {value: "bg-violet-500", nesta: 70}, {value: "bg-violet-600", nesta: 100, black_aaa: true}, {value: "bg-violet-700", black_aa: true}, {value: "bg-violet-800", white_aa: true}, {value: "bg-violet-900", white_aaa: true}, {value: "bg-violet-950"}],
+        Pink: [{value: "bg-pink-50"}, {value: "bg-pink-100"}, {value: "bg-pink-200"}, {value: "bg-pink-300", nesta: 40}, {value: "bg-pink-400", nesta: 70}, {value: "bg-pink-500", nesta: 100}, {value: "bg-pink-600", black_aaa: true}, {value: "bg-pink-700"}, {value: "bg-pink-800", black_aa: true}, {value: "bg-pink-900", white_aaa: true}, {value: "bg-pink-950"}],
+        Sand: [{value: "bg-sand-50"}, {value: "bg-sand-100"}, {value: "bg-sand-200"}, {value: "bg-sand-300", nesta: 40}, {value: "bg-sand-400", nesta: 70}, {value: "bg-sand-500", nesta: 100}, {value: "bg-sand-600"}, {value: "bg-sand-700", black_aaa: true}, {value: "bg-sand-800", black_aa: true}, {value: "bg-sand-900", white_aa: true}, {value: "bg-sand-950", white_aaa: true}],
+      }
+    @endruby
+    @each (name, colours in colourData)
+      <tr>
+        <td>{{ name }}</td>
+        @each (colour in colours)
+          <td class="{{ colour[:value] }}">
+            <div class="flex flex-col w-10 h-10 items-center font-medium">
+              @if (colour[:nesta])
+                <span class="my-auto {{ colours[1][:value] }} rounded leading-none w-min py-px px-0.5">
+                  {{ colour[:nesta] }}
+                </span>
+              @end
+              @if (colour.keys.intersect? [:black_aaa, :black_aa, :white_aaa, :white_aa])
+                <div class="flex gap-0.5 text-xs mt-auto justify-center justify-self-end empty:hidden">
+                  @if (colour[:black_aaa])
+                    <span class="text-black mt-auto">AAA</span>
+                  @elsif (colour[:black_aa])
+                    <span class="text-black mt-auto">AA</span>
+                  @end
+                  @if (colour[:white_aaa])
+                    <span class="text-white">AAA</span>
+                  @elsif (colour[:white_aa])
+                    <span class="text-white">AA</span>
+                  @end
+                </div>
+              @endif
+            </div>
+          </td>
+        @endeach
+    @endeach
+    </tbody>
+  </table>
+
+  <x-text.h2 lg class="mt-2" id="buttons">Buttons</x-text.h2>
+
+  <x-.code>
+    @verbatim
+    <x-button>...</x-button>
+    <x-button light>...</x-button>
+    <x-button sm>...</x-button>
+    <x-button sm light>...</x-button>
+
+    <x-button secondary>...</x-button>
+    <x-button disabled>...</x-button>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-button>Primary</x-button>
+    <x-button light>Primary light</x-button>
+    <x-button sm>Primary sm</x-button>
+    <x-button sm light>Primary sm light</x-button>
+  </x-content.row>
+
+  <x-content.row>
+    <x-button secondary>Secondary</x-button>
+    <x-button secondary light>Secondary light</x-button>
+    <x-button secondary sm>Secondary sm</x-button>
+    <x-button secondary sm light>Secondary sm light</x-button>
+  </x-content.row>
+
+  <x-content.row>
+    <x-button disabled>Disabled</x-button>
+    <x-button disabled sm>Disabled sm</x-button>
+  </x-content.row>
+
+  <x-.code>
+    @verbatim
+    <x-button.outline>
+      Outline
+    </x-button.outline>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-button.outline>Outline</x-button.outline>
+    <x-button.outline secondary>Outline secondary</x-button.outline>
+    <x-button.outline sm>Outline sm</x-button.outline>
+    <x-button.outline sm secondary>Outline sm secondary</x-button.outline>
+  </x-content.row>
+
+
+  <x-.code class="mt-4">
+    @verbatim
+    <x-button.flat>
+      Flat
+    </x-button.flat>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-button.flat>Flat</x-button.flat>
+    <x-button.flat sm>Flat sm</x-button.flat>
+    <x-button.flat secondary>Flat secondary </x-button.flat>
+    <x-button.flat sm secondary>Flat secondary sm</x-button.flat>
+    <x-button.flat link>Flat link</x-button.flat>
+    <x-button.flat sm link>Flat link sm</x-button.flat>
+  </x-content.row>
+
+  <x-.code class="mt-9">
+    @verbatim
+    <x-button.back as="button">
+      Back
+    </x-button.back>
+    @endverbatim
+  </x-.code>
+  <x-content.row>
+    <x-button.back as="button" class="mr-0">Back</x-button.back>
+    <x-button.back sm as="button">Back sm</x-button.back>
+  </x-content.row>
+
+  <x-text.p class="mt-2">Buttons can also be made as links:</x-text.p>
+
+  <x-.code class="mt-1">
+    @verbatim
+    <x-button as="a" href="#">
+      Nesta
+    </x-button>
+    @endverbatim
+  </x-.code>
+
+  <x-content.row>
+    <x-button as="a" href="/home">Home</x-button>
+    <x-button as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button>
+  </x-content.row>
+
+  <x-text.h2 lg class="mt-2" id="Containers">Containers</x-text.h2>
+
+  <x-.code>
+    @verbatim
+      <x-content.box>
+        ...
+      </x-content.box>
+    @endverbatim
+  </x-.code>
+
+  <x-.code class="mt-24">
+    @verbatim
+      <x-content.row class="justify-end">
+        <x-button>...</x-button>
+      </x-content.row>
+    @endverbatim
+  </x-.code>
+
+  <x-content.box>
+    <x-text.h3 sm>Box</x-text.h3>
+    <x-text.p>This is a box content</x-text.p>
+
+    <x-content.row class="justify-end">
+      <x-button class="w-fit" type="submit">
+        Confirm
+      </x-button>
+      <x-button light class="w-fit">
+        Cancel
+      </x-button>
+    </x-content.row>
+  </x-content.box>
+
+  <x-.code>
+    @verbatim
+      <x-content.box class="
+        border-green-600 bg-green-50
+      ">...</x-content.box>
+    @endverbatim
+  </x-.code>
+
+  <x-content.box class="border-green-600 bg-green-50">
+    <x-text.h3 sm class="text-green-900">Success</x-text.h3>
+    <x-text.p>You succeeded in doing something!</x-text.p>
+  </x-content.box>
+
+  <x-.code>
+    @verbatim
+      <x-content.alert>
+        This is an alert!
+      </x-content.alert>
+    @endverbatim
+  </x-.code>
+  <x-content.alert>This is an alert!</x-content.alert>
+  <x-content.alert type="error">This is an error!</x-content.alert>
+
+  <x-.code>
+    @verbatim
+      <x-content.alert type="info">
+        This is info!
+      </x-content.alert>
+    @endverbatim
+  </x-.code>
+  <x-content.alert type="info">This is info!</x-content.alert>
+  <x-content.alert type="success">This is a success!</x-content.alert>
+
+  <x-text.h2 lg class="mt-2" id="forms">Forms</x-text.h2>
+
+  <x-content.col>
+    <x-.code>
+      @verbatim
+        <x-form.error
+          :errors="@model.errors"
+          :except="[:name, :email]"
+        />
+      @endverbatim
+    </x-.code>
+
+    @ruby
+    errors = ActiveModel::Errors.new(User.new)
+    errors.add(:name, "was not present")
+    errors.add(:email, "was invalid")
+    @endruby
+    <x-form.errors :errors/>
+
+    <x-.code class="mt-3">
+      @verbatim
+        <x-form>
+          <x-form.label
+            label="Email"
+            :errors="@model.errors[:email]"
+          >
+            <x-form.text
+              name="email"
+              placeholder="me@example.com"
+              :value="
+                params.dig(:model, :email)
+                || @model.email
+              "
+            />
+          </x-form.label>
+        </x-form>
+      @endverbatim
+    </x-.code>
+
+    <x-form.label label="Email">
+      <x-form.text name="email" placeholder="email@example.com"/>
+    </x-form.label>
+
+    <x-form.label label="Password">
+      <x-form.password name="password"/>
+    </x-form.label>
+
+    <x-form.label label="Number" :errors="['was empty', 'was too big']">
+      <x-form.select name="number" :options='["1", "2", "3", "4", "5"]' value="3"/>
+    </x-form.label>
+  </x-content.col>
+
+  <x-.code class="mt-16">
+    @verbatim
+      <x-form.label
+        horizontal
+        width="w-32"
+        label="Email">
+        ...
+      </x-form.label>
+    @endverbatim
+  </x-.code>
+
+  <x-.code class="mt-56">
+    @verbatim
+      <x-form.select
+        name="select"
+        required
+        :options='{
+          "n/a": "",
+          Label: "value"
+        }'
+        value=""
+      />
+    @endverbatim
+  </x-.code>
+
+  <x-content.box class="w-max">
+    <x-form>
+      <x-text.h3 md class="mb-0">Login</x-text.h3>
+
+      <x-form.label horizontal width="w-32" label="Email">
+        <x-form.text name="email" placeholder="email@example.com"/>
+      </x-form.label>
+
+      <x-form.label horizontal width="w-32" label="Password" errors="was invalid">
+        <x-form.password name="password"/>
+      </x-form.label>
+
+      <x-form.label horizontal width="w-32" label="Select">
+        <x-form.select name="select" required :options='{"n/a": "", Label: "value"}' value=""/>
+      </x-form.label>
+
+      <x-form.checkbox
+        label="Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you."
+        name="accept"
+      />
+      <x-button type="Submit" class="mx-auto">Submit</x-button>
+    </x-form>
+  </x-content.box>
+
+  <x-text.h2 lg class="mt-2" id="Content">Content</x-text.h2>
+
+  <x-text.h3 xs class="-mb-4">Pills</x-text.h3>
+  <x-.code>
+    @verbatim
+    <x-content.pill green>
+      ...
+    </x-content.pill>
+    @endverbatim
+  </x-.code>
+  <x-content.row>
+    <x-content.pill green>Green pill</x-content.pill>
+    <x-content.pill blue>Blue pill</x-content.pill>
+  </x-content.row>
+
+  <x-text.h3 xs class="-mb-4">Copyable content</x-text.h3>
+  <x-.code>
+    @verbatim
+      <x-content.copyable>https://a.really.long/url/to.copy</x-content.copyable>
+    @endverbatim
+  </x-.code>
+  <x-content.copyable class="max-w-prose">https://a.really.long/url/to.copy</x-content.copyable>
+
+  <x-text.h3 xs class="-mb-4">Tooltips</x-text.h3>
+  <x-.code>
+    @verbatim
+      <x-content.tooltip
+        tooltip="This is a tooltip!">
+        <x-icon.info/>
+      </x-content.tooltip>
+    @endverbatim
+  </x-.code>
+  <x-content.tooltip tooltip="This is a tooltip!">
+    <x-icon.info/>
+  </x-content.tooltip>
+
+  <x-text.h2 lg class="mt-2">Icons</x-text.h2>
+
+  <x-text.p>
+    The icons are built upon <x-text.a href="https://fonts.google.com/icons?icon.style=Sharp" target="_blank">Material Symbols Sharp</x-text.a>,
+    making it simple to add new icons, vary what they look like and change their
+    colour. By default, icons will match the current text size and colour.
+  </x-text.p>
+
+  <x-.code>
+    @verbatim
+      <x-icon.home
+        size=18
+        class="text-green-800"
+      />
+    @endverbatim
+  </x-.code>
+
+  <x-content.row wrap>
+    <x-icon.home size=16 class="text-blue"/>
+    <x-icon.home size=18 class="text-green-800"/>
+    <x-icon.home size=20 class="text-aqua-900"/>
+    <x-icon.home size=22 class="text-red-800"/>
+    <x-icon.home size=24 class="text-orange-800"/>
+    <x-icon.home size=26 class="text-yellow-900"/>
+    <x-icon.home size=28 class="text-violet-800"/>
+    <x-icon.home class="text-[30px] text-pink-800"/>
+  </x-content.row>
+
+  <x-content.row wrap>
+    <x-icon.home fill=0 weight=200 />
+    <x-icon.home fill=0 weight=300 />
+    <x-icon.home fill=0 />
+    <x-icon.home fill=0 weight=500 />
+    <x-icon.home fill=0 weight=600 />
+    <x-icon.home fill=0 weight=700 />
+    <x-icon.home fill=0 weight=700 grade=200 />
+  </x-content.row>
+
+  <x-.code>
+    @verbatim
+      <x-icon.home fill=0 weight=700 />
+    @endverbatim
+  </x-.code>
+  <x-.code class="mt-10">
+    @verbatim
+      <x-icon.delete alt="Remove" />
+    @endverbatim
+  </x-.code>
+  <x-content.row wrap class="w-64">
+    <x-icon.close/>
+    <x-icon.copy/>
+    <x-icon.delete/>
+    <x-icon.edit/>
+    <x-icon.editor/>
+    <x-icon.error/>
+    <x-icon.folder/>
+    <x-icon.folder-open/>
+    <x-icon.home/>
+    <x-icon.info/>
+    <x-icon.left/>
+    <x-icon.location/>
+    <x-icon.phone/>
+    <x-icon.preview/>
+    <x-icon.search/>
+    <x-icon.send/>
+    <x-icon.tick/>
+    <x-icon.tools/>
+  </x-content.row>
+</x-layout::simple>

@@ -1,0 +1,13 @@
+<x-layout::authenticated title="Admin dashboard">
+  @push('header')
+    <x-text.h2 xl class="mt-auto mr-auto">Admin dashboard</x-text.h2>
+  @endPush
+
+  <x-text.p>This is where the magic happens.</x-text.p>
+
+  <x-content.pill blue><x-icon.person/>{{ pluralize(User.count, "user") }}</x-content.pill>
+
+  <x-button secondary as="a" :href="admin_users_path">
+    Manage users
+  </x-button>
+</x-layout::authenticated>

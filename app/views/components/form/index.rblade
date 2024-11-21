@@ -1,6 +1,9 @@
+@props(method: "POST")
 <form {{ attributes.merge({
-  class: "-:flex -:flex-col -:gap-inherit",
+  class: "-:w-form -:max-w-full -:flex -:flex-col -:gap-inherit",
   method: "POST",
 }) }}>
+  @method(method)
+  <input type="hidden" name="authenticity_token" value="{{ form_authenticity_token }}"/>
   {{ slot }}
 </form>

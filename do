@@ -18,7 +18,7 @@ fi
 # This docker compose service is used when running commands
 if [ -z "$RUN_DOCKER_SERVICE" ]
   then
-    RUN_DOCKER_SERVICE="app.local"
+    RUN_DOCKER_SERVICE="rails"
 fi
 
 if [ $# -eq 0 ] || [ $1 = "help" ]
@@ -39,6 +39,9 @@ if [ $# -eq 0 ] || [ $1 = "help" ]
     echo "  ./do cs:fix            run the rake coding standards fix task"
     echo "  ./do <test|t>          run the unit and integration test suite"
     echo "  ./do <test:system|ts>  run the system test suite"
+    echo "  ./do vr:baseline       set the visual regression baseline using the current set of snapshots"
+    echo "  ./do vr:diff           compare the current set of snapshots to the baseline"
+    echo "  ./do vr:heatmap        perform simulated eye tracking analysis on the current set of snapshots"
     echo "  ./do <heroku|h>        run the heroku CLI with the given arguments"
     echo "  ./do stopall           kill all docker containers running on the system"
     exit 1
@@ -84,6 +87,13 @@ if [ $1 = "run" ] || [ $1 = "r" ]
   then
     echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE ${@:2}"
     $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE ${@:2}
+    exit 0
+fi
+
+if [ $1 = "console" ] || [ $1 = "c" ]
+  then
+    echo "Running command: $DOCKER_COMPOSE_COMMAND run --rm -it $RUN_DOCKER_SERVICE ${@:2}"
+    $DOCKER_COMPOSE_COMMAND run --rm -it $RUN_DOCKER_SERVICE ${@:2}
     exit 0
 fi
 
@@ -152,8 +162,33 @@ fi
 
 if [ $1 = "stopall" ] || [ $1 = "s!" ]
   then
-    echo "Running command: docker kill \${docker ps -q}"
-    docker kill $(docker ps -q)
+    echo "Running command: docker stop \${docker ps -q}"
+    docker stop $(docker ps -q)
+    exit 0
+fi
+
+if [ $1 = "stopallandup" ] || [ $1 = "su!" ]
+  then
+    ./do s!
+    ./do u
+    exit 0
+fi
+
+if [ $1 = "vr:baseline" ]
+  then
+    ./do ro image_processing python baseline.py
+    exit 0
+fi
+
+if [ $1 = "vr:diff" ]
+  then
+    ./do ro image_processing python diff.py
+    exit 0
+fi
+
+if [ $1 = "vr:heatmap" ]
+  then
+    ./do ro image_processing python simulated_eye_tracking.py
     exit 0
 fi
 

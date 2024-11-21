@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.default_url_options = {host: "127.0.0.1", port: 3000}
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -21,28 +22,29 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
+    config.action_mailer.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
+    config.action_mailer.perform_caching = false
 
-    config.cache_store = :null_store
   end
+  config.cache_store = :solid_cache_store
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
-
-  config.action_mailer.perform_caching = false
+  # config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch("SMPT_HOST", "localhost"),
+    address: ENV.fetch("SMTP_HOST", "localhost"),
     port: 1025
   }
+  ActionMailer::Base.default from: "info@example.com"
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

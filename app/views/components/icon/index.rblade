@@ -1,11 +1,11 @@
-@props({
+@props(
   alt: required,
   size: "22",
   fill: 1,
   weight: 400,
   grade: 0,
   opticalSize: 24
-})
+)
 @ruby
 case size
 when "16"

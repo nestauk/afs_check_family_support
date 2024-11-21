@@ -1,5 +1,5 @@
 services:
-  app.local:
+  rails:
     build: .
     restart: unless-stopped
     ports:
@@ -10,9 +10,7 @@ services:
     environment:
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
       DATABASE_URL: "postgres://pgsql:password@pgsql:5432"
-      SMTP_HOST: mailhog
-      SELENIUM_REMOTE_DRIVER: true
-      HEADLESS: true
+      SMTP_HOST: mailpit
       VITE_RUBY_HOST: "vite"
     depends_on:
       - pgsql
@@ -41,12 +39,17 @@ services:
     environment:
       VITE_RUBY_HOST: 0.0.0.0
     depends_on:
-      - app.local
+      - rails
 
-  mailhog:
-    image: mailhog/mailhog
+  mailpit:
+    image: axllent/mailpit
     ports:
       - "8025:8025"
 
-  selenium:
-    image: selenium/standalone-firefox
+  image_processing:
+    build: docker/image_processing
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./docker/image_processing:/var/source"
+      - "./tmp/snapshots:/var/snapshots"

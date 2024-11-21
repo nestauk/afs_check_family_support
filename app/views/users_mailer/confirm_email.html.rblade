@@ -1,0 +1,9 @@
+<p>{{ @user.salutation }}</p>
+
+<p>You are changing your APPLICATION_NAME email address to <strong>{{ @new_email }}</strong>.</p>
+
+<p>Confirm this new email address using the link below:</p>
+
+<p><a href="{{ users_account_confirm_email_url(signed_email: @signed_email) }}">Confirm new email</a></p>
+
+<p>If you did not request this change, you can safely ignore this email.</p>

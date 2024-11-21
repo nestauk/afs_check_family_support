@@ -1,2 +1,4 @@
 ignore:
   - 'storage/**/*'
+plugins:
+  - standard-rails

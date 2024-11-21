@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge(
+  alt: "Close"
+) }}>close</x-icon>

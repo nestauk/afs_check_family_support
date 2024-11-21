@@ -1,10 +1,18 @@
-@props({as: "div"})
+@props(as: "div", sm:false)
+@ruby
+classList = case true
+  when sm
+    "--:px-2 --:py-1.5 sm:--:px-2.5 sm:--:py-2"
+  else
+    "--:px-5 --:py-4 sm:--:px-7 sm:--:py-6"
+end
+@endruby
 <{{ as }} {{ attributes.merge({
   class: "
-    -:flex -:flex-col -:gap-3 sm:-:gap-4
-    -:w-full -:max-w-prose
-    -:px-5 -:py-4 sm:-:px-7 sm:-:py-6
-    -:border -:border-b-2 -:border-blue-500 -:bg-blue-50/10 -:rounded
+    --:flex --:flex-col --:gap-3 sm:--:gap-4
+    --:w-full --:max-w-full md:--:max-w-prose
+    #{classList}
+    --:border --:border-b-2 --:border-blue-500 --:bg-blue-50/10 --:rounded
   "
 }) }}>
   {{ slot }}

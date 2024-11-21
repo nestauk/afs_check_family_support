@@ -1,0 +1,14 @@
+<div class="relative w-full hidden xl:block -mt-6">
+  <div {{ attributes.merge(class: "
+    w-80 px-3 py-2
+    absolute left-full ml-4 top-6
+    bg-navy-50/20 rounded-lg
+    font-mono text-sm whitespace-pre-wrap
+    text-black
+  ") }}>{!!
+      h(slot.to_s.gsub(/^#{slot.to_s.scan(/^[ \t]*(?=\S)/).min}/, "").strip)
+    .gsub(/&lt;([^ &]+)(.*?)(\/?&gt;)/m, "<span class=\"text-blue-900\">&lt;</span><span class=\"text-blue-800\">\\1</span><span class=\"text-blue-700\">\\2</span><span class=\"text-blue-900\">\\3</span>")
+    .gsub(/=(&quot;|&#39;)(.*?)(\1)/m, "<span class=\"text-[#358500]\">=\\1\\2\\1</span>")
+    .gsub(/=([^&<>"'\s]+)/m, "<span class=\"text-[#358500]\">=\\1</span>")
+    !!}</div>
+</div>

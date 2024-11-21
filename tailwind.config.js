@@ -4,7 +4,7 @@ module.exports = {
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
+    './app/frontend/**/*.{js,ts,vue}',
     './app/views/**/*.{erb,haml,html,slim,rblade}'
   ],
   theme: {
@@ -22,7 +22,7 @@ module.exports = {
       "current": "currentColor",
 
       "focus": "#9aff3c", //                                  Black AAA
-      "error": "#EB0F0F", //                  White AA        Black AA
+      "error": "#d30a0a", //                  White AA        Black AA
       "success": "#1B8848", //                White AA        Black AA
 
       // See also https://stackoverflow.com/questions/4774022/whats-default-html-css-link-color
@@ -65,17 +65,17 @@ module.exports = {
 
       "aqua": {
         DEFAULT: "#97D9E3",
-        50: "#F6FDFE",
-        100: "#F2FBFD",
-        200: "#E1F6F9",
-        300: "#D5F0F4", // Nesta Aqua/40
-        400: "#C5ECF2",
-        500: "#B6E4EB", // Nesta Aqua/70
-        600: "#A5DFE8",
-        700: "#97D9E3", // Nesta Aqua/100
-        800: "#3CBACE", //                                    Black AAA
-        900: "#248998", //                    White AA (L)    Black AA
-        950: "#19616C", //                    White AAA
+        50: "#F2FBFD",
+        100: "#E1F6F9",
+        200: "#D5F0F4", // Nesta Aqua/40
+        300: "#C5ECF2",
+        400: "#B6E4EB", // Nesta Aqua/70
+        500: "#A5DFE8",
+        600: "#97D9E3", // Nesta Aqua/100
+        700: "#61b8c6", //                                    Black AAA
+        800: "#258695", //                    White AA (L)    Black AA
+        900: "#1d5d67", //                    White AAA
+        950: "#0a3339",
       },
 
       "red": {
@@ -205,6 +205,13 @@ module.exports = {
         sans: ['Averta', ...defaultTheme.fontFamily.sans],
         title: ['Zosia', ...defaultTheme.fontFamily.sans],
       },
+      maxWidth: {
+        "prose": "640px",
+      },
+      width: {
+        "form": "460px",
+        "prose": "640px",
+      },
       spacing: {
         "inherit": "inherit",
         "0.75": "3px",
@@ -214,5 +221,9 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-unimportant'),
+    function({ addVariant }) {
+      addVariant('can-hover', '@media (any-hover: hover)');
+      addVariant('cannot-hover', '@media not (any-hover: hover)');
+    },
   ]
 }

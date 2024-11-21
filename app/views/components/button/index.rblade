@@ -1,11 +1,12 @@
-@props({
+@props(
   as: 'button',
   sm: false,
   md: true,
   primary: true,
   secondary: false,
+  danger: false,
   light: false,
-})
+)
 @ruby
 classList = case true
   when sm
@@ -18,25 +19,37 @@ end
 classList << case true
   when light && secondary
     "
-      ---:bg-green-50 ---:text-green-950 visited:---:text-green-950 ---:shadow-green-100
+      ---:bg-green-50 ---:text-green-950 ---:shadow-green-100
       hover:---:bg-green-100 hover:---:shadow-green-200 hover:---:text-black
       active:---:bg-green-100 active:---:text-black
     "
   when secondary
     "
-      ---:bg-green-800 ---:text-white visited:---:text-white ---:shadow-green-900
+      ---:bg-green-800 ---:text-white ---:shadow-green-900
       hover:---:bg-green-900 hover:---:shadow-green-950
       active:---:bg-green-900
     "
+  when danger && light
+    "
+      ---:bg-red-50 ---:text-red-950 ---:shadow-red-100
+      hover:---:bg-red-100 hover:---:shadow-red-200 hover:---:text-black
+      active:---:bg-red-100 active:---:text-black
+    "
+  when danger
+    "
+      ---:bg-red-700 ---:text-white ---:shadow-red-950
+      hover:---:bg-red-800 hover:---:shadow-black
+      active:---:bg-red-800
+    "
   when primary && light
     "
-      ---:bg-blue-50 ---:text-blue-950 visited:---:text-blue-950 ---:shadow-blue-100
+      ---:bg-blue-50 ---:text-blue-950 ---:shadow-blue-100
       hover:---:bg-blue-100 hover:---:shadow-blue-200 hover:---:text-black
       active:---:bg-blue-100 active:---:text-black
     "
   when primary
     "
-      ---:bg-blue-700 ---:text-white visited:---:text-white ---:shadow-blue-950
+      ---:bg-blue-700 ---:text-white ---:shadow-blue-950
       hover:---:bg-blue-800 hover:---:shadow-black
       active:---:bg-blue-800
     "
@@ -46,10 +59,10 @@ end
 @endruby
 <{{as}} {{ attributes.merge({
   "class": "
-    ---:flex ---:items-center ---:justify-center ---:gap-2
+    ---:flex ---:items-center ---:justify-center ---:gap-1.5
     ---:rounded
-    -:mb-0.75 ---:shadow ---:shadow-3 ---:no-underline
-    ---:block ---:w-full sm:---:w-max
+    ---:mb-0.75 ---:shadow ---:shadow-3 ---:no-underline
+    ---:block ---:w-max
     ---:bg-clip-padding ---:select-none ---:whitespace-nowrap
     ---:translate-y-0
     active:---:translate-y-0.75 active:---:shadow-0
@@ -59,7 +72,7 @@ end
     disabled:---:shadow-0 disabled:active:---:translate-y-0
     #{classList}
   ",
-  {{-- Prevent the button being focused on a click --}}
+  # Prevent the button being focused on a click
   "onmouseup": "this.blur()",
   "type": "button",
 }) }}>

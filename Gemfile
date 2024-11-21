@@ -1,11 +1,9 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
-
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "rails", "~> 7.2"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -15,15 +13,6 @@ gem "puma", ">= 5.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-
-# Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0.1"
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -37,21 +26,38 @@ group :development, :test do
   gem "dotenv-rails", "~> 2.8"
   gem "factory_bot_rails"
   gem "standard"
+  gem "standard-rails"
+  gem "faker"
 end
 
 group :development do
   gem "web-console"
-  gem "hotwire-livereload", "~> 1.2"
-  gem "faker"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
   gem "database_cleaner-active_record"
+  gem "cuprite"
 end
 
 gem "rblade", "~> 1.0"
 
 gem "vite_rails", "~> 3.0"
+
+gem "rollbar", "~> 3.6"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+# Use Pwned to check if a password has been found in any of the huge data breaches [https://github.com/philnash/pwned]
+gem "pwned"
+# Use rotp for generating and validating one time passwords [https://github.com/mdp/rotp]
+gem "rotp"
+# Use rqrcode for creating and rendering QR codes into various formats [https://github.com/whomwah/rqrcode]
+gem "rqrcode"
+
+gem "solid_cache", "~> 1.0"
+
+gem "pagy", "~> 9.1"
+
+gem "cloudinary", "~> 2.2"

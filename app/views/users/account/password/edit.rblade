@@ -1,0 +1,27 @@
+<x-layout::authenticated title="Change password">
+  @push('header')
+    <x-button.back :href="users_account_path">Your account</x-button.back>
+  @endpush
+  <x-text.h2 xl>Change password</x-text.h2>
+
+  <x-text.p>
+    Please enter a new password for your account. Your password needs to be <span class="font-medium">at
+    least 10 characters long</span>.
+  </x-text.p>
+
+  <x-form method="PATCH">
+    <x-form.errors :except="[:password, :password_challenge]"/>
+
+    <x-form.label label="Current password" for="password_challenge">
+      <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
+    </x-form.label>
+
+    <x-form.label label="New password" for="password">
+      <x-form.password name="password" :value="params[:password]" required autocomplete="new-password" showStrength/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button type="submit">Change password</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::authenticated>

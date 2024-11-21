@@ -1,14 +1,8 @@
-@props({sm: false, md:true})
-@ruby
-classList = case true
-  when sm
-    "-:pl-1.5 -:gap-0.5 -:font-medium"
-  when md
-    "-:pl-2 -:gap-0.5 -:font-medium"
-  else ''
-end
-@endruby
-<x-button.flat {{ attributes.merge({class: classList, md:, sm:}) }}>
+@props(as: "a")
+<x-button.flat {{ attributes.merge({
+  class: "-:pl-0 -:pr-2 -:gap-0.5 -:font-medium lg:-:-mb-2 -:mr-auto -:w-auto",
+  as:
+}) }}>
   <x-icon.left class="text-[1.5em]"/>
   {{ slot }}
 </x-button.flat>

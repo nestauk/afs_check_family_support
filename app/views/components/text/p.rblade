@@ -1,27 +1,27 @@
-@props({
+@props(
   xs: false,
   sm: false,
   md: false,
   lg: false,
   xl: false,
   center: false
-})
+)
 @ruby
 classList = ''
 
 case true
 when xs
-  classList << '-:text-xs sm:-:text-sm'
-when sm
   classList << '-:text-sm sm:-:text-base'
+when sm
+  classList << '-:text-base sm:-:text-lg'
 when md
-  classList << '-:text-base sm:-:text-lg'
-when lg
   classList << '-:text-lg sm:-:text-xl'
-when xl
+when lg
   classList << '-:text-xl sm:-:text-2xl'
+when xl
+  classList << '-:text-2xl sm:-:text-3xl'
 else
-  classList << '-:text-base sm:-:text-lg'
+  classList << '-:text-lg sm:-:text-xl'
 end
 
 if center

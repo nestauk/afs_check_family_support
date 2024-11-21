@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+  alt: "Editor",
+  fill: 0
+) }}>widgets</x-icon>

@@ -1,0 +1,9 @@
+{{ @user.salutation }}
+
+You are changing your APPLICATION_NAME email address to {{ @new_email }}.
+
+Confirm your new email address using the link below:
+
+{{ users_account_confirm_email_url(signed_email: @signed_email) }}
+
+If you did not request this change, you can safely ignore this email.

@@ -1,4 +1,4 @@
-@props({label: false, horizontal: false})
+@props(label: false, horizontal: false)
 @if(label)
 <label class="flex items-start gap-4 ml-4">
 @endif

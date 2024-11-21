@@ -1,39 +1,59 @@
 require "test_helper"
-require "rails/test_help"
+require "capybara/cuprite"
 require "database_cleaner/core"
+require "helpers/document"
+require "helpers/given"
+require "helpers/then"
+require "helpers/when"
 
 DatabaseCleaner.clean_with :truncation
 DatabaseCleaner.strategy = :transaction
 
 module System
-  # System tests use a selenium browser to simulate a user clicking and inputting data into the
+  # System tests use the Cuprite browser to simulate a user clicking and inputting data into the
   # site. System tests are slow and hard to maintain, so we only write the highest value tests.
   class TestCase < ActionDispatch::SystemTestCase
+    Capybara.default_max_wait_time = 15
+    Capybara.disable_animation = true
+    Capybara.javascript_driver = :cuprite
     driven_by(
-      :selenium,
-      using: :remote,
-      screen_size: [1280, 800],
-      options: { url: "http://selenium:4444/wd/hub", capabilities: :firefox }
+      :cuprite,
+      options: {
+        window_size: [1200, 800],
+        headless: true,
+        browser_options: {
+          "no-sandbox": nil
+        }
+      }
     )
-    Capybara.server_host = "0.0.0.0"
-    Capybara.server_port = 3001
-    Capybara.app_host = "http://app.local:3001"
 
-    def snapshot(name)
-      driver = Capybara.current_session.driver
-      window = Capybara.current_session.current_window
-      current_window_size = window.size
+    attr_reader :document
 
-      widths = { desktop: 1280, mobile: 320 }
-      widths.each do |platform, width|
-        window.resize_to(width, 900)
-        total_height = driver.execute_script("return document.body.scrollHeight")
-        window.resize_to(width, total_height)
-        save_screenshot "tmp/snapshots/#{name}_#{platform}.png"
-      end
+    def setup
+      super
 
-      # Restore the window size sp other tests aren't affected
-      window.resize_to(*current_window_size)
+      @name = "#{self.class.name.delete_prefix("System::").delete_suffix("Test").underscore}_#{name}"
+
+      DatabaseCleaner.start
+      @given = Given.new self
+      @when = When.new self
+      @then = Then.new self
+      @document = Document.new self
+    end
+
+    def teardown
+      super
+
+      DatabaseCleaner.clean
+      Rails.cache.clear
+      ActionMailer::Base.deliveries.clear
+    end
+
+    private
+
+    # Overwrite the default failure screenshot file name to be more useful
+    def image_name
+      @name
     end
   end
 end

@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+  alt: "Edit",
+  fill: 0
+) }}>edit</x-icon>

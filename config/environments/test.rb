@@ -6,6 +6,7 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  config.action_mailer.default_url_options = {host: "127.0.0.1"}
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
@@ -26,7 +27,9 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
-  config.cache_store = :null_store
+  config.action_mailer.perform_caching = false
+
+  config.cache_store = :memory_store
 
   # Render exception templates for rescuable exceptions and raise for other exceptions.
   config.action_dispatch.show_exceptions = :rescuable
@@ -37,12 +40,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
-  config.action_mailer.perform_caching = false
-
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+
+  ActionMailer::Base.default from: "info@example.com"
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -63,7 +66,7 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   # Allow hosts used by the tests
-  config.hosts << "app.local"
+  config.hosts << "rails"
   config.hosts << "127.0.0.1"
   config.hosts << "www.example.com"
 end
