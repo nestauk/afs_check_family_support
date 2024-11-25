@@ -1,7 +1,6 @@
 require "test_helper"
 require "capybara/cuprite"
 require "database_cleaner/core"
-require "helpers/document"
 require "helpers/given"
 require "helpers/then"
 require "helpers/when"
