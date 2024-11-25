@@ -55,8 +55,6 @@ class Then
     # Restore the window size sp other tests aren't affected
     window.resize_to(*current_window_size)
 
-    @testcase.document.add_image "../snapshots/#{name}_desktop.png"
-
     self
   end
 end

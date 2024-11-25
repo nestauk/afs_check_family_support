@@ -26,8 +26,6 @@ module System
       }
     )
 
-    attr_reader :document
-
     def setup
       super
 
@@ -37,7 +35,6 @@ module System
       @given = Given.new self
       @when = When.new self
       @then = Then.new self
-      @document = Document.new self
     end
 
     def teardown

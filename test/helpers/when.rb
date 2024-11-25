@@ -7,13 +7,11 @@ class When
     self
   end
 
-  def i_visit(url, documentation: {})
+  def i_visit(url)
     @testcase.visit url
 
     status = @testcase.status_code
     @testcase.assert_equal 200, status, "#{url} returned status #{status}, expected 200"
-
-    @testcase.document.add_line "Open #{documentation[:name] || url}"
 
     self
   end
@@ -25,9 +23,6 @@ class When
   end
 
   def i_enter value, args
-    @testcase.document.add_mergable_line :i_enter, args.dig(:documentation, :name) || args[:into], prefix: "Enter a"
-    args.delete :documentation
-
     nth = args.delete(:nth)
     if nth.present?
       @testcase.page.all(args[:into])[nth].set value
@@ -40,15 +35,6 @@ class When
   alias_method :i_type, :i_enter
 
   def i_press text = nil, **options
-    if options[:documentation] != false
-      name = options.dig(:documentation, :name).nil? ? "the \"#{text || options[:aria_label]}\" button" : options.dig(:documentation, :name)
-      @testcase.document.add_line [
-        "Click #{name}",
-        options.dig(:documentation, :suffix)
-      ].compact.join(" ")
-    end
-    options.delete :documentation
-
     if options.has_key? :aria_label
       @testcase.find(%([aria-label="#{options[:aria_label]}"])).click
     elsif options.has_key? :selector
@@ -61,16 +47,12 @@ class When
   end
 
   def i_click text, **args
-    @testcase.document.add_line ["Click \"#{text}\"", args.dig(:documentation, :location)].compact.join(" ")
-
     @testcase.click_link text
 
     self
   end
 
   def i_click_text text, **args
-    @testcase.document.add_line ["Click \"#{text}\"", args.dig(:documentation, :location)].compact.join(" ")
-
     @testcase.find(args[:selector] || "*", text: text, match: :prefer_exact).click
 
     self
