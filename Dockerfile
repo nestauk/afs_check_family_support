@@ -17,6 +17,9 @@ RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | bash
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash
 RUN apt-get install -y nodejs
 
+# Install Chromium for Cuprite
+RUN apt install -y chromium
+
 COPY docker/rails_entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
