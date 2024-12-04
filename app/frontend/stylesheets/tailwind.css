@@ -2,13 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  div {
+    gap: inherit;
+  }
+}
+
 @layer components {
   .focusable {
     @apply focus:outline-none;
   }
   .focusable:not(:active) {
-    @apply focus:bg-focus focus:text-black focus:border-black focus:shadow-black
-           focus:hover:bg-focus focus:hover:text-black focus:hover:border-black focus:shadow-black
-           focus:hover:outline-none;
+    @apply focus-visible:bg-focus focus-visible:text-black focus-visible:border-black focus-visible:shadow-black
+    focus-visible:hover:bg-focus focus-visible:hover:text-black focus-visible:hover:border-black focus-visible:shadow-black
+    focus-visible:hover:outline-none;
   }
 }
