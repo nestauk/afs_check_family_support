@@ -13,6 +13,7 @@ module System::Users
         .and.i_press("Sign in")
       @then.i_see("Two factor")
         .and.i_take_snapshot("users.auth.challenge_2fa")
+        .and.the_page_is_accessible
 
       @when.i_enter(totp_code, into: "Verification code")
         .and.i_press("Sign in")

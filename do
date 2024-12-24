@@ -33,6 +33,7 @@ if [ $# -eq 0 ] || [ $1 = "help" ]
     echo "  ./do <down|d>          stop and discard all docker compose services and networks"
     echo "  ./do <logs|l>          display the logs for all or a specified docker compose service"
     echo "  ./do <run|r>           run the specified console command in the primary docker service"
+    echo "  ./do <console|c>       start a bash console in the primary docker service"
     echo "  ./do <rails|rr>        run the bin/rails binary with the given arguments"
     echo "  ./do <rake|rk>         run the bin/rake binary with the given arguments"
     echo "  ./do cs                run the rake coding standards task"

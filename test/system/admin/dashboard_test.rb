@@ -11,6 +11,7 @@ module System::Admin
         .and.i_see("1 user")
         .and.i_see("Manage users")
         .and.i_take_snapshot("admin.dashboard")
+        .and.the_page_is_accessible
     end
   end
 end

@@ -8,6 +8,7 @@ module System::Users
       @when.i_visit("/auth")
       @then.i_see("Sign in")
         .and.i_take_snapshot("users.auth")
+        .and.the_page_is_accessible
 
       @when.i_enter("user@example.com", into: "Email")
         .and.i_enter("ravine-lexeme", into: "Password")

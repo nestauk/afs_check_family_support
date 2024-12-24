@@ -10,6 +10,7 @@ module System::Users
         @when.i_visit("/users/account/edit_password")
         @then.i_see("Change password")
           .and.i_take_snapshot("users.account.edit_password")
+          .and.the_page_is_accessible
 
         @when.i_enter("ravine-lexeme", into: "Current password")
           .and.i_enter("new-ravine-lexeme", into: "New password")

@@ -12,6 +12,7 @@ module System::Users
         @when.i_click("Enable 2FA")
         @then.i_see("Enable two factor authentication")
           .and.i_take_snapshot("users.account.enable_2fa")
+          .and.the_page_is_accessible
 
         otp_secret = page.find("input[x-ref='copyText']", visible: :all)["value"]
 
@@ -34,6 +35,7 @@ module System::Users
         @when.i_click("Disable 2FA")
         @then.i_see("Disable two factor authentication")
           .and.i_take_snapshot("users.account.disable_2fa")
+          .and.the_page_is_accessible
 
         @when.i_enter("ravine-lexeme", into: "Password")
           .and.i_press("Disable 2FA")

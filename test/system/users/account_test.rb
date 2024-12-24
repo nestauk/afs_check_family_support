@@ -13,6 +13,7 @@ module System::Users
         .and.i_see("Email")
         .and.i_see("user@example.com")
         .and.i_take_snapshot("users.account")
+        .and.the_page_is_accessible
     end
   end
 end

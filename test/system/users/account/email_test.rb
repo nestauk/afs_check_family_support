@@ -10,6 +10,7 @@ module System::Users
         @when.i_visit("/users/account/edit_email")
         @then.i_see("Change email")
           .and.i_take_snapshot("users.account.edit_email")
+          .and.the_page_is_accessible
 
         @when.i_enter("new_email@example.com", into: "Email")
           .and.i_press("Change email")

@@ -12,7 +12,7 @@
   {{ attributes }}
 >
   {{-- Mobile header --}}
-  <x-content.row class="lg:hidden justify-between">
+  <x-content.row as="header" class="lg:hidden justify-between">
     <x-text.h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">APPLICATION_NAME</x-text.h1>
     <button
       x-ref="menuOpen"

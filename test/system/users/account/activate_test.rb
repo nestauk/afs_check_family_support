@@ -12,6 +12,7 @@ module System::Users
           .and.i_see("Last name")
           .and.i_see("Password")
           .and.i_take_snapshot("users.account.activate")
+          .and.the_page_is_accessible
 
         @when.i_type("Bob", into: "first_name")
           .and.i_type("Ross", into: "last_name")

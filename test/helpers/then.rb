@@ -57,4 +57,35 @@ class Then
 
     self
   end
+
+  def the_page_is_accessible
+    script = <<~JS
+      let js = document.createElement("script");
+      js.setAttribute("src", arguments[0]);
+      js.setAttribute("type", "module");
+      
+      let callback = arguments[arguments.length-1];
+      js.onload = () => {
+        axe.configure({
+          reporter: "no-passes",
+        })
+        axe
+          .run({runOnly: {type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']}})
+          .then(results => {
+            callback(results)
+          })
+          .catch(err => {
+            callback(err)
+          });
+      }
+      
+      document.body.appendChild(js);
+    JS
+
+    result = @testcase.evaluate_async_script(script, ViteRuby.instance.manifest.path_for("accessibility_testing.ts"))
+
+    @testcase.assert result["violations"].length == 0, "Accessibility violations: #{JSON.pretty_generate(result["violations"])}"
+
+    self
+  end
 end

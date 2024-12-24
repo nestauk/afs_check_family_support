@@ -1,6 +1,6 @@
 @props(title: required, wrapperClass: "")
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>{{ title }} | APPLICATION_NAME</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">

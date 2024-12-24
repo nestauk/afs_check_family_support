@@ -37,9 +37,9 @@ classList << case true
     "
   when danger
     "
-      ---:bg-red-700 ---:text-white ---:shadow-red-950
-      hover:---:bg-red-800 hover:---:shadow-black
-      active:---:bg-red-800
+      ---:bg-red-800 ---:text-white ---:shadow-red-950
+      hover:---:bg-red-900 hover:---:shadow-black
+      active:---:bg-red-900
     "
   when primary && light
     "

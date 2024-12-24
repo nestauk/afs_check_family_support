@@ -10,6 +10,7 @@ module System::Users
         @when.i_visit("/users/account/edit_name")
         @then.i_see("Change name")
           .and.i_take_snapshot("users.account.edit_name")
+          .and.the_page_is_accessible
 
         @when.i_enter("Robert", into: "First name")
           .and.i_enter("Smythe", into: "Last name")

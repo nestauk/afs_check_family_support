@@ -14,6 +14,7 @@ module System::Admin
         .and.i_see("Rob Boss")
         .and.i_see("rob@example.com")
         .and.i_take_snapshot("admin.users.index")
+        .and.the_page_is_accessible
     end
 
     test "invite" do
@@ -27,6 +28,7 @@ module System::Admin
         .and.i_press("Add email")
         .and.i_type("second-email@example.com", into: "[name=\"emails[]\"]", nth: 1)
       @then.i_take_snapshot("admin.users.invite")
+        .and.the_page_is_accessible
 
       @when.i_press("Send invitations")
       @then.i_am_redirected_to("/admin/users")
@@ -46,6 +48,7 @@ module System::Admin
         .and.i_see("Grant admin access")
         .and.i_see("Send password reset")
         .and.i_take_snapshot("admin.users.show")
+        .and.the_page_is_accessible
     end
 
     test "change email" do

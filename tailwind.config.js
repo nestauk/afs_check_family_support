@@ -1,4 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import defaultTheme from "tailwindcss/defaultTheme"
+import unimportant from "tailwindcss-unimportant"
 
 module.exports = {
   content: [
@@ -220,7 +221,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwindcss-unimportant'),
+    unimportant,
     function({ addVariant }) {
       addVariant('can-hover', '@media (any-hover: hover)');
       addVariant('cannot-hover', '@media not (any-hover: hover)');

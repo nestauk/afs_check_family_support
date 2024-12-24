@@ -16,7 +16,7 @@ services:
       - pgsql
 
   pgsql:
-    image: postgres
+    image: postgres:17
     restart: unless-stopped
     ports:
       - 5433:5432

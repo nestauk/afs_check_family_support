@@ -1,6 +1,6 @@
 @props(title: required, wrapperClass: "")
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>{{ title }} | APPLICATION_NAME</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,16 +13,16 @@
   </head>
 
   <body {{ attributes.merge(class: "flex flex-col min-h-screen") }}>
-    <div class="flex justify-between items-center w-prose max-w-full mx-auto px-5 mt-4">
+    <header class="flex justify-between items-center w-prose max-w-full mx-auto px-5 mt-4">
       <x-text.h1 class="py-4 text-blue-900 font-normal text-5xl">APPLICATION_NAME</x-text.h1>
       <div class="flex gap-4">@stack('header')</div>
-    </div>
+    </header>
     <main class="w-prose max-w-full mx-auto px-5 mt-8 flex flex-col gap-4 sm:gap-6 -:pb-36 items-start {{ wrapperClass }}">
       <x-alerts/>
       {{ slot }}
     </main>
     @stack('after-main')
-    <div class="mt-auto bg-navy p-2">
+    <footer class="mt-auto bg-navy p-2">
       <x-text.p class="max-w-full w-max text-xs text-white mx-auto leading-tight">
         Nesta, a company limited by guarantee registered in England and Wales
         with company number 7706036 and charity number 1144091.
@@ -30,6 +30,6 @@
         Registered office: 58 Victoria Embankment, London, EC4Y 0DS
         Email: information@nesta.org.uk
       </x-text.p>
-    </div>
+    </footer>
   </body>
 </html>
