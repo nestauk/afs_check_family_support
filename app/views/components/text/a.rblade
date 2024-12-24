@@ -6,6 +6,4 @@
     visited:-:test-link-visited
     focusable
 ",
-  # Prevent the link being focused on a click
-  "onmouseup": "this.blur()",
 }) }}>{{ slot }}</a>

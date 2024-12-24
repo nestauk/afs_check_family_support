@@ -37,7 +37,7 @@ emails. See [setup] for how to get docker up and running.
 Once the docker services have been started, you can access the web server at
 http://127.0.0.1:3000, you can connect to the postgres database using port 5433,
 username "pgsql" and password "password", and you can see any emails the app
-sends on the mailhog email server at http://127.0.0.1:8025.
+sends on the Mailpit email server at http://127.0.0.1:8025.
 
 ### Deployment
 This project is deployed by Heroku. Deployments are triggered manually in the Heroku
@@ -151,7 +151,7 @@ The local development server will now be available at http://127.0.0.1:3000.
 You can connect to the the PostgreSQL database at 127.0.0.1:5433 using `pgsql`
 and `password` as the username and password.
 
-All emails sent by the system will be sent to MailHog, http://127.0.0.1:8025.
+All emails sent by the system will be sent to Mailpit, http://127.0.0.1:8025.
 
 ### Start The Development Server
 

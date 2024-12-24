@@ -17,7 +17,7 @@
     <button
       x-ref="menuOpen"
       type="button"
-      @click="navOpen = true; $el.blur()"
+      @click="navOpen = true"
       {{-- Transfer the focus state to the close button when interacting via keyboard --}}
       @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
       @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
@@ -46,7 +46,7 @@
     <button
       x-ref="menuClose"
       type="button"
-      @click.prevent="navOpen = !navOpen; $el.blur()"
+      @click.prevent="navOpen = !navOpen"
       {{-- Transfer the focus state to the open button when interacting via keyboard --}}
       @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
       @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
