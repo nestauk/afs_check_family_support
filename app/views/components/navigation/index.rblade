@@ -1,0 +1,95 @@
+<div
+  x-data="{
+    navOpen: false,
+    stickyOffset: -50,
+    setStickyOffset: function() {
+      this.stickyOffset = window.innerHeight - $refs.stickyContent.clientHeight
+    }
+  }"
+  x-init="setStickyOffset"
+  @resize.window="setStickyOffset"
+  @click.outside="navOpen = false"
+  {{ attributes }}
+>
+  {{-- Mobile header --}}
+  <x-content.row as="header" class="lg:hidden justify-between">
+    <x-text.h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">APPLICATION_NAME</x-text.h1>
+    <button
+      x-ref="menuOpen"
+      type="button"
+      @click="navOpen = true"
+      {{-- Transfer the focus state to the close button when interacting via keyboard --}}
+      @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
+      @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
+      class="focusable leading-none text-[48px] h-12 z-20"
+    >
+      <x-icon.menu alt="Open menu" size="auto" x-show="!navOpen"/>
+    </button>
+  </x-content.row>
+  {{-- The main nav bar - a sidebar on desktop, and a popup dialog on mobile --}}
+  <div
+    class="
+      fixed right-0 top-0 mb-auto overflow-y-auto
+      min-h-screen lg:min-h-0 h-screen w-screen max-w-xs
+      lg:static lg:max-w-full lg:overflow-visible lg:h-full
+      bg-aqua-100
+      z-10
+      {{-- Override x-show for desktop to always show the sidebar --}}
+      lg:!block
+    "
+    {{-- noautofocus and noreturn because we want to handle these focus states manually --}}
+    x-trap.inert.noscroll.noautofocus.noreturn="navOpen"
+    x-show="navOpen"
+    x-transition.duration.250ms
+  >
+    {{-- The close button, hidden on desktop --}}
+    <button
+      x-ref="menuClose"
+      type="button"
+      @click.prevent="navOpen = !navOpen"
+      {{-- Transfer the focus state to the open button when interacting via keyboard --}}
+      @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
+      @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
+      class="absolute lg:hidden m-4 focusable leading-none text-[48px] h-12 z-20"
+    >
+      <x-icon.close alt="Close menu" size="auto"/>
+    </button>
+
+    {{-- The main navigation content --}}
+    <nav
+      class="
+        w-full h-full min-h-screen lg:min-h-0
+        flex flex-col gap-4 grow pb-8 px-8
+        lg:sticky top-0
+      "
+      x-bind:style="{top: stickyOffset + 'px'}"
+      x-ref="stickyContent"
+    >
+      <x-text.h1 center class="py-8 text-blue-900 font-normal text-5xl -mb-2">APP</x-text.h1>
+
+      <x-navigation.button :href="dashboard_path">
+        <x-icon.home/>
+        Dashboard
+      </x-navigation.button>
+      @if(Current.user.is_admin?)
+        <x-navigation.button :href="admin_dashboard_path" controller="admin/">
+          <x-icon.tools/>
+          Admin dashboard
+        </x-navigation.button>
+      @endIf
+
+      <div class="mt-auto pt-4"></div>
+
+      <x-navigation.button :href="users_account_path" controller="account">
+        <x-icon.account/>
+        Account
+      </x-navigation.button>
+      <x-form :action="signout_path" method="POST">
+        <x-navigation.button as="button" type="submit">
+          <x-icon.signout/>
+          Sign out
+        </x-navigation.button>
+      </x-form>
+    </nav>
+  </div>
+</div>

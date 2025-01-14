@@ -1,0 +1,5 @@
+<x-icon {{ attributes.merge(
+  alt: "open folder",
+  fill: 0,
+  weight: 700
+) }}>folder_open</x-icon>

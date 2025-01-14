@@ -1,5 +1,5 @@
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.2
+ARG RUBY_VERSION=3.3.6
 
 FROM ruby:$RUBY_VERSION
 
@@ -11,7 +11,14 @@ WORKDIR /var/source
 RUN gem install rails bundler
 
 # Install the Heroku CLI
-RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | bash
+
+# Install node 22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash
+RUN apt-get install -y nodejs
+
+# Install Chromium for Cuprite
+RUN apt install -y chromium
 
 COPY docker/rails_entrypoint.sh /entrypoint.sh
 

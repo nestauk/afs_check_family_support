@@ -1,0 +1,26 @@
+<x-layout::authenticated title="Change email">
+  @push('header')
+    <x-button.back :href="users_account_path">Your account</x-button.back>
+  @endpush
+  <x-text.h2 xl>Confirm your new email address</x-text.h2>
+
+  <x-text.p class="font-medium">
+    You are changing your account email address to <span class="font-semibold">{{ @new_email }}</span>.
+  </x-text.p>
+
+  <x-text.p>
+    Please enter your password to confirm this change.
+  </x-text.p>
+
+  <x-form method="PATCH">
+    <x-form.errors :except="[:password_challenge]"/>
+
+    <x-form.label label="Password" for="password_challenge">
+      <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button type="submit">Confirm new email</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::authenticated>

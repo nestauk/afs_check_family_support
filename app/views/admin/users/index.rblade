@@ -1,0 +1,26 @@
+<x-layout::authenticated title="Users">
+  @push('header')
+    <x-button.back :href="admin_dashboard_path">Admin dashboard</x-button.back>
+    <x-button as="a" :href="admin_invite_user_path" class="ml-auto">Invite users</x-button>
+  @endpush
+  <x-text.h2 xl>Manage users</x-text.h2>
+
+  <x-content.col class="border border-x-0 border-grey-50 divide-y divide-grey-50 gap-0">
+    @each (user in @users)
+    <x-content.row as="a" :href="admin_user_path user" class="gap-4 px-2 py-4">
+      <x-icon.person class="text-navy"/>
+      <x-text.p>
+        <span class="font-medium">{{ user.name }}</span>
+        <span class="block -mt-0.5 text-sm sm:text-base text-grey">
+          @if (user.is_admin?)
+            <span class="text-red-800 font-medium">Admin</span>
+          @endIf
+          {{ user.email }}
+        </span>
+      </x-text.p>
+      <x-button secondary sm class="ml-auto">View</x-button>
+    </x-content.row>
+    @endEach
+  </x-content.col>
+  <x-pagination :pagy="@pagy"/>
+</x-layout::authenticated>

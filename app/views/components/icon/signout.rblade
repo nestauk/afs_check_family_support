@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge(
+  alt: "sign out"
+) }}>logout</x-icon>

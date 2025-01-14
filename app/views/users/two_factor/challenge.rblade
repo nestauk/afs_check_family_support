@@ -1,0 +1,20 @@
+<x-layout::simple title="Two factor">
+  <x-text.h2 xl>Two factor</x-text.h2>
+
+  <x-text.p>
+    Please enter the verification code from your authenticator app.
+  </x-text.p>
+
+  <x-form method="POST">
+    <x-form.errors :except="[:totp]"/>
+
+    <x-form.label label="Verification code" for="totp">
+      <x-form.text inputmode="numeric" pattern="[0-9]*" name="totp" autocomplete="one-time-code" placeholder="000000" autofocus="true" required/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button.back as="button" type="submit" :formaction="signout_path" formnovalidate data-turbo-prefetch="false">Back</x-button.back>
+      <x-button class="ml-auto" type="submit">Sign in</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::simple>

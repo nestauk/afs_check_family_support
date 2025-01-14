@@ -1,0 +1,21 @@
+@props(label: false, horizontal: false)
+@if(label)
+<label class="flex items-start gap-4 ml-4">
+@endif
+  <input type="hidden" {{ attributes.only('name') }} value="0">
+  <input {{ attributes.merge({
+    type: "checkbox",
+    value: "1",
+    class: "
+      --:w-5 --:h-5
+      --:border --:border-gray-400
+      #{label ? "--:mt-1" : ""}
+      hover:--:border-black hover:--:ring-1 hover:--:ring-black
+      focus:--:border-black focus:--:outline-none
+      focus:--:ring focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
+    "
+  }) }} />
+@if(label)
+  <p class="text-base font-normal text-black/80">{{label}}</p>
+</label>
+@endif

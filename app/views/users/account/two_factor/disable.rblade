@@ -1,0 +1,22 @@
+<x-layout::authenticated title="Disable two factor authentication">
+  @push('header')
+    <x-button.back :href="users_account_path">Your account</x-button.back>
+  @endpush
+  <x-text.h2 xl>Disable two factor authentication</x-text.h2>
+
+  <x-text.p class="font-medium">
+    You are removing two factor authentication from your account. Please enter your password to confirm this change.
+  </x-text.p>
+
+  <x-form method="PATCH">
+    <x-form.errors :except="[:password_challenge]"/>
+
+    <x-form.label label="Password" for="password_challenge">
+      <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button type="submit">Disable 2FA</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::authenticated>

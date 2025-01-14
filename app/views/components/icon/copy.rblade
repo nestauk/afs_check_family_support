@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+  alt: "Copy",
+  fill: 0
+) }}>content_copy</x-icon>

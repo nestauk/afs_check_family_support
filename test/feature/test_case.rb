@@ -1,7 +1,4 @@
-require_relative "../../config/environment"
-require "rails/test_help"
-require "database_cleaner/core"
-require_relative "../test_case"
+require "test_helper"
 
 DatabaseCleaner.clean_with :truncation
 DatabaseCleaner.strategy = :transaction
@@ -13,12 +10,93 @@ module Feature
   class TestCase < ActionDispatch::IntegrationTest
     def before_setup
       super
+
       DatabaseCleaner.start
+      host! "127.0.0.1:3000"
     end
 
     def after_teardown
       DatabaseCleaner.clean
+      Rails.cache.clear
+
       super
+    end
+
+    def sign_in_as(user)
+      post auth_path(params: {email: user.email, password: user.password})
+
+      assert_response :redirect, "Unable to login as #{user.inspect}"
+
+      user
+    end
+
+    def sign_in_as_admin
+      sign_in_as create(:user, is_admin: true)
+    end
+
+    def sign_out
+      get signout_path
+
+      assert_response :redirect, "Unable to sign out"
+    end
+
+    def assert_last_email_to email
+      assert_equal email, ActionMailer::Base.deliveries.last.to.first
+    end
+
+    def assert_see_email subject
+      assert_equal subject, ActionMailer::Base.deliveries.last.subject
+    end
+
+    def assert_see_in_email text
+      last_email = ActionMailer::Base.deliveries.last
+      html_body = last_email.html_part.body.to_s.gsub(/\s{2,}/, "\n").strip
+      assert html_body.match(text), "Expected to see \"#{text}\" in email html body text:\n#{html_body}"
+
+      text_body = last_email.text_part.body.to_s.gsub(/\s{2,}/, "\n").strip
+      assert text_body.match(text), "Expected to see \"#{text}\" in email text body:\n#{text_body}"
+    end
+
+    def assert_see(text)
+      document = ActionView::Base.full_sanitizer.sanitize(document_root_element.to_s).gsub(/\s{2,}/, "\n").strip
+      match = document.match(text)
+      assert document.match(text), "Expected to see \"#{text}\" in:\n#{document}"
+
+      match
+    end
+
+    def assert_dont_see(text)
+      document = ActionView::Base.full_sanitizer.sanitize(document_root_element.to_s).gsub(/\s{2,}/, "\n").strip
+      assert !document.match(text), "Expected not to see \"#{text}\" in:\n#{document}"
+    end
+
+    def assert_see_html(html)
+      match = document_root_element.to_s.match(html)
+      assert document_root_element.to_s.match(html), "Expected to see \"#{html}\" in:\n#{document_root_element}"
+
+      match
+    end
+
+    def assert_dont_see_html(html)
+      assert !document_root_element.to_s.match(html), "Expected not to see \"#{html}\" in:\n#{document_root_element}"
+    end
+
+    def assert_not_found path, method = :get
+      process method, path
+
+      assert_response :not_found
+    end
+
+    def assert_needs_auth path, method = :get
+      process method, path
+
+      assert_redirected_to auth_path
+    end
+
+    def assert_needs_guest path, method = :get
+      process method, path
+
+      assert_redirected_to dashboard_path
     end
   end
 end

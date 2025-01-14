@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+  alt: "Close",
+  fill: 0
+) }}>delete</x-icon>

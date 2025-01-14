@@ -1,0 +1,28 @@
+@props(errors: errors, except: [], only: [])
+@ruby
+unless errors.is_a? Hash
+  errors = errors.to_hash(true)
+end
+errors = errors.except(*except)
+if only.present?
+  errors.filter! { |k, v| only.include? k }
+end
+@endruby
+@shouldRender(errors.present?)
+<div class="flex gap-6">
+  <x-icon.error size="18" class="p-2 bg-error/5 text-error rounded-lg" />
+  <div>
+    <x-text.p class="text-error font-semibold">
+      @if(errors.count == 1)
+        There was {{ errors.count }} error with your submission
+      @else
+        There were {{ errors.count }} errors with your submission
+      @end
+    </x-text.p>
+    <x-content.ul class="text-error mt-1 marker:text-error">
+      @each(error in errors.values.flatten)
+        <li>{{ error }}</li>
+      @end
+    </x-content.ul>
+  </div>
+</div>

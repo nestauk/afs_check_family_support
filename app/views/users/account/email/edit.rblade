@@ -1,0 +1,24 @@
+<x-layout::authenticated title="Change email">
+  @push('header')
+    <x-button.back :href="users_account_path">Your account</x-button.back>
+  @endpush
+  <x-text.h2 xl>Change email</x-text.h2>
+
+  <x-text.p>
+    We currently have <span class="font-medium">{{ Current.user.email }}</span> as your registered email address.
+  </x-text.p>
+
+  <x-text.p>
+    Please enter your email address below and we will send you a secure link to confirm the new email address.
+  </x-text.p>
+
+  <x-form method="POST">
+    <x-form.errors :except="[:email]"/>
+
+    <x-form.label label="Email" for="email">
+      <x-form.text type="email" name="email" :value="params[:email]" required autofocus="true"/>
+    </x-form.label>
+
+    <x-button type="submit">Change email</x-button>
+  </x-form>
+</x-layout::authenticated>

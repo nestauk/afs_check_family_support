@@ -1,0 +1,25 @@
+@props(primary: true, secondary: false)
+@ruby
+classList = case true
+  when secondary
+    "
+      -:bg-transparent -:shadow-green-800 -:border-green-800 -:text-green-800
+      hover:-:bg-green-800 hover:-:shadow-green-900 hover:-:text-white
+      active:-:bg-green-800 active:-:text-white active:-:border-fuchsia-700
+    "
+  when primary
+    "
+      -:bg-transparent -:shadow-blue-700 -:border-blue-700 -:text-blue-700
+      hover:-:bg-blue-700 hover:-:shadow-black hover:-:text-white
+      active:-:bg-blue-700 active:-:text-white active:-:border-blue-700
+    "
+  else ''
+end
+@endruby
+<x-button {{ attributes.merge({
+  class: "
+    border border-b-0
+    #{classList}
+  ",
+  primary: false
+}) }}>{{slot}}</x-button>

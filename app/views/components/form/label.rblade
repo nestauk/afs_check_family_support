@@ -1,0 +1,39 @@
+@props(label: required, horizontal: false, width: "-:w-24", visible: true, error: nil)
+@ruby
+error ||= errors[attributes[:for]&.to_sym]
+labelClass = case true
+  when horizontal && errors.key?(:for)
+    "
+      error
+      sm:grid sm:grid-cols-[minmax(0,auto),minmax(0,1fr)] sm:-:items-center sm:-:gap-x-4
+      text-error border-error pb-1
+    "
+  when horizontal
+    "sm:-:flex-row sm:-:items-center sm:-:gap-4"
+  when errors.key?(:for)
+    "error border-error pb-1"
+  else
+    ""
+end
+@endruby
+<label {{ attributes.merge({
+ class: "
+    -:flex -:flex-col -:gap-0.75
+    -:font-semibold
+    #{labelClass}
+  "
+}) }}>
+  <span class="-:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }} {{ visible ? "" : "sr-only" }}">
+    {{ label }}
+  </span>
+  {{ slot }}
+  @if (error.present?)
+    <div class="col-start-2">
+      @each(message in Array.wrap(error))
+      <x-text.p sm class="text-error font-medium">
+        {{ message }}
+      </x-text.p>
+      @end
+    </div>
+  @endif
+</label>

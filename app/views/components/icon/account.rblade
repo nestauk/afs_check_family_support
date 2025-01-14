@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge(
+  alt: "account"
+) }}>account_circle</x-icon>

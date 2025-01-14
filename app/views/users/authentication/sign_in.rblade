@@ -1,0 +1,26 @@
+<x-layout::simple title="Sign in">
+  <x-text.h2 xl>Sign in</x-text.h2>
+
+  <x-text.p>
+    Please enter your details to access APPLICATION_NAME.
+  </x-text.p>
+
+  <x-form method="POST">
+    <x-form.errors :except="[:email, :password]"/>
+
+    <x-form.label label="Email" for="email">
+      <x-form.text type="email" name="email" :value="params[:email]" autocomplete="username" autofocus="true" required/>
+    </x-form.label>
+
+    <x-form.label label="Password" for="password">
+      <x-form.password name="password" autocomplete="current-password" required/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-text.p>
+        <x-text.a :href="users_forgot_password_path" class="no-underline hover:underline">Forgot your password?</x-text.a>
+      </x-text.p>
+      <x-button class="ml-auto" type="submit">Sign in</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::simple>

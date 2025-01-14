@@ -1,0 +1,32 @@
+@props(pagy: required)
+@shouldRender(pagy.pages > 1)
+<nav class="w-full flex justify-center gap-2">
+  <x-button.flat
+    as="a"
+    :href="pagy_url_for(pagy, pagy.prev)"
+    aria-label="Previous"
+    primary
+    :class='"px-2.5 mr-4 bg-blue-50 hover:bg-blue-900 text-blue-950 #{pagy.prev ? "" : "invisible"}"'
+  ><x-icon.left/></x-button.flat>
+  @each (item in pagy.series)
+    @if (item.is_a? Integer)
+      <x-button.flat
+        as="a"
+        :href="pagy_url_for(pagy, item)"
+        primary
+        class="bg-blue-50 hover:bg-blue-900 text-blue-950"
+      >{{ item }}</x-button.flat>
+    @elsif (item.is_a? String)
+      <x-button.flat as="p" primary aria-disabled="true" aria-current="page" class="bg-blue-900 hover:bg-blue-900 text-white">{{ item }}</x-button.flat>
+    @elsif (item == :gap)
+      <x-icon.ellipsis size="18" class="pt-px my-auto mx-3 text-grey"/>
+    @end
+  @endEach
+  <x-button.flat
+    as="a"
+    :href="pagy_url_for(pagy, pagy.next)"
+    aria-label="Previous"
+    primary
+    :class='"px-2.5 ml-4 bg-blue-50 hover:bg-blue-900 text-blue-950 #{pagy.next ? "" : "invisible"}"'
+  ><x-icon.right/></x-button.flat>
+</nav>

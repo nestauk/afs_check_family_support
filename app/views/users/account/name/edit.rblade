@@ -1,0 +1,26 @@
+<x-layout::authenticated title="Change name">
+  @push('header')
+    <x-button.back :href="users_account_path">Your account</x-button.back>
+  @endpush
+  <x-text.h2 xl>Change name</x-text.h2>
+
+  <x-text.p>
+    Please enter your name below.
+  </x-text.p>
+
+  <x-form method="PATCH">
+    <x-form.errors :except="[:first_name, :last_name]"/>
+
+    <x-form.label label="First name" for="first_name">
+      <x-form.text name="first_name" :value="params[:first_name] || Current.user.first_name" required autofocus="true"/>
+    </x-form.label>
+
+    <x-form.label label="Last name" for="last_name">
+      <x-form.text name="last_name" :value="params[:last_name] || Current.user.last_name" required/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button type="submit">Change name</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::authenticated>

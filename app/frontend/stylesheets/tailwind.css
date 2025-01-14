@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  div {
+    gap: inherit;
+  }
+}
+
+@layer components {
+  .focusable {
+    @apply focus:outline-none;
+  }
+  .focusable:not(:active) {
+    @apply focus-visible:bg-focus focus-visible:text-black focus-visible:border-black focus-visible:shadow-black
+    focus-visible:hover:bg-focus focus-visible:hover:text-black focus-visible:hover:border-black focus-visible:shadow-black
+    focus-visible:hover:outline-none;
+  }
+}

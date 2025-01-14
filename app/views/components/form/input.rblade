@@ -1,0 +1,16 @@
+<input {{ attributes.merge({
+  class: "
+    --:grow
+    --:px-2.5 --:py-2.5
+    --:max-w-full
+    --:border --:border-gray-400 --:rounded
+    --:ring-0 --:ring-offset-black
+    hover:--:border-black hover:--:ring-offset-1
+    focus:--:border-black focus:--:outline-none focus:--:ring-offset-1
+    focus:--:ring-2 focus:--:ring-focus
+    --:font-normal --:text-base sm:--:text-lg --:leading-none  sm:--:leading-none
+    [.error>&]:-:border-error [.error>&]:--:ring-offset-error
+    read-only:bg-grey-50/25 read-only:border-grey-100 read-only:text-grey-800
+    read-only:ring-0 read-only:ring-offset-0
+  "
+}) }} />

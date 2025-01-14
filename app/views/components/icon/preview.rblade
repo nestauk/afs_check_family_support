@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+        alt: "Preview",
+fill: 0
+) }}>slideshow</x-icon>

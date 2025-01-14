@@ -1,0 +1,16 @@
+@props(value: "")
+<textarea {{ attributes.merge({
+  class: "
+    --:w-prose
+    --:px-2.5 --:py-2.5
+    --:max-w-full
+    --:border --:border-gray-400 --:rounded
+    --:ring-0 --:ring-offset-black
+    hover:--:border-black hover:--:ring-offset-1
+    focus:--:border-black focus:--:outline-none focus:--:ring-offset-1
+    focus:--:ring-2 focus:--:ring-focus
+    --:font-normal --:text-base sm:--:text-lg --:leading-none  sm:--:leading-none
+    [.error>&]:-:border-error [.error>&]:--:ring-offset-error
+  ",
+  rows: 4
+}) }}>{{ value }}</textarea>
