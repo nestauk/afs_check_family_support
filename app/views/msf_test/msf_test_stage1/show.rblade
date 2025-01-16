@@ -1,0 +1,17 @@
+<x-layout::simple title="MSF Test">
+  Hi
+
+  {{ @form.data }}
+
+  <x-form method="POST">
+    <x-form.errors :except="[:email, :password]"/>
+
+    <x-form.label label="Email" for="email">
+      <x-form.text name="email" :value="@form.data[:email]" autocomplete="username" autofocus="true" required/>
+    </x-form.label>
+
+    <x-content.row>
+      <x-button class="ml-auto" type="submit" name="action" value="next">Sign in</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::simple>
