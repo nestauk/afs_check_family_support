@@ -13,7 +13,7 @@
 >
   {{-- Mobile header --}}
   <x-content.row as="header" class="lg:hidden justify-between">
-    <x-text.h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">APPLICATION_NAME</x-text.h1>
+    <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">APPLICATION_NAME</h1>
     <button
       x-ref="menuOpen"
       type="button"
@@ -65,7 +65,7 @@
       x-bind:style="{top: stickyOffset + 'px'}"
       x-ref="stickyContent"
     >
-      <x-text.h1 center class="py-8 text-blue-900 font-normal text-5xl -mb-2">APP</x-text.h1>
+      <h1 class="py-8 text-blue-900 font-normal text-5xl text-center -mb-2">APP</h1>
 
       <x-navigation.button :href="dashboard_path">
         <x-icon.home/>

@@ -5,7 +5,7 @@
     {{ slot }}
   </x-button>
   <div x-cloak x-show="confirm" class="flex flex-wrap gap-4 items-center">
-    <x-text.p class="text-red font-semibold mr-6 w-full md:w-max">Are you sure?</x-text.p>
+    <p class="text-red font-semibold mr-6 w-full md:w-max">Are you sure?</p>
     <x-button danger type="submit">
       Yes
     </x-button>

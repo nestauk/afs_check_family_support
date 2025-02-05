@@ -19,37 +19,37 @@ end
 classList << case true
   when light && secondary
     "
-      ---:bg-green-50 ---:text-green-950 ---:shadow-green-100
+      ---:bg-green-50 ---:text-green-950 visited:---:text-green-950 ---:shadow-green-100
       hover:---:bg-green-100 hover:---:shadow-green-200 hover:---:text-black
       active:---:bg-green-100 active:---:text-black
     "
   when secondary
     "
-      ---:bg-green-800 ---:text-white ---:shadow-green-900
+      ---:bg-green-800 ---:text-white visited:---:text-white ---:shadow-green-900
       hover:---:bg-green-900 hover:---:shadow-green-950
       active:---:bg-green-900
     "
   when danger && light
     "
-      ---:bg-red-50 ---:text-red-950 ---:shadow-red-100
+      ---:bg-red-50 ---:text-red-950 visited:---:text-red-950 ---:shadow-red-100
       hover:---:bg-red-100 hover:---:shadow-red-200 hover:---:text-black
       active:---:bg-red-100 active:---:text-black
     "
   when danger
     "
-      ---:bg-red-800 ---:text-white ---:shadow-red-950
+      ---:bg-red-800 ---:text-white visited:---:text-white ---:shadow-red-950
       hover:---:bg-red-900 hover:---:shadow-black
       active:---:bg-red-900
     "
   when primary && light
     "
-      ---:bg-blue-50 ---:text-blue-950 ---:shadow-blue-100
+      ---:bg-blue-50 ---:text-blue-950 visited:---:text-blue-950 ---:shadow-blue-100
       hover:---:bg-blue-100 hover:---:shadow-blue-200 hover:---:text-black
       active:---:bg-blue-100 active:---:text-black
     "
   when primary
     "
-      ---:bg-blue-700 ---:text-white ---:shadow-blue-950
+      ---:bg-blue-700 ---:text-white visited:---:text-white ---:shadow-blue-950
       hover:---:bg-blue-800 hover:---:shadow-black
       active:---:bg-blue-800
     "

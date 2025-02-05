@@ -1,0 +1,88 @@
+@layer base {
+  /* Paragraphs */
+
+  p {
+    @apply text-black/90 font-normal max-w-prose;
+    @apply text-lg sm:text-xl;
+  }
+
+  /*
+   * These size classes can be applied to any element, but are primarily use by
+   * <p> tags.
+   */
+
+  .\2xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .xs {
+    @apply text-sm sm:text-base;
+  }
+
+  .sm {
+    @apply text-base sm:text-lg;
+  }
+
+  .md {
+    @apply text-lg sm:text-xl;
+  }
+
+  .lg {
+    @apply text-xl sm:text-2xl;
+  }
+
+  .xl {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Headers */
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply text-black/90;
+    @apply text-xl sm:text-2xl font-bold;
+  }
+
+
+  /* The size classes for headings are a special case */
+  .\3xs:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-xs sm:text-sm font-medium;
+  }
+
+  .\2xs:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-sm sm:text-base font-medium;
+  }
+
+  .xs:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-base sm:text-lg font-medium;
+  }
+
+  .sm:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-lg sm:text-xl font-bold;
+  }
+
+  .md:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-xl sm:text-2xl font-bold;
+  }
+
+  .lg:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-2xl sm:text-3xl font-bold;
+  }
+
+  .xl:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-3xl sm:text-4xl font-extrabold;
+  }
+
+  .\2xl:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-4xl sm:text-5xl font-extrabold;
+  }
+
+  /* Links */
+
+  a {
+    @apply text-link underline
+      hover:text-link-hover hover:no-underline
+      active:text-link-active
+      visited:text-link-visited
+      focusable;
+  }
+}

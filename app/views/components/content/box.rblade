@@ -3,6 +3,8 @@
 classList = case true
   when sm
     "--:px-2 --:py-1.5 sm:--:px-2.5 sm:--:py-2"
+  when attributes.has?(:lg)
+    "--:px-6 --:py-5 sm:--:px-8 sm:--:py-6 -:border-2 -:border-b-4 -:rounded-md"
   else
     "--:px-5 --:py-4 sm:--:px-7 sm:--:py-6"
 end
@@ -12,7 +14,7 @@ end
     --:flex --:flex-col --:gap-3 sm:--:gap-4
     --:w-full --:max-w-full md:--:max-w-prose
     #{classList}
-    --:border --:border-b-2 --:border-blue-500 --:bg-blue-50/10 --:rounded
+    --:border --:border-b-2 --:border-blue --:bg-blue-50/10 --:rounded
   "
 }) }}>
   {{ slot }}

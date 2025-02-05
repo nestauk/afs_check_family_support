@@ -1,9 +1,9 @@
 <x-layout::simple title="Sign in">
-  <x-text.h2 xl>Sign in</x-text.h2>
+  <h2 class="xl">Sign in</h2>
 
-  <x-text.p>
+  <p>
     Please enter your details to access APPLICATION_NAME.
-  </x-text.p>
+  </p>
 
   <x-form method="POST">
     <x-form.errors :except="[:email, :password]"/>
@@ -17,9 +17,9 @@
     </x-form.label>
 
     <x-content.row>
-      <x-text.p>
-        <x-text.a :href="users_forgot_password_path" class="no-underline hover:underline">Forgot your password?</x-text.a>
-      </x-text.p>
+      <p>
+        <a href="{{ users_forgot_password_path }}" class="no-underline hover:underline">Forgot your password?</a>
+      </p>
       <x-button class="ml-auto" type="submit">Sign in</x-button>
     </x-content.row>
   </x-form>

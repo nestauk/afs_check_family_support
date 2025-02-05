@@ -1,11 +1,9 @@
-@props(label: false, horizontal: false)
+@props(label: false, horizontal: false, selected_value: nil)
 @if(slot)
 <label class="flex items-baseline gap-4 ml-4">
 @endif
-  <input type="hidden" {{ attributes.only('name') }} value="0">
   <input {{ attributes.merge({
-    type: "checkbox",
-    value: "1",
+    type: "radio",
     class: "
       --:w-5 --:h-5
       --:border --:border-gray-400
@@ -13,8 +11,10 @@
       hover:--:border-black hover:--:ring-1 hover:--:ring-black
       focus:--:border-black focus:--:outline-none
       focus:--:ring focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
-    "
-  }) }} />
+    ",
+  }) }}
+    @checked(selected_value && selected_value == attributes[:value])
+  />
 @if(slot)
   {{ slot }}
 </label>

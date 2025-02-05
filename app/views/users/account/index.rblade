@@ -1,34 +1,34 @@
 <x-layout::authenticated title="Account">
   @push('header')
-    <x-text.h2 xl class="my-auto mr-auto">Your account</x-text.h2>
+    <h2 class="xl my-auto mr-auto">Your account</h2>
   @endpush
 
   <x-content.col divide>
     <x-content.col>
-      <x-text.h3 xs>Name</x-text.h3>
-      <x-text.p>{{ Current.user.name }}</x-text.p>
-      <x-text.p sm class="mt-1">
-        <x-text.a :href="users_account_edit_name_path">Change name</x-text.a>
-      </x-text.p>
+      <h3 class="xs">Name</h3>
+      <p>{{ Current.user.name }}</p>
+      <p class="sm mt-1">
+        <a href="{{ users_account_edit_name_path }}">Change name</a>
+      </p>
     </x-content.col>
     <x-content.col>
-      <x-text.h3 xs>Email</x-text.h3>
-      <x-text.p>{{ Current.user.email }}</x-text.p>
-      <x-text.p sm class="mt-1">
-        <x-text.a :href="users_account_edit_email_path">Change email</x-text.a>
-      </x-text.p>
+      <h3 class="xs">Email</h3>
+      <p>{{ Current.user.email }}</p>
+      <p class="sm mt-1">
+        <a href="{{ users_account_edit_email_path }}">Change email</a>
+      </p>
     </x-content.col>
     <x-content.col>
-      <x-text.h3 xs>Password</x-text.h3>
-      <x-text.p sm class="mt-1"><x-text.a :href="users_account_edit_password_path">Change password</x-text.a></x-text.p>
+      <h3 class="xs">Password</h3>
+      <p class="sm mt-1"><a href="{{ users_account_edit_password_path }}">Change password</a></p>
     </x-content.col>
     <x-content.col>
-      <x-text.h3 xs>Two factor authentication</x-text.h3>
+      <h3 class="xs">Two factor authentication</h3>
       @if (Current.user.otp_secret)
-        <x-text.p>Enabled</x-text.p>
-        <x-text.p sm class="mt-1"><x-text.a :href="users_account_disable_2fa_path">Disable 2FA</x-text.a></x-text.p>
+        <p>Enabled</p>
+        <p class="sm mt-1"><a href="{{ users_account_disable_2fa_path }}">Disable 2FA</a></p>
       @else
-        <x-text.p sm class="mt-1"><x-text.a :href="users_account_enable_2fa_path">Enable 2FA</x-text.a></x-text.p>
+        <p class="sm mt-1"><a href="{{ users_account_enable_2fa_path }}">Enable 2FA</a></p>
       @end
     </x-content.col>
   </x-content.col>

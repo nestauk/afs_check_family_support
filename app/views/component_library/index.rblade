@@ -1,77 +1,77 @@
 <x-layout::simple title="Home">
-  <x-text.h1 xl>Component library</x-text.h1>
+  <h1 class="xl">Component library</h1>
 
-  <x-text.h2 lg class="mt-2" id="Typography">Typography</x-text.h2>
+  <h2 class="lg mt-2" id="Typography">Typography</h2>
 
-  <x-text.p>
+  <p>
     By default, text is limited to "prose" width, or 640 pixels. This
     corresponds to approximately 75 characters, which is considered optimal
     for reading.
-  </x-text.p>
+  </p>
 
   <x-.code>
     @verbatim
-      <x-text.a href="#">links</x-text.a>
+      <a href="#">links</a>
     @endverbatim
   </x-.code>
 
-  <x-text.p>
-    Additionally, the default font size is large (18px) and <x-text.a href="#">links</x-text.a>
+  <p>
+    Additionally, the default font size is large (18px) and <a href="#">links</a>
     are styled clearly and familiarly. Font sizes are automatically adjusted
     down one step on mobile screens.
-  </x-text.p>
+  </p>
 
   <x-.code>
     @verbatim
-    <x-text.p xs center>
+    <p class="xs text-center">
       xs paragraph (14px)
-    </x-text.p>
+    </p>
     @endverbatim
   </x-.code>
 
   <x-content.row>
-    <x-text.p xs center>xs paragraph (14px)</x-text.p>
-    <x-text.p sm center>sm paragraph (16px)</x-text.p>
-    <x-text.p md center>md paragraph (18px)</x-text.p>
-    <x-text.p lg center>lg paragraph (20px)</x-text.p>
-    <x-text.p xl center>xl paragraph (24px)</x-text.p>
+    <p class="xs text-center">xs paragraph (14px)</p>
+    <p class="sm text-center">sm paragraph (16px)</p>
+    <p class="md text-center">md paragraph (18px)</p>
+    <p class="lg text-center">lg paragraph (20px)</p>
+    <p class="xl text-center">xl paragraph (24px)</p>
   </x-content.row>
 
-  <x-text.h2 lg id="Headings">Headings</x-text.h2>
+  <h2 class="lg" id="Headings">Headings</h2>
 
-  <x-text.p>
-    The &lt;x-text.h1&gt; through &lt;x-text.h6&gt; tags are used to create headings. Note that the number in the
+  <p>
+    The &lt;h1&gt; through &lt;h6&gt; tags are used to create headings. Note that the number in the
     tag refers to the semantic level of the heading, and not the size. To adjust the size, add
-    custom classes, or use the xs, sm, md, lg, xl binary attributes.
-  </x-text.p>
+    custom classes, or use the xs, sm, md, lg, xl classes.
+  </p>
 
   <x-.code>
     @verbatim
-    <x-text.h1 xl>...</x-text.h1>
-    <x-text.h2 lg>...</x-text.h2>
-    <x-text.h3 md>...</x-text.h3>
-    <x-text.h4 sm>...</x-text.h4>
-    <x-text.h5 xs>...</x-text.h5>
+    <h1 class="xl">...</h1>
+    <h2 class="lg">...</h2>
+    <h3 class="md">...</h3>
+    <h4 class="sm">...</h4>
+    <h5 class="xs">...</h5>
     @endverbatim
   </x-.code>
 
   <x-content.row>
-    <x-text.h3 xs center>xs heading (18px)</x-text.h3>
-    <x-text.h3 sm center>sm heading (20px)</x-text.h3>
-    <x-text.h3 md center>md heading (24px)</x-text.h3>
-    <x-text.h3 lg center>lg heading (30px)</x-text.h3>
-    <x-text.h3 xl center>xl heading (36px)</x-text.h3>
+    <h3 class="xs text-center">xs heading (18px)</h3>
+    <h3 class="sm text-center">sm heading (20px)</h3>
+    <h3 class="md text-center">md heading (24px)</h3>
+    <h3 class="lg text-center">lg heading (30px)</h3>
+    <h3 class="xl text-center">xl heading (36px)</h3>
   </x-content.row>
 
-  <x-text.h2 lg class="mt-2" id="buttons">Colours</x-text.h2>
+  <h2 class="lg mt-2" id="buttons">Colours</h2>
 
-  <x-text.p>
+  <p>
     The below table shows the 11 colours of the Nesta palette and their shades.
     The highlighted numbers match the number in the Nesta palette, e.g.
     "blue-700" is "Nesta Blue/100". The text in black and white represent when
     the contrast meets the contrast requirement (AA and AAA) for black and white
     correspondingly.
-  </x-text.p>
+  </p>
 
   <table>
     <thead>
@@ -128,7 +128,7 @@
     </tbody>
   </table>
 
-  <x-text.h2 lg class="mt-2" id="buttons">Buttons</x-text.h2>
+  <h2 class="lg mt-2" id="buttons">Buttons</h2>
 
   <x-.code>
     @verbatim
@@ -206,7 +206,7 @@
     <x-button.back sm as="button">Back sm</x-button.back>
   </x-content.row>
 
-  <x-text.p class="mt-2">Buttons can also be made as links:</x-text.p>
+  <p class="mt-2">Buttons can also be made as links:</p>
 
   <x-.code class="mt-1">
     @verbatim
@@ -221,7 +221,7 @@
     <x-button as="a" href="https://nesta.org.uk" target="_blank">Nesta</x-button>
   </x-content.row>
 
-  <x-text.h2 lg class="mt-2" id="Containers">Containers</x-text.h2>
+  <h2 class="lg mt-2" id="Containers">Containers</h2>
 
   <x-.code>
     @verbatim
@@ -240,8 +240,8 @@
   </x-.code>
 
   <x-content.box>
-    <x-text.h3 sm>Box</x-text.h3>
-    <x-text.p>This is a box content</x-text.p>
+    <h3 class="sm">Box</h3>
+    <p>This is a box content</p>
 
     <x-content.row class="justify-end">
       <x-button class="w-fit" type="submit">
@@ -262,8 +262,8 @@
   </x-.code>
 
   <x-content.box class="border-green-600 bg-green-50">
-    <x-text.h3 sm class="text-green-900">Success</x-text.h3>
-    <x-text.p>You succeeded in doing something!</x-text.p>
+    <h3 class="sm text-green-900">Success</h3>
+    <p>You succeeded in doing something!</p>
   </x-content.box>
 
   <x-.code>
@@ -286,7 +286,7 @@
   <x-content.alert type="info">This is info!</x-content.alert>
   <x-content.alert type="success">This is a success!</x-content.alert>
 
-  <x-text.h2 lg class="mt-2" id="forms">Forms</x-text.h2>
+  <h2 class="lg mt-2" id="forms">Forms</h2>
 
   <x-content.col>
     <x-.code>
@@ -365,7 +365,7 @@
 
   <x-content.box class="w-max">
     <x-form>
-      <x-text.h3 md class="mb-0">Login</x-text.h3>
+      <h3 class="md mb-0">Login</h3>
 
       <x-form.label horizontal width="w-32" label="Email">
         <x-form.text name="email" placeholder="email@example.com"/>
@@ -387,9 +387,9 @@
     </x-form>
   </x-content.box>
 
-  <x-text.h2 lg class="mt-2" id="Content">Content</x-text.h2>
+  <h2 class="lg mt-2" id="Content">Content</h2>
 
-  <x-text.h3 xs class="-mb-4">Pills</x-text.h3>
+  <h3 class="xs -mb-4">Pills</h3>
   <x-.code>
     @verbatim
     <x-content.pill green>
@@ -402,7 +402,7 @@
     <x-content.pill blue>Blue pill</x-content.pill>
   </x-content.row>
 
-  <x-text.h3 xs class="-mb-4">Copyable content</x-text.h3>
+  <h3 class="xs -mb-4">Copyable content</h3>
   <x-.code>
     @verbatim
       <x-content.copyable>https://a.really.long/url/to.copy</x-content.copyable>
@@ -410,7 +410,7 @@
   </x-.code>
   <x-content.copyable class="max-w-prose">https://a.really.long/url/to.copy</x-content.copyable>
 
-  <x-text.h3 xs class="-mb-4">Tooltips</x-text.h3>
+  <h3 class="xs -mb-4">Tooltips</h3>
   <x-.code>
     @verbatim
       <x-content.tooltip
@@ -423,13 +423,13 @@
     <x-icon.info/>
   </x-content.tooltip>
 
-  <x-text.h2 lg class="mt-2">Icons</x-text.h2>
+  <h2 class="lg mt-2">Icons</h2>
 
-  <x-text.p>
-    The icons are built upon <x-text.a href="https://fonts.google.com/icons?icon.style=Sharp" target="_blank">Material Symbols Sharp</x-text.a>,
+  <p>
+    The icons are built upon <a href="https://fonts.google.com/icons?icon.style=Sharp" target="_blank">Material Symbols Sharp</a>,
     making it simple to add new icons, vary what they look like and change their
     colour. By default, icons will match the current text size and colour.
-  </x-text.p>
+  </p>
 
   <x-.code>
     @verbatim

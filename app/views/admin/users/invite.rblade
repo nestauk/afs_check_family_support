@@ -2,18 +2,18 @@
   @push('header')
     <x-button.back :href="admin_users_path">Manage users</x-button.back>
   @endpush
-  <x-text.h2 xl>Invite someone to APPLICATION_NAME</x-text.h2>
-  <x-text.p>
+  <h2 class="xl">Invite someone to APPLICATION_NAME</h2>
+  <p>
     Please enter one or more email addresses below to send invitations to join
     APPLICATION_NAME. Users will be sent an email with instructions on how to activate
     their account.
-  </x-text.p>
+  </p>
 
   <x-form method="POST">
     <x-form.errors :except="[:emails]"/>
 
     <x-content.col :x-data='"{emails: #{params[:emails]&.count ? 0 : 1}}"' class="mt-4">
-      <x-text.h3 xs>Emails</x-text.h3>
+      <h3 class="xs">Emails</h3>
       @eachWithIndex (email, i in (params[:emails] || []))
         <x-form.label label="Email" for="email" :visible=false :error="Current.errors.dig :emails, i">
           <x-form.text

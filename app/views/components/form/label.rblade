@@ -1,4 +1,4 @@
-@props(label: required, horizontal: false, width: "-:w-24", visible: true, error: nil)
+@props(label: required, horizontal: false, width: "-:w-24", visible: true, error: nil, optional: false)
 @ruby
 error ||= errors[attributes[:for]&.to_sym]
 labelClass = case true
@@ -23,16 +23,19 @@ end
     #{labelClass}
   "
 }) }}>
-  <span class="-:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }} {{ visible ? "" : "sr-only" }}">
+  <p class="font-semibold -:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }} {{ visible ? "" : "sr-only" }}">
     {{ label }}
-  </span>
+    @if(optional)
+      <span class="font-normal text-grey">(optional)</span>
+    @endIf
+  </p>
   {{ slot }}
   @if (error.present?)
     <div class="col-start-2">
       @each(message in Array.wrap(error))
-      <x-text.p sm class="text-error font-medium">
+      <p class="sm text-error font-medium">
         {{ message }}
-      </x-text.p>
+      </p>
       @end
     </div>
   @endif

@@ -2,11 +2,11 @@
   @push('header')
     <x-button.back :href="users_account_path">Your account</x-button.back>
   @endpush
-  <x-text.h2 xl>Disable two factor authentication</x-text.h2>
+  <h2 class="xl">Disable two factor authentication</h2>
 
-  <x-text.p class="font-medium">
+  <p class="font-medium">
     You are removing two factor authentication from your account. Please enter your password to confirm this change.
-  </x-text.p>
+  </p>
 
   <x-form method="PATCH">
     <x-form.errors :except="[:password_challenge]"/>

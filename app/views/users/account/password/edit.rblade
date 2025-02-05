@@ -2,12 +2,12 @@
   @push('header')
     <x-button.back :href="users_account_path">Your account</x-button.back>
   @endpush
-  <x-text.h2 xl>Change password</x-text.h2>
+  <h2 class="xl">Change password</h2>
 
-  <x-text.p>
+  <p>
     Please enter a new password for your account. Your password needs to be <span class="font-medium">at
     least 10 characters long</span>.
-  </x-text.p>
+  </p>
 
   <x-form method="PATCH">
     <x-form.errors :except="[:password, :password_challenge]"/>

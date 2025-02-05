@@ -1,13 +1,13 @@
 <x-layout::simple title="Activate your account">
-  <x-text.h2 xl class="mr-auto">Activate your account</x-text.h2>
+  <h2 class="xl mr-auto">Activate your account</h2>
 
-  <x-text.p>
+  <p>
     Welcome to APPLICATION_NAME!
-  </x-text.p>
+  </p>
 
-  <x-text.p>
+  <p>
     Please enter your details below to finish activating your account.
-  </x-text.p>
+  </p>
 
   <x-form method="POST">
     <x-form.errors :except="[:first_name, :last_name, :password]"/>

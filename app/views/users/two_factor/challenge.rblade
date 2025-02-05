@@ -1,9 +1,9 @@
 <x-layout::simple title="Two factor">
-  <x-text.h2 xl>Two factor</x-text.h2>
+  <h2 class="xl">Two factor</h2>
 
-  <x-text.p>
+  <p>
     Please enter the verification code from your authenticator app.
-  </x-text.p>
+  </p>
 
   <x-form method="POST">
     <x-form.errors :except="[:totp]"/>

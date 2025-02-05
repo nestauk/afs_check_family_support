@@ -2,15 +2,15 @@
   @push('header')
     <x-button.back :href="users_account_path">Your account</x-button.back>
   @endpush
-  <x-text.h2 xl>Confirm your new email address</x-text.h2>
+  <h2 class="xl">Confirm your new email address</h2>
 
-  <x-text.p class="font-medium">
+  <p class="font-medium">
     You are changing your account email address to <span class="font-semibold">{{ @new_email }}</span>.
-  </x-text.p>
+  </p>
 
-  <x-text.p>
+  <p>
     Please enter your password to confirm this change.
-  </x-text.p>
+  </p>
 
   <x-form method="PATCH">
     <x-form.errors :except="[:password_challenge]"/>

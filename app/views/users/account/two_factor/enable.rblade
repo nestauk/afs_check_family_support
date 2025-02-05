@@ -2,26 +2,26 @@
   @push('header')
     <x-button.back :href="users_account_path">Your account</x-button.back>
   @endpush
-  <x-text.h2 xl>Enable two factor authentication</x-text.h2>
+  <h2 class="xl">Enable two factor authentication</h2>
 
-  <x-text.h3 md>Step 1: Get an Authenticator App</x-text.h3>
-  <x-text.p>
+  <h3 class="md">Step 1: Get an Authenticator App</h3>
+  <p>
     First, you'll need a 2FA authenticator app on your phone.
     <span class="font-medium">If you already have one, skip to step 2.</span>
-  </x-text.p>
-  <x-text.p>
+  </p>
+  <p>
     <span class="font-medium">If you don't have one, or you aren't sure, we
     recommend &quot;Microsoft Authenticator&quot;</span>. You can download it
     free on the Apple App Store for iPhone, or Google Play Store for Android.
     Please grab your phone, search the store, and install it now.
-  </x-text.p>
+  </p>
 
-  <x-text.h3 md>Step 2: Scan + Enter the Code</x-text.h3>
-  <x-text.p>
+  <h3 class="md">Step 2: Scan + Enter the Code</h3>
+  <p>
     Next, open the authenticator app, tap &quot;Scan QR code&quot; or
     &quot;+&quot;, and, when it asks, point your phone's camera at the QR code
     below.
-  </x-text.p>
+  </p>
 
   <figure>
     <img src="{{ @qr_code.as_png(resize_exactly_to: 200).to_data_url }}" alt="{{ @otp_secret }}">
@@ -29,16 +29,16 @@
   </figure>
 
   <div x-data="{showOtp: false}">
-    <x-text.p sm x-show="!showOtp">
-      Not working? <x-text.a href="#" x-on:click.prevent="showOtp = true">Click here</x-text.a> to reveal the OTP secret.
-    </x-text.p>
-    <x-text.h4 2xs x-cloak x-show="showOtp">OTP Secret</x-text.h4>
+    <p class="sm" x-show="!showOtp">
+      Not working? <a href="#" x-on:click.prevent="showOtp = true">Click here</a> to reveal the OTP secret.
+    </p>
+    <h4 class="2xs" x-cloak x-show="showOtp">OTP Secret</h4>
     <x-content.copyable x-cloak x-show="showOtp">{{ @otp_secret }}</x-content.copyable>
   </div>
 
-  <x-text.p>
+  <p>
     After scanning with your camera, the app will generate a six-digit code. Enter it here:
-  </x-text.p>
+  </p>
 
   <x-form method="PATCH">
     <x-form.errors :except="[:totp]"/>

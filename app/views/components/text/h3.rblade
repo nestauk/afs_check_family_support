@@ -1,3 +1,0 @@
-<x-text._h level="3" {{ attributes }}>
-  {{ slot }}
-</x-text._h>

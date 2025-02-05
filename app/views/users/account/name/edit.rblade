@@ -2,11 +2,11 @@
   @push('header')
     <x-button.back :href="users_account_path">Your account</x-button.back>
   @endpush
-  <x-text.h2 xl>Change name</x-text.h2>
+  <h2 class="xl">Change name</h2>
 
-  <x-text.p>
+  <p>
     Please enter your name below.
-  </x-text.p>
+  </p>
 
   <x-form method="PATCH">
     <x-form.errors :except="[:first_name, :last_name]"/>

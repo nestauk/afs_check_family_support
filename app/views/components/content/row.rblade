@@ -3,6 +3,7 @@
   class: "
     -:w-full
     -:flex -:gap-2 sm:-:gap-4 -:items-center
+    -:no-underline
     #{wrap ? "flex-wrap" : "flex-wrap sm:flex-nowrap"}
 ") }}>
   {{ slot }}

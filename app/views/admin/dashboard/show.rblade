@@ -1,9 +1,9 @@
 <x-layout::authenticated title="Admin dashboard">
   @push('header')
-    <x-text.h2 xl class="mt-auto mr-auto">Admin dashboard</x-text.h2>
+    <h2 class="xl mt-auto mr-auto">Admin dashboard</h2>
   @endPush
 
-  <x-text.p>This is where the magic happens.</x-text.p>
+  <p>This is where the magic happens.</p>
 
   <x-content.pill blue><x-icon.person/>{{ pluralize(User.count, "user") }}</x-content.pill>
 

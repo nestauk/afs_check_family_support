@@ -1,9 +1,0 @@
-<a {{ attributes.merge({
-  class: "
-    -:text-link -:underline
-    hover:-:text-link-hover hover:-:no-underline
-    active:-:text-link-active
-    visited:-:test-link-visited
-    focusable
-",
-}) }}>{{ slot }}</a>
