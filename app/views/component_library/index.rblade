@@ -379,10 +379,10 @@
         <x-form.select name="select" required :options='{"n/a": "", Label: "value"}' value=""/>
       </x-form.label>
 
-      <x-form.checkbox
-        label="Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you."
-        name="accept"
-      />
+      <x-form.checkbox name="accept">
+        Accept this really long and potentially quite confusing paragraph where you have no idea if you are opting in or opting out of something you don't want, but that's how they get you.
+      </x-form.checkbox>
+
       <x-button type="Submit" class="mx-auto">Submit</x-button>
     </x-form>
   </x-content.box>
