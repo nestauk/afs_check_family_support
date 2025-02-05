@@ -1,13 +1,13 @@
 @props(as: "div")
 @ruby
 classes = if attributes.has?("divide")
-  "w-prose border border-x-0 border-grey-50 divide-y divide-grey-50 gap-0 [&>*]:-:gap-1 [&>*]:-:px-2 [&>*]:-:py-4"
+  "-:w-prose -:border -:border-x-0 -:border-grey-50 -:divide-y -:divide-grey-50 -:gap-0 sm:-:gap-0 [&>*]:-:gap-1 [&>*]:-:px-2 [&>*]:-:py-4"
 else
   ""
 end
 @endRuby
 <{{ as }} {{ attributes.merge({
-  class: "-:max-w-full -:w-full -:flex -:flex-col -:gap-2 sm:-:gap-4 #{classes}"
+  class: "-:max-w-full --:w-full -:flex -:flex-col --:gap-2 sm:--:gap-4 #{classes}"
 }) }}>
   {{ slot }}
 </{{ as }}>

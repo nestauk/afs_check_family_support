@@ -1,0 +1,11 @@
+<x-layout::simple title="MSF Test">
+  Hi
+
+  {{ @form.data }}
+
+  <x-form method="POST">
+    <x-content.row>
+      <x-button class="ml-auto" type="submit" name="action" value="back">Sign in</x-button>
+    </x-content.row>
+  </x-form>
+</x-layout::simple>

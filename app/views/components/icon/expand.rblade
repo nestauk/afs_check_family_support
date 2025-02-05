@@ -1,0 +1,6 @@
+<x-icon {{ attributes.merge(
+  alt: "expand",
+  fill: 1,
+  weight: 700,
+  grade: 200
+) }}>keyboard_arrow_down</x-icon>
