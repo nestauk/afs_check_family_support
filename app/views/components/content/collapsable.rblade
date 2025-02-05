@@ -1,0 +1,11 @@
+@props(title: required, collapsed: true)
+<div x-data="{collapsed: <%= collapsed %>}" {{ attributes }}>
+  <x-button.flat link class="group no-underline w-full" @click="collapsed = !collapsed">
+    <x-text.p class="font-medium mr-auto group-hover:underline">{{ title }}</x-text.p>
+    <x-icon.expand x-show="collapsed"/>
+    <x-icon.collapse x-cloak x-show="!collapsed"/>
+  </x-button.flat>
+  <div x-cloak x-show="!collapsed" x-collapse>
+    <x-content.col class="px-4 py-4">{{ slot }}</x-content.col>
+  </div>
+</div>

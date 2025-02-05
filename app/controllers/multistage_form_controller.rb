@@ -8,12 +8,6 @@ class MultistageFormController < ApplicationController
 
   attr_accessor :data
 
-  def initialize(initial_stage)
-    super()
-
-    add_stage(initial_stage)
-  end
-
   def form_url
     raise StandardError.new "form_url not implemented"
   end
@@ -42,7 +36,7 @@ class MultistageFormController < ApplicationController
 
   def load_session
     @data = if session.has_key?(session_key)
-      session[session_key].symbolize_keys
+      session[session_key].deep_symbolize_keys
     else
       {
         STAGE_KEY => @stages.first.name
@@ -70,10 +64,6 @@ class MultistageFormController < ApplicationController
     show
   end
 
-  def default_render2
-    nil
-  end
-
   def start
     clear_session
 
@@ -96,9 +86,5 @@ class MultistageFormController < ApplicationController
     end
 
     raise StandardError.new "Unhandled action: #{stage.class.name}.#{action}"
-  end
-
-  def submit
-    raise StandardError.new "Unhandled action: #{self.class.name}.submit"
   end
 end
