@@ -21,7 +21,7 @@ module MultistageFormHelpers
   end
 
   def set_form_data(**data)
-    if data[:_stage] && data[:_stage].is_a?(MultistageFormStage)
+    if data[:_stage]&.is_a?(MultistageFormStage)
       data[:_stage] = data[:_stage].name
     end
 

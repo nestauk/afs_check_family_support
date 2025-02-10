@@ -19,11 +19,11 @@ class MultistageFormStage < ::ApplicationController
   end
 
   def self.valid?(form)
-    self.new(form).valid?
+    new(form).valid?
   end
 
   def self.invalid?(form)
-    !self.new(form).valid?
+    !new(form).valid?
   end
 
   def show
@@ -41,6 +41,6 @@ class MultistageFormStage < ::ApplicationController
       return render default_template
     end
 
-    return super
+    super
   end
 end
