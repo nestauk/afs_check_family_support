@@ -1,7 +1,7 @@
 module Users
   module Account
     class TwoFactorController < ::ApplicationController
-      before_action :authenticated
+      before_action :require_authenticated
       before_action :ensure_disabled, only: [:disable, :deactivate]
       before_action :ensure_enabled, only: [:enable, :activate]
       before_action :setup_totp, only: [:enable, :activate]

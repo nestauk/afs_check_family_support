@@ -1,6 +1,6 @@
 module Users
   class AccountController < ::ApplicationController
-    before_action :authenticated
+    before_action :require_authenticated
 
     def index
     end

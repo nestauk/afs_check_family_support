@@ -1,7 +1,7 @@
 module Users
   module Account
     class ActivationController < ::ApplicationController
-      before_action :unauthenticated
+      before_action :require_unauthenticated
       before_action :verify_activation_token
 
       def new

@@ -1,7 +1,7 @@
 module Users
   module Account
     class NameController < ::ApplicationController
-      before_action :authenticated
+      before_action :require_authenticated
 
       def edit
       end

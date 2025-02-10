@@ -1,14 +1,5 @@
 module Admin
   class AdminController < ::ApplicationController
-    before_action :authenticated
-    before_action :authenticate_admin
-
-    private
-
-    def authenticate_admin
-      unless Current.user.is_admin?
-        abort_not_found
-      end
-    end
+    before_action :require_admin
   end
 end

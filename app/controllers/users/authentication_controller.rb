@@ -1,6 +1,6 @@
 module Users
   class AuthenticationController < ::ApplicationController
-    before_action :unauthenticated, except: [:sign_out]
+    before_action :require_unauthenticated, except: [:sign_out]
     rate_limit name: "auth ip limit 1", to: 50, within: 5.minutes, by: -> { "#{request.remote_ip}_1" }, with: -> { auth_rate_limit }, only: :authenticate
     rate_limit name: "auth ip limit 2", to: 100, within: 20.minutes, by: -> { "#{request.remote_ip}_2" }, with: -> { auth_rate_limit }, only: :authenticate
     rate_limit name: "auth email limit 1", to: 5, within: 5.minutes, by: -> { "#{params[:email]}_1" }, with: -> { auth_rate_limit }, only: :authenticate

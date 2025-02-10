@@ -1,7 +1,7 @@
 module Users
   module Account
     class EmailController < ::ApplicationController
-      before_action :authenticated
+      before_action :require_authenticated
       before_action :verify_change_email_token, only: [:confirm, :update]
 
       def edit

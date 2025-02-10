@@ -1,7 +1,6 @@
 module Users
   class PasswordResetController < ::ApplicationController
-    # before_action :require_lock, only: :send_password_reset
-    before_action :unauthenticated
+    before_action :require_unauthenticated
     before_action :set_user, only: [:set_password, :update_password]
 
     rate_limit name: "password reset ip limit 1", to: 10, within: 5.minutes, by: -> { "#{request.remote_ip}_1" }, with: -> { send_password_reset_rate_limit }, only: :send_password_reset
