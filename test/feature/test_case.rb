@@ -1,4 +1,5 @@
 require "test_helper"
+require "minitest/mock"
 
 DatabaseCleaner.clean_with :truncation
 DatabaseCleaner.strategy = :transaction
@@ -58,7 +59,7 @@ module Feature
     end
 
     def assert_see(text)
-      document = ActionView::Base.full_sanitizer.sanitize(document_root_element.to_s).gsub(/\s{2,}/, "\n").strip
+      document = ActionView::Base.full_sanitizer.sanitize(@response.body.gsub(/^.*<body>(.*)<\/body>.*$/mi, "\\1")).gsub(/\s{2,}/, "\n").strip
       match = document.match(text)
       assert document.match(text), "Expected to see \"#{text}\" in:\n#{document}"
 
@@ -66,19 +67,19 @@ module Feature
     end
 
     def assert_dont_see(text)
-      document = ActionView::Base.full_sanitizer.sanitize(document_root_element.to_s).gsub(/\s{2,}/, "\n").strip
+      document = ActionView::Base.full_sanitizer.sanitize(@response.body.gsub(/^.*<body>(.*)<\/body>.*$/mi, "\\1")).gsub(/\s{2,}/, "\n").strip
       assert !document.match(text), "Expected not to see \"#{text}\" in:\n#{document}"
     end
 
     def assert_see_html(html)
-      match = document_root_element.to_s.match(html)
-      assert document_root_element.to_s.match(html), "Expected to see \"#{html}\" in:\n#{document_root_element}"
+      match = @response.body.match(html)
+      assert @response.body.match(html), "Expected to see \"#{html}\" in:\n#{document_root_element}"
 
       match
     end
 
     def assert_dont_see_html(html)
-      assert !document_root_element.to_s.match(html), "Expected not to see \"#{html}\" in:\n#{document_root_element}"
+      assert !@response.body.match(html), "Expected not to see \"#{html}\" in:\n#{document_root_element}"
     end
 
     def assert_not_found path, method = :get
@@ -97,6 +98,16 @@ module Feature
       process method, path
 
       assert_redirected_to dashboard_path
+    end
+
+    def session
+      get "/testing/get_session"
+
+      JSON.parse(@response.body).deep_symbolize_keys
+    end
+
+    def set_session(**data)
+      post "/testing/set_session", params: data, as: :json
     end
   end
 end
