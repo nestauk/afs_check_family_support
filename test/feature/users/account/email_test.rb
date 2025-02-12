@@ -125,7 +125,7 @@ module Users
           params: {password_challenge: "wrong password"}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge is invalid"
+        assert_see "Password is invalid"
 
         user.reload
         assert_equal "user@example.com", user.email
@@ -141,7 +141,7 @@ module Users
           params: {}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge can't be blank"
+        assert_see "Password can't be blank"
 
         user.reload
         assert_equal "user@example.com", user.email

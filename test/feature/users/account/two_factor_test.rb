@@ -95,7 +95,7 @@ module Users
         patch users_account_disable_2fa_path, params: {password_challenge: "wrong password"}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge is invalid"
+        assert_see "Password is invalid"
 
         user.reload
         assert OTP_SECRET, user.otp_secret
@@ -111,7 +111,7 @@ module Users
         patch users_account_disable_2fa_path, params: {}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge can't be blank"
+        assert_see "Password can't be blank"
 
         user.reload
         assert OTP_SECRET, user.otp_secret

@@ -94,7 +94,7 @@ module Users
       patch password_reset_path(user), params: {}
 
       assert_response :unprocessable_entity
-      assert_see "Password can't be blank"
+      assert_see "Password is too short"
 
       # Ensure password is unchanged
       user.reload

@@ -7,7 +7,7 @@ class MultistageFormStage < ::ApplicationController
     @form = multistage_form
   end
 
-  def self.validates(name, *)
+  def self.validates(name, **args)
     # Create an attribute accessor method for any fields that we want to validate
     unless method_defined? name
       define_method name do
@@ -15,7 +15,16 @@ class MultistageFormStage < ::ApplicationController
       end
     end
 
+    # Allow setting a custom human-readable name
+    if args.has_key?(:display)
+      @attribute_names[name] = args.delete :display
+    end
+
     super
+  end
+
+  def self.human_attribute_name(attribute_name, base)
+    @attribute_names&.[](attribute_name.to_sym) || super
   end
 
   def self.valid?(form)

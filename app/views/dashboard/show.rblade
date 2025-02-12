@@ -1,0 +1,3 @@
+<x-layout::simple title="Dashboard">
+  <h2 class="2xl">Hello, world!</h2>
+</x-layout::simple>

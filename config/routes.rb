@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "component_library#index", as: :dashboard
+  root "dashboard#show", as: :dashboard
 
   unless Rails.env.production?
-    get "/component-library", to: "component_library#index"
+    get "/component-library", to: "component_library#show"
   end
 
   if Rails.env.test?

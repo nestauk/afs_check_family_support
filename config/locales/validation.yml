@@ -1,0 +1,40 @@
+en:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      model_invalid: "Validation failed: %{errors}"
+      inclusion: "%{attribute} is not included in the list"
+      exclusion: "%{attribute} is reserved"
+      invalid: "%{attribute} is invalid"
+      confirmation: "Value doesn't match %{attribute}"
+      accepted: "%{attribute} must be accepted"
+      empty: "%{attribute} can't be empty"
+      blank: "%{attribute} can't be blank"
+      present: "%{attribute} must be blank"
+      too_long:
+        one: "%{attribute} is too long (maximum is 1 character)"
+        other: "%{attribute} is too long (maximum is %{count} characters)"
+      password_too_long: "That password is too long"
+      too_short:
+        one: "%{attribute} is too short (minimum is 1 character)"
+        other: "%{attribute} is too short (minimum is %{count} characters)"
+      wrong_length:
+        one: "Please enter 1 character"
+        other: "Please enter %{count} characters"
+      not_a_number: "Please enter a number"
+      not_an_integer: "Please enter a whole number"
+      greater_than: "Please enter a number greater than %{count}"
+      greater_than_or_equal_to: "Please enter a number greater than or equal to %{count}"
+      equal_to: "%{attribute} must be equal to %{count}"
+      less_than: "Please enter a number less than %{count}"
+      less_than_or_equal_to: "Please enter a number less than or equal to %{count}"
+      other_than: "Please enter a number other than %{count}"
+      in: "%{attribute} must be in %{count}"
+      odd: "%{attribute} must be odd"
+      even: "%{attribute} must be even"
+      not_pwned: "%{attribute} might easily be guessed"
+      pwned_error: "%{attribute} might easily be guessed"

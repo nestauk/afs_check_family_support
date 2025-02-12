@@ -14,4 +14,18 @@ class ApplicationRecord < ActiveRecord::Base
     Current.errors ||= {}
     Current.errors = Current.errors.merge!(errors.to_hash(true))
   end
+
+  def self.validates(*attributes, **args)
+    # Allow setting a custom human-readable name for validations
+    if args.has_key?(:display)
+      @@attribute_names ||= {}
+      @@attribute_names[attributes.first] = args.delete :display
+    end
+
+    super
+  end
+
+  def self.human_attribute_name(attribute_name, base)
+    @@attribute_names&.[](attribute_name.to_sym) || super
+  end
 end

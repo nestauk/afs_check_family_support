@@ -45,7 +45,7 @@ module Users
         patch users_account_edit_password_path, params: {password_challenge: "wrong password", password: "password"}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge is invalid"
+        assert_see "Password is invalid"
         assert_see "Password is too short \\(minimum is 10 characters\\)"
         assert_see "Password might easily be guessed"
 
@@ -62,7 +62,7 @@ module Users
         patch users_account_edit_password_path, params: {password: "password"}
 
         assert_response :unprocessable_entity
-        assert_see "Password challenge can't be blank"
+        assert_see "Password can't be blank"
         assert_see "Password is too short \\(minimum is 10 characters\\)"
         assert_see "Password might easily be guessed"
 
