@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :password, allow_blank: false, length: {minimum: 10}, not_pwned: true, on: [:create, :update_password, :password_reset]
-  validates :password_challenge,display: "Password",  presence: true, on: [:update_password, :change_email, :disable_2fa]
+  validates :password_challenge, display: "Password", presence: true, on: [:update_password, :change_email, :disable_2fa]
 
   def salutation
     if first_name.present?
