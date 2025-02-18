@@ -17,6 +17,7 @@ services:
 
   pgsql:
     image: postgres:17
+    entrypoint: ["/bin/bash", "-c", "if [ $HOST_UID -gt 999 ] && [ $HOST_GID -gt 999 ]; then groupmod -g $HOST_GID postgres && usermod -g $HOST_GID -u $HOST_UID postgres; fi && /usr/local/bin/docker-entrypoint.sh postgres"]
     restart: unless-stopped
     ports:
       - 5433:5432

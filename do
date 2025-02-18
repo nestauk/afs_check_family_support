@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Exit on failure
 set -e
@@ -20,6 +20,9 @@ if [ -z "$RUN_DOCKER_SERVICE" ]
   then
     RUN_DOCKER_SERVICE="rails"
 fi
+
+export HOST_UID=$(id -u)
+export HOST_GID=$(id -g)
 
 if [ $# -eq 0 ] || [ $1 = "help" ]
   then
