@@ -1,6 +1,6 @@
 @props(method: "POST")
 <form {{ attributes.merge({
-  class: "-:max-w-full -:flex -:flex-col -:gap-inherit",
+  class: "-:w-full -:max-w-full -:flex -:flex-col -:gap-inherit",
   method: "POST",
 }) }}>
   @method(method)

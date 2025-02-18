@@ -1,7 +1,7 @@
 @props(options: {}, value: nil)
 <select {{ attributes.merge({
   class: "
-    --:w-prose
+    --:w-form --:max-w-full
     --:px-2.5 --:py-2.5
     --:max-w-full
     --:bg-white

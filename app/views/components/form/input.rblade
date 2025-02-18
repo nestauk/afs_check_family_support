@@ -2,7 +2,7 @@
   class: "
     --:grow
     --:px-2.5 --:py-2.5
-    --:max-w-full
+    --:w-form --:max-w-full
     --:border --:border-gray-400 --:rounded
     --:ring-0 --:ring-offset-black
     hover:--:border-black hover:--:ring-offset-1

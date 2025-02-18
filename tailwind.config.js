@@ -207,6 +207,7 @@ module.exports = {
         title: ['Zosia', ...defaultTheme.fontFamily.sans],
       },
       maxWidth: {
+        "form": "460px",
         "prose": "640px",
       },
       width: {
