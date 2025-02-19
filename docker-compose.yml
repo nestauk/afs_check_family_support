@@ -12,6 +12,10 @@ services:
       DATABASE_URL: "postgres://pgsql:password@pgsql:5432"
       SMTP_HOST: mailpit
       VITE_RUBY_HOST: "vite"
+    healthcheck:
+      test: curl --fail http://localhost:3000/up
+      start_interval: 2s
+      start_period: 30s
     depends_on:
       - pgsql
 
@@ -27,6 +31,11 @@ services:
     environment:
       POSTGRES_USER: pgsql
       POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      retries: 5
+      start_period: 30s
+      start_interval: 2s
 
   vite:
     build: .
@@ -39,8 +48,10 @@ services:
       - "./storage/bundle:/usr/local/bundle"
     environment:
       VITE_RUBY_HOST: 0.0.0.0
-    depends_on:
-      - rails
+    healthcheck:
+      test: curl --fail http://localhost:3036
+      start_interval: 2s
+      start_period: 30s
 
   mailpit:
     image: axllent/mailpit
