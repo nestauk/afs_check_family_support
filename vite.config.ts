@@ -7,4 +7,7 @@ export default defineConfig({
     RubyPlugin(),
     vue(),
   ],
+  server: {
+    allowedHosts: ['vite']
+  }
 })

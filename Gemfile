@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2"
+gem "rails", "~> 8.0"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -23,7 +23,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
-  gem "dotenv-rails", "~> 2.8"
+  gem "dotenv-rails", "~> 3.0"
   gem "factory_bot_rails"
   gem "standard"
   gem "standard-rails"

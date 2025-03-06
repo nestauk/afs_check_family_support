@@ -1,10 +1,10 @@
 module Users
   class TwoFactorController < ::ApplicationController
     before_action :require_unauthenticated, :set_user
-    rate_limit name: "totp ip limit 1", to: 50, within: 5.minutes, by: -> { "#{request.remote_ip}_1" }, with: -> { verify_rate_limit }, only: :verify
-    rate_limit name: "totp ip limit 2", to: 100, within: 20.minutes, by: -> { "#{request.remote_ip}_2" }, with: -> { verify_rate_limit }, only: :verify
-    rate_limit name: "totp user limit 1", to: 3, within: 75.seconds, by: -> { "#{@user.id}_1" }, with: -> { verify_rate_limit }, only: :verify
-    rate_limit name: "totp user limit 2", to: 10, within: 20.minutes, by: -> { "#{@user.id}_2" }, with: -> { verify_rate_limit }, only: :verify
+    rate_limit name: "totp ip limit 1", to: 50, within: 5.minutes, by: -> { request.remote_ip }, with: -> { verify_rate_limit }, only: :verify
+    rate_limit name: "totp ip limit 2", to: 100, within: 20.minutes, by: -> { request.remote_ip }, with: -> { verify_rate_limit }, only: :verify
+    rate_limit name: "totp user limit 1", to: 3, within: 75.seconds, by: -> { @user.id }, with: -> { verify_rate_limit }, only: :verify
+    rate_limit name: "totp user limit 2", to: 10, within: 20.minutes, by: -> { @user.id }, with: -> { verify_rate_limit }, only: :verify
 
     def challenge
     end
@@ -13,7 +13,7 @@ module Users
       @totp = ROTP::TOTP.new(@user.otp_secret, issuer: "APPLICATION_NAME")
 
       if @totp.verify(params[:totp]&.strip || "", drift_behind: 15)
-        clear_rate_limit ["#{@user.id}_1", "#{@user.id}_2"]
+        clear_rate_limit ["totp user limit 1:#{@user.id}", "totp user limit 2:#{@user.id}"]
         reset_session
         session[:user_id] = @user.id
         @user.events.create! action: "successful_totp_challenge"

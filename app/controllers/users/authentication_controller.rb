@@ -1,10 +1,10 @@
 module Users
   class AuthenticationController < ::ApplicationController
     before_action :require_unauthenticated, except: [:sign_out]
-    rate_limit name: "auth ip limit 1", to: 50, within: 5.minutes, by: -> { "#{request.remote_ip}_1" }, with: -> { auth_rate_limit }, only: :authenticate
-    rate_limit name: "auth ip limit 2", to: 100, within: 20.minutes, by: -> { "#{request.remote_ip}_2" }, with: -> { auth_rate_limit }, only: :authenticate
-    rate_limit name: "auth email limit 1", to: 5, within: 5.minutes, by: -> { "#{params[:email]}_1" }, with: -> { auth_rate_limit }, only: :authenticate
-    rate_limit name: "auth email limit 2", to: 10, within: 20.minutes, by: -> { "#{params[:email]}_2" }, with: -> { auth_rate_limit }, only: :authenticate
+    rate_limit name: "auth ip limit 1", to: 50, within: 5.minutes, by: -> { request.remote_ip }, with: -> { auth_rate_limit }, only: :authenticate
+    rate_limit name: "auth ip limit 2", to: 100, within: 20.minutes, by: -> { request.remote_ip }, with: -> { auth_rate_limit }, only: :authenticate
+    rate_limit name: "auth email limit 1", to: 5, within: 5.minutes, by: -> { params[:email] }, with: -> { auth_rate_limit }, only: :authenticate
+    rate_limit name: "auth email limit 2", to: 10, within: 20.minutes, by: -> { params[:email] }, with: -> { auth_rate_limit }, only: :authenticate
 
     def sign_in
     end
@@ -13,7 +13,7 @@ module Users
       # Always perform both of these queries to prevent timing attacks
       user = User.find_by(email: params[:email])
       if User.authenticate_by(email: params[:email], password: params[:password])
-        clear_rate_limit ["#{params[:email]}_1", "#{params[:email]}_2"]
+        clear_rate_limit ["auth email limit 1:#{params[:email]}", "auth email limit 2:#{params[:email]}"]
         reset_session
 
         if user.otp_secret
