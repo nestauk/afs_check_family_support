@@ -21,13 +21,12 @@ services:
 
   pgsql:
     image: postgres:17
-    entrypoint: ["/bin/bash", "-c", "if [ ${HOST_UID:-0} -gt 999 ] && [ ${HOST_GID:-0} -gt 999 ]; then groupmod -g ${HOST_GID:-0} postgres && usermod -g ${HOST_GID:-0} -u ${HOST_UID:-0} postgres; fi && /usr/local/bin/docker-entrypoint.sh postgres"]
     restart: unless-stopped
     ports:
       - 5433:5432
     volumes:
-      - ./storage/postgres:/var/lib/postgresql/data
-      - ./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql
+      - pgsql-data:/var/lib/postgresql/data
+      - ./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql:ro
     environment:
       POSTGRES_USER: pgsql
       POSTGRES_PASSWORD: password
@@ -65,3 +64,6 @@ services:
     volumes:
       - "./docker/image_processing:/var/source"
       - "./tmp/snapshots:/var/snapshots"
+
+volumes:
+  pgsql-data:

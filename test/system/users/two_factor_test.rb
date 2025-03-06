@@ -8,14 +8,14 @@ module System::Users
       @when.i_visit("/auth")
       @then.i_see("Sign in")
 
-      @when.i_enter("user@example.com", into: "Email")
-        .and.i_enter("ravine-lexeme", into: "Password")
+      @when.i_type("user@example.com", into: "Email")
+        .and.i_type("ravine-lexeme", into: "Password")
         .and.i_press("Sign in")
       @then.i_see("Two factor")
         .and.i_take_snapshot("users.auth.challenge_2fa")
         .and.the_page_is_accessible
 
-      @when.i_enter(totp_code, into: "Verification code")
+      @when.i_type(totp_code, into: "Verification code")
         .and.i_press("Sign in")
       @then.i_see("Signed in successfully")
     end

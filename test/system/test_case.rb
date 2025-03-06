@@ -4,6 +4,7 @@ require "database_cleaner/core"
 require "helpers/given"
 require "helpers/then"
 require "helpers/when"
+require "minitest/mock"
 
 DatabaseCleaner.clean_with :truncation
 DatabaseCleaner.strategy = :transaction

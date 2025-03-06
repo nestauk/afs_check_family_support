@@ -12,8 +12,8 @@ module System::Users
           .and.i_take_snapshot("users.account.edit_name")
           .and.the_page_is_accessible
 
-        @when.i_enter("Robert", into: "First name")
-          .and.i_enter("Smythe", into: "Last name")
+        @when.i_type("Robert", into: "First name")
+          .and.i_type("Smythe", into: "Last name")
           .and.i_press("Change name")
         @then.i_see("Your name was successfully changed")
           .and.i_see("Robert Smythe")

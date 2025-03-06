@@ -1,0 +1,11 @@
+table {
+  @apply w-full;
+}
+
+th {
+  @apply text-left font-semibold;
+}
+
+td, th {
+  @apply px-3 py-2 border border-grey-50;
+}

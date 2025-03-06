@@ -1,0 +1,323 @@
+<h3><code>&lt;x-content.row&gt;</code></h3>
+
+<p>Arranges content into a row, using HTML flexbox. Sets up default spacing and vertically aligns items center.</p>
+
+<x-content.row>
+  <div class="border border-dashed w-20 h-6"></div>
+  <div class="border border-dashed w-14 h-8"></div>
+  <div class="border border-dashed w-32 h-4"></div>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the row (default: "div")</td>
+  </tr>
+  <tr>
+    <td><code>wrap</code></td>
+    <td>When present, the row will wrap</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.row>
+      <p class="w-2/5">1</p>
+      <p class="w-2/5">2</p>
+      <p class="w-2/5">3</p>
+    </x-content.row>
+
+    <x-content.row as="aside" wrap>
+      <p class="w-2/5">4</p>
+      <p class="w-2/5">5</p>
+      <p class="w-2/5">6</p>
+    </x-content.row>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.row>
+      <p class="border border-grey border-dashed w-2/5">1</p>
+      <p class="border border-grey border-dashed w-2/5">2</p>
+      <p class="border border-grey border-dashed w-2/5">3</p>
+    </x-content.row>
+
+    <x-content.row as="aside" wrap>
+      <p class="border border-grey border-dashed w-2/5">4</p>
+      <p class="border border-grey border-dashed w-2/5">5</p>
+      <p class="border border-grey border-dashed w-2/5">6</p>
+    </x-content.row>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.col&gt;</code></h3>
+
+<p>Arranges content into a column, using HTML flexbox. Sets up default spacing.</p>
+
+<x-content.col>
+  <div class="border border-dashed w-20 h-6"></div>
+  <div class="border border-dashed w-14 h-8"></div>
+  <div class="border border-dashed w-32 h-4"></div>
+</x-content.col>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the col (default: "div")</td>
+  </tr>
+  <tr>
+    <td><code>divide</code></td>
+    <td>When present, columns will be separated by a grey, horizontal border</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.col>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+    </x-content.col>
+
+    <x-content.col class="mt-8" divide>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+    </x-content.col>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.col>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+    </x-content.col>
+
+    <x-content.col class="mt-8" divide>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+    </x-content.col>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.box&gt;</code></h3>
+
+<x-content.box>
+  <h4 class="sm">Box</h4>
+  <p>This is a box</p>
+
+  <x-content.row class="justify-end">
+    <x-button class="w-fit" type="submit">
+      Confirm
+    </x-button>
+    <x-button light class="w-fit">
+      Cancel
+    </x-button>
+  </x-content.row>
+</x-content.box>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the col (default: "div")</td>
+  </tr>
+  <tr>
+    <td><code>sm</code></td>
+    <td>When present, box is smaller</td>
+  </tr>
+  <tr>
+    <td><code>lg</code></td>
+    <td>When present, box is larger</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.box>
+      <p>Normal</p>
+    </x-content.box>
+
+    <x-content.box sm class="w-60">
+      <p class="sm">Small</p>
+    </x-content.box>
+
+    <x-content.box lg>
+      <p class="lg">Large</p>
+    </x-content.box>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.box>
+      <p>Normal</p>
+    </x-content.box>
+
+    <x-content.box sm class="w-60">
+      <p class="sm">Small</p>
+    </x-content.box>
+
+    <x-content.box lg>
+      <p class="lg">Large</p>
+    </x-content.box>
+  </x-slot::preview>
+</x-.html>
+
+<x-.html label="Playing with box colours">
+  @verbatim
+    <x-content.box class="border-green-600 bg-green-50">
+      <h3 class="sm text-green-900">Success</h3>
+      <p>You succeeded in doing something!</p>
+    </x-content.box>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.box class="border-green-600 bg-green-50">
+      <h3 class="sm text-green-900">Success</h3>
+      <p>You succeeded in doing something!</p>
+    </x-content.box>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.alert&gt;</code></h3>
+
+<x-content.alert>This is an alert!</x-content.alert>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>type</code></td>
+    <td>Determines the colour for the alert. Can be <code>alert</code>, <code>error</code>, <code>info</code>, <code>success</code> (default: <code>alert</code>)</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.alert>This is an alert!</x-content.alert>
+    <x-content.alert type="error">This is an error!</x-content.alert>
+    <x-content.alert type="info">This is info!</x-content.alert>
+    <x-content.alert type="success">This is a success!</x-content.alert>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.alert>This is an alert!</x-content.alert>
+    <x-content.alert type="error">This is an error!</x-content.alert>
+    <x-content.alert type="info">This is info!</x-content.alert>
+    <x-content.alert type="success">This is a success!</x-content.alert>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.copyable&gt;</code></h3>
+
+<x-content.copyable>Copy me!</x-content.copyable>
+
+<x-.html>
+  @verbatim
+    <x-content.copyable>Copy me!</x-content.copyable>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.copyable>Copy me!</x-content.copyable>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.pill&gt;</code></h3>
+
+<x-content.row>
+  <x-content.pill green>Green pill</x-content.pill>
+  <x-content.pill blue>Blue pill</x-content.pill>
+</x-content.row>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>green</code></td>
+    <td>Makes the pill green if present</td>
+  </tr>
+  <tr>
+    <td><code>blue</code></td>
+    <td>Makes the pill blue if present</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.pill green>Green pill</x-content.pill>
+    <x-content.pill blue>Blue pill</x-content.pill>
+    <x-content.pill class="bg-yellow text-black">Custom pill</x-content.pill>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.pill green>Green pill</x-content.pill>
+    <x-content.pill blue>Blue pill</x-content.pill>
+    <x-content.pill class="bg-yellow text-black">Custom pill</x-content.pill>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-content.collapsable&gt;</code></h3>
+
+<p>Creates a collapsable content section.</p>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>title</code></td>
+    <td>(required) The title of the section</td>
+  </tr>
+  <tr>
+    <td><code>collapsed</code></td>
+    <td>Whether the section starts collapsed (default: true)</td>
+  </tr>
+  <tr>
+    <td><code>preview</code></td>
+    <td>Content visible when the section is collapsed</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-content.collapsable title="My section">
+      <p>[Lorem ipsum...]</p>
+    </x-content.collapsable>
+
+    <x-content.collapsable>
+      <x-slot::title>
+        <h4>A complicated section</h4>
+      </x-slot::title>
+
+      <p>[Lorem ipsum...]</p>
+
+      <x-slot::preview>
+        <p class="text-grey">Lorem ipsum...</p>
+      </x-slot::preview>
+    </x-content.collapsable>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-content.collapsable title="My section">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus hic illum incidunt iusto minima nobis sequi voluptatibus. Alias aspernatur culpa fuga hic, impedit nesciunt quis! Nam officiis quam quod vitae!</p>
+    </x-content.collapsable>
+
+    <x-content.collapsable>
+      <x-slot::title>
+        <h4>A complicated section</h4>
+      </x-slot::title>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus hic illum incidunt iusto minima nobis sequi voluptatibus. Alias aspernatur culpa fuga hic, impedit nesciunt quis! Nam officiis quam quod vitae!</p>
+
+      <x-slot::preview>
+        <p class="text-grey">Lorem ipsum...</p>
+      </x-slot::preview>
+    </x-content.collapsable>
+  </x-slot::preview>
+</x-.html>
+
+
+{{-- TODO: review the content.tooltip component --}}

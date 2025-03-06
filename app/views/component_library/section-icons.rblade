@@ -1,0 +1,82 @@
+<p>
+  The icons are built upon <a href="https://fonts.google.com/icons?icon.style=Sharp" target="_blank">Material Symbols Sharp</a>,
+  making it simple to add new icons, vary what they look like and change their
+  colour. By default, icons will match the current text size and colour.
+</p>
+
+<x-.html>
+  @verbatim
+    <x-icon.home
+      size=18
+      class="text-green-800"
+    />
+  @endverbatim
+
+  <x-slot::preview>
+    <x-icon.home
+      size=18
+      class="text-green-800"
+    />
+  </x-slot::preview>
+</x-.html>
+
+<x-content.row wrap>
+  <x-icon.home size=16 class="text-blue"/>
+  <x-icon.home size=18 class="text-green-800"/>
+  <x-icon.home size=20 class="text-aqua-900"/>
+  <x-icon.home size=22 class="text-red-800"/>
+  <x-icon.home size=24 class="text-orange-800"/>
+  <x-icon.home size=26 class="text-yellow-900"/>
+  <x-icon.home size=28 class="text-violet-800"/>
+  <x-icon.home class="text-[30px] text-pink-800"/>
+</x-content.row>
+
+<x-content.row wrap>
+  <x-icon.home fill=0 weight=200 />
+  <x-icon.home fill=0 weight=300 />
+  <x-icon.home fill=0 />
+  <x-icon.home fill=0 weight=500 />
+  <x-icon.home fill=0 weight=600 />
+  <x-icon.home fill=0 weight=700 />
+  <x-icon.home fill=0 weight=700 grade=200 />
+</x-content.row>
+
+<x-.html>
+  @verbatim
+    <x-icon.home fill=0 weight=700 />
+  @endverbatim
+
+  <x-slot::preview>
+    <x-icon.home fill=0 weight=700 />
+  </x-slot::preview>
+</x-.html>
+
+<x-.html>
+  @verbatim
+    <x-icon.delete alt="Remove" />
+  @endverbatim
+
+  <x-slot::preview>
+    <x-icon.delete alt="Remove" />
+  </x-slot::preview>
+</x-.html>
+<x-content.row wrap class="w-64">
+  <x-icon.close/>
+  <x-icon.copy/>
+  <x-icon.delete/>
+  <x-icon.edit/>
+  <x-icon.editor/>
+  <x-icon.error/>
+  <x-icon.folder/>
+  <x-icon.folder-open/>
+  <x-icon.home/>
+  <x-icon.info/>
+  <x-icon.left/>
+  <x-icon.location/>
+  <x-icon.phone/>
+  <x-icon.preview/>
+  <x-icon.search/>
+  <x-icon.send/>
+  <x-icon.tick/>
+  <x-icon.tools/>
+</x-content.row>

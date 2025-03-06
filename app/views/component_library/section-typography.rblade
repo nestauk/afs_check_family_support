@@ -1,0 +1,85 @@
+<p>
+  The default font size for paragraphs is large (20px), and the width is limited to 640px, or about 75 characters, which is considered optimal for reading.
+</p>
+
+<p>
+  Font size is automatically adjusted down one step for smaller screens to improve the experience for mobile users.
+</p>
+
+<p>
+  A number of utility classes are available for adjusting the font size: <code>2xs</code>, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>. The default font size is the equivalent of using <code>md</code>. These utility classes can be applied to any element.
+</p>
+
+<x-.html>
+  <p class="2xs">2xs paragraph</p>
+  <p class="xs">xs paragraph</p>
+  <p class="sm">sm paragraph</p>
+  <p class="md">md paragraph</p>
+  <p class="lg">lg paragraph</p>
+  <p class="xl">xl paragraph</p>
+  <p class="2xl">2xl paragraph</p>
+</x-.html>
+
+<p>TailwindCSS classes can be applied to customise the appearance of text further:</p>
+
+
+<x-.html>
+  <p>
+    We can use <span class="font-medium underline">span</span> to emphasise
+    <span class="italic">parts</span> of a sentence.
+  </p>
+
+  <p>
+    Font weight can be
+    <span class="font-normal">normal</span>,
+    <span class="font-medium">medium</span>,
+    <span class="font-semibold">semibold</span>,
+    <span class="font-bold">bold</span>, or
+    <span class="font-extrabold">extrabold</span>.
+  </p>
+</x-.html>
+
+<h3 id="Headings">Headings</h3>
+
+<p>
+  The HTML <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> tags should be used semantically, like a table of contents: there should be one <code>&lt;h1&gt;</code> on each page, and heading levels should not be skipped (i.e. <code>&lt;h4&gt;</code> should not follow <code>&lt;h2&gt;</code>).
+</p>
+
+<p>
+  To encourage this, all headings look the same by default. The <code>3xs</code> through <code>2xl</code> classes can be used to adjust their size. The font sizes for headings are slightly larger than that of other elements.
+</p>
+
+<x-.html>
+  <h1>These heading are styled identically</h1>
+  <h2>These heading are styled identically</h2>
+  <h3>These heading are styled identically</h3>
+  <h4>These heading are styled identically</h4>
+  <h5>These heading are styled identically</h5>
+  <h6>These heading are styled identically</h6>
+
+  <x-slot::preview>
+    <!-- Note: to get the component library to meet accessibility standards, these have all been changed to h3 -->
+    <h3>These heading are styled identically</h3>
+    <h3>These heading are styled identically</h3>
+    <h3>These heading are styled identically</h3>
+    <h3>These heading are styled identically</h3>
+    <h3>These heading are styled identically</h3>
+    <h3>These heading are styled identically</h3>
+  </x-slot::preview>
+</x-.html>
+
+<x-.html>
+  <h3 class="3xs">3xs heading</h3>
+  <h3 class="2xs">2xs heading</h3>
+  <h3 class="xs">xs heading</h3>
+  <h3 class="sm">sm heading</h3>
+  <h3 class="md">md heading</h3>
+  <h3 class="lg">lg heading</h3>
+  <h3 class="xl">xl heading</h3>
+  <h3 class="2xl">2xl heading</h3>
+</x-.html>
+
+<x-.html>
+  <h3 class="md">The font size of an md heading</h3>
+  <p class="md">is larger than the font size of an md paragraph.</p>
+</x-.html>

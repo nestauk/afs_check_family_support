@@ -1,4 +1,4 @@
-@props(title: required, wrapperClass: "")
+@props(title: required, wrapperClass: "", width: "w-prose")
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,11 +13,11 @@
   </head>
 
   <body {{ attributes.merge(class: "flex flex-col min-h-screen") }}>
-    <header class="flex justify-between items-center w-prose max-w-full mx-auto px-5 mt-4">
-      <h1 class="py-4 text-blue-900 font-normal text-5xl">APPLICATION_NAME</h1>
-      <div class="flex gap-4">@stack('header')</div>
+    <header class="flex items-center {{ width }} max-w-full mx-auto px-5 mt-4">
+      <h1 class="py-4 text-blue-900 font-normal text-5xl mr-auto">APPLICATION_NAME</h1>
+      @stack('header')
     </header>
-    <main class="w-prose max-w-full mx-auto px-5 mt-8 flex flex-col gap-4 sm:gap-6 -:pb-36 items-start {{ wrapperClass }}">
+    <main class="{{ width }} max-w-full mx-auto px-5 mt-8 flex flex-col gap-4 sm:gap-6 -:pb-36 items-start {{ wrapperClass }}">
       <x-alerts/>
       {{ slot }}
     </main>

@@ -10,7 +10,7 @@ module System::Users
         .and.i_take_snapshot("users.forgot_password")
         .and.the_page_is_accessible
 
-      @when.i_enter("user@example.com", into: "Email")
+      @when.i_type("user@example.com", into: "Email")
         .and.i_press("Reset password")
       @then.i_see("Thank you")
         .and.i_take_snapshot("users.forgot_password | email_sent")
@@ -22,7 +22,7 @@ module System::Users
         .and.i_take_snapshot("users.forgot_password | set_password")
         .and.the_page_is_accessible
 
-      @when.i_enter("ravine-lexeme", into: "New password")
+      @when.i_type("ravine-lexeme", into: "New password")
         .and.i_press("Set password")
       @then.i_see("Your password was reset successfully. Please sign in.")
     end

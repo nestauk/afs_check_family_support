@@ -10,8 +10,8 @@ module System::Users
         .and.i_take_snapshot("users.auth")
         .and.the_page_is_accessible
 
-      @when.i_enter("user@example.com", into: "Email")
-        .and.i_enter("ravine-lexeme", into: "Password")
+      @when.i_type("user@example.com", into: "Email")
+        .and.i_type("ravine-lexeme", into: "Password")
         .and.i_press("Sign in")
       @then.i_see("Signed in successfully")
     end

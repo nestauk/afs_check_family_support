@@ -12,7 +12,7 @@ module System::Users
           .and.i_take_snapshot("users.account.edit_email")
           .and.the_page_is_accessible
 
-        @when.i_enter("new_email@example.com", into: "Email")
+        @when.i_type("new_email@example.com", into: "Email")
           .and.i_press("Change email")
         @then.i_see("A confirmation email was sent to new_email@example.com")
           .and.i_see_email("Confirm your new APPLICATION_NAME email address")
@@ -21,7 +21,7 @@ module System::Users
         @then.i_see("Confirm your new email address")
           .and.i_see("new_email@example.com")
 
-        @when.i_enter("ravine-lexeme", into: "Password")
+        @when.i_type("ravine-lexeme", into: "Password")
           .and.i_press("Confirm new email")
         @then.i_see("Your email address has been updated successfully")
           .and.i_see("new_email@example.com")

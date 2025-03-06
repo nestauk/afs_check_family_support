@@ -12,8 +12,8 @@ module System::Users
           .and.i_take_snapshot("users.account.edit_password")
           .and.the_page_is_accessible
 
-        @when.i_enter("ravine-lexeme", into: "Current password")
-          .and.i_enter("new-ravine-lexeme", into: "New password")
+        @when.i_type("ravine-lexeme", into: "Current password")
+          .and.i_type("new-ravine-lexeme", into: "New password")
           .and.i_press("Change password")
         @then.i_see("Your password was successfully changed")
       end

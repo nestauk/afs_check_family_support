@@ -19,10 +19,10 @@ end
         There were {{ errors.count }} errors with your submission
       @end
     </p>
-    <x-content.ul class="text-error mt-1 marker:text-error">
+    <ul class="text-error mt-1 marker:text-error">
       @each(error in errors.values.flatten)
         <li>{{ error }}</li>
       @end
-    </x-content.ul>
+    </ul>
   </div>
 </div>

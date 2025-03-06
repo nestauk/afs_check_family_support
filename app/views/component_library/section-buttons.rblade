@@ -1,0 +1,228 @@
+<h3><code>&lt;x-button&gt;</code></h3>
+
+<x-content.row>
+  <x-button>Button</x-button>
+  <x-button secondary>Button</x-button>
+  <x-button danger>Button</x-button>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
+  </tr>
+  <tr>
+    <td><code>sm</code></td>
+    <td>When present, the button is smaller</td>
+  </tr>
+  <tr>
+    <td><code>secondary</code></td>
+    <td>When present, changes the button to the secondary colour (green)</td>
+  </tr>
+  <tr>
+    <td><code>danger</code></td>
+    <td>When present, changes the button to the danger colour (red)</td>
+  </tr>
+  <tr>
+    <td><code>light</code></td>
+    <td>When present, uses the light version of the button</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+  <x-button>Standard</x-button>
+  <x-button light>Light</x-button>
+  <x-button sm>Small</x-button>
+  <x-button sm light>Small and light</x-button>
+
+  <x-button secondary>Secondary</x-button>
+  <x-button danger>Danger</x-button>
+  <x-button disabled>Disabled</x-button>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-button>Standard</x-button>
+    <x-button light>Light</x-button>
+    <x-button sm>Small</x-button>
+    <x-button sm light>Small and light</x-button>
+
+    <x-button secondary>Secondary</x-button>
+    <x-button danger>Danger</x-button>
+    <x-button disabled>Disabled</x-button>
+  </x-slot::preview>
+</x-.html>
+
+<x-.html>
+  @verbatim
+    <x-button as="a" href="#">This button is actually a link</x-button>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-button as="a" href="#">This button is actually a link</x-button>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3 class="mt-8"><code>&lt;x-button.outline&gt;</code></h3>
+
+<x-content.row>
+  <x-button.outline>Button</x-button.outline>
+  <x-button.outline secondary>Button</x-button.outline>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
+  </tr>
+  <tr>
+    <td><code>sm</code></td>
+    <td>When present, the button is smaller</td>
+  </tr>
+  <tr>
+    <td><code>secondary</code></td>
+    <td>When present, changes the button to the secondary colour (green)</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+  <x-button.outline>Outline</x-button.outline>
+  <x-button.outline secondary>Outline secondary</x-button.outline>
+  <x-button.outline sm>Outline sm</x-button.outline>
+  <x-button.outline sm secondary>Outline sm secondary</x-button.outline>
+  @endverbatim
+
+  <x-slot::preview>
+  <x-button.outline>Outline</x-button.outline>
+  <x-button.outline secondary>Outline secondary</x-button.outline>
+  <x-button.outline sm>Outline sm</x-button.outline>
+  <x-button.outline sm secondary>Outline sm secondary</x-button.outline>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3 class="mt-8"><code>&lt;x-button.flat&gt;</code></h3>
+
+<x-content.row>
+  <x-button.flat>Button</x-button.flat>
+  <x-button.flat secondary>Button</x-button.flat>
+  <x-button.flat link>Button</x-button.flat>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
+  </tr>
+  <tr>
+    <td><code>sm</code></td>
+    <td>When present, the button is smaller</td>
+  </tr>
+  <tr>
+    <td><code>secondary</code></td>
+    <td>When present, changes the button to the secondary colour (green)</td>
+  </tr>
+  <tr>
+    <td><code>link</code></td>
+    <td>When present, changes the button to look like a link</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-button.flat>Flat</x-button.flat>
+    <x-button.flat sm>Flat sm</x-button.flat>
+    <x-button.flat secondary>Flat secondary </x-button.flat>
+    <x-button.flat sm secondary>Flat secondary sm</x-button.flat>
+    <x-button.flat link>Flat link</x-button.flat>
+    <x-button.flat sm link>Flat link sm</x-button.flat>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-button.flat>Flat</x-button.flat>
+    <x-button.flat sm>Flat sm</x-button.flat>
+    <x-button.flat secondary>Flat secondary </x-button.flat>
+    <x-button.flat sm secondary>Flat secondary sm</x-button.flat>
+    <x-button.flat link>Flat link</x-button.flat>
+    <x-button.flat sm link>Flat link sm</x-button.flat>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3 class="mt-8"><code>&lt;x-button.back&gt;</code> and <code>&lt;x-button.forward&gt;</code></h3>
+
+<x-content.row>
+  <x-button.back class="mr-0">Back</x-button.back>
+  <x-button.forward class="ml-0">Forward</x-button.forward>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>as</code></td>
+    <td>The HTML tag to use for the button (default: "a"). Can be used to change the button to a button.</td>
+  </tr>
+  <tr>
+    <td><code>sm</code></td>
+    <td>When present, the button is smaller</td>
+  </tr>
+  <tr>
+    <td><code>secondary</code></td>
+    <td>When present, changes the button to the secondary colour (green)</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-button.back>Back</x-button.back>
+    <x-button.back sm>Back sm</x-button.back>
+    <x-button.forward>Forward</x-button.forward>
+    <x-button.forward sm>Forward sm</x-button.forward>
+
+    <x-button.forward class="ml-0 mr-auto">Forward</x-button.forward>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-button.back>Back</x-button.back>
+    <x-button.back sm>Back sm</x-button.back>
+    <x-button.forward>Forward</x-button.forward>
+    <x-button.forward sm>Forward sm</x-button.forward>
+
+    <x-button.forward class="ml-0 mr-auto">Forward</x-button.forward>
+  </x-slot::preview>
+</x-.html>
+
+
+
+<h3 class="mt-8"><code>&lt;x-button.delete&gt;</code></h3>
+
+<x-content.row>
+  <x-button.delete action="" @submit.prevent="">Delete</x-button.delete>
+</x-content.row>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>action</code></td>
+    <td>The URL to send the HTTP DELETE request</td>
+  </tr>
+</table>
+
+  <x-.html>
+  @verbatim
+    <x-button.delete :action="resource_delete_path @resource">
+      Delete resource
+    </x-button.delete>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-button.delete action="/resource/1/delete" @submit.prevent="">
+      Delete resource
+    </x-button.delete>
+  </x-slot::preview>
+</x-.html>

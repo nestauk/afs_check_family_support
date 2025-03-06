@@ -11,7 +11,8 @@
    * <p> tags.
    */
 
-  .\2xs {
+  /** 2xs */
+  .\32 xs {
     @apply text-xs sm:text-sm;
   }
 
@@ -35,20 +36,31 @@
     @apply text-2xl sm:text-3xl;
   }
 
+  /** 2xl */
+  .\32 xl {
+    @apply text-3xl sm:text-4xl;
+  }
+
   /* Headers */
 
   :is(h1, h2, h3, h4, h5, h6) {
     @apply text-black/90;
-    @apply text-xl sm:text-2xl font-bold;
+    @apply text-xl sm:text-2xl font-bold mt-2 first:mt-0;
+  }
+  :is(h1, h2, h3, h4, h5, h6) + p {
+    @apply -mt-2.5;
   }
 
 
   /* The size classes for headings are a special case */
-  .\3xs:where(h1, h2, h3, h4, h5, h6) {
+
+  /** 3xs */
+  .\33 xs:where(h1, h2, h3, h4, h5, h6) {
     @apply text-xs sm:text-sm font-medium;
   }
 
-  .\2xs:where(h1, h2, h3, h4, h5, h6) {
+  /** 2xs */
+  .\32 xs:where(h1, h2, h3, h4, h5, h6) {
     @apply text-sm sm:text-base font-medium;
   }
 
@@ -72,7 +84,8 @@
     @apply text-3xl sm:text-4xl font-extrabold;
   }
 
-  .\2xl:where(h1, h2, h3, h4, h5, h6) {
+  /** 2xl */
+  .\32 xl:where(h1, h2, h3, h4, h5, h6) {
     @apply text-4xl sm:text-5xl font-extrabold;
   }
 
@@ -84,5 +97,42 @@
       active:text-link-active
       visited:text-link-visited
       focusable;
+  }
+
+  code {
+    @apply
+      ml-px mr-0.75
+      bg-[#fff9f9]
+      rounded-sm ring-1 ring-offset-2 ring-offset-[#fff9f9] ring-grey-100
+      text-[0.82em] text-red-800 break-keep
+    ;
+  }
+
+  /* Lists */
+
+  ol, ul {
+    @apply flex flex-col gap-1 ml-10;
+    @apply text-black/90 font-normal max-w-prose;
+    @apply text-lg sm:text-xl;
+    @apply list-outside;
+    @apply marker:text-navy marker:font-medium marker:font-medium;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+  :is(ol, ul) ol {
+    @apply list-[lower-roman];
+  }
+
+  ul {
+    @apply list-disc;
+  }
+  :is(ol, ul) ul {
+    @apply list-[circle];
+  }
+
+  :is(ol, ul) :is(ol, ul) {
+    @apply ml-4;
   }
 }

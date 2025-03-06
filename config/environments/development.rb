@@ -76,3 +76,14 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 end
+
+class Object
+  def dd
+    abort "
+      Debug output
+      #{caller(1..1)&.first&.delete_prefix("/var/source/")}
+      (#{self.class.name}):
+      #{pretty_inspect}
+    "
+  end
+end

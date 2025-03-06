@@ -1,0 +1,354 @@
+<h3><code>&lt;x-form&gt;</code></h3>
+
+<p>A drop in replacement for the <code>&lt;form&gt;</code> HTML tag. Handles setting the authenticity token and setting the method correctly.</p>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>method</code></td>
+    <td>The HTTP verb for this request: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code></td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form>
+      <x-form.label label="Name" for="name">
+        <x-form.text name="name"/>
+      </x-form.label>
+    </x-form>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form>
+      <x-form.label label="Name" for="name">
+        <x-form.text name="name" value="Inspect me"/>
+      </x-form.label>
+    </x-form>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.label&gt;</code></h3>
+
+<p>A drop in replacement for the <code>&lt;label&gt;</code> HTML tag. Provides error handling for form elements.</p>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>label</code></td>
+    <td>(required) The heading for the label</td>
+  </tr>
+  <tr>
+    <td><code>for</code></td>
+    <td>The name of the form element this label is for. Required for error handling.</td>
+  </tr>
+  <tr>
+    <td><code>error</code></td>
+    <td>When present, overrides the error displayed</td>
+  </tr>
+  <tr>
+    <td><code>optional</code></td>
+    <td>When present, adds indicates the field is optional next to the heading</td>
+  </tr>
+  <tr>
+    <td><code>visible</code></td>
+    <td>When set to false, the heading only appears for screen readers</td>
+  </tr>
+  <tr>
+    <td><code>horizontal</code></td>
+    <td>When present, label is to the left of the form element</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.label label="Label" for="name" optional>
+      <x-form.text value="Optional"/>
+    </x-form.label>
+
+    <x-form.label label="Label" error="This is an error!">
+      <x-form.text value="Error"/>
+    </x-form.label>
+
+    <x-form.label label="Label" horizontal>
+      <x-form.text value="Horizontal"/>
+    </x-form.label>
+
+    <x-form.label label="Label" visible="false">
+      <x-form.text value="Hidden label"/>
+    </x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.label label="Label" for="name" optional>
+      <x-form.text value="Optional"/>
+    </x-form.label>
+    <x-form.label label="Label" error="This is an error!">
+      <x-form.text value="Error"/>
+    </x-form.label>
+    <x-form.label label="Label" horizontal>
+      <x-form.text value="Horizontal"/>
+    </x-form.label>
+    <x-form.label label="Label" visible="false">
+      <x-form.text value="Hidden label"/>
+    </x-form.label>
+  </x-slot::preview>
+</x-.html>
+
+<h3><code>&lt;x-form.errors&gt;</code></h3>
+
+<x-form.errors :errors="{base: 'Form was not valid'}"/>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>errors</code></td>
+    <td>A hash containing the errors to display. Defaults to validation errors triggered during the request.</td>
+  </tr>
+  <tr>
+    <td><code>except</code></td>
+    <td>An array of keys to exclude from <code>errors</code></td>
+  </tr>
+  <tr>
+    <td><code>only</code></td>
+    <td>An array of keys to filter <code>errors</code></td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.errors/>
+    <x-form.errors :errors="{one: 'one', two: 'two'}" :only="[:one]"/>
+    <x-form.errors :errors="{one: 'one', two: 'two'}" :except="[:one]"/>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.errors :errors="{base: 'A validation error that occurred during the request'}"/>
+    <x-form.errors :errors="{one: 'one', two: 'two'}" :only="[:one]"/>
+    <x-form.errors :errors="{one: 'one', two: 'two'}" :except="[:one]"/>
+  </x-slot::preview>
+</x-.html>
+
+<p>
+  The <code>except</code> attribute is particularly useful for displaying errors you haven't accounted for:
+</p>
+
+<x-.html>
+  @verbatim
+    Handles errors for everything except "one":
+    <x-form.errors :except="[:one]"/>
+
+    Handles errors for "one":
+    <x-form.label for="one">...</x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.errors :errors="{two: 'two'}"/>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.text&gt;</code></h3>
+
+<p>A drop in replacement for the <code>&lt;input&gt;</code> HTML tag.</p>
+
+<x-form.label label="Example" visible="false">
+  <x-form.text placeholder="A text box"/>
+</x-form.label>
+
+<x-.html>
+  @verbatim
+    <x-form.label label="Remembers input from previous submission" for="text" optional>
+      <x-form.text name="text" :value="params[:text] || 'Default'"/>
+    </x-form.label>
+
+    <x-form.label label="Placeholder" for="value" optional>
+      <x-form.text name="placeholder" placeholder="Placeholder"/>
+    </x-form.label>
+
+    <x-form.label label="Number" for="number">
+      <x-form.text type="number" name="number" required/>
+    </x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.label label="Remembers input from previous submission" for="text" optional>
+      <x-form.text name="text" :value="params[:text] || 'Default'"/>
+    </x-form.label>
+
+    <x-form.label label="Placeholder" for="value" optional>
+      <x-form.text name="placeholder" placeholder="Placeholder"/>
+    </x-form.label>
+
+    <x-form.label label="Number" for="number">
+      <x-form.text type="number" name="number" required/>
+    </x-form.label>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.textarea&gt;</code></h3>
+
+<p>A replacement for the <code>&lt;textarea&gt;</code> HTML tag, but uses the <code>value</code> attribute to be consistent with other form elements.</p>
+
+<x-form.label label="Example" visible="false">
+  <x-form.textarea placeholder="A textarea"/>
+</x-form.label>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>value</code></td>
+    <td>The default value for the textarea</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.label label="Remembers input from previous submission" for="text" optional>
+      <x-form.textarea name="text" :value="params[:text] || 'Default'"/>
+    </x-form.label>
+
+    <x-form.label label="Placeholder" for="value" optional>
+      <x-form.textarea name="placeholder" placeholder="Placeholder"/>
+    </x-form.label>
+
+    <x-form.label label="Required" for="number">
+      <x-form.textarea name="required" value="This is required" required/>
+    </x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.label label="Text" for="text" optional>
+      <x-form.textarea name="text" value="Default"/>
+    </x-form.label>
+
+    <x-form.label label="Placeholder" for="value" optional>
+      <x-form.textarea name="placeholder" placeholder="Placeholder"/>
+    </x-form.label>
+
+    <x-form.label label="Required" for="number">
+      <x-form.textarea name="required" value="This is required" required/>
+    </x-form.label>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.password&gt;</code></h3>
+
+<p>A drop in replacement for <code>&lt;input type=&quot;password&quot;&gt;</code>. Adds hide/show functionality and the ability to show password strength.</p>
+
+<x-form.label label="Example" visible="false" class="w-form">
+  <x-form.password showStrength/>
+</x-form.label>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>showStrength</code></td>
+    <td>When present, shows the strength-o-meter</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.label label="Enter your password" for="old_password" class="w-form">
+      <x-form.password name="old_password" required/>
+    </x-form.label>
+
+    <x-form.label for="new_password" label="Set a new password" class="w-form">
+      <x-form.password name="new_password" required showStrength/>
+    </x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.label label="Enter your password" for="old_password" class="w-form">
+      <x-form.password name="old_password" required/>
+    </x-form.label>
+
+    <x-form.label for="new_password" label="Set a new password" class="w-form">
+      <x-form.password name="new_password" required showStrength/>
+    </x-form.label>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.select&gt;</code></h3>
+
+<p>A replacement for the <code>&lt;select&gt;</code> HTML tag, but uses the <code>value</code> attribute to be consistent with other form elements.</p>
+
+<x-form.label label="Example" visible="false" class="w-form">
+  <x-form.select :options='["Select", "Another option"]'/>
+</x-form.label>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>options</code></td>
+    <td>A ruby Array of options or a ruby Hash containing the options for the dropdown</td>
+  </tr>
+  <tr>
+    <td><code>value</code></td>
+    <td>The default value for the dropdown</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.label label="Array of options" for="array">
+      <x-form.select name="array" :options='["One", "Two", "Three"]' :value="params[:array] || 'Two'"/>
+    </x-form.label>
+
+    <x-form.label label="Hash of options" for="hash">
+      <x-form.select name="hash" :options='{"One": 1, "Two": 2, "Three": 3}' :value="params[:array] || '3'"/>
+    </x-form.label>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.label label="Array of options" for="array">
+      <x-form.select name="array" :options='["One", "Two", "Three"]' :value="params[:array] || 'Two'"/>
+    </x-form.label>
+
+    <x-form.label label="Hash of options" for="hash">
+      <x-form.select name="hash" :options='{"One": 1, "Two": 2, "Three": 3}' :value="params[:array] || '3'"/>
+    </x-form.label>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.checkbox&gt;</code></h3>
+
+<p>A replacement for <code>&lt;input type="checkbox"&gt;</code>, but provides a value ("0") even when not checked.</p>
+
+<x-form.checkbox name="checkbox">A checkbox</x-form.checkbox>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>class</code></td>
+    <td>CSS classes to be applied to the wrapping label</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.checkbox name="checkbox">
+      <p>A checkbox</p>
+    </x-form.checkbox>
+
+    <x-form.checkbox name="checkbox">
+      <p>Lorem ipsum...</p>
+    </x-form.checkbox>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.checkbox name="checkbox">
+      <p>A checkbox</p>
+    </x-form.checkbox>
+
+    <x-form.checkbox name="checkbox">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium doloribus eum illum, molestiae mollitia omnis praesentium quis sint! Aliquid amet commodi, deserunt eum illo in magnam maiores nesciunt sunt.</p>
+    </x-form.checkbox>
+  </x-slot::preview>
+</x-.html>

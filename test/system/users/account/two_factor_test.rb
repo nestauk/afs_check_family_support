@@ -16,7 +16,7 @@ module System::Users
 
         otp_secret = page.find("input[x-ref='copyText']", visible: :all)["value"]
 
-        @when.i_enter(totp_code(otp_secret), into: "Verification code")
+        @when.i_type(totp_code(otp_secret), into: "Verification code")
           .and.i_press("Enable 2FA")
         @then.i_see("Two factor authentication has been successfully enabled")
           .and.i_see("Disable 2FA")
@@ -37,7 +37,7 @@ module System::Users
           .and.i_take_snapshot("users.account.disable_2fa")
           .and.the_page_is_accessible
 
-        @when.i_enter("ravine-lexeme", into: "Password")
+        @when.i_type("ravine-lexeme", into: "Password")
           .and.i_press("Disable 2FA")
         @then.i_see("Two factor authentication has been successfully disabled")
           .and.i_see("Enable 2FA")

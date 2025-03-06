@@ -23,7 +23,7 @@ end
     #{labelClass}
   "
 }) }}>
-  <p class="font-semibold -:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }} {{ visible ? "" : "sr-only" }}">
+  <p class="font-semibold -:block -:ml-px -:shrink-0 {{ horizontal ? width : "" }} {{ visible == true ? "" : "sr-only" }}">
     {{ label }}
     @if(optional)
       <span class="font-normal text-grey">(optional)</span>

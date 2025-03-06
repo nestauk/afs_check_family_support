@@ -27,4 +27,8 @@ module MultistageFormHelpers
 
     set_session "#{controller.name}.data": data
   end
+
+  def assert_stage(stage)
+    assert_equal(stage.name, form_data[:_stage])
+  end
 end
