@@ -12,11 +12,11 @@
       <x-form.text type="email" name="email" :value="params[:email]" autocomplete="username" autofocus="true" required/>
     </x-form.label>
 
-    <x-form.label label="Password" for="password">
+    <x-form.label label="Password" for="password" class="w-form">
       <x-form.password name="password" autocomplete="current-password" required/>
     </x-form.label>
 
-    <x-content.row>
+    <x-content.row class="mt-4 w-form">
       <p>
         <a href="{{ users_forgot_password_path }}" class="no-underline hover:underline">Forgot your password?</a>
       </p>

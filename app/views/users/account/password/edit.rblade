@@ -12,11 +12,11 @@
   <x-form method="PATCH">
     <x-form.errors :except="[:password, :password_challenge]"/>
 
-    <x-form.label label="Current password" for="password_challenge">
+    <x-form.label label="Current password" for="password_challenge" class="w-form">
       <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
     </x-form.label>
 
-    <x-form.label label="New password" for="password">
+    <x-form.label label="New password" for="password" class="w-form">
       <x-form.password name="password" :value="params[:password]" required autocomplete="new-password" showStrength/>
     </x-form.label>
 

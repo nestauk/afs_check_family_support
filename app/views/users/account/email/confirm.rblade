@@ -15,7 +15,7 @@
   <x-form method="PATCH">
     <x-form.errors :except="[:password_challenge]"/>
 
-    <x-form.label label="Password" for="password_challenge">
+    <x-form.label label="Password" for="password_challenge" class="w-form">
       <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
     </x-form.label>
 

@@ -12,7 +12,7 @@
       <x-form.text inputmode="numeric" pattern="[0-9]*" name="totp" autocomplete="one-time-code" placeholder="000000" autofocus="true" required/>
     </x-form.label>
 
-    <x-content.row>
+    <x-content.row class="mt-4 w-form">
       <x-button.back as="button" type="submit" :formaction="signout_path" formnovalidate data-turbo-prefetch="false">Back</x-button.back>
       <x-button class="ml-auto" type="submit">Sign in</x-button>
     </x-content.row>

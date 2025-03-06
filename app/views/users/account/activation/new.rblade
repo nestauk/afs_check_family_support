@@ -24,7 +24,7 @@
       <x-form.text name="email" :value="@email" readonly/>
     </x-form.label>
 
-    <x-form.label label="Password" for="password">
+    <x-form.label label="Password" for="password" class="w-form">
       <x-form.password name="password" value="" autocomplete="new-password" required showStrength/>
     </x-form.label>
 
