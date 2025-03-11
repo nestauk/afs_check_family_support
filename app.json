@@ -1,0 +1,23 @@
+{
+  "name": "APPLICATION_NAME",
+  "repository": "REPOSITORY",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "environments": {
+    "review": {
+      "scripts": {
+        "postdeploy": "rails db:seed"
+      }
+    }
+  }
+}

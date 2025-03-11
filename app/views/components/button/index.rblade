@@ -10,10 +10,10 @@
 @ruby
 classList = case true
   when sm
-    "---:px-4 ---:py-1 ---:pb-0.75 ---:text-sm ---:sm:text-base ---:font-medium"
+    +"---:px-4 ---:py-1 ---:pb-0.75 ---:text-sm ---:sm:text-base ---:font-medium"
   when md
-    "---:px-6 ---:py-2 ---:pb-1.5 ---:text-base ---:sm:text-lg ---:font-semibold"
-  else ''
+    +"---:px-6 ---:py-2 ---:pb-1.5 ---:text-base ---:sm:text-lg ---:font-semibold"
+  else +''
 end
 
 classList << case true
@@ -62,7 +62,7 @@ end
     ---:flex ---:items-center ---:justify-center ---:gap-1.5
     ---:rounded
     ---:mb-0.75 ---:shadow ---:shadow-3 ---:no-underline
-    ---:block ---:w-max
+    ---:block ---:w-max ---:max-w-full
     ---:bg-clip-padding ---:select-none ---:whitespace-nowrap
     ---:translate-y-0
     active:---:translate-y-0.75 active:---:shadow-0

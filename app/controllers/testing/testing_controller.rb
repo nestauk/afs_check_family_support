@@ -1,5 +1,8 @@
 module Testing
   class TestingController < ApplicationController
+    # Disable all callbacks for this request
+    __callbacks.keys.each { reset_callbacks _1 }
+
     before_action :ensure_test
 
     def set_session
@@ -15,7 +18,7 @@ module Testing
     private
 
     def ensure_test
-      if Rails.env.test?
+      unless Rails.env.test?
         abort_not_found
       end
     end

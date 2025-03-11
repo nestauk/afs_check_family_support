@@ -7,6 +7,7 @@
     "@alpinejs/persist": "^3.14.8",
     "@hotwired/turbo": "^8.0.5",
     "@vitejs/plugin-vue": "^5.1.2",
+    "ahoy.js": "^0.4.4",
     "alpinejs": "^3.14.1",
     "autoprefixer": "^10.4.20",
     "material-symbols": "^0.21.3",

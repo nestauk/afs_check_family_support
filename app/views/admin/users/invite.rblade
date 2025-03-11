@@ -12,7 +12,7 @@
   <x-form method="POST">
     <x-form.errors :except="[:emails]"/>
 
-    <x-content.col :x-data='"{emails: #{params[:emails]&.count ? 0 : 1}}"' class="mt-4">
+    <x-content.col x-data="{emails: {{ params[:emails]&.count ? 0 : 1 }}}" class="mt-4">
       <h3 class="xs">Emails</h3>
       @eachWithIndex (email, i in (params[:emails] || []))
         <x-form.label label="Email" for="email" :visible=false :error="Current.errors.dig :emails, i">

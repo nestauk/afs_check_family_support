@@ -1,12 +1,16 @@
 class MultistageFormController < ApplicationController
   STAGE_KEY = :_stage
 
+  # This controller is a middle manager so disable all existing callbacks to prevent duplication
+  __callbacks.keys.each { reset_callbacks _1 }
+
   before_action :load_session
   after_action :save_session, only: :action
 
   rescue_from ActiveModel::ValidationError, with: :validation_error
 
   attr_accessor :data
+  attr_accessor :stages
 
   def form_url
     raise StandardError.new "form_url not implemented"
@@ -29,6 +33,7 @@ class MultistageFormController < ApplicationController
 
   def go_to_stage(stage)
     @data[STAGE_KEY] = stage.name
+    track_event "Changed to stage #{stage.name.demodulize}"
     save_session
 
     redirect_to form_url
@@ -39,7 +44,7 @@ class MultistageFormController < ApplicationController
       session[session_key].deep_symbolize_keys
     else
       {
-        STAGE_KEY => @stages.first.name
+        STAGE_KEY => default_stage
       }
     end
   end
@@ -66,6 +71,7 @@ class MultistageFormController < ApplicationController
 
   def start
     clear_session
+    track_event "Restarted #{self.class.module_parent_name}"
 
     redirect_to form_url
   end
@@ -86,5 +92,25 @@ class MultistageFormController < ApplicationController
     end
 
     raise StandardError.new "Unhandled action: #{stage.class.name}.#{action}"
+  end
+
+  def track_event(name, **args)
+    args[:form] ||= self.class.module_parent_name
+
+    ahoy.track name, args
+  end
+
+  def self.password(password)
+    unless Rails.env.test?
+      define_method(:password) { password }
+    end
+  end
+
+  def default_stage
+    if respond_to? :password
+      MultistageFormPasswordProtected.name
+    else
+      @stages.first.name
+    end
   end
 end

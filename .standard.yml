@@ -1,4 +1,6 @@
 ignore:
   - 'storage/**/*'
+  - 'db/migrate/*':
+    - Rails/CreateTableWithTimestamps
 plugins:
   - standard-rails

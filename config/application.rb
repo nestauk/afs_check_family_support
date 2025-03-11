@@ -26,5 +26,7 @@ module RailsTemplate
 
     # Opt in to Rails 8.1 behaviour
     config.active_support.to_time_preserves_timezone = :zone
+
+    config.action_view.frozen_string_literal = true
   end
 end

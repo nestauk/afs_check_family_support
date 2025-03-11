@@ -1,0 +1,33 @@
+<script>
+  const inIframe = window.self !== window.top;
+  if (inIframe) {
+    const bodyResizeObserver = new ResizeObserver((entries) => {
+      let newHeight = 0
+
+      for (const entry of entries) {
+        if (entry.contentBoxSize) {
+          if (entry.contentBoxSize[0]) {
+            newHeight = entry.contentBoxSize[0].blockSize;
+          } else {
+            newHeight = entry.contentBoxSize.blockSize;
+          }
+        } else {
+          newHeight = entry.contentRect.height;
+        }
+      }
+
+      if (newHeight > 0) {
+        window.parent.postMessage({
+          type: "iframeHeight",
+          height: Math.max(700, newHeight + 240)
+        }, '*');
+      }
+    });
+    bodyResizeObserver.observe(document.querySelector('main'));
+
+    // Prevent scrolling in the iframe while we're resizing
+    document.body.style.overflow = 'hidden';
+
+    {{ slot }}
+  }
+</script>

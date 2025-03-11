@@ -102,6 +102,10 @@ module Feature
       assert_redirected_to dashboard_path
     end
 
+    def assert_ahoy_events *events
+      assert_equal events, Ahoy::Event.all.map(&:name)
+    end
+
     def session
       get "/testing/get_session"
 

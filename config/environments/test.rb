@@ -31,6 +31,8 @@ Rails.application.configure do
 
   config.cache_store = :memory_store
 
+  config.session_store :cache_store, key: "PHPSESSID"
+
   # Raise all exceptions to our tests
   config.action_dispatch.show_exceptions = :none
 

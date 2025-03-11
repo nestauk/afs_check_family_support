@@ -20,7 +20,7 @@
       min-h-screen
     ">
       <x-navigation class="mx-auto lg:mx-0 px-6 lg:p-0 w-full max-w-4xl"/>
-      <main class="grow mx-auto lg:mx-0 px-6 w-full max-w-4xl lg:px-5 lg:mt-8 flex flex-col gap-4 sm:gap-6 -:pb-36 items-start {{ wrapperClass }}">
+      <main class="grow mx-auto lg:mx-0 px-6 w-full max-w-4xl lg:px-5 lg:mt-8 flex flex-col gap-6 -:pb-36 items-start {{ wrapperClass }}">
         <div class="w-full flex flex-wrap lg:flex-row justify-end items-center gap-2 lg:gap-4 lg:min-h-16 mb-4">
           @stack('header')
         </div>

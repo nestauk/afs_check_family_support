@@ -12,7 +12,7 @@
 >
   <label class="flex">
     <x-form.text
-      :value="slot"
+      :value="slot.to_str"
       readonly
       class="rounded-r-none border-r-0 grow min-w-0"
       x-ref="copyText"

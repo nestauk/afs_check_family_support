@@ -6,7 +6,7 @@
     :href="pagy_url_for(pagy, pagy.prev)"
     aria-label="Previous"
     primary
-    :class='"px-2.5 mr-4 bg-blue-50 hover:bg-blue-900 text-blue-950 #{pagy.prev ? "" : "invisible"}"'
+    class="px-2.5 mr-4 bg-blue-50 hover:bg-blue-900 text-blue-950 {{ pagy.prev ? "" : "invisible" }}"
   ><x-icon.left/></x-button.flat>
   @each (item in pagy.series)
     @if (item.is_a? Integer)
@@ -27,6 +27,6 @@
     :href="pagy_url_for(pagy, pagy.next)"
     aria-label="Previous"
     primary
-    :class='"px-2.5 ml-4 bg-blue-50 hover:bg-blue-900 text-blue-950 #{pagy.next ? "" : "invisible"}"'
+    class="px-2.5 ml-4 bg-blue-50 hover:bg-blue-900 text-blue-950 {{ pagy.next ? "" : "invisible" }}"
   ><x-icon.right/></x-button.flat>
 </nav>

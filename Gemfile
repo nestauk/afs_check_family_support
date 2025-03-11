@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.6"
+ruby "3.4.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0"
@@ -41,7 +41,7 @@ group :test do
   gem "cuprite"
 end
 
-gem "rblade", "~> 1.0"
+gem "rblade", "~> 2.0"
 
 gem "vite_rails", "~> 3.0"
 
@@ -61,3 +61,5 @@ gem "solid_cache", "~> 1.0"
 gem "pagy", "~> 9.1"
 
 gem "cloudinary", "~> 2.2"
+
+gem "ahoy_matey", "~> 5.3"

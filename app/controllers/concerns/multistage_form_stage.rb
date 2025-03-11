@@ -1,6 +1,7 @@
 class MultistageFormStage < ::ApplicationController
   include ActiveModel::Validations
 
+  delegate :track_event, to: :@form
   before_action :save_errors, only: :show
 
   def initialize(multistage_form)
@@ -8,6 +9,8 @@ class MultistageFormStage < ::ApplicationController
   end
 
   def self.validates(name, **args)
+    @attribute_names ||= {}
+
     # Create an attribute accessor method for any fields that we want to validate
     unless method_defined? name
       define_method name do

@@ -51,6 +51,7 @@ class ApplicationController < ActionController::Base
     end
 
     Current.user = user
+    ahoy.authenticate user
   end
 
   def authenticate_user_and_require_admin

@@ -1,6 +1,6 @@
 @props(title: required, collapsed: true, preview: false)
-<div x-data="{collapsed: <%= collapsed %>}" {{ attributes.merge(class: "-:w-full -:max-w-prose") }}>
-  <x-button.flat link class="group no-underline w-full px-0" @click="collapsed = !collapsed">
+<div x-data="{collapsed: <%= collapsed %>}" {{ attributes.merge(class: "-:w-full -:max-w-prose -:gap-inherit") }}>
+  <x-button.flat link class="group no-underline w-full px-0 whitespace-normal text-left" @click="collapsed = !collapsed">
     @if(title.is_a?(String))
       <p class="font-medium mr-auto group-hover:underline">{{ title }}</p>
     @else

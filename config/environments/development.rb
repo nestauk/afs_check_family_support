@@ -35,6 +35,8 @@ Rails.application.configure do
   end
   config.cache_store = :solid_cache_store
 
+  config.session_store :cache_store, key: "PHPSESSID"
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   # config.active_storage.service = :local
   config.active_storage.service = :cloudinary
