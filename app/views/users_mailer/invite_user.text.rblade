@@ -1,9 +1,9 @@
 Hi,
 
-You have been invited to join APPLICATION_NAME!
+You have been invited to join {{ Rails.configuration.application_name }}!
 
 Please click the link below to begin your account activation:
 
 {{ users_account_activate_url(signed_email: @signed_email) }}
 
-If you did not request access to APPLICATION_NAME, you can safely ignore this email.
+If you did not request access to {{ Rails.configuration.application_name }}, you can safely ignore this email.

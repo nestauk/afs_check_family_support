@@ -1,6 +1,6 @@
 <p>{{ @user.salutation }}</p>
 
-<p>You are changing your APPLICATION_NAME email address to <strong>{{ @new_email }}</strong>.</p>
+<p>You are changing your {{ Rails.configuration.application_name }} email address to <strong>{{ @new_email }}</strong>.</p>
 
 <p>Confirm this new email address using the link below:</p>
 

@@ -6,7 +6,7 @@ services:
       - "3000:3000"
     volumes:
       - ".:/var/source"
-      - "./storage/bundle:/usr/local/bundle"
+      - "ruby-gems:/usr/local/bundle"
     environment:
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
       DATABASE_URL: "postgres://pgsql:password@pgsql:5432"
@@ -25,8 +25,8 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - pgsql-data:/var/lib/postgresql/data
-      - ./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql:ro
+      - "pgsql-data:/var/lib/postgresql/data"
+      - "./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql:ro"
     environment:
       POSTGRES_USER: pgsql
       POSTGRES_PASSWORD: password
@@ -44,7 +44,7 @@ services:
       - 3036:3036
     volumes:
       - ".:/var/source"
-      - "./storage/bundle:/usr/local/bundle"
+      - "ruby-gems:/usr/local/bundle"
     environment:
       VITE_RUBY_HOST: 0.0.0.0
     healthcheck:
@@ -67,3 +67,4 @@ services:
 
 volumes:
   pgsql-data:
+  ruby-gems:

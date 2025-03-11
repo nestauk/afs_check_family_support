@@ -1,6 +1,6 @@
 {{ @user.salutation }}
 
-You are changing your APPLICATION_NAME email address to {{ @new_email }}.
+You are changing your {{ Rails.configuration.application_name }} email address to {{ @new_email }}.
 
 Confirm your new email address using the link below:
 

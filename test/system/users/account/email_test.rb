@@ -15,7 +15,7 @@ module System::Users
         @when.i_type("new_email@example.com", into: "Email")
           .and.i_press("Change email")
         @then.i_see("A confirmation email was sent to new_email@example.com")
-          .and.i_see_email("Confirm your new APPLICATION_NAME email address")
+          .and.i_see_email("Confirm your new #{ Rails.configuration.application_name } email address")
 
         @when.i_click_in_email("Confirm new email")
         @then.i_see("Confirm your new email address")

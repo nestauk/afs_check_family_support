@@ -13,7 +13,7 @@
 >
   {{-- Mobile header --}}
   <x-content.row as="header" class="lg:hidden justify-between">
-    <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">APPLICATION_NAME</h1>
+    <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">{{ Rails.configuration.application_name }}</h1>
     <button
       x-ref="menuOpen"
       type="button"

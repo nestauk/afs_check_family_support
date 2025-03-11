@@ -10,7 +10,7 @@ module Users
     end
 
     def verify
-      @totp = ROTP::TOTP.new(@user.otp_secret, issuer: "APPLICATION_NAME")
+      @totp = ROTP::TOTP.new(@user.otp_secret, issuer: Rails.configuration.application_name)
 
       if @totp.verify(params[:totp]&.strip || "", drift_behind: 15)
         clear_rate_limit ["totp user limit 1:#{@user.id}", "totp user limit 2:#{@user.id}"]

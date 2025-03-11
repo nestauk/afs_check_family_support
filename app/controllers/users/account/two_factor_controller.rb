@@ -57,7 +57,7 @@ module Users
       def setup_totp
         session[:otp_secret] ||= ROTP::Base32.random
         @otp_secret = session[:otp_secret]
-        @totp = ROTP::TOTP.new(session[:otp_secret], issuer: "APPLICATION_NAME")
+        @totp = ROTP::TOTP.new(session[:otp_secret], issuer: Rails.configuration.application_name)
       end
     end
   end

@@ -69,7 +69,7 @@ module Admin
       get admin_users_invite_path
 
       assert_response :ok
-      assert_see "Invite someone to APPLICATION_NAME"
+      assert_see "Invite someone to #{ Rails.configuration.application_name }"
       assert_see "Emails"
       assert_see_html "Send invitation"
     end
@@ -86,7 +86,7 @@ module Admin
       follow_redirect!
       assert_see "Invitations were successfully sent"
 
-      assert_see_email "You have been invited to join APPLICATION_NAME"
+      assert_see_email "You have been invited to join #{ Rails.configuration.application_name }"
       assert_last_email_to "new-user@example.com"
       assert_see_in_email users_account_activate_path(signed_email: "")
 
@@ -184,7 +184,7 @@ module Admin
       assert_redirected_to admin_user_path user
       follow_redirect!
       assert_see "A confirmation email was sent to new@example.com"
-      assert_see_email "Confirm your new APPLICATION_NAME email address"
+      assert_see_email "Confirm your new #{ Rails.configuration.application_name } email address"
 
       assert_event admin, "admin_user_email_change_request", for: user.id
       assert_event user, "email_change_request", to: "new@example.com", by: admin.id
@@ -238,7 +238,7 @@ module Admin
       assert_redirected_to admin_user_path user
       follow_redirect!
       assert_see "A password reset link was sent to user@example.com"
-      assert_see_email "Reset your APPLICATION_NAME password"
+      assert_see_email "Reset your #{ Rails.configuration.application_name } password"
 
       assert_event admin, "admin_user_password_reset_request", for: user.id
       assert_event user, "password_reset_request", by: admin.id

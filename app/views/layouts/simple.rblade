@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ title }} | APPLICATION_NAME</title>
+    <title>{{ title }} | {{ Rails.configuration.application_name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {!! csrf_meta_tags !!}
     {!! csp_meta_tag !!}
@@ -14,7 +14,7 @@
 
   <body {{ attributes.merge(class: "flex flex-col min-h-screen") }}>
     <header class="flex items-center {{ width }} max-w-full mx-auto px-5 mt-4">
-      <h1 class="py-4 text-blue-900 font-normal text-5xl mr-auto">APPLICATION_NAME</h1>
+      <h1 class="py-4 text-blue-900 font-normal text-5xl mr-auto">{{ Rails.configuration.application_name }}</h1>
       @stack('header')
     </header>
     <main class="{{ width }} max-w-full mx-auto px-5 mt-8 flex flex-col gap-6 -:pb-36 items-start {{ wrapperClass }}">

@@ -46,7 +46,7 @@ module System::Users
       private
 
       def totp_code otp_secret
-        totp = ROTP::TOTP.new(otp_secret, issuer: "APPLICATION_NAME")
+        totp = ROTP::TOTP.new(otp_secret, issuer: Rails.configuration.application_name)
 
         totp.now
       end

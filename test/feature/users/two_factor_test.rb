@@ -95,7 +95,7 @@ module Users
     OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
 
     def totp_code(time = Time.current)
-      totp = ROTP::TOTP.new(OTP_SECRET, issuer: "APPLICATION_NAME")
+      totp = ROTP::TOTP.new(OTP_SECRET, issuer: Rails.configuration.application_name)
 
       totp.at time
     end

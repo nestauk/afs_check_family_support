@@ -15,7 +15,7 @@ module System::Users
       @then.i_see("Thank you")
         .and.i_take_snapshot("users.forgot_password | email_sent")
         .and.the_page_is_accessible
-        .and.i_see_email("Reset your APPLICATION_NAME password")
+        .and.i_see_email("Reset your #{ Rails.configuration.application_name } password")
 
       @when.i_click_in_email("Reset password")
       @then.i_see("Reset password")

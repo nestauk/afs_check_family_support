@@ -28,5 +28,7 @@ module RailsTemplate
     config.active_support.to_time_preserves_timezone = :zone
 
     config.action_view.frozen_string_literal = true
+
+    config.application_name = "Rails Template"
   end
 end
