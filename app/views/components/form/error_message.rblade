@@ -1,0 +1,12 @@
+@props(error: nil, keys: [])
+@ruby
+error ||= errors.slice(*keys).values.flatten
+@endRuby
+@shouldRender(error.present?)
+<div {{ attributes }}>
+  @each(message in Array.wrap(error))
+  <p class="sm text-error font-medium">
+    {{ message }}
+  </p>
+  @end
+</div>

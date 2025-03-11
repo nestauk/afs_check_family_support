@@ -18,14 +18,14 @@ class ApplicationRecord < ActiveRecord::Base
   def self.validates(*attributes, **args)
     # Allow setting a custom human-readable name for validations
     if args.has_key?(:display)
-      @human_attribute_names ||= {}
-      @human_attribute_names[attributes.first] = args.delete :display
+      @@human_attribute_names ||= {}
+      @@human_attribute_names[attributes.first] = args.delete :display
     end
 
     super
   end
 
   def self.human_attribute_name(attribute_name, base)
-    @human_attribute_names&.[](attribute_name.to_sym) || super
+    @@human_attribute_names&.[](attribute_name.to_sym) || super
   end
 end
