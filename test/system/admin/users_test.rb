@@ -22,7 +22,7 @@ module System::Admin
 
       @given.i_am_signed_in_as admin
       @when.i_visit("/admin/users/invite")
-      @then.i_see("Invite someone to #{ Rails.configuration.application_name }")
+      @then.i_see("Invite someone to #{Rails.configuration.application_name}")
 
       @when.i_type("first-email@example.com", into: "[name=\"emails[]\"]", nth: 0)
         .and.i_press("Add email")
@@ -33,7 +33,7 @@ module System::Admin
       @when.i_press("Send invitations")
       @then.i_am_redirected_to("/admin/users")
         .and.i_see("Invitations were successfully sent")
-        .and.i_see_emails("You have been invited to join #{ Rails.configuration.application_name }", count: 2)
+        .and.i_see_emails("You have been invited to join #{Rails.configuration.application_name}", count: 2)
     end
 
     test "show" do

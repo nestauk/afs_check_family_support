@@ -29,7 +29,7 @@ module Users
       assert_see "Thank you"
       assert_see "If your email address matches an account, you will receive an email."
 
-      assert_see_email "Reset your #{ Rails.configuration.application_name } password"
+      assert_see_email "Reset your #{Rails.configuration.application_name} password"
       assert_see_in_email users_password_reset_path(sid: "")
 
       assert_event user, "password_reset_request"

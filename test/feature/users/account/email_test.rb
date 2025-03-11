@@ -36,7 +36,7 @@ module Users
         follow_redirect!
         assert_see "A confirmation email was sent to new_email@example.com"
 
-        assert_see_email "Confirm your new #{ Rails.configuration.application_name } email address"
+        assert_see_email "Confirm your new #{Rails.configuration.application_name} email address"
         assert_last_email_to "new_email@example.com"
         assert_see_in_email users_account_confirm_email_path(signed_email: "")
 
@@ -110,7 +110,7 @@ module Users
         user.reload
         assert_equal "newemail@example.com", user.email
 
-        assert_see_email "Your #{ Rails.configuration.application_name } email address has changed"
+        assert_see_email "Your #{Rails.configuration.application_name} email address has changed"
         assert_last_email_to "user@example.com"
         assert_see_in_email "newemail@example.com"
 
