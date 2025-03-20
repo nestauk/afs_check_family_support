@@ -10,7 +10,22 @@ window.ahoy = ahoy
 Alpine.plugin(collapse)
 Alpine.plugin(focus)
 Alpine.plugin(persist)
+
+// Add magic method to easily be able to post data to the backend
+Alpine.magic('post', (el, { Alpine }) => {
+  return (url, data) => fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      authenticity_token: window.csrfToken,
+      ...data,
+    })
+  });
+})
+
 window.Alpine = Alpine
 Alpine.start();
 
-window.csrfToken = document.getElementsByName('csrf-token')[0].content
+window.csrfToken = document.querySelector('meta[name=csrf-token]').content

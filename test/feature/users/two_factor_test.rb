@@ -2,6 +2,8 @@ require "feature/test_case"
 
 module Users
   class TwoFactorTest < Feature::TestCase
+    OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
+
     test "permissions" do
       sign_in_as create(:user)
       assert_needs_guest challenge_2fa_url
@@ -91,8 +93,6 @@ module Users
     end
 
     private
-
-    OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
 
     def totp_code(time = Time.current)
       totp = ROTP::TOTP.new(OTP_SECRET, issuer: Rails.configuration.application_name)

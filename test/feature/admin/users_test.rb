@@ -18,16 +18,16 @@ module Admin
       assert_needs_auth admin_user_disable_2fa_path(user), :post
 
       sign_in_as create(:user, is_admin: false)
-      assert_not_found admin_users_path
-      assert_not_found admin_users_invite_path(user)
-      assert_not_found admin_users_invite_path(user), :post
-      assert_not_found admin_user_path(user)
-      assert_not_found admin_user_change_email_path(user)
-      assert_not_found admin_user_change_email_path(user), :post
-      assert_not_found admin_user_enable_admin_path(user), :post
-      assert_not_found admin_user_disable_admin_path(user), :post
-      assert_not_found admin_user_password_reset_path(user), :post
-      assert_not_found admin_user_disable_2fa_path(user), :post
+      assert_forbidden admin_users_path
+      assert_forbidden admin_users_invite_path(user)
+      assert_forbidden admin_users_invite_path(user), :post
+      assert_forbidden admin_user_path(user)
+      assert_forbidden admin_user_change_email_path(user)
+      assert_forbidden admin_user_change_email_path(user), :post
+      assert_forbidden admin_user_enable_admin_path(user), :post
+      assert_forbidden admin_user_disable_admin_path(user), :post
+      assert_forbidden admin_user_password_reset_path(user), :post
+      assert_forbidden admin_user_disable_2fa_path(user), :post
     end
 
     test "render index" do
@@ -104,7 +104,7 @@ module Admin
           # Blank entries should be removed
           " ",
           # Duplicate entries should be ignored
-          "new-user@example.com"
+          "new-user@example.com",
         ]}
       end
 

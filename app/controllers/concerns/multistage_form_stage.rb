@@ -47,12 +47,24 @@ class MultistageFormStage < ::ApplicationController
     Current.errors.merge!(errors.to_hash(true))
   end
 
+  def self.local_prefixes
+    [name.deconstantize.underscore]
+  end
+
   def default_render
     default_template = self.class.name.underscore
     if template_exists?(default_template, variants: request.variant)
-      return render default_template
+      render default_template
+    else
+      super
     end
+  end
 
-    super
+  def go_to_stage(stage)
+    @form.data[@form.class::STAGE_KEY] = stage.name
+    track_event "Changed to stage #{stage.name.demodulize}"
+    @form.save_session
+
+    redirect_to @form.form_url
   end
 end

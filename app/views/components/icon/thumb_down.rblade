@@ -1,0 +1,3 @@
+<x-icon {{ attributes.merge(
+  alt: "thumb down"
+) }}>thumb_down</x-icon>

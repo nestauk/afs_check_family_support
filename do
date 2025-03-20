@@ -29,25 +29,27 @@ if [ $# -eq 0 ] || [ $1 = "help" ]
     echo "do - a helper script for performing common tasks"
     echo
     echo "Usage"
-    echo "  ./do <build|b>         build docker images"
-    echo "  ./do <up|u>            start all or a specified docker compose services"
-    echo "  ./do <stop|s>          stop all or a specified docker compose service"
-    echo "  ./do <restart|rs>      restart all or a specified docker compose service"
-    echo "  ./do <down|d>          stop and discard all docker compose services and networks"
-    echo "  ./do <logs|l>          display the logs for all or a specified docker compose service"
-    echo "  ./do <run|r>           run the specified console command in the primary docker service"
-    echo "  ./do <console|c>       start a bash console in the primary docker service"
-    echo "  ./do <rails|rr>        run the bin/rails binary with the given arguments"
-    echo "  ./do <rake|rk>         run the bin/rake binary with the given arguments"
-    echo "  ./do cs                run the rake coding standards task"
-    echo "  ./do cs:fix            run the rake coding standards fix task"
-    echo "  ./do <test|t>          run the unit and integration test suite"
-    echo "  ./do <test:system|ts>  run the system test suite"
-    echo "  ./do vr:baseline       set the visual regression baseline using the current set of snapshots"
-    echo "  ./do vr:diff           compare the current set of snapshots to the baseline"
-    echo "  ./do vr:heatmap        perform simulated eye tracking analysis on the current set of snapshots"
-    echo "  ./do <heroku|h>        run the heroku CLI with the given arguments"
-    echo "  ./do stopall           kill all docker containers running on the system"
+    echo "  ./do <build|b>              build docker images"
+    echo "  ./do <up|u>                 start all or a specified docker compose services"
+    echo "  ./do <stop|s>               stop all or a specified docker compose service"
+    echo "  ./do <restart|rs>           restart all or a specified docker compose service"
+    echo "  ./do <down|d>               stop and discard all docker compose services and networks"
+    echo "  ./do <logs|l>               display the logs for all or a specified docker compose service"
+    echo "  ./do <run|r>                run the specified console command in the primary docker service"
+    echo "  ./do <console|c>            start a bash console in the primary docker service"
+    echo "  ./do <rails|rr>             run the bin/rails binary with the given arguments"
+    echo "  ./do <rake|rk>              run the bin/rake binary with the given arguments"
+    echo "  ./do cs                     run the rake coding standards task"
+    echo "  ./do cs:fix                 run the rake coding standards fix task"
+    echo "  ./do <test|t>               run the unit and integration test suite"
+    echo "  ./do <test:system|ts>       run the system test suite"
+    echo "  ./do <test:system:vr|tsv>   run the system test suite then a visual regression diff"
+    echo "  ./do pgadmin                start pgadmin"
+    echo "  ./do vr:baseline            set the visual regression baseline using the current set of snapshots"
+    echo "  ./do vr:diff                compare the current set of snapshots to the baseline"
+    echo "  ./do vr:heatmap             perform simulated eye tracking analysis on the current set of snapshots"
+    echo "  ./do <heroku|h>             run the heroku CLI with the given arguments"
+    echo "  ./do stopall                kill all docker containers running on the system"
     exit 1
 fi
 
@@ -68,8 +70,8 @@ fi
 
 if [ $1 = "stop" ] || [ $1 = "s" ]
   then
-    echo "Running command: $DOCKER_COMPOSE_COMMAND stop ${@:2}"
-    $DOCKER_COMPOSE_COMMAND stop ${@:2}
+    echo "Running command: $DOCKER_COMPOSE_COMMAND --profile '*' stop ${@:2}"
+    $DOCKER_COMPOSE_COMMAND --profile '*' stop ${@:2}
     exit 0
 fi
 
@@ -82,8 +84,8 @@ fi
 
 if [ $1 = "down" ] || [ $1 = "d" ]
   then
-    echo "Running command: $DOCKER_COMPOSE_COMMAND down ${@:2}"
-    $DOCKER_COMPOSE_COMMAND down ${@:2}
+    echo "Running command: $DOCKER_COMPOSE_COMMAND --profile '*' down ${@:2}"
+    $DOCKER_COMPOSE_COMMAND --profile '*' down ${@:2}
     exit 0
 fi
 
@@ -124,15 +126,15 @@ fi
 
 if [ $1 = "cs" ]
   then
-    echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bin/rake standard ${@:2}"
-    $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bin/rake standard ${@:2}
+    echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bundle exec rubocop ${@:2}"
+    $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bundle exec rubocop ${@:2}
     exit 0
 fi
 
 if [ $1 = "cs:fix" ]
   then
-    echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bin/rake standard:fix ${@:2}"
-    $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bin/rake standard:fix ${@:2}
+    echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bundle exec rubocop --autocorrect ${@:2}"
+    $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE bundle exec rubocop --autocorrect ${@:2}
     exit 0
 fi
 
@@ -150,6 +152,14 @@ if [ $1 = "test:system" ] || [ $1 = "ts" ]
     exit 0
 fi
 
+if [ $1 = "test:system:vr" ] || [ $1 = "tsv" ]
+  then
+    ./do test:system ${@:2}
+    echo ""
+    ./do vr:diff
+    exit 0
+fi
+
 if [ $1 = "heroku" ] || [ $1 = "h" ]
   then
     echo "Running command: $DOCKER_COMPOSE_COMMAND exec $RUN_DOCKER_SERVICE heroku ${@:2}"
@@ -159,8 +169,8 @@ fi
 
 if [ $1 = "log" ] || [ $1 = "logs" ] || [ $1 = "l" ]
   then
-    echo "Running command: $DOCKER_COMPOSE_COMMAND logs ${@:2}"
-    $DOCKER_COMPOSE_COMMAND logs ${@:2}
+    echo "Running command: $DOCKER_COMPOSE_COMMAND logs ${@:2} | tail -n 100"
+    $DOCKER_COMPOSE_COMMAND logs ${@:2} | tail -n 100
     exit 0
 fi
 
@@ -180,19 +190,32 @@ fi
 
 if [ $1 = "vr:baseline" ]
   then
-    ./do ro image_processing python baseline.py
+    echo "Running command: $DOCKER_COMPOSE_COMMAND run --rm image_processing python baseline.py"
+    $DOCKER_COMPOSE_COMMAND run --rm image_processing python baseline.py
     exit 0
 fi
 
 if [ $1 = "vr:diff" ]
   then
-    ./do ro image_processing python diff.py
+    echo "Running command: $DOCKER_COMPOSE_COMMAND run --rm image_processing python diff.py"
+    $DOCKER_COMPOSE_COMMAND run --rm image_processing python diff.py
     exit 0
 fi
 
 if [ $1 = "vr:heatmap" ]
   then
-    ./do ro image_processing python simulated_eye_tracking.py
+    echo "Running command: $DOCKER_COMPOSE_COMMAND run --rm image_processing python simulated_eye_tracking.py"
+    $DOCKER_COMPOSE_COMMAND run --rm image_processing python simulated_eye_tracking.py
+    exit 0
+fi
+
+if [ $1 = "pgadmin" ]
+  then
+    echo "Running command: $DOCKER_COMPOSE_COMMAND up -d --remove-orphans pgadmin"
+    $DOCKER_COMPOSE_COMMAND up -d --remove-orphans pgadmin
+
+    echo ""
+    echo "pgadmin is now available at http://127.0.0.1:5000"
     exit 0
 fi
 

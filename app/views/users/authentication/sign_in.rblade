@@ -2,7 +2,7 @@
   <h2 class="xl">Sign in</h2>
 
   <p>
-    Please enter your details to access {{ Rails.configuration.application_name }}.
+    Please enter your details to access {{ application_name }}.
   </p>
 
   <x-form method="POST">

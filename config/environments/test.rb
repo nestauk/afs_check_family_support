@@ -21,7 +21,7 @@ Rails.application.configure do
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}",
   }
 
   # Show full error reports and disable caching.
@@ -71,4 +71,15 @@ Rails.application.configure do
   config.hosts << "rails"
   config.hosts << "127.0.0.1"
   config.hosts << "www.example.com"
+end
+
+class Object
+  def dd
+    abort "
+      Debug output
+      #{caller(1..1)&.first&.delete_prefix("/var/source/")}
+      (#{self.class.name}):
+      #{pretty_inspect}
+    "
+  end
 end

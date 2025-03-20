@@ -4,15 +4,18 @@ module System::Users
   module Account
     class TwoFactorTest < System::TestCase
       test "enable 2fa" do
-        @given.i_am_signed_in
+        @given.i_am_signed_in_as create(:user, email: "user@example.com")
 
         @when.i_visit("/users/account")
         @then.i_see("Enable 2FA")
 
-        @when.i_click("Enable 2FA")
-        @then.i_see("Enable two factor authentication")
-          .and.i_take_snapshot("users.account.enable_2fa")
-          .and.the_page_is_accessible
+        # Ensure our secret is consistent to prevent visual regression diffs
+        ROTP::Base32.stub :random, "YA3A3OQ63CTS6MUC3PQHD2WKFCWRR7WJ" do
+          @when.i_click("Enable 2FA")
+          @then.i_see("Enable two factor authentication")
+            .and.i_take_snapshot("users.account.enable_2fa")
+            .and.the_page_is_accessible
+        end
 
         otp_secret = page.find("input[x-ref='copyText']", visible: :all)["value"]
 

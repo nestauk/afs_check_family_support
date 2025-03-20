@@ -13,7 +13,7 @@
 >
   {{-- Mobile header --}}
   <x-content.row as="header" class="lg:hidden justify-between">
-    <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">{{ Rails.configuration.application_name }}</h1>
+    <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">{{ application_name }}</h1>
     <button
       x-ref="menuOpen"
       type="button"
@@ -65,7 +65,7 @@
       x-bind:style="{top: stickyOffset + 'px'}"
       x-ref="stickyContent"
     >
-      <h1 class="py-8 text-blue-900 font-normal text-5xl text-center -mb-2">APP</h1>
+      <h1 class="py-8 text-blue-900 font-normal text-5xl text-center -mb-2">{{ application_name }}</h1>
 
       <x-navigation.button :href="dashboard_path">
         <x-icon.home/>

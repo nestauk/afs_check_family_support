@@ -2,7 +2,7 @@ class MultistageFormController < ApplicationController
   STAGE_KEY = :_stage
 
   # This controller is a middle manager so disable all existing callbacks to prevent duplication
-  __callbacks.keys.each { reset_callbacks _1 }
+  reset_all_callbacks
 
   before_action :load_session
   after_action :save_session, only: :action
@@ -31,20 +31,12 @@ class MultistageFormController < ApplicationController
     @current_stage
   end
 
-  def go_to_stage(stage)
-    @data[STAGE_KEY] = stage.name
-    track_event "Changed to stage #{stage.name.demodulize}"
-    save_session
-
-    redirect_to form_url
-  end
-
   def load_session
     @data = if session.has_key?(session_key)
       session[session_key].deep_symbolize_keys
     else
       {
-        STAGE_KEY => default_stage
+        STAGE_KEY => default_stage,
       }
     end
   end
@@ -79,16 +71,14 @@ class MultistageFormController < ApplicationController
   def action
     @data.merge! params.except(:controller, :action, :authenticity_token, :_method).to_unsafe_hash.symbolize_keys
 
-    action = "#{request.POST["action"]}_action"
-
-    if action == "submit_action"
-      return submit
-    end
+    action = :"#{request.POST["action"]}_action"
 
     stage = current_stage
 
     if stage.respond_to? action
-      return current_stage.public_send(action)
+      current_stage.dispatch(action, request, response)
+
+      return
     end
 
     raise StandardError.new "Unhandled action: #{stage.class.name}.#{action}"
@@ -112,5 +102,9 @@ class MultistageFormController < ApplicationController
     else
       @stages.first.name
     end
+  end
+
+  def self.local_prefixes
+    [name.deconstantize.underscore]
   end
 end

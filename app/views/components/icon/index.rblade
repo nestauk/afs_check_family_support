@@ -4,7 +4,7 @@
   fill: 1,
   weight: 400,
   grade: 0,
-  opticalSize: 24
+  optical_size: 24
 )
 @ruby
 case size
@@ -32,6 +32,6 @@ end
     -:box-content -:leading-[1] w-[1em] h-[1em] #{sizeClasses}
     -:select-none
   ",
-  style: "font-variation-settings:'FILL' #{fill},'wght' #{weight},'GRAD' #{grade},'opsz' #{opticalSize}",
+  style: "font-variation-settings:'FILL' #{fill},'wght' #{weight},'GRAD' #{grade},'opsz' #{optical_size}",
   "aria-label": alt
 }) }}>{{slot}}</span>

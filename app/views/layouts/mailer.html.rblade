@@ -33,7 +33,7 @@
   <body>
     <div id="wrapper">
       <div id="content">
-        <h1>{{ Rails.configuration.application_name }}</h1>
+        <h1>{{ application_name }}</h1>
 
         <%= yield %>
       </div>

@@ -25,7 +25,9 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
   gem "dotenv-rails", "~> 3.0"
   gem "factory_bot_rails"
-  gem "standard"
+  gem "rubocop", ">= 1.73"
+  gem "rubocop-rails"
+  gem "standard", ">= 1.35.1"
   gem "standard-rails"
   gem "faker"
 end
@@ -41,7 +43,7 @@ group :test do
   gem "cuprite"
 end
 
-gem "rblade", "~> 2.0"
+gem "rblade", "~> 3.0"
 
 gem "vite_rails", "~> 3.0"
 

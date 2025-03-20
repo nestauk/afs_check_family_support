@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def abort_not_found
-    raise ActionController::RoutingError.new("Not Found")
-  end
-
   def require_authenticated
     if Current.user.nil?
       redirect_to main_app.auth_url
@@ -23,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
 
     unless Current.user.is_admin?
-      abort_not_found
+      raise HttpError::Forbidden
     end
   end
 
@@ -66,4 +62,9 @@ class ApplicationController < ActionController::Base
   def clear_rate_limit keys
     cache_store.delete_multi(Array.wrap(keys).map { |key| "rate-limit:#{controller_path}:#{key}" })
   end
+
+  def self.reset_all_callbacks
+    __callbacks.keys.each { reset_callbacks _1 }
+  end
+  private_class_method :reset_all_callbacks
 end

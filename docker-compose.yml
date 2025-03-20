@@ -13,11 +13,13 @@ services:
       SMTP_HOST: mailpit
       VITE_RUBY_HOST: "vite"
     healthcheck:
-      test: curl --fail http://localhost:3000/up
-      start_interval: 2s
-      start_period: 30s
+      test: 'pumactl status | grep "Puma is started" && exit 0 || exit 1'
+      start_period: 120s
+      start_interval: 1s
+      interval: 15s
     depends_on:
-      - pgsql
+      pgsql:
+        condition: service_healthy
 
   pgsql:
     image: postgres:17
@@ -25,16 +27,15 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - "pgsql-data:/var/lib/postgresql/data"
-      - "./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql:ro"
+      - pgsql-data:/var/lib/postgresql/data
+      - ./docker/postgres_setup.sql:/docker-entrypoint-initdb.d/10-database-setup.sql:ro
     environment:
       POSTGRES_USER: pgsql
       POSTGRES_PASSWORD: password
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
-      retries: 5
-      start_period: 30s
-      start_interval: 2s
+      start_period: 60s
+      start_interval: 1s
 
   vite:
     build: .
@@ -51,6 +52,9 @@ services:
       test: curl --fail http://localhost:3036
       start_interval: 2s
       start_period: 30s
+    depends_on:
+      rails:
+        condition: service_healthy
 
   mailpit:
     image: axllent/mailpit
@@ -58,13 +62,45 @@ services:
       - "8025:8025"
 
   image_processing:
-    build: docker/image_processing
+    image: python:3.10
+    entrypoint: ["/bin/sh", "entrypoint.sh"]
+    working_dir: /var/source
     ports:
       - "8080:8080"
     volumes:
       - "./docker/image_processing:/var/source"
       - "./tmp/snapshots:/var/snapshots"
+      - "python:/usr/local/lib/python3.10"
+    profiles:
+      - image_processing
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5000:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@example.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    volumes:
+      - "./docker/pgadmin/servers.json:/pgadmin4/servers.json:ro"
+      - "./docker/pgadmin/preferences.json:/pgadmin4/preferences.json:ro"
+    configs:
+      - source: pgadmin.password
+        target: /pgpass
+        mode: 0400
+        uid: "5050"
+    profiles:
+      - pgadmin
+    depends_on:
+      - pgsql
 
 volumes:
   pgsql-data:
   ruby-gems:
+  python:
+
+configs:
+  pgadmin.password:
+    content: pgsql:5432:*:pgsql:password

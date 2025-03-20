@@ -3,6 +3,8 @@ require "feature/test_case"
 module Users
   module Account
     class TwoFactorTest < Feature::TestCase
+      OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
+
       test "permissions" do
         sign_out
         assert_needs_auth users_account_enable_2fa_path
@@ -141,8 +143,6 @@ module Users
       end
 
       private
-
-      OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
 
       def totp_code(otp_secret, time = Time.current)
         totp = ROTP::TOTP.new(otp_secret, issuer: Rails.configuration.application_name)

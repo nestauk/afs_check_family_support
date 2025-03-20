@@ -11,6 +11,6 @@ class MultistageFormPasswordProtected < MultistageFormStage
       raise_validation_error
     end
 
-    @form.go_to_stage @form.stages.first
+    go_to_stage @form.stages.first
   end
 end

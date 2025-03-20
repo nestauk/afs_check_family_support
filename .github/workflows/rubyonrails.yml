@@ -29,25 +29,41 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       # Add or replace dependency steps here
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
         with:
           chrome-version: stable
+
       # Add or replace setup steps here
+
       - name: Set up database schema
         run: bin/rails db:schema:load
+
       - name: Install js dependencies
         run: npm install
+
       - name: Build vite assets
         run: bin/rails assets:precompile
+
       # Add or replace test runners here
-      - name: Run tests
-        run: bin/rake
+
+      - name: Run rubocop rules
+        run: bundle exec rubocop
+
+      - name: Run basic tests
+        run: bin/rails test
+
+      - name: Run system tests
+        run: bin/rails test:system
+
       - name: Save artifacts
         if: failure()
         uses: actions/upload-artifact@v4

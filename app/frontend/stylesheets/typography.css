@@ -3,7 +3,7 @@
 
   p {
     @apply text-black/90 font-normal max-w-prose;
-    @apply text-lg sm:text-xl;
+    @apply text-lg sm:text-xl leading-normal sm:leading-normal;
   }
 
   /*
@@ -13,39 +13,40 @@
 
   /** 2xs */
   .\32 xs {
-    @apply text-xs sm:text-sm;
+    @apply text-xs sm:text-sm leading-normal sm:leading-normal;
   }
 
   .xs {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-base leading-normal sm:leading-normal;
   }
 
   .sm {
-    @apply text-base sm:text-lg;
+    @apply text-base sm:text-lg leading-normal sm:leading-normal;
   }
 
   .md {
-    @apply text-lg sm:text-xl;
+    @apply text-lg sm:text-xl leading-normal sm:leading-normal;
   }
 
   .lg {
-    @apply text-xl sm:text-2xl;
+    @apply text-xl sm:text-2xl leading-normal sm:leading-normal;
   }
 
   .xl {
-    @apply text-2xl sm:text-3xl;
+    @apply text-2xl sm:text-3xl leading-normal sm:leading-normal;
   }
 
   /** 2xl */
   .\32 xl {
-    @apply text-3xl sm:text-4xl;
+    @apply text-3xl sm:text-4xl leading-normal sm:leading-normal;
   }
 
   /* Headers */
 
   :is(h1, h2, h3, h4, h5, h6) {
     @apply text-black/90;
-    @apply text-xl sm:text-2xl font-bold mt-2 first:mt-0;
+    @apply text-xl sm:text-2xl leading-normal sm:leading-normal;
+    @apply font-bold mt-2 first:mt-0;
   }
   :is(h1, h2, h3, h4, h5, h6) + p {
     @apply -mt-2.5;
@@ -56,37 +57,42 @@
 
   /** 3xs */
   .\33 xs:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-xs sm:text-sm font-medium;
+    @apply text-xs sm:text-sm font-medium leading-tight sm:leading-tight;
   }
 
   /** 2xs */
   .\32 xs:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-sm sm:text-base font-medium;
+    @apply text-sm sm:text-base font-medium leading-tight sm:leading-tight;
   }
 
   .xs:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-base sm:text-lg font-medium;
+    @apply text-base sm:text-lg font-medium leading-tight sm:leading-tight;
   }
 
   .sm:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-lg sm:text-xl font-bold;
+    @apply text-lg sm:text-xl font-bold leading-tight sm:leading-tight;
   }
 
   .md:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-xl sm:text-2xl font-bold;
+    @apply text-xl sm:text-2xl font-bold leading-tight sm:leading-tight;
   }
 
   .lg:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-2xl sm:text-3xl font-bold;
+    @apply text-2xl sm:text-3xl font-bold leading-tight sm:leading-tight;
   }
 
   .xl:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-3xl sm:text-4xl font-extrabold;
+    @apply text-3xl sm:text-4xl font-extrabold leading-tight sm:leading-tight;
   }
 
   /** 2xl */
   .\32 xl:where(h1, h2, h3, h4, h5, h6) {
-    @apply text-4xl sm:text-5xl font-extrabold;
+    @apply text-4xl sm:text-5xl font-extrabold leading-tight sm:leading-tight;
+  }
+
+  /** 3xl */
+  .\33 xl:where(h1, h2, h3, h4, h5, h6) {
+    @apply text-5xl sm:text-6xl font-extrabold leading-tight sm:leading-tight;
   }
 
   /* Links */

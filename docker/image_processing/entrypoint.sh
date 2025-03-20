@@ -5,5 +5,7 @@ if [ ! -f "/var/source/saved_model.pb" ]
     wget -O /var/source/saved_model.pb 'https://huggingface.co/JackVines/ds_saliency_inference/resolve/main/app/saved_model.pb'
 fi
 
-# Keep the container running in the background
-sleep infinity
+pip install --root-user-action=ignore --disable-pip-version-check tensorflow opencv-python-headless | grep -v "^Requirement already satisfied"
+
+# Run the given command
+exec "$@"

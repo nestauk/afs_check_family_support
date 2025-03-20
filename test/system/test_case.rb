@@ -13,7 +13,7 @@ module System
   # System tests use the Cuprite browser to simulate a user clicking and inputting data into the
   # site. System tests are slow and hard to maintain, so we only write the highest value tests.
   class TestCase < ActionDispatch::SystemTestCase
-    Capybara.default_max_wait_time = 15
+    Capybara.default_max_wait_time = 10
     Capybara.disable_animation = true
     Capybara.javascript_driver = :cuprite
     driven_by(
@@ -22,9 +22,10 @@ module System
         window_size: [1200, 800],
         headless: true,
         browser_options: {
-          "no-sandbox": nil
-        }
-      }
+          "no-sandbox": nil,
+        },
+        timeout: 10,
+      },
     )
 
     def setup

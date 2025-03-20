@@ -1,4 +1,4 @@
-@props(options: {}, value: nil)
+@props(options: {}, value: nil, placeholder: false)
 <select {{ attributes.merge({
   class: "
     --:w-form --:max-w-full
@@ -12,8 +12,13 @@
     focus:--:ring-2 focus:--:ring-focus
     --:font-normal --:font-sans --:text-base sm:--:text-lg --:leading-none  sm:--:leading-none
     [.error>&]:-:border-error [.error>&]:--:ring-offset-error
-  "
+    #{placeholder && 'invalid:text-grey'}
+  ",
+  required: placeholder.present?,
 }) }}>
+  @if(placeholder)
+    <option value="" disabled selected hidden>{{ placeholder }}</option>
+  @endIf
   @eachelse(optionLabel, optionValue in options)
     @ruby(optionValue = optionValue.nil? ? optionLabel : optionValue)
     <option value="{{ optionValue }}" @selected(optionValue.to_s == value.to_s)>{{ optionLabel }}</option>

@@ -2,6 +2,8 @@ require "system/test_case"
 
 module System::Users
   class TwoFactorTest < System::TestCase
+    OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
+
     test "sign in with 2fa" do
       create(:user, email: "user@example.com", password: "ravine-lexeme", otp_secret: OTP_SECRET)
 
@@ -21,8 +23,6 @@ module System::Users
     end
 
     private
-
-    OTP_SECRET = "KKUFXOHZOOLJYH3XGA3NGTWSSPEQKX6D"
 
     def totp_code
       totp = ROTP::TOTP.new(OTP_SECRET, issuer: Rails.configuration.application_name)

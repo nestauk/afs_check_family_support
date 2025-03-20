@@ -1,0 +1,15 @@
+<x-layout::simple title="{{ @status }} {{ @status_text }}" class="[&_h1]:text-grey">
+  <h2 class="mt-8 3xl text-green">Your session has expired</h2>
+
+  <p class="lg mt-4">Please go back and try again, or follow the link below:</p>
+
+  <p class="xl"><a href="{{ root_path }}" class="font-medium">Home</a></p>
+
+  @push("header")
+    <x-content.row class="w-max hidden sm:flex">
+      <x-icon.not_found class="text-5xl"/>
+      <p class="font-bold">{{ @status }} {{ @status_text }}</p>
+    </x-content.row>
+  @endPush
+  <p class="text-grey mt-2">{{ @status }} {{ @status_text }}</p>
+</x-layout::simple>

@@ -19,9 +19,8 @@ rm -rf tmp/screenshots/*
 rm -f /var/source/tmp/pids/*.pid
 
 # Ensure the correct dependencies are installed
-if ! bundler check | grep "The Gemfile's dependencies are satisfied"
-  then
-    bundler install
-fi
+bundle install
+npm install
+/var/source/bin/rails db:migrate
 
 /var/source/bin/rails server -b 0.0.0.0

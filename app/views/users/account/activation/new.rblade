@@ -2,7 +2,7 @@
   <h2 class="xl mr-auto">Activate your account</h2>
 
   <p>
-    Welcome to {{ Rails.configuration.application_name }}!
+    Welcome to {{ application_name }}!
   </p>
 
   <p>

@@ -1,8 +1,8 @@
-@props(title: required, wrapperClass: "", width: "w-prose")
+@props(title: required, wrapperClass: "", width: "w-prose", noheader: false)
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ title }} | {{ Rails.configuration.application_name }}</title>
+    <title>{{ title }} | {{ application_name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {!! csrf_meta_tags !!}
     {!! csp_meta_tag !!}
@@ -13,17 +13,23 @@
   </head>
 
   <body {{ attributes.merge(class: "flex flex-col min-h-screen") }}>
-    <header class="flex items-center {{ width }} max-w-full mx-auto px-5 mt-4">
-      <h1 class="py-4 text-blue-900 font-normal text-5xl mr-auto">{{ Rails.configuration.application_name }}</h1>
-      @stack('header')
-    </header>
+    @unless(noheader)
+      <header class="flex items-center {{ width }} max-w-full mx-auto px-5 mt-4">
+        <h1 class="py-4 font-sans font-serif font-title text-6xl mr-auto"><a href="https://www.nesta.org.uk" class="no-underline text-blue">nesta</a></h1>
+        @stack('header')
+      </header>
+    @endUnless
     <main class="{{ width }} max-w-full mx-auto px-5 mt-8 flex flex-col gap-6 -:pb-36 items-start {{ wrapperClass }}">
       <x-alerts/>
       {{ slot }}
     </main>
     @stack('after-main')
-    <footer class="mt-auto bg-navy p-2">
-      <p class="max-w-full w-max text-xs text-white mx-auto leading-tight">
+    <footer class="mt-auto bg-navy p-3">
+      <div class="flex gap-6 w-max 2xs mx-auto">
+        <a class="text-white" href="https://www.nesta.org.uk/privacy/" target="_blank">Privacy policy</a>
+        @stack('footer_links')
+      </div>
+      <p class="mt-2 text-xs max-w-full text-center text-white">
         Nesta, a company limited by guarantee registered in England and Wales
         with company number 7706036 and charity number 1144091.
         Registered as a charity in Scotland number SC042833.

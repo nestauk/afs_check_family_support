@@ -1,0 +1,4 @@
+<x-icon {{ attributes.merge(
+  alt: "forbidden",
+  weight: 500,
+) }}>block</x-icon>

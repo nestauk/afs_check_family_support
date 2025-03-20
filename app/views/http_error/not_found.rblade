@@ -1,0 +1,15 @@
+<x-layout::simple title="{{ @status }} {{ @status_text }}" class="[&_h1]:text-grey">
+  <h2 class="mt-8 2xl text-green">We can't seem to find the page you're looking for</h2>
+
+  <p class="lg mt-8 mb-2">That link doesn't seem to lead anywhere. Please go back or follow the link below:</p>
+
+  <p class="xl"><a href="{{ root_path }}" class="font-medium">Home</a></p>
+
+  @push("header")
+    <x-content.row class="w-max hidden sm:flex">
+      <x-icon.not_found class="text-5xl"/>
+      <p class="font-bold">{{ @status }} {{ @status_text }}</p>
+    </x-content.row>
+  @endPush
+  <p class="text-grey mt-2">{{ @status }} {{ @status_text }}</p>
+</x-layout::simple>

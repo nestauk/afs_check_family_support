@@ -29,6 +29,9 @@ module RailsTemplate
 
     config.action_view.frozen_string_literal = true
 
+    # Register our error handler
+    config.exceptions_app = ->(env) { HttpErrorController.action(:show).call(env) }
+
     config.application_name = "Rails Template"
   end
 end

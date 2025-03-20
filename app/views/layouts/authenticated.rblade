@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ title }} | {{ Rails.configuration.application_name }}</title>
+    <title>{{ title }} | {{ application_name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {!! csrf_meta_tags !!}
     {!! csp_meta_tag !!}

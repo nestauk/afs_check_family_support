@@ -125,25 +125,14 @@ cp .env.template .env
 ```
 You may need to update some of the values in the `.env` file.
 
-Build the docker image:
-```shell
-./do build
-```
-
-Start the docker server:
+Build and start the docker server:
 ```shell
 ./do up
 ```
 
-Install the javascript dependencies and start the vite server:
+Seed the database with default data:
 ```shell
-./do r npm install
-./do u
-```
-
-Setup the database and seed the default data:
-```shell
-./do rails db:migrate db:seed
+./do rails db:seed
 ```
 
 The local development server will now be available at http://127.0.0.1:3000.

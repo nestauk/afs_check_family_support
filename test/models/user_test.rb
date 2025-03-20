@@ -5,7 +5,7 @@ class Models::UserTest < Models::TestCase
     user = User.build(
       first_name: "   First   ",
       last_name: "   Last   ",
-      email: "  eMaIl@eXaMpLe.CoM  "
+      email: "  eMaIl@eXaMpLe.CoM  ",
     )
 
     assert_equal "First", user.first_name

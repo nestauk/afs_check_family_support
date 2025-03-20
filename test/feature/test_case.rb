@@ -83,11 +83,15 @@ module Feature
     end
 
     def assert_not_found path, method = :get
-      exception = assert_raises ActionController::RoutingError do
+      assert_raises HttpError::NotFound do
         process method, path
       end
+    end
 
-      assert_equal "Not Found", exception.message
+    def assert_forbidden path, method = :get
+      assert_raises HttpError::Forbidden do
+        process method, path
+      end
     end
 
     def assert_needs_auth path, method = :get

@@ -1,0 +1,15 @@
+<x-layout::simple title="{{ @status }} {{ @status_text }}" class="[&_h1]:text-grey">
+  <h2 class="mt-8 3xl text-green">You don't have access</h2>
+
+  <p class="lg mt-4">You don't have permission to access the content on this page. Please go back or follow the link below:</p>
+
+  <p class="xl"><a href="{{ root_path }}" class="font-medium">Home</a></p>
+
+  @push("header")
+    <x-content.row class="w-max hidden sm:flex">
+      <x-icon.forbidden class="text-5xl text-red"/>
+      <p class="font-bold text-red">{{ @status }} {{ @status_text }}</p>
+    </x-content.row>
+  @endPush
+  <p class="text-grey">{{ @status }} {{ @status_text }}</p>
+</x-layout::simple>

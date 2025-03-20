@@ -1,7 +1,6 @@
 module Testing
   class TestingController < ApplicationController
-    # Disable all callbacks for this request
-    __callbacks.keys.each { reset_callbacks _1 }
+    reset_all_callbacks
 
     before_action :ensure_test
 
@@ -15,11 +14,29 @@ module Testing
       render json: session, content_type: "application/json"
     end
 
+    def http_error
+      request.env["action_dispatch.exception"] = case params[:status]
+      when "400"
+        ActionController::BadRequest.new("Bad Request")
+      when "403"
+        HttpError::Forbidden.new
+      when "404"
+        HttpError::NotFound.new
+      when "419"
+        ActionController::InvalidAuthenticityToken.new("Page Expired")
+      else
+        # 500 Internal Server Error
+        StandardError.new
+      end
+
+      HttpErrorController.dispatch(:show, request, response)
+    end
+
     private
 
     def ensure_test
       unless Rails.env.test?
-        abort_not_found
+        raise HttpError::NotFound
       end
     end
   end

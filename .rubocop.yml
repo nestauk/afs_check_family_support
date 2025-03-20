@@ -1,0 +1,33 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  DisabledByDefault: true
+  SuggestExtensions: false
+  UseCache: true
+  Exclude:
+    - bin/*
+    - db/*schema.rb
+    - log/**/*
+    - public/**/*
+    - storage/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+inherit_gem:
+  standard: config/base.yml
+  standard-rails: config/base.yml
+
+# Allow intentionally creating tables without timestamps
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+# Enforce commas at the end of multiline arguments, hashes and arrays, improving git diffs
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: diff_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: diff_comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma

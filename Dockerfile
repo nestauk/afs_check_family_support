@@ -7,12 +7,8 @@ FROM ruby:$RUBY_VERSION
 RUN mkdir /var/source
 WORKDIR /var/source
 
-# Copy source directory into the image
-COPY . /var/source
-
-# Install rails and dependencies
-RUN gem install rails bundler
-RUN bundle install
+# Install ruby package manager
+RUN gem install bundler
 
 # Install the Heroku CLI
 RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | bash

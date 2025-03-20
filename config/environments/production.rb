@@ -97,7 +97,7 @@ Rails.application.configure do
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
   ActionMailer::Base.default from: ENV.fetch("MAIL_FROM", "info@#{ENV["HTTP_HOST"]}")
 end

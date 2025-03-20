@@ -18,5 +18,5 @@ User.create(
   password: "YTF@qdn1pkg6dmb3mtc",
   first_name: "Bob",
   last_name: "Ross",
-  is_admin: true
+  is_admin: true,
 )

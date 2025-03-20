@@ -1,0 +1,6 @@
+<x-icon {{ attributes.merge(
+  alt: "not found",
+  fill: 0,
+  weight: 500,
+  optical_size: 48
+) }}>sentiment_sad</x-icon>

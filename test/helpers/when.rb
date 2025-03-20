@@ -7,11 +7,12 @@ class When
     self
   end
 
-  def i_visit(url)
+  def i_visit(url, **args)
+    expected_status = args[:expected_status] || 200
     @testcase.visit url
 
     status = @testcase.status_code
-    @testcase.assert_equal 200, status, "#{url} returned status #{status}, expected 200"
+    @testcase.assert_equal expected_status, status, "#{url} returned status #{status}, expected 200"
 
     self
   end
