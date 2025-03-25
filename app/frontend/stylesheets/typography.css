@@ -121,7 +121,7 @@
     @apply text-black/90 font-normal max-w-prose;
     @apply text-lg sm:text-xl;
     @apply list-outside;
-    @apply marker:text-navy marker:font-medium marker:font-medium;
+    @apply marker:text-navy marker:font-medium;
   }
 
   ol {
