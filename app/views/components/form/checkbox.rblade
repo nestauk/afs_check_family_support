@@ -1,19 +1,21 @@
-@props(labelClass: "flex items-baseline gap-4 ml-4")
-<label class="{{labelClass}}">
+@props(labelClass: "")
+<label class="group -:select-none -:items-baseline -:font-normal -:flex-row -:gap-4 -:ml-4 {{ labelClass }}">
   <input type="hidden" {{ attributes.only('name') }} value="0">
-  <input {{ attributes.except(:class).merge({
+  <input {{ attributes.except(:class).merge(
     type: "checkbox",
     value: "1",
     class: "peer sr-only",
-  }) }} />
+  ) }} />
   <div
     class="
+      shrink-0
       !w-[1em] !h-[1em] leading-[1] box-content
-      --:relative --:top-0.75
-      --:border-2 --:border-navy --:rounded-sm
-      hover:--:border-black hover:--:ring-1 hover:--:ring-black
+      --:relative --:top-[0.1em]
+      --:border-2 --:border-grey-500 --:rounded-sm
+      peer-[:checked]:border-black
+      group-hover:--:border-black
       peer-focus:--:border-black peer-focus:--:outline-none
-      peer-focus:--:ring peer-focus:--:ring-focus peer-focus:--:ring-offset-1 peer-focus:--:ring-offset-black
+      peer-focus:--:ring peer-focus:--:ring-focus
       peer-[:not(:checked)]:text-transparent --:text-navy
       {{ attributes[:class] }}
     "

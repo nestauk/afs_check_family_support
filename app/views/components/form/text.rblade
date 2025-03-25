@@ -1,1 +1,1 @@
-<x-form.input {{ attributes.merge({type: "text"}) }}/>
+<input {{ attributes.merge({type: "text"}) }}/>

@@ -292,16 +292,28 @@
     <td><code>value</code></td>
     <td>The default value for the dropdown</td>
   </tr>
+  <tr>
+    <td><code>placeholder</code></td>
+    <td>A placeholder value</td>
+  </tr>
 </table>
 
 <x-.html>
   @verbatim
     <x-form.label label="Array of options" for="array">
-      <x-form.select name="array" :options='["One", "Two", "Three"]' :value="params[:array] || 'Two'"/>
+      <x-form.select
+        name="array"
+        :options='["One", "Two", "Three"]'
+        :value="params[:array] || 'Two'"
+      />
     </x-form.label>
 
     <x-form.label label="Hash of options" for="hash">
-      <x-form.select name="hash" :options='{"One": 1, "Two": 2, "Three": 3}' :value="params[:array] || '3'"/>
+      <x-form.select
+        name="hash"
+        :options='{"One": 1, "Two": 2, "Three": 3}'
+        placeholder="Please select something"
+      />
     </x-form.label>
   @endverbatim
 
@@ -311,7 +323,7 @@
     </x-form.label>
 
     <x-form.label label="Hash of options" for="hash">
-      <x-form.select name="hash" :options='{"One": 1, "Two": 2, "Three": 3}' :value="params[:array] || '3'"/>
+      <x-form.select name="hash" :options='{"One": 1, "Two": 2, "Three": 3}' placeholder="Please select something"/>
     </x-form.label>
   </x-slot::preview>
 </x-.html>
@@ -327,7 +339,15 @@
   <tr><th>Attribute</th><th>Description</th></tr>
   <tr>
     <td><code>class</code></td>
+    <td>CSS classes to be applied to checkbox visual display</td>
+  </tr>
+  <tr>
+    <td><code>labelClass</code></td>
     <td>CSS classes to be applied to the wrapping label</td>
+  </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td>Additional attributes are added to the <code>&lt;input type="checkbox"&gt;</code> element</td>
   </tr>
 </table>
 
@@ -350,5 +370,54 @@
     <x-form.checkbox name="checkbox">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium doloribus eum illum, molestiae mollitia omnis praesentium quis sint! Aliquid amet commodi, deserunt eum illo in magnam maiores nesciunt sunt.</p>
     </x-form.checkbox>
+  </x-slot::preview>
+</x-.html>
+
+
+<h3><code>&lt;x-form.radio&gt;</code></h3>
+
+<p>A replacement for <code>&lt;input type="radio"&gt;</code>.</p>
+
+<x-form.radio name="radio">A radio</x-form.radio>
+
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>selectedValue</code></td>
+    <td>The value that should start selected</td>
+  </tr>
+  <tr>
+    <td><code>class</code></td>
+    <td>CSS classes to be applied to radio visual display</td>
+  </tr>
+  <tr>
+    <td><code>labelClass</code></td>
+    <td>CSS classes to be applied to the wrapping label</td>
+  </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td>Additional attributes are added to the <code>&lt;input type="radio"&gt;</code> element</td>
+  </tr>
+</table>
+
+<x-.html>
+  @verbatim
+    <x-form.radio name="radio">
+      <p>A radio</p>
+    </x-form.radio>
+
+    <x-form.radio name="radio">
+      <p>Lorem ipsum...</p>
+    </x-form.radio>
+  @endverbatim
+
+  <x-slot::preview>
+    <x-form.radio name="radio">
+      <p>A radio</p>
+    </x-form.radio>
+
+    <x-form.radio name="radio">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium doloribus eum illum, molestiae mollitia omnis praesentium quis sint! Aliquid amet commodi, deserunt eum illo in magnam maiores nesciunt sunt.</p>
+    </x-form.radio>
   </x-slot::preview>
 </x-.html>

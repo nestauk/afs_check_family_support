@@ -1,21 +1,24 @@
-@props(label: false, horizontal: false, selected_value: nil)
-@if(slot)
-<label class="flex items-baseline gap-4 ml-4">
-@endif
-  <input {{ attributes.merge({
+@props(labelClass: "", selectedValue: nil)
+<label class="group -:select-none -:items-baseline -:font-normal -:flex-row -:gap-4 -:ml-4 {{labelClass}}">
+  <input {{ attributes.except(:class).merge(
     type: "radio",
-    class: "
-      --:w-5 --:h-5
-      --:border --:border-gray-400
-      #{slot ? "--:relative --:top-0.75" : ""}
-      hover:--:border-black hover:--:ring-1 hover:--:ring-black
-      focus:--:border-black focus:--:outline-none
-      focus:--:ring focus:--:ring-focus focus:--:ring-offset-1 focus:--:ring-offset-black
-    ",
-  }) }}
-    @checked(selected_value && selected_value == attributes[:value])
-  />
-@if(slot)
+    class: "peer sr-only",
+    checked: (selectedValue && selectedValue == attributes[:value]),
+  ) }} />
+  <div
+    class="
+      shrink-0
+      !w-[1em] !h-[1em] leading-[1] box-content
+      --:relative --:top-[0.2em]
+      --:border-2 --:border-grey-500 --:rounded-full
+      peer-[:checked]:border-black
+      group-hover:--:border-black
+      peer-focus:--:border-black peer-focus:--:outline-none
+      peer-focus:--:ring peer-focus:--:ring-focus
+      peer-[:not(:checked)]:text-transparent --:text-navy
+      {{ attributes[:class] }}
+    "
+    aria-hidden="true"
+  ><div class="bg-current rounded-full w-full h-full border-2 border-white"></div></div>
   {{ slot }}
 </label>
-@endif

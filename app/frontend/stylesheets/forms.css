@@ -1,0 +1,33 @@
+@layer base {
+  form {
+    @apply w-full max-w-full flex flex-col gap-inherit;
+  }
+
+  label {
+    @apply
+      flex flex-col gap-0.75
+      w-prose max-w-full
+      font-semibold;
+  }
+
+  input, textarea, select {
+    @apply
+      grow
+      px-2.5 py-2.5
+      w-form max-w-full
+      bg-white
+      border border-grey-500 rounded
+      ring-0 ring-offset-black
+      hover:border-black
+      focus:border-black focus:outline-none focus:ring-offset-1
+      focus:ring-2 focus:ring-focus
+      font-normal text-base sm:text-lg leading-none  sm:leading-none
+      [.error>&]:-:border-error [.error>&]:ring-offset-error;
+  }
+
+  input, textarea {
+    @apply
+      read-only:bg-grey-50/25 read-only:border-grey-100 read-only:text-grey-800
+      read-only:ring-0 read-only:ring-offset-0;
+  }
+}
