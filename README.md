@@ -5,6 +5,58 @@ defaults.
 
 When setting up a new project, you can copy this to get started a bit quicker.
 
+## Using this template
+
+To use this template in a new project, initialise a new repository, add this repository as an additional remote, then merge in the template:
+
+```shell
+git clone git@github.com:nestauk/my_new_repo.git
+cd my_new_repo
+git remote add template git@github.com:nestauk/dt_rails_template.git
+git fetch template
+git merge template/main
+```
+
+There are a number of things you might want to change once you've copied the template:
+
+* Update this readme, and delete this section!
+* Update the site title in `config/application.rb`
+* Update the deployment details in `app.json`
+
+
+### Merging in changes from the template
+
+Once you've copied the template to your project, the rails template may have been updated and left your project behind! We can use some git trickery to compare what has changed in the template vs your repository:
+
+```shell
+git fetch template
+git checkout template/main
+git symbolic-ref HEAD refs/heads/main
+git reset
+```
+
+At this point, your git will think you are on your `main` branch, but have the contents of the Rails Template. You can use your version control manager to rollback/delete changes to your project and commit the changes from the template.
+
+
+### Merging changes from your project to the template
+
+The same process, in reverse, can be used to merge your changes into the template:
+
+```shell
+git fetch template
+git co -b template template/main
+# Or `git checkout template && git pull` if the branch is already setup
+git checkout main
+git symbolic-ref HEAD refs/heads/template
+git reset
+```
+
+Again, git will think you are on the template branch, but with the files from the main branch. Rollback any local changes and commit the changes you want to migrate back to the template. To push, you will need to specify the remote branch:
+
+```shell
+git push template template:main
+```
+
 ## Development principles
 
 ### Keep it simple
