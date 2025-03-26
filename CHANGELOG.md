@@ -1,6 +1,7 @@
 ** [2025-03-26]
 - Add instructions to the readme for using the template
 - Add instructions to the readme for using the visual regression tools
+- Change simulated eye-tracking model to download on demand
 - Update component library with examples for using components in ERB and a filled out icon section
 
 ** [2025-03-25]
