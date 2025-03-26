@@ -36,7 +36,7 @@
         </x-form.label>
       </template>
       <x-button.flat link sm class="no-underline" x-on:click="emails++">
-        <x-icon.add/>
+        <x-icon.add size="22"/>
         Add email
       </x-button.flat>
       <x-button type="submit" class="mt-4" x-text="emails == 1 ? 'Send invitation' : 'Send invitations'"></x-button>

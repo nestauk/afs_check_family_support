@@ -68,12 +68,12 @@
       <h1 class="py-8 text-blue-900 font-normal text-5xl text-center -mb-2">{{ application_name }}</h1>
 
       <x-navigation.button :href="dashboard_path">
-        <x-icon.home/>
+        <x-icon.home size="22"/>
         Dashboard
       </x-navigation.button>
       @if(Current.user.is_admin?)
         <x-navigation.button :href="admin_dashboard_path" controller="admin/">
-          <x-icon.tools/>
+          <x-icon.tools size="22"/>
           Admin dashboard
         </x-navigation.button>
       @endIf
@@ -81,12 +81,12 @@
       <div class="mt-auto pt-4"></div>
 
       <x-navigation.button :href="users_account_path" controller="account">
-        <x-icon.account/>
+        <x-icon.account size="22"/>
         Account
       </x-navigation.button>
       <x-form :action="signout_path" method="POST">
         <x-navigation.button as="button" type="submit">
-          <x-icon.signout/>
+          <x-icon.signout size="22"/>
           Sign out
         </x-navigation.button>
       </x-form>

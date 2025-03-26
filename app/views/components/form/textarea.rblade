@@ -1,5 +1,4 @@
 @props(value: "")
 <textarea {{ attributes.merge({
-  class: "",
   rows: 4
 }) }}>{{ value }}</textarea>

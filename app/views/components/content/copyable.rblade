@@ -19,7 +19,7 @@
       x-on:focus="copyText()"
     />
     <x-button secondary class="rounded-l-none w-fit" x-on:click="copyText()">
-      <x-icon.copy class="-ml-1"/>
+      <x-icon.copy class="-ml-1" size="22"/>
       Copy
     </x-button>
   </label>

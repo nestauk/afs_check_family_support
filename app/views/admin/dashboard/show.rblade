@@ -5,7 +5,7 @@
 
   <p>This is where the magic happens.</p>
 
-  <x-content.pill blue><x-icon.person/>{{ pluralize(User.count, "user") }}</x-content.pill>
+  <x-content.pill blue><x-icon.person size="22"/>{{ pluralize(User.count, "user") }}</x-content.pill>
 
   <x-button secondary as="a" :href="admin_users_path">
     Manage users

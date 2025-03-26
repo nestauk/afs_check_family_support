@@ -41,7 +41,7 @@ class When
   end
 
   def i_choose(value, **args)
-    @testcase.choose value, **args
+    @testcase.choose value, allow_label_click: true, **args
 
     self
   end
