@@ -8,7 +8,7 @@
   <x-content.col class="border border-x-0 border-grey-50 divide-y divide-grey-50 gap-0">
     @each (user in @users)
     <x-content.row as="a" :href="admin_user_path user" class="gap-4 px-2 py-4">
-      <x-icon.person class="text-navy"/>
+      <x-icon.person class="text-navy" size="22"/>
       <p>
         <span class="font-medium">{{ user.name }}</span>
         <span class="block -mt-0.5 text-sm sm:text-base text-grey">

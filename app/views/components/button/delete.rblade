@@ -1,7 +1,7 @@
 @props(action: required)
 <x-form :action method="DELETE" x-data="{confirm: false}" {{ attributes }}>
   <x-button x-show="!confirm" danger @click="confirm = true">
-    <x-icon.delete class="-ml-1"/>
+    <x-icon.delete class="-ml-1" size="22"/>
     {{ slot }}
   </x-button>
   <div x-cloak x-show="confirm" class="flex flex-wrap gap-4 items-center">

@@ -6,8 +6,8 @@
     @else
       <p class="font-medium mr-auto group-hover:underline">{{ title }}</p>
     @endIf
-    <x-icon.expand x-show="collapsed"/>
-    <x-icon.collapse x-cloak x-show="!collapsed"/>
+    <x-icon.expand x-show="collapsed" size="22"/>
+    <x-icon.collapse x-cloak x-show="!collapsed" size="22"/>
   </x-button.flat>
   <div x-show="!collapsed" x-collapse>
     <x-content.col class="py-4">{{ slot }}</x-content.col>
