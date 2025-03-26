@@ -1,6 +1,6 @@
 @props(
   alt: required,
-  size: "22",
+  size: nil,
   fill: 1,
   weight: 400,
   grade: 0,

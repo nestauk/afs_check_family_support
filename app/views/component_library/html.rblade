@@ -1,4 +1,4 @@
-@props(preview: nil, label: "HTML")
+@props(preview: nil, label: "HTML", tabName: "HTML", erb: false)
 @ruby
 preview ||= slot
 
@@ -8,7 +8,7 @@ end
 
 def format_html(html)
   # Colour HTML tags
-  html.gsub(/(&lt;\/?)([^\s&]+)([^>]*?)(\/?&gt;)/) {
+  html.gsub(/(&lt;\/?)([^\s&%]+)([^>]*?)(\/?&gt;)/) {
     start, tag, attributes, close = $1, $2, $3, $4
     attributes = attributes
       # Colour HTML attribute values
@@ -29,6 +29,16 @@ def format_html(html)
   # Colour keywords
   .gsub(/(?<![a-zA-Z0-9:_\]])@(if|each|endEach|endIf)\b/, "<span class=\"text-violet-900\">@\\1</span>")
   # Colour print statements
+  .gsub(/(&lt;%=?)([^%]++)(%&gt;)/) do
+    start, content, close = $1, $2, $3
+    content = content
+      .gsub(/&quot;.+?&quot;/, "<span class=\"text-[#358500]\">\\0</span>")
+      .gsub(/(?<!\w)(?:end|do)(?!\w)/, "<span class=\"text-blue\">\\0</span>")
+      .gsub(/(?<!\w)\w++\:/, "<span class=\"text-red-800\">\\0</span>")
+
+    "<span class=\"text-red-950\">#{start}</span>#{content}<span class=\"text-red-950\">#{close}</span>"
+  end
+  # Colour ERB
   .gsub(/\{\{[^\}]+\}\}/, "<span class=\"text-orange-800\">\\0</span>")
   # Add line numbers
   .split("\n").map.with_index{ |line, index| "<span class='block hover:bg-aqua-100/75 whitespace-pre'><span class='inline-block text-grey text-right w-5 select-none mr-4'>#{index+1}</span>#{line}\n</span>" }.join("\n")
@@ -36,14 +46,13 @@ end
 @endRuby
 <div
   class="w-full mb-6"
-  {{ attributes.merge(class: "w-prose", "x-data": "{tab: 'html', copied: false}") }}
+  {{ attributes.merge(class: "w-prose", "x-data": "{tab: 'preview', copied: false}") }}
   @copy.window="copied = false"
 >
   <x-content.row>
     <p class="xs text-grey select-none mr-auto">{{ label }}</p>
     <button
       class="flex gap-2 items-center 2xs text-grey focusable"
-      x-data="{}"
       @click="$dispatch('copy');navigator.clipboard.writeText($refs.copyText.innerText); copied = true;"
     >
       <span x-cloak x-show="copied" x-transition.origin.right>Copied to clipboard</span>
@@ -54,20 +63,27 @@ end
     <div class="absolute right-full top-0 flex flex-col items-end gap-1">
       <x-button.flat
         class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
-        x-bind:class="tab === 'html' ? 'z-20 bg-aqua-50 border-aqua-400 hover:bg-aqua-50 hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
-        @click="tab = 'html'"
-      >HTML</x-button.flat>
-      <x-button.flat
-        class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
         x-bind:class="tab === 'preview' ? 'z-20 bg-white border-aqua-400 hover:bg-white hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
         @click="tab = 'preview'"
       >Preview</x-button.flat>
+      <x-button.flat
+        class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
+        x-bind:class="tab === 'html' ? 'z-20 bg-aqua-50 border-aqua-400 hover:bg-aqua-50 hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
+        @click="tab = 'html'"
+      >{{ tabName }}</x-button.flat>
+      @if(erb)
+        <x-button.flat
+          class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
+          x-bind:class="tab === 'erb' ? 'z-20 bg-aqua-50 border-aqua-400 hover:bg-aqua-50 hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
+          @click="tab = 'erb'"
+        >ERB</x-button.flat>
+      @endIf
     </div>
     <div class="hidden" x-ref="copyText">{!! h(slot.to_s.gsub(/^#{slot.to_s.scan(/^[ \t]*(?=\S)/).min}/, "").strip) !!}</div>
     <div class="relative z-10 border border-aqua-400 rounded rounded-tl-none">
       <div
         class="
-          p-4 min-h-24 flex flex-col
+          p-4 min-h-40 flex flex-col
           bg-aqua-50 rounded-lg
           font-mono text-sm
           text-black
@@ -82,7 +98,23 @@ end
         format_html(h(remove_leading_whitespace(slot.to_s)))
         !!}</div></div>
       <div
-        class="p-6 flex flex-col min-h-24"
+        class="
+          p-4 min-h-40 flex flex-col
+          bg-aqua-50 rounded-lg
+          font-mono text-sm
+          text-black
+          overflow-x-auto
+        "
+        x-show="tab === 'erb'"
+      ><div
+        class="my-auto flex flex-col w-max gap-0"
+        {{-- Add padding if a scrollbar is visible --}}
+        x-init="if ($el.scrollWidth > $el.clientWidth) { $el.classList.add('pb-2')}"
+      >{!!
+        format_html(h(remove_leading_whitespace(erb.to_s)))
+        !!}</div></div>
+      <div
+        class="p-6 flex flex-col min-h-40"
         x-show="tab === 'preview'"
       >
         <x-content.col class="my-auto gap-4 sm:gap-6">

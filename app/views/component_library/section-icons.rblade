@@ -4,79 +4,256 @@
   colour. By default, icons will match the current text size and colour.
 </p>
 
-<x-.html>
+<table class="mt-4">
+  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr>
+    <td><code>size</code></td>
+    <td>Size of the icon in pixels. Can be 16, 18, 20, 22, 24, 26 or 28. Defaults to the current font size, and can be overwritten by <code>text-*</code> size classes.</td>
+  </tr>
+  <tr>
+    <td><code>alt</code></td>
+    <td>Required. Alternative text for the icon. By default, all the icons in the icon subfolder set a sensible default alt test.</td>
+  </tr>
+  <tr>
+    <td><code>fill</code></td>
+    <td>1 or 0, determines whether the icon is the filled variant or not. Defaults to 1.</td>
+  </tr>
+  <tr>
+    <td><code>weight</code></td>
+    <td>Determines how thick the lines of the icon are, analogous to font-weight. Defaults to 400.</td>
+  </tr>
+  <tr>
+    <td><code>grade</code></td>
+    <td>Further refines the icon. See the Material Symbols documentation. Defaults to 0.</td>
+  </tr>
+  <tr>
+    <td><code>optical_size</code></td>
+    <td>Further refines the icon. See the Material Symbols documentation. Defaults to 24.</td>
+  </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td>Additional attributes are added to the icon's <code>&lt;span&gt;</td>
+  </tr>
+</table>
+
+<x-.html tabName="RBlade">
   @verbatim
-    <x-icon.home
-      size=18
-      class="text-green-800"
-    />
+    <x-icon.home size="16" class="text-blue"/>
+    <x-icon.home size="18" class="text-green-800"/>
+    <x-icon.home size="20" class="text-aqua-900"/>
+    <x-icon.home size="22" class="text-red-800"/>
+    <x-icon.home size="24" class="text-orange-800"/>
+    <x-icon.home size="26" class="text-yellow-900"/>
+    <x-icon.home size="28" class="text-violet-800"/>
+    <x-icon.home class="text-[30px] text-pink-800"/>
+    <x-icon.home class="text-[40px] text-grey-500"/>
   @endverbatim
 
+  <x-slot::erb>
+    @verbatim
+      <%= component "icon.home", size: 16, class: "text-blue" %>
+      <%= component "icon.home", size: 18, class: "text-green-800" %>
+      <%= component "icon.home", size: 20, class: "text-aqua-900" %>
+      <%= component "icon.home", size: 22, class: "text-red-800" %>
+      <%= component "icon.home", size: 24, class: "text-orange-800" %>
+      <%= component "icon.home", size: 26, class: "text-yellow-900" %>
+      <%= component "icon.home", size: 28, class: "text-violet-800" %>
+      <%= component "icon.home", class: "text-[30px] text-pink-800" %>
+      <%= component "icon.home", class: "text-[40px] text-grey-500" %>
+    @endverbatim
+  </x-slot::erb>
+
   <x-slot::preview>
-    <x-icon.home
-      size=18
-      class="text-green-800"
-    />
+    <x-content.row wrap>
+      <x-icon.home size="16" class="text-blue"/>
+      <x-icon.home size="18" class="text-green-800"/>
+      <x-icon.home size="20" class="text-aqua-900"/>
+      <x-icon.home size="22" class="text-red-800"/>
+      <x-icon.home size="24" class="text-orange-800"/>
+      <x-icon.home size="26" class="text-yellow-900"/>
+      <x-icon.home size="28" class="text-violet-800"/>
+      <x-icon.home class="text-[30px] text-pink-800"/>
+      <x-icon.home class="text-[40px] text-grey-500"/>
+    </x-content.row>
   </x-slot::preview>
 </x-.html>
 
-<x-content.row wrap>
-  <x-icon.home size=16 class="text-blue"/>
-  <x-icon.home size=18 class="text-green-800"/>
-  <x-icon.home size=20 class="text-aqua-900"/>
-  <x-icon.home size=22 class="text-red-800"/>
-  <x-icon.home size=24 class="text-orange-800"/>
-  <x-icon.home size=26 class="text-yellow-900"/>
-  <x-icon.home size=28 class="text-violet-800"/>
-  <x-icon.home class="text-[30px] text-pink-800"/>
-</x-content.row>
-
-<x-content.row wrap>
-  <x-icon.home fill=0 weight=200 />
-  <x-icon.home fill=0 weight=300 />
-  <x-icon.home fill=0 />
-  <x-icon.home fill=0 weight=500 />
-  <x-icon.home fill=0 weight=600 />
-  <x-icon.home fill=0 weight=700 />
-  <x-icon.home fill=0 weight=700 grade=200 />
-</x-content.row>
-
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
-    <x-icon.home fill=0 weight=700 />
+    <x-icon.home fill="0" weight="200" />
+    <x-icon.home fill="0" weight="300" />
+    <x-icon.home fill="0" />
+    <x-icon.home fill="0" weight="500" />
+    <x-icon.home fill="0" weight="600" />
+    <x-icon.home fill="0" weight="700" />
+    <x-icon.home fill="0" weight="700" grade="200" />
   @endverbatim
 
+  <x-slot::erb>
+    @verbatim
+      <%= component "icon.home", fill: 0, weight: 200 %>
+      <%= component "icon.home", fill: 0, weight: 300 %>
+      <%= component "icon.home", fill: 0 %>
+      <%= component "icon.home", fill: 0, weight: 500 %>
+      <%= component "icon.home", fill: 0, weight: 600 %>
+      <%= component "icon.home", fill: 0, weight: 700 %>
+      <%= component "icon.home", fill: 0, weight: 700, grade: 200 %>
+    @endverbatim
+  </x-slot::erb>
+
   <x-slot::preview>
-    <x-icon.home fill=0 weight=700 />
+    <x-content.row wrap class="text-3xl">
+      <x-icon.home fill="0" weight="200" />
+      <x-icon.home fill="0" weight="300" />
+      <x-icon.home fill="0" />
+      <x-icon.home fill="0" weight="500" />
+      <x-icon.home fill="0" weight="600" />
+      <x-icon.home fill="0" weight="700" />
+      <x-icon.home fill="0" weight="700" grade="200" />
+    </x-content.row>
   </x-slot::preview>
 </x-.html>
 
-<x-.html>
+<p>Arbitrary new icons can be used in your code using the index file. It is encouraged to create a new icon component so icons can be changed consistently in the codebase.</p>
+
+<x-.html tabName="RBlade">
   @verbatim
-    <x-icon.delete alt="Remove" />
+    <x-icon alt="Favourite" fill="0" size="28">favorite</x-icon>
   @endverbatim
 
+  <x-slot::erb>
+    @verbatim
+      <%= component "icon", alt: "Favourite", fill: "0", size: "28" do %>favorite<% end %>
+    @endverbatim
+  </x-slot::erb>
+
   <x-slot::preview>
-    <x-icon.delete alt="Remove" />
+    <x-icon alt="Favourite" fill="0" size="28">favorite</x-icon>
   </x-slot::preview>
 </x-.html>
-<x-content.row wrap class="w-64">
-  <x-icon.close/>
-  <x-icon.copy/>
-  <x-icon.delete/>
-  <x-icon.edit/>
-  <x-icon.editor/>
-  <x-icon.error/>
-  <x-icon.folder/>
-  <x-icon.folder-open/>
-  <x-icon.home/>
-  <x-icon.info/>
-  <x-icon.left/>
-  <x-icon.location/>
-  <x-icon.phone/>
-  <x-icon.preview/>
-  <x-icon.search/>
-  <x-icon.send/>
-  <x-icon.tick/>
-  <x-icon.tools/>
-</x-content.row>
+
+<x-.html tabName="RBlade">
+  @verbatim
+    <x-icon.account />
+    <x-icon.add />
+    <x-icon.broken />
+    <x-icon.close />
+    <x-icon.collapse />
+    <x-icon.copy />
+    <x-icon.delete />
+    <x-icon.edit />
+    <x-icon.editor />
+    <x-icon.ellipsis />
+    <x-icon.error />
+    <x-icon.expand />
+    <x-icon.folder />
+    <x-icon.folder-open />
+    <x-icon.forbidden />
+    <x-icon.home />
+    <x-icon.info />
+    <x-icon.left />
+    <x-icon.location />
+    <x-icon.menu />
+    <x-icon.new />
+    <x-icon.not-visible />
+    <x-icon.not_found />
+    <x-icon.person />
+    <x-icon.phone />
+    <x-icon.preview />
+    <x-icon.report />
+    <x-icon.right />
+    <x-icon.search />
+    <x-icon.send />
+    <x-icon.signout />
+    <x-icon.subitem />
+    <x-icon.thumb_down />
+    <x-icon.thumb_up />
+    <x-icon.tick />
+    <x-icon.tools />
+    <x-icon.visible />
+  @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "icon.account" %>
+      <%= component "icon.add" %>
+      <%= component "icon.broken" %>
+      <%= component "icon.close" %>
+      <%= component "icon.collapse" %>
+      <%= component "icon.copy" %>
+      <%= component "icon.delete" %>
+      <%= component "icon.edit" %>
+      <%= component "icon.editor" %>
+      <%= component "icon.ellipsis" %>
+      <%= component "icon.error" %>
+      <%= component "icon.expand" %>
+      <%= component "icon.folder" %>
+      <%= component "icon.folder-open" %>
+      <%= component "icon.forbidden" %>
+      <%= component "icon.home" %>
+      <%= component "icon.info" %>
+      <%= component "icon.left" %>
+      <%= component "icon.location" %>
+      <%= component "icon.menu" %>
+      <%= component "icon.new" %>
+      <%= component "icon.not-visible" %>
+      <%= component "icon.not_found" %>
+      <%= component "icon.person" %>
+      <%= component "icon.phone" %>
+      <%= component "icon.preview" %>
+      <%= component "icon.report" %>
+      <%= component "icon.right" %>
+      <%= component "icon.search" %>
+      <%= component "icon.send" %>
+      <%= component "icon.signout" %>
+      <%= component "icon.subitem" %>
+      <%= component "icon.thumb_down" %>
+      <%= component "icon.thumb_up" %>
+      <%= component "icon.tick" %>
+      <%= component "icon.tools" %>
+      <%= component "icon.visible" %>
+    @endverbatim
+  </x-slot::erb>
+
+  <x-slot::preview>
+    <x-content.row wrap class="text-3xl">
+      <x-icon.account title="account" />
+      <x-icon.add title="add" />
+      <x-icon.broken title="broken" />
+      <x-icon.close title="close" />
+      <x-icon.collapse title="collapse" />
+      <x-icon.copy title="copy" />
+      <x-icon.delete title="delete" />
+      <x-icon.edit title="edit" />
+      <x-icon.editor title="editor" />
+      <x-icon.ellipsis title="ellipsis" />
+      <x-icon.error title="error" />
+      <x-icon.expand title="expand" />
+      <x-icon.folder title="folder" />
+      <x-icon.folder-open title="folder-open" />
+      <x-icon.forbidden title="forbidden" />
+      <x-icon.home title="home" />
+      <x-icon.info title="info" />
+      <x-icon.left title="left" />
+      <x-icon.location title="location" />
+      <x-icon.menu title="menu" />
+      <x-icon.new title="new" />
+      <x-icon.not-visible title="not-visible" />
+      <x-icon.not_found title="not_found" />
+      <x-icon.person title="person" />
+      <x-icon.phone title="phone" />
+      <x-icon.preview title="preview" />
+      <x-icon.report title="report" />
+      <x-icon.right title="right" />
+      <x-icon.search title="search" />
+      <x-icon.send title="send" />
+      <x-icon.signout title="signout" />
+      <x-icon.subitem title="subitem" />
+      <x-icon.thumb_down title="thumb_down" />
+      <x-icon.thumb_up title="thumb_up" />
+      <x-icon.tick title="tick" />
+      <x-icon.tools title="tools" />
+      <x-icon.visible title="visible" />
+    </x-content.row>
+  </x-slot::preview>
+</x-.html>

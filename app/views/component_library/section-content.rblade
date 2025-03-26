@@ -20,7 +20,7 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.row>
       <p class="w-2/5">1</p>
@@ -34,6 +34,22 @@
       <p class="w-2/5">6</p>
     </x-content.row>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.row" do %>
+        <p class="w-2/5">1</p>
+        <p class="w-2/5">2</p>
+        <p class="w-2/5">3</p>
+      <% end %>
+
+      <%= component "content.row", as: "aside", wrap: true do %>
+        <p class="w-2/5">1</p>
+        <p class="w-2/5">2</p>
+        <p class="w-2/5">3</p>
+      <% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.row>
@@ -73,7 +89,7 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.col>
       <p>1</p>
@@ -87,6 +103,22 @@
       <p>6</p>
     </x-content.col>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.col" do %>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+      <% end %>
+
+      <%= component "content.col", class: "mt-8", divide: true do %>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+      <% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.col>
@@ -136,7 +168,7 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.box>
       <p>Normal</p>
@@ -150,6 +182,22 @@
       <p class="lg">Large</p>
     </x-content.box>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.box" do %>
+        <p>Normal</p>
+      <% end %>
+
+      <%= component "content.box", sm: true, class: "w-60" do %>
+        <p class="sm">Small</p>
+      <% end %>
+
+      <%= component "content.box", lg: true do %>
+        <p class="lg">Large</p>
+      <% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.box>
@@ -195,13 +243,22 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.alert>This is an alert!</x-content.alert>
     <x-content.alert type="error">This is an error!</x-content.alert>
     <x-content.alert type="info">This is info!</x-content.alert>
     <x-content.alert type="success">This is a success!</x-content.alert>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.alert" do %>This is an alert!<% end %>
+      <%= component "content.alert", type: "error" do %>This is an error!<% end %>
+      <%= component "content.alert", type: "info" do %>This is info!<% end %>
+      <%= component "content.alert", type: "success" do %>This is a success!<% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.alert>This is an alert!</x-content.alert>
@@ -216,10 +273,16 @@
 
 <x-content.copyable>Copy me!</x-content.copyable>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.copyable>Copy me!</x-content.copyable>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.copyable" do %>Copy me!<% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.copyable>Copy me!</x-content.copyable>
@@ -246,12 +309,20 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.pill green>Green pill</x-content.pill>
     <x-content.pill blue>Blue pill</x-content.pill>
     <x-content.pill class="bg-yellow text-black">Custom pill</x-content.pill>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.pill", green: true do %>Green pill<% end %>
+      <%= component "content.pill", blue: true do %>Blue pill<% end %>
+      <%= component "content.pill", class: "bg-yellow text-black" do %>Custom pill<% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.pill green>Green pill</x-content.pill>
@@ -281,7 +352,7 @@
   </tr>
 </table>
 
-<x-.html>
+<x-.html tabName="RBlade">
   @verbatim
     <x-content.collapsable title="My section">
       <p>[Lorem ipsum...]</p>
@@ -299,6 +370,22 @@
       </x-slot::preview>
     </x-content.collapsable>
   @endverbatim
+
+  <x-slot::erb>
+    @verbatim
+      <%= component "content.collapsable", title: "My section" do %>
+        <p>[Lorem ipsum...]</p>
+      <% end %>
+
+      <%= component "content.collapsable", title: (capture do %>
+        <h4>A complicated section</h4>
+      <% end), preview: (capture do %>
+        <p class="text-grey">Lorem ipsum...</p>
+      <% end) do %>
+        <p>[Lorem ipsum...]</p>
+      <% end %>
+    @endverbatim
+  </x-slot::erb>
 
   <x-slot::preview>
     <x-content.collapsable title="My section">
