@@ -1,11 +1,11 @@
-# Rails Project Template
+# Rails project template
 
 This is a template for creating a new Rails application including some of our
 defaults.
 
 When setting up a new project, you can copy this to get started a bit quicker.
 
-## Development Principles
+## Development principles
 
 ### Keep it simple
 Resist the temptation to over-engineer. Building a new platform brings
@@ -28,7 +28,7 @@ and focus on testing our code. The majority of tests should be functional
 
 ## Tech Stack
 
-### Local Development
+### Local development
 Docker has been setup for local development and testing. The [docker-compose]
 file defines services for running the database and webserver, managing the
 frontend assets, and running an email server that intercepts any outgoing
@@ -117,7 +117,7 @@ and customisable.
 This project requires [docker] to be installed to run the local development
 environment.
 
-### First Time Setup
+### First time setup
 
 Copy the template `.env.template` to `.env`:
 ```shell
@@ -151,7 +151,7 @@ with a single command:
 ./do up
 ```
 
-## Testing and Coding Standards
+## Testing and coding standards
 
 Run the coding standards:
 ```shell
@@ -166,6 +166,31 @@ Run the unit and integration tests:
 Run the system tests:
 ```
 ./do test:system
+```
+
+
+### Visual regression testing
+
+When run, the system test suite takes visual snapshots of the site, saved locally to `tmp/snapshots/`. The visual regression testing tools allow us to baseline a new set of snapshots, compare differences against the baseline, and perform a simulated eye-tracking analysis on the images.
+
+After the system tests have been run once on main, save the current set of snapshots as the baseline:
+```shell
+./do vr:baseline
+```
+
+Once you make changes to the site and have re-run the system tests, compare the new snapshots against the baseline, results in `tmp/snapshots/diff/`:
+```shell
+./do vr:diff
+```
+
+Perform a simulated eye-tracking analysis for each page of the site, results in `tmp/snapshots/heatmaps/`
+```shell
+./do vr:heatmap
+```
+
+To run all the system tests followed by a visual regression diff, you can use the `tsv` shortcut:
+```shell
+./do tsv
 ```
 
 ### Running commands
