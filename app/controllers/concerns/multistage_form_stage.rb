@@ -4,11 +4,16 @@ class MultistageFormStage < ::ApplicationController
   delegate :track_event, to: :@form
   before_action :save_errors, only: :show
 
+  class << self
+    attr_accessor :against_validators
+  end
+  validate :validate_against
+
   def initialize(multistage_form)
     @form = multistage_form
   end
 
-  def self.validates(name, **args)
+  def self.validates(name, display: nil, against: nil, **args)
     @attribute_names ||= {}
 
     # Create an attribute accessor method for any fields that we want to validate
@@ -19,11 +24,34 @@ class MultistageFormStage < ::ApplicationController
     end
 
     # Allow setting a custom human-readable name
-    if args.has_key?(:display)
-      @attribute_names[name] = args.delete :display
+    if display
+      @attribute_names[name] = display
     end
 
-    super
+    if against
+      self.against_validators ||= []
+      self.against_validators << {field: name, model: against, **args}
+    else
+      super(name, **args)
+    end
+  end
+
+  def validate_against
+    self.class.against_validators&.each do |against_validator|
+      field = against_validator[:field]
+      model_class = against_validator[:model]
+      model = model_class.new(
+        field => @form.data[field],
+      )
+
+      model_class.validators_on(field).map do |validator|
+        validator.validate(model)
+      end
+
+      model.errors[field]&.each do |error|
+        errors.add(field, error)
+      end
+    end
   end
 
   def self.human_attribute_name(attribute_name, base)

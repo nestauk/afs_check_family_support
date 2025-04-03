@@ -1,3 +1,10 @@
+** [2025-04-03]
+- Merge in changes from Nesta products:
+  - Add validate `against:` option for multistage forms
+  - Change activation to multi-stage form
+  - Fix form element error outline
+  - Tweak styling of headers
+
 ** [2025-03-26]
 - Add instructions to the readme for using the template
 - Add instructions to the readme for using the visual regression tools

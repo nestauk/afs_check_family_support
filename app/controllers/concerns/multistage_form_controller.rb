@@ -13,7 +13,7 @@ class MultistageFormController < ApplicationController
   attr_accessor :stages
 
   def form_url
-    raise StandardError.new "form_url not implemented"
+    request.original_url
   end
 
   def add_stage(stage)
@@ -46,6 +46,7 @@ class MultistageFormController < ApplicationController
   end
 
   def clear_session
+    @data = nil
     session[session_key] = nil
   end
 

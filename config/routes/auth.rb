@@ -14,8 +14,8 @@ namespace :users do
   get "account", to: "account#index"
 
   namespace :account do
-    get "activate/:signed_email", to: "activation#new", as: :activate
-    post "activate/:signed_email", to: "activation#create"
+    get "activate/:signed_email", to: "activation/activation#show", as: :activate
+    post "activate/:signed_email", to: "activation/activation#action"
 
     get "edit_name", to: "name#edit"
     patch "edit_name", to: "name#update"

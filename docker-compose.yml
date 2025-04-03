@@ -65,8 +65,6 @@ services:
     image: python:3.10
     entrypoint: ["/bin/sh", "entrypoint.sh"]
     working_dir: /var/source
-    ports:
-      - "8080:8080"
     volumes:
       - "./docker/image_processing:/var/source"
       - "./tmp/snapshots:/var/snapshots"

@@ -44,12 +44,12 @@
   /* Headers */
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply text-black/90;
+    @apply text-navy;
     @apply text-xl sm:text-2xl leading-normal sm:leading-normal;
     @apply font-bold mt-2 first:mt-0;
   }
   :is(h1, h2, h3, h4, h5, h6) + p {
-    @apply -mt-2.5;
+    @apply -mt-1.5;
   }
 
 

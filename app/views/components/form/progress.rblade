@@ -1,0 +1,6 @@
+@props(stage: required, of: required)
+<div {{ attributes.merge(class: "-:flex -:w-form -:gap-2 -:justify-start -:-mb-2") }}>
+  @each(i in Range.new(1, of.to_i))
+    <div class="w-3 h-3 {{ i.to_i <= stage.to_i ? 'bg-aqua-400 border border-aqua-500/75' : 'bg-navy-50' }}"></div>
+  @endEach
+</div>
