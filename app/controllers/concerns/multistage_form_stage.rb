@@ -4,6 +4,10 @@ class MultistageFormStage < ::ApplicationController
   delegate :track_event, to: :@form
   before_action :save_errors, only: :show
 
+  # These are handled by the parent controller
+  skip_before_action :set_current_request_details
+  skip_before_action :authenticate_user
+
   class << self
     attr_accessor :against_validators
   end

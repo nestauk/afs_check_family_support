@@ -3,6 +3,8 @@ class MultistageFormController < ApplicationController
 
   # This controller is a middle manager so disable all existing callbacks to prevent duplication
   reset_all_callbacks
+  before_action :set_current_request_details
+  before_action :authenticate_user
 
   before_action :load_session
   after_action :save_session, only: :action
