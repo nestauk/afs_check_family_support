@@ -46,10 +46,7 @@
   :is(h1, h2, h3, h4, h5, h6) {
     @apply text-navy;
     @apply text-xl sm:text-2xl leading-normal sm:leading-normal;
-    @apply font-bold mt-2 first:mt-0;
-  }
-  :is(h1, h2, h3, h4, h5, h6) + p {
-    @apply -mt-1.5;
+    @apply font-bold;
   }
 
 
@@ -97,11 +94,10 @@
 
   /* Links */
 
-  a {
-    @apply text-link underline
+  *:where(a, .link):not(.button) {
+    @apply inline text-[length:inherit] text-link underline
       hover:text-link-hover hover:no-underline
       active:text-link-active
-      visited:text-link-visited
       focusable;
   }
 

@@ -6,10 +6,10 @@
   <p class="xl"><a href="{{ root_path }}" class="font-medium">Home</a></p>
 
   @push("header")
-    <x-content.row class="w-max hidden sm:flex">
+    <div class="row w-max hidden sm:flex">
       <x-icon.not_found class="text-5xl"/>
       <p class="font-bold">{{ @status }} {{ @status_text }}</p>
-    </x-content.row>
+    </div>
   @endPush
   <p class="text-grey mt-2">{{ @status }} {{ @status_text }}</p>
 </x-layout::simple>

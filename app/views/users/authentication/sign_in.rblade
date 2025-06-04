@@ -16,11 +16,11 @@
       <x-form.password name="password" autocomplete="current-password" required/>
     </x-form.label>
 
-    <x-content.row class="mt-4 w-form">
+    <div class="row mt-4 w-form">
       <p>
         <a href="{{ users_forgot_password_path }}" class="no-underline hover:underline">Forgot your password?</a>
       </p>
-      <x-button class="ml-auto" type="submit">Sign in</x-button>
-    </x-content.row>
+      <button class="primary ml-auto">Sign in</button>
+    </div>
   </x-form>
 </x-layout::simple>

@@ -1,2 +1,2 @@
 @props(value: required)
-<button class="sr-only" aria-hidden="true" tabindex="-1" type="submit" name="action" value="{{ value }}"></button>
+<button class="sr-only" aria-hidden="true" tabindex="-1" name="action" value="{{ value }}"></button>

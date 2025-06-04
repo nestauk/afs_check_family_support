@@ -28,8 +28,8 @@
       <x-form.password name="password" value="" autocomplete="new-password" required showStrength/>
     </x-form.label>
 
-    <x-content.row>
-      <x-button type="submit">Activate your account</x-button>
-    </x-content.row>
+    <div class="row">
+      <button class="primary">Activate your account</button>
+    </div>
   </x-form>
 </x-layout::simple>

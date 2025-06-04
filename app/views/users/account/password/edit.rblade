@@ -20,8 +20,8 @@
       <x-form.password name="password" :value="params[:password]" required autocomplete="new-password" showStrength/>
     </x-form.label>
 
-    <x-content.row>
-      <x-button type="submit">Change password</x-button>
-    </x-content.row>
+    <div class="row">
+      <button class="primary">Change password</button>
+    </div>
   </x-form>
 </x-layout::authenticated>

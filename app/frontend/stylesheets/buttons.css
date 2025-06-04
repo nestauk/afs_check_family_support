@@ -1,0 +1,104 @@
+@layer components {
+  :is(button, .button):where(:not(.link, .unstyled)) {
+    @apply flex items-center justify-center gap-1.5
+      rounded
+      mb-0.75 shadow-3 no-underline
+      block w-max max-w-full
+      bg-clip-padding select-none whitespace-nowrap cursor-pointer
+      translate-y-0
+      active:translate-y-0.75 active:shadow-0
+      focusable;
+
+    &:disabled {
+      @apply !bg-grey-50 !text-grey-700
+        !shadow-3 !shadow-grey-50
+        !translate-y-0 !cursor-not-allowed;
+    }
+
+
+    /* Sizes */
+
+    /* default / md */
+    @apply px-6 py-2 pb-1.5 text-base sm:text-lg font-semibold;
+
+    &:where(.sm) {
+      @apply px-4 py-1.5 pb-1 text-sm sm:text-base font-medium;
+    }
+
+
+    /* Colours */
+
+    &:where(.primary) {
+      @apply bg-blue-700 text-white shadow-blue-950
+        hover:bg-blue-800 hover:shadow-black
+        active:bg-blue-800;
+
+      &:where(.light) {
+        @apply bg-blue-50 text-blue-950 shadow-blue-100
+          hover:bg-blue-100 hover:shadow-blue-200 hover:text-black
+          active:bg-blue-100 active:text-black;
+      }
+    }
+
+    &:where(.secondary) {
+      @apply bg-green-800 text-white shadow-green-900
+        hover:bg-green-900 hover:shadow-green-950
+        active:bg-green-900;
+
+      &:where(.light) {
+        @apply bg-green-50 text-green-950 shadow-green-100
+          hover:bg-green-100 hover:shadow-green-200 hover:text-black
+          active:bg-green-100 active:text-black;
+      }
+    }
+
+    &:where(.danger) {
+      @apply bg-red-800 text-white shadow-red-950
+        hover:bg-red-900 hover:shadow-black
+        active:bg-red-900;
+
+      &:where(.light) {
+        @apply bg-red-50 text-red-950 shadow-red-100
+          hover:bg-red-100 hover:shadow-red-200 hover:text-black
+          active:bg-red-100 active:text-black;
+      }
+    }
+
+    /* Flat buttons */
+
+    &:where(.flat) {
+      @apply shadow-0 mb-0 transform-none active:transform-none bg-transparent;
+
+
+      /* Sizes */
+
+      /* default / md */
+      @apply px-4 gap-1;
+
+      &:where(.sm) {
+        @apply px-2.5 gap-0.5;
+      }
+
+
+      /* Colours */
+
+      &:where(.primary) {
+        @apply text-blue-700
+          hover:bg-blue-700 hover:text-white
+          active:bg-blue-900 active:text-white;
+      }
+
+      &:where(.secondary) {
+        @apply text-green-800
+          hover:bg-green-800 hover:text-white
+          active:bg-green-900 active:text-white;
+      }
+
+      &:where(.danger) {
+        @apply text-red-800
+          hover:bg-red-800 hover:text-white
+          active:bg-red-900 active:text-white;
+      }
+    }
+  }
+}

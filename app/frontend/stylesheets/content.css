@@ -1,0 +1,28 @@
+@layer components {
+  .col {
+    @apply flex flex-col gap-6
+      max-w-full w-full;
+
+    &:where(.divide) {
+      @apply gap-0 sm:gap-0
+        w-prose
+        border border-x-0 border-grey-50
+        divide-y divide-grey-50;
+
+      > * {
+        @apply gap-4 sm:gap-6 px-2 py-4;
+      }
+    }
+  }
+
+  .row {
+    @apply flex flex-row gap-2 sm:gap-4 items-center
+      max-w-full w-full
+      no-underline
+      flex-wrap sm:flex-nowrap;
+
+    &:where(.wrap) {
+      @apply sm:flex-wrap;
+    }
+  }
+}

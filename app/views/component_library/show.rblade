@@ -18,7 +18,7 @@
   </x-content.collapsable>
 
   <x-content.collapsable class="mt-8 max-w-full" collapsed="$persist(false).as('component-library-buttons')">
-    <x-slot::title><h2 class="lg" id="buttons">Button components</h2></x-slot::title>
+    <x-slot::title><h2 class="lg" id="buttons">Buttons</h2></x-slot::title>
     <x-.section-buttons/>
   </x-content.collapsable>
 

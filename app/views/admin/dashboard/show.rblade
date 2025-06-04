@@ -7,7 +7,7 @@
 
   <x-content.pill blue><x-icon.person size="22"/>{{ pluralize(User.count, "user") }}</x-content.pill>
 
-  <x-button secondary as="a" :href="admin_users_path">
+  <a class="button secondary" href="{{ admin_users_path }}">
     Manage users
-  </x-button>
+  </a>
 </x-layout::authenticated>

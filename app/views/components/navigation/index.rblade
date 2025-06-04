@@ -12,7 +12,7 @@
   {{ attributes }}
 >
   {{-- Mobile header --}}
-  <x-content.row as="header" class="lg:hidden justify-between">
+  <header class="row lg:hidden justify-between">
     <h1 class="py-8 text-blue-900 font-normal text-5xl -mb-2">{{ application_name }}</h1>
     <button
       x-ref="menuOpen"
@@ -21,11 +21,11 @@
       {{-- Transfer the focus state to the close button when interacting via keyboard --}}
       @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
       @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuClose.focus())"
-      class="focusable leading-none text-[48px] h-12 z-20"
+      class="unstyled focusable leading-none text-[48px] h-12 z-20"
     >
       <x-icon.menu alt="Open menu" size="auto" x-show="!navOpen"/>
     </button>
-  </x-content.row>
+  </header>
   {{-- The main nav bar - a sidebar on desktop, and a popup dialog on mobile --}}
   <div
     class="
@@ -50,7 +50,7 @@
       {{-- Transfer the focus state to the open button when interacting via keyboard --}}
       @keydown.enter.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
       @keydown.space.prevent="navOpen = !navOpen; $nextTick(() => $refs.menuOpen.focus())"
-      class="absolute lg:hidden m-4 focusable leading-none text-[48px] h-12 z-20"
+      class="unstyled absolute lg:hidden m-4 focusable leading-none text-[48px] h-12 z-20"
     >
       <x-icon.close alt="Close menu" size="auto"/>
     </button>

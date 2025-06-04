@@ -19,8 +19,8 @@
       <x-form.password name="password_challenge" required autocomplete="current-password" autofocus="true"/>
     </x-form.label>
 
-    <x-content.row>
-      <x-button type="submit">Confirm new email</x-button>
-    </x-content.row>
+    <div class="row">
+      <button class="primary">Confirm new email</button>
+    </div>
   </x-form>
 </x-layout::authenticated>

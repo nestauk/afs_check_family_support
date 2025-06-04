@@ -15,7 +15,7 @@
   <body {{ attributes.merge(class: "flex flex-col min-h-screen") }}>
     @unless(noheader)
       <header class="flex items-center {{ width }} max-w-full mx-auto px-5 mt-4">
-        <h1 class="py-4 font-sans font-serif font-title text-6xl mr-auto"><a href="https://www.nesta.org.uk" class="no-underline text-blue">nesta</a></h1>
+        <h1 class="py-4 font-title text-6xl mr-auto"><a href="https://www.nesta.org.uk" class="no-underline text-blue">nesta</a></h1>
         @stack('header')
       </header>
     @endUnless

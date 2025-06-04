@@ -17,6 +17,6 @@
       <x-form.text name="last_name" :value="@form.data[:last_name]" required/>
     </x-form.label>
 
-    <x-button type="submit" name="action" value="next" class="mt-4">Next</x-button>
+    <button class="primary mt-4" name="action" value="next">Next</button>
   </x-form>
 </x-layout::simple>

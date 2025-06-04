@@ -1,18 +1,18 @@
-<h3><code>&lt;x-content.row&gt;</code></h3>
+<h3>Rows</h3>
 
 <p>Arranges content into a row, using HTML flexbox. Sets up default spacing and vertically aligns items center.</p>
 
-<x-content.row>
+<div class="row">
   <div class="border border-dashed w-20 h-6"></div>
   <div class="border border-dashed w-14 h-8"></div>
   <div class="border border-dashed w-32 h-4"></div>
-</x-content.row>
+</div>
 
 <table>
-  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr><th>Class</th><th>Description</th></tr>
   <tr>
-    <td><code>as</code></td>
-    <td>The HTML tag to use for the row (default: "div")</td>
+    <td><code>row</code></td>
+    <td>Enables row styling</td>
   </tr>
   <tr>
     <td><code>wrap</code></td>
@@ -20,68 +20,36 @@
   </tr>
 </table>
 
-<x-.html tabName="RBlade">
-  @verbatim
-    <x-content.row>
-      <p class="w-2/5">1</p>
-      <p class="w-2/5">2</p>
-      <p class="w-2/5">3</p>
-    </x-content.row>
+<x-.html>
+  <div class="row">
+    <p class="border border-dashed w-2/5">1</p>
+    <p class="border border-dashed w-2/5">2</p>
+    <p class="border border-dashed w-2/5">3</p>
+  </div>
 
-    <x-content.row as="aside" wrap>
-      <p class="w-2/5">4</p>
-      <p class="w-2/5">5</p>
-      <p class="w-2/5">6</p>
-    </x-content.row>
-  @endverbatim
-
-  <x-slot::erb>
-    @verbatim
-      <%= component "content.row" do %>
-        <p class="w-2/5">1</p>
-        <p class="w-2/5">2</p>
-        <p class="w-2/5">3</p>
-      <% end %>
-
-      <%= component "content.row", as: "aside", wrap: true do %>
-        <p class="w-2/5">1</p>
-        <p class="w-2/5">2</p>
-        <p class="w-2/5">3</p>
-      <% end %>
-    @endverbatim
-  </x-slot::erb>
-
-  <x-slot::preview>
-    <x-content.row>
-      <p class="border border-grey border-dashed w-2/5">1</p>
-      <p class="border border-grey border-dashed w-2/5">2</p>
-      <p class="border border-grey border-dashed w-2/5">3</p>
-    </x-content.row>
-
-    <x-content.row as="aside" wrap>
-      <p class="border border-grey border-dashed w-2/5">4</p>
-      <p class="border border-grey border-dashed w-2/5">5</p>
-      <p class="border border-grey border-dashed w-2/5">6</p>
-    </x-content.row>
-  </x-slot::preview>
+  <aside class="row wrap">
+    <p class="border border-dashed w-2/5">4</p>
+    <p class="border border-dashed w-2/5">5</p>
+    <p class="border border-dashed w-2/5">6</p>
+  </aside>
 </x-.html>
 
 
-<h3><code>&lt;x-content.col&gt;</code></h3>
+<h3>Columns</h3>
 
 <p>Arranges content into a column, using HTML flexbox. Sets up default spacing.</p>
 
-<x-content.col>
+<div class="col">
   <div class="border border-dashed w-20 h-6"></div>
   <div class="border border-dashed w-14 h-8"></div>
   <div class="border border-dashed w-32 h-4"></div>
-</x-content.col>
+</div>
 
 <table>
-  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr><th>Class</th><th>Description</th></tr>
   <tr>
-    <td><code>as</code></td>
-    <td>The HTML tag to use for the col (default: "div")</td>
+    <td><code>col</code></td>
+    <td>Enables column styling</td>
   </tr>
   <tr>
     <td><code>divide</code></td>
@@ -89,50 +57,18 @@
   </tr>
 </table>
 
-<x-.html tabName="RBlade">
-  @verbatim
-    <x-content.col>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-    </x-content.col>
+<x-.html>
+  <div class="col">
+    <p class="border border-dashed">1</p>
+    <p class="border border-dashed">2</p>
+    <p class="border border-dashed">3</p>
+  </div>
 
-    <x-content.col class="mt-8" divide>
-      <p>4</p>
-      <p>5</p>
-      <p>6</p>
-    </x-content.col>
-  @endverbatim
-
-  <x-slot::erb>
-    @verbatim
-      <%= component "content.col" do %>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-      <% end %>
-
-      <%= component "content.col", class: "mt-8", divide: true do %>
-        <p>4</p>
-        <p>5</p>
-        <p>6</p>
-      <% end %>
-    @endverbatim
-  </x-slot::erb>
-
-  <x-slot::preview>
-    <x-content.col>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-    </x-content.col>
-
-    <x-content.col class="mt-8" divide>
-      <p>4</p>
-      <p>5</p>
-      <p>6</p>
-    </x-content.col>
-  </x-slot::preview>
+  <article class="col divide mt-8">
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </article>
 </x-.html>
 
 
@@ -142,14 +78,14 @@
   <h4 class="sm">Box</h4>
   <p>This is a box</p>
 
-  <x-content.row class="justify-end">
-    <x-button class="w-fit" type="submit">
+  <div class="row justify-end">
+    <button class="primary w-fit">
       Confirm
-    </x-button>
-    <x-button light class="w-fit">
+    </button>
+    <button class="primary light w-fit">
       Cancel
-    </x-button>
-  </x-content.row>
+    </button>
+  </div>
 </x-content.box>
 
 <table class="mt-4">
@@ -292,10 +228,10 @@
 
 <h3><code>&lt;x-content.pill&gt;</code></h3>
 
-<x-content.row>
+<div class="row">
   <x-content.pill green>Green pill</x-content.pill>
   <x-content.pill blue>Blue pill</x-content.pill>
-</x-content.row>
+</div>
 
 <table class="mt-4">
   <tr><th>Attribute</th><th>Description</th></tr>

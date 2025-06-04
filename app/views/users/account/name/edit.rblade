@@ -19,8 +19,8 @@
       <x-form.text name="last_name" :value="params[:last_name] || Current.user.last_name" required/>
     </x-form.label>
 
-    <x-content.row>
-      <x-button type="submit">Change name</x-button>
-    </x-content.row>
+    <div class="row">
+      <button class="primary">Change name</button>
+    </div>
   </x-form>
 </x-layout::authenticated>

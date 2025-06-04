@@ -1,208 +1,82 @@
-<h3><code>&lt;x-button&gt;</code></h3>
+<h3 class="mt-4">HTML buttons</h3>
 
-<x-content.row>
-  <x-button>Button</x-button>
-  <x-button secondary>Button</x-button>
-  <x-button danger>Button</x-button>
-</x-content.row>
+<div class="row">
+  <button class="primary">Button</button>
+  <button class="secondary">Button</button>
+  <button class="danger">Button</button>
+</div>
 
 <table>
-  <tr><th>Attribute</th><th>Description</th></tr>
+  <tr><th>Class</th><th>Description</th></tr>
   <tr>
-    <td><code>as</code></td>
-    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
+    <td><code>button</code></td>
+    <td>Makes another element, e.g. links, look like a button</td>
+  </tr>
+  <tr>
+    <td><code>primary</code>, <code>secondary</code>, <code>danger</code></td>
+    <td>Sets the colour scheme for the button</td>
   </tr>
   <tr>
     <td><code>sm</code></td>
     <td>When present, the button is smaller</td>
   </tr>
   <tr>
-    <td><code>secondary</code></td>
-    <td>When present, changes the button to the secondary colour (green)</td>
-  </tr>
-  <tr>
-    <td><code>danger</code></td>
-    <td>When present, changes the button to the danger colour (red)</td>
-  </tr>
-  <tr>
-    <td><code>light</code></td>
-    <td>When present, uses the light version of the button</td>
-  </tr>
-</table>
-
-<x-.html tabName="RBlade">
-  @verbatim
-  <x-button>Standard</x-button>
-  <x-button light>Light</x-button>
-  <x-button sm>Small</x-button>
-  <x-button sm light>Small and light</x-button>
-
-  <x-button secondary>Secondary</x-button>
-  <x-button danger>Danger</x-button>
-  <x-button disabled>Disabled</x-button>
-  @endverbatim
-
-  <x-slot::erb>
-    @verbatim
-      <%= component "button" do %>Standard<% end %>
-      <%= component "button", light: true do %>Light<% end %>
-      <%= component "button", sm: true do %>Small<% end %>
-      <%= component "button", sm: true, light: true do %>Small and light<% end %>
-
-      <%= component "button", secondary: true do %>Secondary<% end %>
-      <%= component "button", danger: true do %>Danger<% end %>
-      <%= component "button", disabled: true do %>Disabled<% end %>
-    @endverbatim
-  </x-slot::erb>
-
-  <x-slot::preview>
-    <x-button>Standard</x-button>
-    <x-button light>Light</x-button>
-    <x-button sm>Small</x-button>
-    <x-button sm light>Small and light</x-button>
-
-    <x-button secondary>Secondary</x-button>
-    <x-button danger>Danger</x-button>
-    <x-button disabled>Disabled</x-button>
-  </x-slot::preview>
-</x-.html>
-
-<x-.html tabName="RBlade">
-  @verbatim
-    <x-button as="a" href="#">
-      This button is actually a link
-    </x-button>
-  @endverbatim
-
-  <x-slot::erb>
-    @verbatim
-      <%= component "button", as: "a", href: "#" do %>
-        This button is actually a link
-      <% end %>
-    @endverbatim
-  </x-slot::erb>
-
-  <x-slot::preview>
-    <x-button as="a" href="#">This button is actually a link</x-button>
-  </x-slot::preview>
-</x-.html>
-
-
-<h3 class="mt-8"><code>&lt;x-button.outline&gt;</code></h3>
-
-<x-content.row>
-  <x-button.outline>Button</x-button.outline>
-  <x-button.outline secondary>Button</x-button.outline>
-</x-content.row>
-
-<table>
-  <tr><th>Attribute</th><th>Description</th></tr>
-  <tr>
-    <td><code>as</code></td>
-    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
-  </tr>
-  <tr>
-    <td><code>sm</code></td>
-    <td>When present, the button is smaller</td>
-  </tr>
-  <tr>
-    <td><code>secondary</code></td>
-    <td>When present, changes the button to the secondary colour (green)</td>
-  </tr>
-</table>
-
-<x-.html tabName="RBlade">
-  @verbatim
-  <x-button.outline>Outline</x-button.outline>
-  <x-button.outline secondary>Outline secondary</x-button.outline>
-  <x-button.outline sm>Outline small</x-button.outline>
-  <x-button.outline sm secondary>Outline small secondary</x-button.outline>
-  @endverbatim
-
-  <x-slot::erb>
-    @verbatim
-      <%= component "button.outline" do %>Outline<% end %>
-      <%= component "button.outline", secondary: true do %>Outline secondary<% end %>
-      <%= component "button.outline", small: true do %>Outline small<% end %>
-      <%= component "button.outline", small: true, secondary: true do %>Outline small secondary<% end %>
-    @endverbatim
-  </x-slot::erb>
-
-  <x-slot::preview>
-    <x-button.outline>Outline</x-button.outline>
-    <x-button.outline secondary>Outline secondary</x-button.outline>
-    <x-button.outline sm>Outline small</x-button.outline>
-    <x-button.outline sm secondary>Outline small secondary</x-button.outline>
-  </x-slot::preview>
-</x-.html>
-
-
-<h3 class="mt-8"><code>&lt;x-button.flat&gt;</code></h3>
-
-<x-content.row>
-  <x-button.flat>Button</x-button.flat>
-  <x-button.flat secondary>Button</x-button.flat>
-  <x-button.flat link>Button</x-button.flat>
-</x-content.row>
-
-<table>
-  <tr><th>Attribute</th><th>Description</th></tr>
-  <tr>
-    <td><code>as</code></td>
-    <td>The HTML tag to use for the button (default: "button"). Can be used to change the button to a link.</td>
-  </tr>
-  <tr>
-    <td><code>sm</code></td>
-    <td>When present, the button is smaller</td>
-  </tr>
-  <tr>
-    <td><code>secondary</code></td>
-    <td>When present, changes the button to the secondary colour (green)</td>
+    <td><code>flat</code></td>
+    <td>Changes to the flat button variant</td>
   </tr>
   <tr>
     <td><code>link</code></td>
-    <td>When present, changes the button to look like a link</td>
+    <td>Applies the styling rules for links instead of buttons</td>
+  </tr>
+  <tr>
+    <td><code>unstyled</code></td>
+    <td>Removes all default styling from the button</td>
   </tr>
 </table>
 
-<x-.html tabName="RBlade">
-  @verbatim
-    <x-button.flat>Flat</x-button.flat>
-    <x-button.flat sm>Flat small</x-button.flat>
-    <x-button.flat secondary>Flat secondary</x-button.flat>
-    <x-button.flat sm secondary>Flat secondary small</x-button.flat>
-    <x-button.flat link>Flat link</x-button.flat>
-    <x-button.flat sm link>Flat link small</x-button.flat>
-  @endverbatim
+<x-.html>
+  <button class="primary">Primary</button>
+  <button class="primary light">Light</button>
+  <button class="primary sm">Small</button>
+  <button class="primary sm light">Small and light</button>
 
-  <x-slot::erb>
-    @verbatim
-      <%= component "button.flat" do %>Flat<% end %>
-      <%= component "button.flat", small: true do %>Flat small<% end %>
-      <%= component "button.flat", secondary: true do %>Flat secondary<% end %>
-      <%= component "button.flat", small: true, secondary: true do %>Flat secondary small<% end %>
-      <%= component "button.flat", link: true do %>Flat link<% end %>
-      <%= component "button.flat", small: true, link: true do %>Flat link small<% end %>
-    @endverbatim
-  </x-slot::erb>
+  <button class="secondary">Secondary</button>
+  <button class="danger">Danger</button>
+  <button disabled>Disabled</button>
+</x-.html>
 
-  <x-slot::preview>
-    <x-button.flat>Flat</x-button.flat>
-    <x-button.flat sm>Flat small</x-button.flat>
-    <x-button.flat secondary>Flat secondary </x-button.flat>
-    <x-button.flat sm secondary>Flat secondary small</x-button.flat>
-    <x-button.flat link>Flat link</x-button.flat>
-    <x-button.flat sm link>Flat link small</x-button.flat>
-  </x-slot::preview>
+<x-.html>
+  <a class="button primary" href="#">
+    This button is actually a link
+  </a>
+  <p>
+    <button class="link">
+      This link is actually a button
+    </button>
+  </p>
+  <p>
+    <button class="unstyled">
+      This is an unstyled button
+    </button>
+  </p>
+</x-.html>
+
+<x-.html>
+  <button class="flat primary">Flat</button>
+  <button class="flat primary sm">Flat small</button>
+  <button class="flat secondary">Flat secondary</button>
+  <button class="flat secondary sm">Flat secondary small</button>
+  <button class="flat danger">Flat danger</button>
+  <button class="flat danger sm">Flat danger small</button>
 </x-.html>
 
 
 <h3 class="mt-8"><code>&lt;x-button.back&gt;</code> and <code>&lt;x-button.forward&gt;</code></h3>
 
-<x-content.row>
+<div class="row">
   <x-button.back class="mr-0">Back</x-button.back>
   <x-button.forward class="ml-0">Forward</x-button.forward>
-</x-content.row>
+</div>
 
 <table>
   <tr><th>Attribute</th><th>Description</th></tr>
@@ -220,7 +94,7 @@
   </tr>
 </table>
 
-<x-.html tabName="RBlade">
+<x-.html>
   @verbatim
     <x-button.back>Back</x-button.back>
     <x-button.back sm>Back small</x-button.back>
@@ -255,9 +129,9 @@
 
 <h3 class="mt-8"><code>&lt;x-button.delete&gt;</code></h3>
 
-<x-content.row>
+<div class="row">
   <x-button.delete action="" @submit.prevent="">Delete</x-button.delete>
-</x-content.row>
+</div>
 
 <table>
   <tr><th>Attribute</th><th>Description</th></tr>
@@ -267,7 +141,7 @@
   </tr>
 </table>
 
-  <x-.html tabName="RBlade">
+  <x-.html>
   @verbatim
     <x-button.delete :action="resource_delete_path @resource">
       Delete resource
