@@ -1,3 +1,7 @@
+** [2025-06-04]
+- Remove `button`, `button.flat`, `button.outline, `content.row` and `content.col` components
+  - Replaced basic CSS and CSS classes where appropriate
+
 ** [2025-04-03]
 - Merge in changes from Nesta products:
   - Add validate `against:` option for multistage forms
