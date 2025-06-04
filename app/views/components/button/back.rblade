@@ -1,13 +1,12 @@
-@props(as: "a")
-<x-button.flat {{ attributes.merge({
+@props(as: "a", sm: false)
+<{{ as }} {{ attributes.merge({
   class: "
+    button flat
     -:pl-0 -:pr-2 -:gap-0.5 -:font-medium lg:-:-mb-2 -:mr-auto -:w-auto
     -:text-grey-700 visited:-:text-grey-700 hover:-:text-blue active:-:text-blue-800
+    #{sm && "sm"}
   ",
-  as:,
-  sm: true,
-  primary: false
 }) }}>
   <x-icon.left class="mt-px text-[1.5em]"/>
   {{ slot }}
-</x-button.flat>
+</{{ as }}>

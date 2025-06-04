@@ -10,7 +10,7 @@
     }
   }"
 >
-  <label class="flex">
+  <label class="flex flex-row">
     <x-form.text
       :value="slot.to_str"
       readonly
@@ -18,10 +18,10 @@
       x-ref="copyText"
       x-on:focus="copyText()"
     />
-    <x-button secondary class="rounded-l-none w-fit" x-on:click="copyText()">
+    <button class="secondary rounded-l-none w-fit" @click="copyText()">
       <x-icon.copy class="-ml-1" size="22"/>
       Copy
-    </x-button>
+    </button>
   </label>
   <x-content.pill class="ml-auto mt-2" green x-cloak="" x-show="showNotice" x-transition="">Copied to clipboard</x-content.pill>
 </div>

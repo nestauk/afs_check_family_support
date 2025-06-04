@@ -30,7 +30,7 @@
 
   <div x-data="{showOtp: false}">
     <p class="sm" x-show="!showOtp">
-      Not working? <a href="#" x-on:click.prevent="showOtp = true">Click here</a> to reveal the OTP secret.
+      Not working? <button class="link" @click.prevent="showOtp = true">Click here</button> to reveal the OTP secret.
     </p>
     <h4 class="2xs" x-cloak x-show="showOtp">OTP Secret</h4>
     <x-content.copyable x-cloak x-show="showOtp">{{ @otp_secret }}</x-content.copyable>
@@ -47,8 +47,8 @@
       <x-form.text inputmode="numeric" pattern="[0-9]*" name="totp" autocomplete="one-time-code" placeholder="000000" autofocus="true" required/>
     </x-form.label>
 
-    <x-content.row>
-      <x-button type="submit">Enable 2FA</x-button>
-    </x-content.row>
+    <div class="row">
+      <button class="primary">Enable 2FA</button>
+    </div>
   </x-form>
 </x-layout::authenticated>

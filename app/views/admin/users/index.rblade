@@ -1,13 +1,13 @@
 <x-layout::authenticated title="Users">
   @push('header')
     <x-button.back :href="admin_dashboard_path">Admin dashboard</x-button.back>
-    <x-button as="a" :href="admin_invite_user_path" class="ml-auto">Invite users</x-button>
+    <a class="button primary ml-auto" href="{{admin_invite_user_path}}">Invite users</a>
   @endpush
   <h2 class="xl">Manage users</h2>
 
-  <x-content.col class="border border-x-0 border-grey-50 divide-y divide-grey-50 gap-0">
+  <div class="col w-full divide mt-4">
     @each (user in @users)
-    <x-content.row as="a" :href="admin_user_path user" class="gap-4 px-2 py-4">
+    <a class="row" href="{{ admin_user_path user }}">
       <x-icon.person class="text-navy" size="22"/>
       <p>
         <span class="font-medium">{{ user.name }}</span>
@@ -18,9 +18,9 @@
           {{ user.email }}
         </span>
       </p>
-      <x-button secondary sm class="ml-auto">View</x-button>
-    </x-content.row>
+      <button class="secondary sm ml-auto">View</button>
+    </a>
     @endEach
-  </x-content.col>
+  </div>
   <x-pagination :pagy="@pagy"/>
 </x-layout::authenticated>

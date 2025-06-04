@@ -20,6 +20,6 @@
       <x-form.text type="email" name="email" :value="params[:email]" required autofocus="true"/>
     </x-form.label>
 
-    <x-button type="submit">Change email</x-button>
+    <button class="primary">Change email</button>
   </x-form>
 </x-layout::authenticated>

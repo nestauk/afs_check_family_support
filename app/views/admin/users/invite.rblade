@@ -12,7 +12,7 @@
   <x-form method="POST">
     <x-form.errors :except="[:emails]"/>
 
-    <x-content.col x-data="{emails: {{ params[:emails]&.count ? 0 : 1 }}}" class="mt-4">
+    <div class="col mt-4" x-data="{emails: {{ params[:emails]&.count ? 0 : 1 }}}">
       <h3 class="xs">Emails</h3>
       @eachWithIndex (email, i in (params[:emails] || []))
         <x-form.label label="Email" for="email" :visible=false :error="Current.errors.dig :emails, i">
@@ -35,12 +35,12 @@
           />
         </x-form.label>
       </template>
-      <x-button.flat link sm class="no-underline" x-on:click="emails++">
+      <button class="flat primary sm" @click.prevent="emails++">
         <x-icon.add size="22"/>
         Add email
-      </x-button.flat>
-      <x-button type="submit" class="mt-4" x-text="emails == 1 ? 'Send invitation' : 'Send invitations'"></x-button>
-    </x-content.col>
+      </button>
+      <button class="primary mt-4" x-text="emails == 1 ? 'Send invitation' : 'Send invitations'"></button>
+    </div>
 
   </x-form>
 </x-layout::authenticated>

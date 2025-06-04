@@ -4,42 +4,42 @@
   @endpush
   <h2 class="xl">{{ @user.name }}</h2>
 
-  <x-content.col divide>
-    <x-content.col>
+  <div class="col divide">
+    <div class="col">
       <h3 class="xs">Email</h3>
       <p>{{ @user.email }}</p>
-      <x-button.flat link as="a" :href="admin_user_change_email_path @user" class="mt-1 p-0">Change email</x-button.flat>
-    </x-content.col>
-    <x-content.col>
+      <p><a class="mt-1 p-0" href="{{ admin_user_change_email_path @user }}">Change email</a></p>
+    </div>
+    <div class="col">
       <h3 class="xs">Admin</h3>
       @if (@user.is_admin?)
         <p>Yes</p>
         <x-form method="POST" :action="admin_user_disable_admin_path @user">
-          <x-button.flat link type="submit" class="mt-1 p-0">Revoke admin access</x-button.flat>
+          <p><button class="link mt-1 p-0">Revoke admin access</button></p>
         </x-form>
       @else
         <p>No</p>
         <x-form method="POST" :action="admin_user_enable_admin_path @user">
-          <x-button.flat link type="submit" class="mt-1 p-0">Grant admin access</x-button.flat>
+          <p><button class="link mt-1 p-0">Grant admin access</button></p>
         </x-form>
       @end
-    </x-content.col>
-    <x-content.col>
+    </div>
+    <div class="col">
       <h3 class="xs">Password</h3>
       <x-form method="POST" :action="admin_user_password_reset_path @user">
-        <x-button.flat link type="submit" class="mt-1 p-0">Send password reset</x-button.flat>
+        <p><button class="link mt-1 p-0">Send password reset</button></p>
       </x-form>
-    </x-content.col>
-    <x-content.col>
+    </div>
+    <div class="col">
       <h3 class="xs">Two factor authentication</h3>
       @if (@user.otp_secret)
         <p>Enabled</p>
         <x-form method="POST" :action="admin_user_disable_2fa_path @user">
-          <x-button.flat link type="submit" class="mt-1 p-0">Disable 2FA</x-button.flat>
+          <p><button class="link mt-1 p-0">Disable 2FA</button></p>
         </x-form>
       @else
         <p>Disabled</p>
       @end
-    </x-content.col>
-  </x-content.col>
+    </div>
+  </div>
 </x-layout::authenticated>

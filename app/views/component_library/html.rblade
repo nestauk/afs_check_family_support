@@ -49,34 +49,34 @@ end
   {{ attributes.merge(class: "w-prose", "x-data": "{tab: 'preview', copied: false}") }}
   @copy.window="copied = false"
 >
-  <x-content.row>
+  <div class="row">
     <p class="xs text-grey select-none mr-auto">{{ label }}</p>
     <button
-      class="flex gap-2 items-center 2xs text-grey focusable"
+      class="unstyled group flex gap-2 items-center 2xs text-grey focusable"
       @click="$dispatch('copy');navigator.clipboard.writeText($refs.copyText.innerText); copied = true;"
     >
       <span x-cloak x-show="copied" x-transition.origin.right>Copied to clipboard</span>
-      <x-icon.copy size="18"/>
+      <x-icon.copy size="18" class="group-hover:text-black rounded"/>
     </button>
-  </x-content.row>
+  </div>
   <div class="relative w-full mt-1">
     <div class="absolute right-full top-0 flex flex-col items-end gap-1">
-      <x-button.flat
-        class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
+      <button
+        class="flat w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
         x-bind:class="tab === 'preview' ? 'z-20 bg-white border-aqua-400 hover:bg-white hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
         @click="tab = 'preview'"
-      >Preview</x-button.flat>
-      <x-button.flat
-        class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
+      >Preview</button>
+      <button
+        class="flat w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
         x-bind:class="tab === 'html' ? 'z-20 bg-aqua-50 border-aqua-400 hover:bg-aqua-50 hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
         @click="tab = 'html'"
-      >{{ tabName }}</x-button.flat>
+      >{{ tabName }}</button>
       @if(erb)
-        <x-button.flat
-          class="w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
+        <button
+          class="flat w-full rounded-r-none border border-r-0 -mr-px text-black font-medium"
           x-bind:class="tab === 'erb' ? 'z-20 bg-aqua-50 border-aqua-400 hover:bg-aqua-50 hover:text-black cursor-default' : 'z-0 text-sand-800 bg-sand-50 border-sand-400'"
           @click="tab = 'erb'"
-        >ERB</x-button.flat>
+        >ERB</button>
       @endIf
     </div>
     <div class="hidden" x-ref="copyText">{!! h(slot.to_s.gsub(/^#{slot.to_s.scan(/^[ \t]*(?=\S)/).min}/, "").strip) !!}</div>
@@ -117,9 +117,9 @@ end
         class="p-6 flex flex-col min-h-40"
         x-show="tab === 'preview'"
       >
-        <x-content.col class="my-auto gap-4 sm:gap-6">
+        <div class="col my-auto gap-4 sm:gap-6">
           {{ preview }}
-        </x-content.col>
+        </div>
       </div>
     </div>
   </div>

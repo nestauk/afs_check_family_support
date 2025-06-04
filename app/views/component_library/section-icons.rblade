@@ -64,7 +64,7 @@
   </x-slot::erb>
 
   <x-slot::preview>
-    <x-content.row wrap>
+    <div class="row wrap">
       <x-icon.home size="16" class="text-blue"/>
       <x-icon.home size="18" class="text-green-800"/>
       <x-icon.home size="20" class="text-aqua-900"/>
@@ -74,7 +74,7 @@
       <x-icon.home size="28" class="text-violet-800"/>
       <x-icon.home class="text-[30px] text-pink-800"/>
       <x-icon.home class="text-[40px] text-grey-500"/>
-    </x-content.row>
+    </div>
   </x-slot::preview>
 </x-.html>
 
@@ -102,7 +102,7 @@
   </x-slot::erb>
 
   <x-slot::preview>
-    <x-content.row wrap class="text-3xl">
+    <div class="row wrap text-3xl">
       <x-icon.home fill="0" weight="200" />
       <x-icon.home fill="0" weight="300" />
       <x-icon.home fill="0" />
@@ -110,7 +110,7 @@
       <x-icon.home fill="0" weight="600" />
       <x-icon.home fill="0" weight="700" />
       <x-icon.home fill="0" weight="700" grade="200" />
-    </x-content.row>
+    </div>
   </x-slot::preview>
 </x-.html>
 
@@ -216,7 +216,7 @@
   </x-slot::erb>
 
   <x-slot::preview>
-    <x-content.row wrap class="text-3xl">
+    <div class="row wrap text-3xl">
       <x-icon.account title="account" />
       <x-icon.add title="add" />
       <x-icon.broken title="broken" />
@@ -254,6 +254,6 @@
       <x-icon.tick title="tick" />
       <x-icon.tools title="tools" />
       <x-icon.visible title="visible" />
-    </x-content.row>
+    </div>
   </x-slot::preview>
 </x-.html>
