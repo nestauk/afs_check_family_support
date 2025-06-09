@@ -1,3 +1,6 @@
+## [2025-06-09]
+- Add alternative versions of the system tests using standard Minitest syntax
+
 ## [2025-06-04]
 - Remove `button`, `button.flat`, `button.outline`, `content.row` and `content.col` components
   - Replaced basic CSS and CSS classes where appropriate
