@@ -22,4 +22,34 @@ class ActiveSupport::TestCase
       assert_equal value, event.data[key.to_s]
     end
   end
+
+  def assert_email(recipient, subject)
+    deliveries = ActionMailer::Base.deliveries
+    email = deliveries.find { |e| e.to[0] == recipient && e.subject == subject }
+    assert email, "Expected to find email to #{recipient} with subject #{subject}."
+    email
+  end
+
+  def sign_in(user = @user)
+    visit auth_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Sign in"
+    assert_text "Signed in successfully"
+  end
+
+  def click_email_link(text)
+    html = Nokogiri::HTML(ActionMailer::Base.deliveries.last.html_part.body.to_s)
+    visit html.at("a:contains(\"#{text}\")")["href"]
+
+    self
+  end
+
+  def take_snapshot(name)
+    @then.i_take_snapshot(name)
+  end
+
+  def assert_page_is_accessible
+    @then.the_page_is_accessible
+  end
 end
