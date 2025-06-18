@@ -1,5 +1,5 @@
 {
-  "name": "Rails Template",
+  "name": "Check Family Support",
   "repository": "REPOSITORY",
   "stack": "heroku-22",
   "buildpacks": [
@@ -10,9 +10,7 @@
       "url": "heroku/ruby"
     }
   ],
-  "addons": [
-    "heroku-postgresql"
-  ],
+  "addons": ["heroku-postgresql"],
   "environments": {
     "review": {
       "scripts": {
