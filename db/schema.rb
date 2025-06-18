@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_19_131236) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_18_101819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_131236) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.integer "eligible_min_child_age_months"
+    t.integer "eligible_max_child_age_months"
+    t.boolean "eligible_parent_carer_status_required"
+    t.jsonb "eligible_developmental_concerns"
+    t.jsonb "eligible_circumstances"
+    t.boolean "eligible_if_existing_professional_involvement"
+    t.boolean "eligible_if_motivated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "solid_cache_entries", force: :cascade do |t|

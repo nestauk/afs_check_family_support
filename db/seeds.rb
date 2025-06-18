@@ -20,3 +20,26 @@ User.create(
   last_name: "Ross",
   is_admin: true,
 )
+
+Service.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!("services")
+
+Service.create!(
+  name: "Empowering Parents, Empowering Communities (EPEC)",
+  description: "A parenting programme that supports parents to develop their skills and confidence in parenting.",
+  eligible_min_child_age_months: 24,
+  eligible_max_child_age_months: 132,
+  eligible_parent_carer_status_required: true,
+  eligible_developmental_concerns: ["Child behaviour problems"],
+  eligible_circumstances: ["Income difficulties", "Social exclusion"],
+  eligible_if_existing_professional_involvement: true,
+  eligible_if_motivated: true,
+)
+
+# TODO: Service.create(
+#   name: "Triple P Online",
+# )
+
+# TODO: Service.create(
+#   name: "Incredible Years Pre-School ",
+# )
