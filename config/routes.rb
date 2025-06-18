@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   draw :auth
   draw :development
 
-  root "dashboard#show"
+  root "profiles#new"
+
   get "dashboard", to: "dashboard#show"
+
+  resources :profiles, only: %i[new create]
 end

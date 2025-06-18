@@ -295,6 +295,9 @@ GEM
     ruby-progressbar (1.13.0)
     safely_block (0.4.1)
     securerandom (0.4.1)
+    simple_form (5.3.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     solid_cache (1.0.7)
       activejob (>= 7.2)
       activerecord (>= 7.2)
@@ -378,6 +381,7 @@ DEPENDENCIES
   rqrcode
   rubocop (>= 1.73)
   rubocop-rails
+  simple_form (~> 5.3)
   solid_cache (~> 1.0)
   standard (>= 1.35.1)
   standard-rails

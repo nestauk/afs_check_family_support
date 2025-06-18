@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_18_101819) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_18_104337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_101819) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "child_first_name", null: false
+    t.boolean "legal_parent_or_carer", null: false
+    t.date "child_date_of_birth", null: false
+    t.string "current_post_code"
+    t.boolean "existing_professional_involvement"
+    t.jsonb "developmental_concerns"
+    t.jsonb "circumstances"
+    t.boolean "motivated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "services", force: :cascade do |t|

@@ -25,7 +25,8 @@ class ApplicationRecord < ActiveRecord::Base
     super
   end
 
-  def self.human_attribute_name(attribute_name, base)
-    @@human_attribute_names&.[](attribute_name.to_sym) || super
-  end
+  # TODO: review, causing error
+  # def self.human_attribute_name(attribute_name, base)
+  #   @@human_attribute_names&.[](attribute_name.to_sym) || super
+  # end
 end

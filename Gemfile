@@ -65,3 +65,5 @@ gem "pagy", "~> 9.1"
 gem "cloudinary", "~> 2.2"
 
 gem "ahoy_matey", "~> 5.3"
+
+gem "simple_form", "~> 5.3"

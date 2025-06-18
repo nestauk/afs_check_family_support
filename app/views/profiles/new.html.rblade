@@ -1,0 +1,16 @@
+<x-layout::simple title="New profile">
+  <h2 class="2xl">Check...</h2>
+
+  <%= simple_form_for @profile do |f| %>
+    <%= f.input :child_first_name %>
+    <%= f.input :legal_parent_or_carer, as: :radio_buttons %>
+    <%= f.input :child_date_of_birth, html5: true %>
+    <%= f.input :current_post_code %>
+    <%= f.input :existing_professional_involvement, as: :radio_buttons %>
+    <%= f.input :developmental_concerns, as: :check_boxes, collection: Service::CONCERNS %>
+    <%= f.input :circumstances, as: :check_boxes, collection: Service::CIRCUMSTANCES %>
+    <%= f.input :motivated, as: :radio_buttons %>
+    <%= f.button :submit, "Check services" %>
+  <% end %>
+
+</x-layout::simple>
