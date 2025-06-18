@@ -19,6 +19,8 @@ class Service < ApplicationRecord
     "Other",
   ].freeze
 
+  has_many :checks, dependent: :destroy
+
   validates :name, :description, presence: true
   validates :eligible_developmental_concerns, inclusion: {in: CONCERNS, allow_blank: true}
   validates :eligible_circumstances, inclusion: {in: CIRCUMSTANCES, allow_blank: true}

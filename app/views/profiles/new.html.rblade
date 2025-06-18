@@ -1,5 +1,5 @@
 <x-layout::simple title="New profile">
-  <h2 class="2xl">Check...</h2>
+  <h2 class="2xl">Find out which family support you could be eligible for</h2>
 
   <%= simple_form_for @profile do |f| %>
     <%= f.input :child_first_name %>

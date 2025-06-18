@@ -7,10 +7,20 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
 
     if @profile.save
-      redirect_to results_path, notice: "Profile was successfully created."
+      Service.find_each do |service|
+        check = Check.new(profile: @profile, service: service)
+        check.compute_eligibility
+        check.save!
+      end
+
+      redirect_to results_path(@profile)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def results
+    @profile = Profile.find_by(id: params[:id])
   end
 
   private

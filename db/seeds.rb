@@ -36,10 +36,18 @@ Service.create!(
   eligible_if_motivated: true,
 )
 
-# TODO: Service.create(
-#   name: "Triple P Online",
-# )
+Service.create!(
+  name: "Triple P Online",
+  description: "An online parenting programme that provides parents with strategies to manage their child's behaviour.",
+  eligible_min_child_age_months: 12,
+  eligible_max_child_age_months: 36,
+  eligible_parent_carer_status_required: true,
+)
 
-# TODO: Service.create(
-#   name: "Incredible Years Pre-School ",
-# )
+Service.create(
+  name: "Incredible Years Pre-School ",
+  description: "A parenting programme designed to support parents of children aged 3-6 years in managing their child's behaviour and promoting positive development.",
+  eligible_min_child_age_months: 36,
+  eligible_max_child_age_months: 72,
+  eligible_parent_carer_status_required: true,
+)

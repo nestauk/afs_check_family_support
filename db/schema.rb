@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_18_104337) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_18_130322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,6 +55,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_104337) do
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
+  end
+
+  create_table "checks", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "service_id", null: false
+    t.boolean "eligible", null: false
+    t.jsonb "reasons"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_checks_on_profile_id"
+    t.index ["service_id"], name: "index_checks_on_service_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -118,5 +129,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_104337) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "checks", "profiles"
+  add_foreign_key "checks", "services"
   add_foreign_key "events", "users"
 end

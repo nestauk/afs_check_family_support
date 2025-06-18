@@ -1,0 +1,21 @@
+<x-layout::simple title="Your results">
+
+  <h2 class="2xl">Family support services for you</h2>
+  <% @profile.checks.order(eligible: :desc).each do |check| %>
+    <div class="check-result">
+      <div class="flex items-center mb-2">
+        <span class="p-2 font-bold rounded text-white <%= check.eligible ? 'bg-green-700' : 'bg-red-700' %>"><%= check.eligible ? 'Eligible' : 'Ineligible' %></span>
+        <h3><%= check.service.name %></h3>
+      </div>
+      <p class="mb-4"><%= check.service.description %></p>
+      <details>
+        <summary class="text-gray-600 mb-2">Reasons for this assessment</summary>
+        <div class="p-2">
+          <%= check.reasons.to_sentence %>.
+        </div>
+      </details>
+      <small>Last checked: <%= check.updated_at.strftime("%B %d, %Y") %></small>
+    </div>
+  <% end %>
+
+</x-layout::simple>
