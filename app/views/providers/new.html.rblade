@@ -1,5 +1,8 @@
 <x-layout::simple title="Register your area">
-  <h2>Get insights about demand and manage information about family support services in your area</h2>
+  <h2>
+    Get insights about demand and manage information about family support services in your area
+    <small class="text-green-700 font-bold">(Service providers view)</small>
+  </h2>
 
   <%= simple_form_for @provider do |f| %>
     <%= f.input :name %>

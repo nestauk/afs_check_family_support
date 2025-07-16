@@ -28,8 +28,13 @@
     <p>(illustrative) Local providers based on the postcode: <%= @check.profile.current_post_code %></p>
     <% @service.provisions.sample(2).each do |provision| %>
       <div class="border border-blue-500 p-4 rounded w-full">
-        <strong><%= provision.provider.name %></strong>
-        <p><%= provision.how_to_sign_up %></p>
+        <div class="flex items-center">
+          <div class="w-3/4">
+            <strong><%= provision.provider.name %></strong>
+            <p><%= provision.how_to_sign_up %></p>
+          </div>
+          <%= render 'favourites/favourite_button', profile: @check.profile, provision: provision %>
+        </div>
       </div>
     <% end %>
   <% end %>

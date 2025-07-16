@@ -1,0 +1,15 @@
+<%= turbo_frame_tag dom_id(provision, :favourite_button) do %>
+  <% favourite = Favourite.find_by(profile: profile, provision: provision) %>
+
+  <% if favourite %>
+    <%= button_to "Unfavourite",
+                  destroy_favorite_path(profile, provision),
+                  method: :delete,
+                  class: "secondary sm" %>
+  <% else %>
+    <%= button_to "Favourite",
+                  create_favorite_path(profile, provision),
+                  method: :post,
+                  class: "primary sm" %>
+  <% end %>
+<% end %>

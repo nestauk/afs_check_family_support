@@ -6,6 +6,7 @@
     "@alpinejs/focus": "^3.14.3",
     "@alpinejs/persist": "^3.14.8",
     "@hotwired/turbo": "^8.0.5",
+    "@hotwired/turbo-rails": "^8.0.16",
     "@vitejs/plugin-vue": "^5.1.2",
     "ahoy.js": "^0.4.4",
     "alpinejs": "^3.14.1",

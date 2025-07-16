@@ -67,3 +67,5 @@ gem "cloudinary", "~> 2.2"
 gem "ahoy_matey", "~> 5.3"
 
 gem "simple_form", "~> 5.3"
+
+gem "turbo-rails", "~> 2.0"

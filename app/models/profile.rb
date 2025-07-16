@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   has_many :checks
+  has_many :favourites, dependent: :destroy
 
   validates :child_first_name, :legal_parent_or_carer, :child_date_of_birth, :current_post_code, presence: true
 

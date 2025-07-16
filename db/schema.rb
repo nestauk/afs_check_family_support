@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_16_085545) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_16_122030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -77,6 +77,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_16_085545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "provision_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id", "provision_id"], name: "index_favourites_on_profile_id_and_provision_id", unique: true
+    t.index ["profile_id"], name: "index_favourites_on_profile_id"
+    t.index ["provision_id"], name: "index_favourites_on_provision_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -149,6 +159,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_16_085545) do
   add_foreign_key "checks", "profiles"
   add_foreign_key "checks", "services"
   add_foreign_key "events", "users"
+  add_foreign_key "favourites", "profiles"
+  add_foreign_key "favourites", "provisions"
   add_foreign_key "provisions", "providers"
   add_foreign_key "provisions", "services"
 end

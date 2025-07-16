@@ -1,6 +1,12 @@
 <x-layout::simple title="Your results">
 
-  <h2 class="2xl">Family support services for you</h2>
+  <h2 class="xl">
+    Family support services for you
+    <small class="text-orange-700 font-bold">(Parent view)</small>
+  </h2>
+
+  <p><%= link_to 'My favourites', favourites_path(@profile) %> </p>
+
   <% @profile.checks.order(eligible: :desc).each do |check| %>
     <div class="check-result">
       <div class="flex items-center mb-2">
