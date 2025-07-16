@@ -4,10 +4,23 @@
   <%= simple_form_for @provider do |f| %>
     <%= f.input :name %>
 
-    <%= f.association :services,
-          as: :check_boxes,
-          label: "Services offered (select any that apply)",
-          collection: Service.all.order(:name) %>
+    <%= f.simple_fields_for :provisions do |provision_form| %>
+      <div class="nested-service-fields mb-3 p-3 border rounded">
+        <%# This checkbox controls whether this provision is saved via the 'reject_if' proc %>
+        <%= provision_form.input :selected,
+                                as: :boolean,
+                                label: provision_form.object.service.name %>
+
+        <%# We pass the service_id in a hidden field to associate it correctly %>
+        <%= provision_form.hidden_field :service_id %>
+
+        <%# This is the text field for extra information on the join table %>
+        <%= provision_form.input :how_to_sign_up,
+                                label: 'How to sign up for this service?',
+                                as: :text,
+                                input_html: { rows: 2 } %>
+      </div>
+    <% end %>
 
     <%= f.button :submit, "Register your area" %>
   <% end %>

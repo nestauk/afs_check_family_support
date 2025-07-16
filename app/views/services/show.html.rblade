@@ -20,24 +20,18 @@
   <% end %>
 
   <h2>Why sign up</h2>
-  <p>TODO: add example info, ActionText?</p>
+  <p>TODO: add example info</p>
 
-  <h2>How to sign up</h2>
-  <% if @check %>
+  <% if @check&.eligible %>
+    <h2>How to sign up</h2>
+    <%# TODO: use location checks %>
     <p>(illustrative) Local providers based on the postcode: <%= @check.profile.current_post_code %></p>
-    <%# TODO: make dynamic %>
-    <div class="border border-blue-500 p-4 rounded w-full">
-      <strong>Parkfield Family Hub</strong>
-      <p>Address: 123 Example Street, Example Town, EX1 2AB</p>
-      <p>Phone: 01234 567890</>
-      <p>Email: <a href="mailto:parkfield-family-hub@localarea.gov.uk">parkfield-family-hub@localarea.gov.uk</a></p>
-    </div>
-    <div class="border border-blue-500 p-4 rounded w-full">
-      <strong>Urban Family Hub</strong>
-      <p>Address: 123 Example Street, Example Town, A12 4SD</p>
-      <p>Phone: 01234 567890</>
-      <p>Email: <a href="mailto:urban-family-hub@localarea.gov.uk">urban-family-hub@localarea.gov.uk</a></p>
-    </div>
+    <% @service.provisions.sample(2).each do |provision| %>
+      <div class="border border-blue-500 p-4 rounded w-full">
+        <strong><%= provision.provider.name %></strong>
+        <p><%= provision.how_to_sign_up %></p>
+      </div>
+    <% end %>
   <% end %>
 
 </x-layout::simple>
