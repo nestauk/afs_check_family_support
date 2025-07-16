@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :profiles, only: %i[new create]
   get "results/:id", to: "profiles#results", as: :results
+  get "services/:id/(:check_id)", to: "services#show", as: :service
 end

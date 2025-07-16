@@ -5,7 +5,7 @@
     <div class="check-result">
       <div class="flex items-center mb-2">
         <span class="p-2 font-bold rounded text-white <%= check.eligible ? 'bg-green-700' : 'bg-red-700' %>"><%= check.eligible ? 'Eligible' : 'Ineligible' %></span>
-        <h3><%= check.service.name %></h3>
+        <h3><%= link_to check.service.name, service_path(check.service, check) %></h3>
       </div>
       <p class="mb-4"><%= check.service.description %></p>
       <details>

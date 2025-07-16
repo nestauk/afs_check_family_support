@@ -1,0 +1,28 @@
+<x-layout::simple title="<%= @service.name %>">
+  <% if @check %>
+    <%= link_to '< Back', results_path(@check.profile) %>
+  <% end %>
+
+  <h1><%= @service.name %></h1>
+
+  <p><%= @service.description %></p>
+
+  <% if @check %>
+    <span class="p-2 font-bold rounded text-white <%= @check.eligible ? 'bg-green-700' : 'bg-red-700' %>"><%= @check.eligible ? 'Eligible' : 'Ineligible' %></span>
+
+    <details>
+      <summary class="text-gray-600 mb-2">Reasons for this assessment</summary>
+      <div class="p-2">
+        <%= @check.reasons.to_sentence %>.
+      </div>
+    </details>
+    <small>Last checked: <%= @check.updated_at.strftime("%B %d, %Y") %></small>
+  <% end %>
+
+  <h2>Why sign up</h2>
+  <p>TODO: add example info</p>
+
+  <h2>How to sign up</h2>
+  <p>TODO: show data supplied via local area or waitlist option</p>
+
+</x-layout::simple>
