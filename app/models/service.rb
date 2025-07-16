@@ -20,6 +20,7 @@ class Service < ApplicationRecord
   ].freeze
 
   has_many :checks, dependent: :destroy
+  has_many :provisions, dependent: :destroy
 
   validates :name, :description, presence: true
   validates :eligible_developmental_concerns, inclusion: {in: CONCERNS, allow_blank: true}

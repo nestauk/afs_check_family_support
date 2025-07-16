@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_18_130322) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_16_085545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -92,6 +92,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_130322) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "district_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provisions", force: :cascade do |t|
+    t.bigint "provider_id", null: false
+    t.bigint "service_id", null: false
+    t.text "how_to_sign_up"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_provisions_on_provider_id"
+    t.index ["service_id"], name: "index_provisions_on_service_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -132,4 +149,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_130322) do
   add_foreign_key "checks", "profiles"
   add_foreign_key "checks", "services"
   add_foreign_key "events", "users"
+  add_foreign_key "provisions", "providers"
+  add_foreign_key "provisions", "services"
 end

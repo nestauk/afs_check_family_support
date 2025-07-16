@@ -13,4 +13,5 @@
     <%= f.button :submit, "Check services" %>
   <% end %>
 
+  <p>Are you a service provider? <%= link_to 'Register your area', new_provider_path %></p>
 </x-layout::simple>

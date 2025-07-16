@@ -1,0 +1,15 @@
+<x-layout::simple title="Register your area">
+  <h2>Get insights about demand and manage information about family support services in your area</h2>
+
+  <%= simple_form_for @provider do |f| %>
+    <%= f.input :name %>
+
+    <%= f.association :services,
+          as: :check_boxes,
+          label: "Services offered (select any that apply)",
+          collection: Service.all.order(:name) %>
+
+    <%= f.button :submit, "Register your area" %>
+  <% end %>
+
+</x-layout::simple>

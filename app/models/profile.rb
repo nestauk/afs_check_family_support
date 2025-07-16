@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   has_many :checks
 
-  validates :child_first_name, :legal_parent_or_carer, :child_date_of_birth, presence: true
+  validates :child_first_name, :legal_parent_or_carer, :child_date_of_birth, :current_post_code, presence: true
 
   def child_age_in_months(at_date = Date.current)
     return nil unless child_date_of_birth.is_a?(Date)

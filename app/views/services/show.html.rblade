@@ -1,4 +1,4 @@
-<x-layout::simple title="<%= @service.name %>">
+<x-layout::simple :title="@service.name">
   <% if @check %>
     <%= link_to '< Back', results_path(@check.profile) %>
   <% end %>
@@ -20,9 +20,24 @@
   <% end %>
 
   <h2>Why sign up</h2>
-  <p>TODO: add example info</p>
+  <p>TODO: add example info, ActionText?</p>
 
   <h2>How to sign up</h2>
-  <p>TODO: show data supplied via local area or waitlist option</p>
+  <% if @check %>
+    <p>(illustrative) Local providers based on the postcode: <%= @check.profile.current_post_code %></p>
+    <%# TODO: make dynamic %>
+    <div class="border border-blue-500 p-4 rounded w-full">
+      <strong>Parkfield Family Hub</strong>
+      <p>Address: 123 Example Street, Example Town, EX1 2AB</p>
+      <p>Phone: 01234 567890</>
+      <p>Email: <a href="mailto:parkfield-family-hub@localarea.gov.uk">parkfield-family-hub@localarea.gov.uk</a></p>
+    </div>
+    <div class="border border-blue-500 p-4 rounded w-full">
+      <strong>Urban Family Hub</strong>
+      <p>Address: 123 Example Street, Example Town, A12 4SD</p>
+      <p>Phone: 01234 567890</>
+      <p>Email: <a href="mailto:urban-family-hub@localarea.gov.uk">urban-family-hub@localarea.gov.uk</a></p>
+    </div>
+  <% end %>
 
 </x-layout::simple>

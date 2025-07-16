@@ -32,6 +32,6 @@ module CheckFamilySupport
     # Register our error handler
     config.exceptions_app = ->(env) { HttpErrorController.action(:show).call(env) }
 
-    config.application_name = "Rails Template"
+    config.application_name = "Check Family Support"
   end
 end

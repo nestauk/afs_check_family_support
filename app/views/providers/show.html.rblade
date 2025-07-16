@@ -1,0 +1,12 @@
+<x-layout::simple :title="@provider.name">
+  <p><%= link_to 'Edit profile', '#todo' %> | <%= link_to 'Sign out', '#todo' %></p>
+
+  <h1 class="text-3xl"><%= @provider.name %></h1>
+
+  <h2>Services you offer</h2>
+  <ul>
+    <% @provider.services.each do |service| %>
+      <li><%= service.name %></li>
+    <% end %>
+  </ul>
+</x-layout::simple>
