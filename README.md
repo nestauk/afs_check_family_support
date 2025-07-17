@@ -1,6 +1,25 @@
 # Check Family Support
 
-The protoype allows parents/carers of unders 5's to check eligibility for multiple family support services by completing a single short form. The challenge of finding local service availability is out of scope for this first prototype. And future development may include features for service providers (e.g. understanding demand; managing referrals; reporting on service data; etc). As this is prototype software bugs should be expected.
+## About
+
+This quick protoype (<10hrs development time - features may be incomplete and expect bugs) allows...
+
+1. Parents/carers of unders 5's to check eligibility for multiple family support services by completing a single short form;
+2. Family support managers such as local authorities or Family Hubs get insights about demand and manage information about family support services in their area.
+
+This prototype is **currently exploring** the following assumptions...
+
+- **One form, many services:** What's the smallest amout of data we need from parents to match them to evidence based parenting interventions and support services. Can we turn this into a valuable and useful tool? How might we make it easier for parents/carers to find and sign up to evidence based services over others? How much value can we provide before needing to make it easier to sign up to services locally (which is currently tricky due to digital maturity locally)?
+- **A value-loop for service providers:** Data standards, as well as consistent and comprehensive data are important. However the data availability and consistency on family support services is mixed. What's the minimum amount of data we need from local areas/service providers to provide a useful tool to parents/carers? How might we make it valuable/useful for local areas/service providers to provide and manage information about services (initally the basics, but in future hopefully data about service availability and performance) and reduce the data input burden? Can we leverage this value-loop to improve the quality and consistency of family support service data for the sector as a public good?
+
+**Options for future** for future exploration could include...
+
+- **Initial release:** Refining this prototype so it's robust enough to be publically deployed and used as an initial early stage relase.
+- **Minimum viable data:** Populate the tool with data from 1-2 target local areas/service providers so it can be used to be matched to actual family support services in these areas.
+- **Safe local testing:** Test the prototype in a safe and controlled way in 1-2 target local areas.
+- **Additional features:** Allow parent/carers to sign up to services or make structured referalls + associated features for local areas/service providers to manage referalls. Features to track service completion and performance. Etc.
+
+---
 
 ## Development principles
 
